@@ -15,11 +15,25 @@
 		2A50520C2C6DAA4500DC3E4A /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2A5052092C6DAA4500DC3E4A /* Pretendard-Medium.otf */; };
 		2A85A9322BF869C20030B4F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A85A9312BF869C20030B4F4 /* AppDelegate.swift */; };
 		2A85A9342BF869C20030B4F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A85A9332BF869C20030B4F4 /* SceneDelegate.swift */; };
-		2A85A9362BF869C20030B4F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A85A9352BF869C20030B4F4 /* ViewController.swift */; };
 		2A85A93B2BF869C20030B4F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A85A93A2BF869C20030B4F4 /* Assets.xcassets */; };
 		2A85A93E2BF869C20030B4F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A85A93C2BF869C20030B4F4 /* LaunchScreen.storyboard */; };
 		2ABBF7072C5CC16F00B12315 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2ABBF7062C5CC16F00B12315 /* SnapKit */; };
 		2ABBF70A2C5CC19600B12315 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 2ABBF7092C5CC19600B12315 /* Then */; };
+		2ABCDC622C71EC3C00AD649C /* AllChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC5D2C71EC3C00AD649C /* AllChatCoordinator.swift */; };
+		2ABCDC632C71EC3C00AD649C /* AllChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC5F2C71EC3C00AD649C /* AllChatVC.swift */; };
+		2ABCDC692C71EC4300AD649C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC642C71EC4300AD649C /* AppCoordinator.swift */; };
+		2ABCDC6A2C71EC4300AD649C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC652C71EC4300AD649C /* Coordinator.swift */; };
+		2ABCDC6B2C71EC4300AD649C /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC662C71EC4300AD649C /* CoordinatorType.swift */; };
+		2ABCDC6D2C71EC5100AD649C /* UIWindow+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC6C2C71EC5100AD649C /* UIWindow+.swift */; };
+		2ABCDC732C71EC5C00AD649C /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC6E2C71EC5C00AD649C /* MapCoordinator.swift */; };
+		2ABCDC742C71EC5C00AD649C /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC702C71EC5C00AD649C /* MapVC.swift */; };
+		2ABCDC7A2C71EC6300AD649C /* MyPageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC752C71EC6300AD649C /* MyPageCoordinator.swift */; };
+		2ABCDC7B2C71EC6300AD649C /* MyPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC772C71EC6300AD649C /* MyPageVC.swift */; };
+		2ABCDC812C71EC6C00AD649C /* MyChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC7C2C71EC6C00AD649C /* MyChatCoordinator.swift */; };
+		2ABCDC822C71EC6C00AD649C /* MyChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC7E2C71EC6C00AD649C /* MyChatVC.swift */; };
+		2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC832C71EC9700AD649C /* TabBar.swift */; };
+		2ABCDC8B2C71EC9700AD649C /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC852C71EC9700AD649C /* TabBarCoordinator.swift */; };
+		2ABCDC8C2C71EC9700AD649C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC872C71EC9700AD649C /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,10 +46,24 @@
 		2A85A92E2BF869C10030B4F4 /* ATCH-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ATCH-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A85A9312BF869C20030B4F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A85A9332BF869C20030B4F4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2A85A9352BF869C20030B4F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2A85A93A2BF869C20030B4F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A85A93D2BF869C20030B4F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A85A93F2BF869C20030B4F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2ABCDC5D2C71EC3C00AD649C /* AllChatCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatCoordinator.swift; sourceTree = "<group>"; };
+		2ABCDC5F2C71EC3C00AD649C /* AllChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatVC.swift; sourceTree = "<group>"; };
+		2ABCDC642C71EC4300AD649C /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		2ABCDC652C71EC4300AD649C /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		2ABCDC662C71EC4300AD649C /* CoordinatorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
+		2ABCDC6C2C71EC5100AD649C /* UIWindow+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIWindow+.swift"; path = "ATCH-iOS/Extension/UIWindow+.swift"; sourceTree = SOURCE_ROOT; };
+		2ABCDC6E2C71EC5C00AD649C /* MapCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
+		2ABCDC702C71EC5C00AD649C /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		2ABCDC752C71EC6300AD649C /* MyPageCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageCoordinator.swift; sourceTree = "<group>"; };
+		2ABCDC772C71EC6300AD649C /* MyPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageVC.swift; sourceTree = "<group>"; };
+		2ABCDC7C2C71EC6C00AD649C /* MyChatCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyChatCoordinator.swift; sourceTree = "<group>"; };
+		2ABCDC7E2C71EC6C00AD649C /* MyChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyChatVC.swift; sourceTree = "<group>"; };
+		2ABCDC832C71EC9700AD649C /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		2ABCDC852C71EC9700AD649C /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		2ABCDC872C71EC9700AD649C /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +91,12 @@
 		2A5051FD2C6D9E7900DC3E4A /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				2A85A9352BF869C20030B4F4 /* ViewController.swift */,
+				2ABCDC682C71EC4300AD649C /* Base */,
+				2ABCDC722C71EC5C00AD649C /* Map */,
+				2ABCDC802C71EC6C00AD649C /* MyChat */,
+				2ABCDC612C71EC3C00AD649C /* AllChat */,
+				2ABCDC792C71EC6300AD649C /* MyPage */,
+				2ABCDC892C71EC9700AD649C /* TabBar */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -80,6 +113,7 @@
 		2A5051FF2C6D9EA800DC3E4A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				2ABCDC6C2C71EC5100AD649C /* UIWindow+.swift */,
 				2A5052002C6D9EBB00DC3E4A /* UIColor+.swift */,
 				2A5052022C6D9FE700DC3E4A /* UIFont+.swift */,
 				2A5052042C6DA06700DC3E4A /* Adjust+.swift */,
@@ -124,6 +158,158 @@
 				2A85A93F2BF869C20030B4F4 /* Info.plist */,
 			);
 			path = "ATCH-iOS";
+			sourceTree = "<group>";
+		};
+		2ABCDC5E2C71EC3C00AD649C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC5D2C71EC3C00AD649C /* AllChatCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2ABCDC602C71EC3C00AD649C /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC5F2C71EC3C00AD649C /* AllChatVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		2ABCDC612C71EC3C00AD649C /* AllChat */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC5E2C71EC3C00AD649C /* Coordinator */,
+				2ABCDC602C71EC3C00AD649C /* VC */,
+			);
+			path = AllChat;
+			sourceTree = "<group>";
+		};
+		2ABCDC672C71EC4300AD649C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC642C71EC4300AD649C /* AppCoordinator.swift */,
+				2ABCDC652C71EC4300AD649C /* Coordinator.swift */,
+				2ABCDC662C71EC4300AD649C /* CoordinatorType.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2ABCDC682C71EC4300AD649C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC672C71EC4300AD649C /* Coordinator */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		2ABCDC6F2C71EC5C00AD649C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC6E2C71EC5C00AD649C /* MapCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2ABCDC712C71EC5C00AD649C /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC702C71EC5C00AD649C /* MapVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		2ABCDC722C71EC5C00AD649C /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC6F2C71EC5C00AD649C /* Coordinator */,
+				2ABCDC712C71EC5C00AD649C /* VC */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		2ABCDC762C71EC6300AD649C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC752C71EC6300AD649C /* MyPageCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2ABCDC782C71EC6300AD649C /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC772C71EC6300AD649C /* MyPageVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		2ABCDC792C71EC6300AD649C /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC762C71EC6300AD649C /* Coordinator */,
+				2ABCDC782C71EC6300AD649C /* VC */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		2ABCDC7D2C71EC6C00AD649C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC7C2C71EC6C00AD649C /* MyChatCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2ABCDC7F2C71EC6C00AD649C /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC7E2C71EC6C00AD649C /* MyChatVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		2ABCDC802C71EC6C00AD649C /* MyChat */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC7D2C71EC6C00AD649C /* Coordinator */,
+				2ABCDC7F2C71EC6C00AD649C /* VC */,
+			);
+			path = MyChat;
+			sourceTree = "<group>";
+		};
+		2ABCDC842C71EC9700AD649C /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC832C71EC9700AD649C /* TabBar.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		2ABCDC862C71EC9700AD649C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC852C71EC9700AD649C /* TabBarCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2ABCDC882C71EC9700AD649C /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC872C71EC9700AD649C /* TabBarController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		2ABCDC892C71EC9700AD649C /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				2ABCDC842C71EC9700AD649C /* Component */,
+				2ABCDC862C71EC9700AD649C /* Coordinator */,
+				2ABCDC882C71EC9700AD649C /* VC */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,11 +394,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A5052052C6DA06700DC3E4A /* Adjust+.swift in Sources */,
-				2A85A9362BF869C20030B4F4 /* ViewController.swift in Sources */,
+				2ABCDC622C71EC3C00AD649C /* AllChatCoordinator.swift in Sources */,
+				2ABCDC742C71EC5C00AD649C /* MapVC.swift in Sources */,
+				2ABCDC7A2C71EC6300AD649C /* MyPageCoordinator.swift in Sources */,
 				2A5052012C6D9EBB00DC3E4A /* UIColor+.swift in Sources */,
+				2ABCDC632C71EC3C00AD649C /* AllChatVC.swift in Sources */,
+				2ABCDC6B2C71EC4300AD649C /* CoordinatorType.swift in Sources */,
+				2ABCDC822C71EC6C00AD649C /* MyChatVC.swift in Sources */,
+				2ABCDC7B2C71EC6300AD649C /* MyPageVC.swift in Sources */,
+				2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */,
+				2ABCDC8B2C71EC9700AD649C /* TabBarCoordinator.swift in Sources */,
+				2ABCDC692C71EC4300AD649C /* AppCoordinator.swift in Sources */,
 				2A5052032C6D9FE700DC3E4A /* UIFont+.swift in Sources */,
+				2ABCDC8C2C71EC9700AD649C /* TabBarController.swift in Sources */,
 				2A85A9322BF869C20030B4F4 /* AppDelegate.swift in Sources */,
 				2A85A9342BF869C20030B4F4 /* SceneDelegate.swift in Sources */,
+				2ABCDC812C71EC6C00AD649C /* MyChatCoordinator.swift in Sources */,
+				2ABCDC732C71EC5C00AD649C /* MapCoordinator.swift in Sources */,
+				2ABCDC6D2C71EC5100AD649C /* UIWindow+.swift in Sources */,
+				2ABCDC6A2C71EC4300AD649C /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
