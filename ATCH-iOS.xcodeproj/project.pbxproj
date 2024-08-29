@@ -65,6 +65,7 @@
 		2ABCDC832C71EC9700AD649C /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		2ABCDC852C71EC9700AD649C /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		2ABCDC872C71EC9700AD649C /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		2AFD06402C80588500F34C35 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +153,7 @@
 		2A85A9302BF869C10030B4F4 /* ATCH-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				2AFD06402C80588500F34C35 /* Config.xcconfig */,
 				2A5051FF2C6D9EA800DC3E4A /* Extension */,
 				2A5051FD2C6D9E7900DC3E4A /* Scene */,
 				2A5051FE2C6D9E9200DC3E4A /* Resource */,
