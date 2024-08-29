@@ -101,7 +101,6 @@ iOSInjectionProject/
 
 ### Xcode Patch ###
 *.xcodeproj/*
-*.xcconfig/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcodeproj/project.xcworkspace/
@@ -110,3 +109,4 @@ iOSInjectionProject/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/xcode,swift,cocoapods
+
