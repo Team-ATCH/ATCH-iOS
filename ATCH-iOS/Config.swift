@@ -11,7 +11,7 @@ enum Config {
     enum Keys {
         enum Plist {
             static let appBaseURL = "APP_BASE_URL"
-            static let kakaoAPIKey = "KAKAO_APP_KEY"
+            static let kakaoAPPKey = "KAKAO_APP_KEY"
         }
     }
     
@@ -31,9 +31,9 @@ extension Config {
         return key
     }()
     
-    static let kakaoAPIKey: String = {
-        guard let key = Config.infoDictionary[Keys.Plist.kakaoAPIKey] as? String else {
-            fatalError("Base URL is not set in plist for this configuration")
+    static let kakaoAPPKey: String = {
+        guard let key = Config.infoDictionary[Keys.Plist.kakaoAPPKey] as? String else {
+            fatalError("Kakao App Key is not set in plist for this configuration")
         }
         return key
     }()
