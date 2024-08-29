@@ -34,6 +34,7 @@
 		2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC832C71EC9700AD649C /* TabBar.swift */; };
 		2ABCDC8B2C71EC9700AD649C /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC852C71EC9700AD649C /* TabBarCoordinator.swift */; };
 		2ABCDC8C2C71EC9700AD649C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC872C71EC9700AD649C /* TabBarController.swift */; };
+		2AFD05E52C8042D000F34C35 /* KakaoMapsSDK-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFD05E42C8042D000F34C35 /* KakaoMapsSDK-SPM */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 			files = (
 				2ABBF7072C5CC16F00B12315 /* SnapKit in Frameworks */,
 				2ABBF70A2C5CC19600B12315 /* Then in Frameworks */,
+				2AFD05E52C8042D000F34C35 /* KakaoMapsSDK-SPM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +333,7 @@
 			packageProductDependencies = (
 				2ABBF7062C5CC16F00B12315 /* SnapKit */,
 				2ABBF7092C5CC19600B12315 /* Then */,
+				2AFD05E42C8042D000F34C35 /* KakaoMapsSDK-SPM */,
 			);
 			productName = "ATCH-iOS";
 			productReference = 2A85A92E2BF869C10030B4F4 /* ATCH-iOS.app */;
@@ -363,6 +366,7 @@
 			packageReferences = (
 				2ABBF7052C5CC16F00B12315 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				2ABBF7082C5CC19600B12315 /* XCRemoteSwiftPackageReference "Then" */,
+				2AFD05E32C8042D000F34C35 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
 			);
 			productRefGroup = 2A85A92F2BF869C10030B4F4 /* Products */;
 			projectDirPath = "";
@@ -643,6 +647,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		2AFD05E32C8042D000F34C35 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao-mapsSDK/KakaoMapsSDK-SPM.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.10.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -655,6 +667,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2ABBF7082C5CC19600B12315 /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		2AFD05E42C8042D000F34C35 /* KakaoMapsSDK-SPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2AFD05E32C8042D000F34C35 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */;
+			productName = "KakaoMapsSDK-SPM";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
