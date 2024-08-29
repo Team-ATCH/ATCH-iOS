@@ -35,6 +35,7 @@
 		2ABCDC8B2C71EC9700AD649C /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC852C71EC9700AD649C /* TabBarCoordinator.swift */; };
 		2ABCDC8C2C71EC9700AD649C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC872C71EC9700AD649C /* TabBarController.swift */; };
 		2AFD05E52C8042D000F34C35 /* KakaoMapsSDK-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFD05E42C8042D000F34C35 /* KakaoMapsSDK-SPM */; };
+		2AFD06422C8059A700F34C35 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06412C8059A700F34C35 /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		2ABCDC852C71EC9700AD649C /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		2ABCDC872C71EC9700AD649C /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		2AFD06402C80588500F34C35 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		2AFD06412C8059A700F34C35 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				2A5051FC2C6D9E6D00DC3E4A /* Support */,
 				2A85A93C2BF869C20030B4F4 /* LaunchScreen.storyboard */,
 				2A85A93F2BF869C20030B4F4 /* Info.plist */,
+				2AFD06412C8059A700F34C35 /* Config.swift */,
 			);
 			path = "ATCH-iOS";
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				2A85A9322BF869C20030B4F4 /* AppDelegate.swift in Sources */,
 				2A85A9342BF869C20030B4F4 /* SceneDelegate.swift in Sources */,
 				2ABCDC812C71EC6C00AD649C /* MyChatCoordinator.swift in Sources */,
+				2AFD06422C8059A700F34C35 /* Config.swift in Sources */,
 				2ABCDC732C71EC5C00AD649C /* MapCoordinator.swift in Sources */,
 				2ABCDC6D2C71EC5100AD649C /* UIWindow+.swift in Sources */,
 				2ABCDC6A2C71EC4300AD649C /* Coordinator.swift in Sources */,
@@ -438,6 +442,7 @@
 /* Begin XCBuildConfiguration section */
 		2A85A9402BF869C20030B4F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AFD06402C80588500F34C35 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -501,6 +506,7 @@
 		};
 		2A85A9412BF869C20030B4F4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AFD06402C80588500F34C35 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -557,6 +563,7 @@
 		};
 		2A85A9432BF869C20030B4F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AFD06402C80588500F34C35 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -584,6 +591,7 @@
 		};
 		2A85A9442BF869C20030B4F4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AFD06402C80588500F34C35 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
