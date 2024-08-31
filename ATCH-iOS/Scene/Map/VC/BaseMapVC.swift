@@ -17,7 +17,6 @@ class BaseMapVC: UIViewController, MapControllerDelegate {
     var _auth: Bool = false
     var _appear: Bool = false
     
-    
     deinit {
         mapController?.pauseEngine()
         mapController?.resetEngine()
