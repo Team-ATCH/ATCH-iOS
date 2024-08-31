@@ -12,13 +12,26 @@ final class MyPageCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [any Coordinator] = []
     var type: CoordinatorType
-    
+    var myPageVC: MyPageVC?
+
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.type = CoordinatorType.myPage
     }
     
     func start() {
-        // 메롱
+        self.myPageVC = MyPageVC()
+        
+        if let vc = self.myPageVC {
+            vc.hidesBottomBarWhenPushed = false
+            self.navigationController.pushViewController(vc, animated: true)
+        }
+    }
+}
+
+extension MyPageCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        self.childCoordinators = self.childCoordinators
+            .filter { $0.type != childCoordinator.type }
     }
 }

@@ -14,4 +14,6 @@ enum CoordinatorType {
     case myChat
     case allChat
     case myPage
+    case alarm
+    case chattingRoom
 }

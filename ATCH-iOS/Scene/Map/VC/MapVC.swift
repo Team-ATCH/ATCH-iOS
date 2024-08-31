@@ -16,6 +16,8 @@ import Then
 
 final class MapVC: BaseMapVC {
     
+    var viewModel: MapViewModel?
+    
     private let disposeBag: DisposeBag = DisposeBag()
     
     private let locationManager = CLLocationManager()
@@ -38,8 +40,8 @@ final class MapVC: BaseMapVC {
         
         setupDelegate()
         setupLayout()
+        setupAction()
         setupLocationManager()
-        bindPanGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,13 +96,14 @@ final class MapVC: BaseMapVC {
         }
     }
     
-    private func setupLocationManager() {
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-    }
-    
-    private func bindPanGesture() {
+    private func setupAction() {
+        alarmImageView.rx.tapGesture().asObservable()
+            .when(.recognized)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.viewModel?.coordinator?.pushToAlarmView()
+            }).disposed(by: disposeBag)
+        
         bottomSheetView.rx.panGesture().asObservable()
             .when(.recognized)
             .withUnretained(self)
@@ -117,6 +120,12 @@ final class MapVC: BaseMapVC {
                 }
              })
             .disposed(by: disposeBag)
+    }
+    
+    private func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     private func isCollectionViewScrolling() -> Bool {

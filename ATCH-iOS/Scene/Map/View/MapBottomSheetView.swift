@@ -50,15 +50,15 @@ final class MapBottomSheetView: UIView {
     init() {
         super.init(frame: .zero)
         
-        self.setStyle()
-        self.setLayout()
+        self.setupStyle()
+        self.setupLayout()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    private func setStyle() {
+    private func setupStyle() {
         self.backgroundColor = .atchYellow
         self.layer.cornerRadius = 12
         self.layer.borderColor = UIColor.atchShadowGrey.cgColor
@@ -67,7 +67,7 @@ final class MapBottomSheetView: UIView {
         self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
-    func setLayout() {
+    private func setupLayout() {
         self.addSubviews(bottomSheetBar,
                          bottomTitleLabel,
                          onMapIconImageView,
