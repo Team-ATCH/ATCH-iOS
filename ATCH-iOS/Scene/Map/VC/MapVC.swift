@@ -18,8 +18,9 @@ final class MapVC: BaseMapVC {
     
     private let disposeBag: DisposeBag = DisposeBag()
     
-    private var isFirst: Bool = false
     private let locationManager = CLLocationManager()
+    private var currentPoi: Poi? = nil
+
     private var mapChatList: [MapChatData] = [MapChatData(characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", itemCount: 1, itemUrl: "", nickName: "과제의요정", tag: "#맛집 #카페 #홍대생 #빈티지 #아티스트"),
                                               MapChatData(characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", itemCount: 1, itemUrl: "", nickName: "말리부", tag: "#맛집 #카페 #버스킹 #공연 #클럽 #힙스터"),
                                               MapChatData(characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", itemCount: 1, itemUrl: "", nickName: "탕탕 후루후루", tag: "#맛집 #사장님 #버스킹 #주민"),
@@ -94,7 +95,6 @@ final class MapVC: BaseMapVC {
     }
     
     private func setupLocationManager() {
-        isFirst = true
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
@@ -139,20 +139,46 @@ final class MapVC: BaseMapVC {
 
 extension MapVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        guard let currentLocation = locations.last else { return }
-
-//        // 내 위치로 옮기기
-//        if isFirst {
-//            let mapPoint = MapPoint(longitude: currentLocation.coordinate.longitude, latitude: currentLocation.coordinate.latitude)
-//            guard let mapView = mapController?.getView("mapview") as? KakaoMap else { return }
-//            let cameraUpdate = CameraUpdate.make(target: mapPoint, mapView: mapView)
-//            mapView.moveCamera(cameraUpdate)
-//            isFirst = false
-//        }
+        guard let currentLocation = locations.last else { return }
+        
+        let mapPoint = MapPoint(longitude: currentLocation.coordinate.longitude, latitude: currentLocation.coordinate.latitude)
+        guard let mapView = mapController?.getView("mapview") as? KakaoMap else { return }
+        
+        let manager = mapView.getLabelManager()
+        if currentPoi == nil {
+            // POI가 아직 추가되지 않았다면 새로 추가
+            let layerOption = LabelLayerOptions(layerID: "PoiLayer", competitionType: .none, competitionUnit: .poi, orderType: .rank, zOrder: 10001)
+            let _ = manager.addLabelLayer(option: layerOption)
+            
+            let iconStyle = PoiIconStyle(symbol: .kakaoMapIcon, anchorPoint: CGPoint(x: 0.0, y: 0.5))
+            let perLevelStyle = PerLevelPoiStyle(iconStyle: iconStyle, level: 0)
+            let poiStyle = PoiStyle(styleID: "customStyle1", styles: [perLevelStyle])
+            manager.addPoiStyle(poiStyle)
+            
+            let layer = manager.getLabelLayer(layerID: "PoiLayer")
+            let poiOption = PoiOptions(styleID: "customStyle1")
+            poiOption.rank = 0
+            poiOption.clickable = true
+            
+            // POI 추가 및 저장
+            currentPoi = layer?.addPoi(option: poiOption, at: mapPoint, callback: { poi in
+                print("POI added")
+            })
+            
+            let _ = currentPoi?.addPoiTappedEventHandler(target: self, handler: MapVC.poiTappedHandler)
+            currentPoi?.show()
+        } else {
+            // 이미 추가된 POI가 있다면 위치만 업데이트
+            currentPoi?.moveAt(mapPoint, duration: 1)
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to find user's location: \(error.localizedDescription)")
+    }
+    
+    func poiTappedHandler(_ param: PoiInteractionEventParam) {
+        param.poiItem.hide()
     }
 }
 
