@@ -34,7 +34,10 @@
 		2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC832C71EC9700AD649C /* TabBar.swift */; };
 		2ABCDC8B2C71EC9700AD649C /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC852C71EC9700AD649C /* TabBarCoordinator.swift */; };
 		2ABCDC8C2C71EC9700AD649C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC872C71EC9700AD649C /* TabBarController.swift */; };
-		2AFD05E52C8042D000F34C35 /* KakaoMapsSDK-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFD05E42C8042D000F34C35 /* KakaoMapsSDK-SPM */; };
+		2AFD06422C8059A700F34C35 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06412C8059A700F34C35 /* Config.swift */; };
+		2AFD06442C80B6D200F34C35 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06432C80B6D200F34C35 /* UIView+.swift */; };
+		2AFD06472C80B9CF00F34C35 /* KakaoMapsSDK-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFD06462C80B9CF00F34C35 /* KakaoMapsSDK-SPM */; };
+		2AFD06492C80BAA500F34C35 /* BaseMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06482C80BAA500F34C35 /* BaseMapVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,9 @@
 		2ABCDC852C71EC9700AD649C /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		2ABCDC872C71EC9700AD649C /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		2AFD06402C80588500F34C35 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		2AFD06412C8059A700F34C35 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		2AFD06432C80B6D200F34C35 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		2AFD06482C80BAA500F34C35 /* BaseMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMapVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +81,7 @@
 			files = (
 				2ABBF7072C5CC16F00B12315 /* SnapKit in Frameworks */,
 				2ABBF70A2C5CC19600B12315 /* Then in Frameworks */,
-				2AFD05E52C8042D000F34C35 /* KakaoMapsSDK-SPM in Frameworks */,
+				2AFD06472C80B9CF00F34C35 /* KakaoMapsSDK-SPM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +126,7 @@
 				2A5052002C6D9EBB00DC3E4A /* UIColor+.swift */,
 				2A5052022C6D9FE700DC3E4A /* UIFont+.swift */,
 				2A5052042C6DA06700DC3E4A /* Adjust+.swift */,
+				2AFD06432C80B6D200F34C35 /* UIView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -154,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				2AFD06402C80588500F34C35 /* Config.xcconfig */,
+				2AFD06412C8059A700F34C35 /* Config.swift */,
 				2A5051FF2C6D9EA800DC3E4A /* Extension */,
 				2A5051FD2C6D9E7900DC3E4A /* Scene */,
 				2A5051FE2C6D9E9200DC3E4A /* Resource */,
@@ -219,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				2ABCDC702C71EC5C00AD649C /* MapVC.swift */,
+				2AFD06482C80BAA500F34C35 /* BaseMapVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -335,7 +344,7 @@
 			packageProductDependencies = (
 				2ABBF7062C5CC16F00B12315 /* SnapKit */,
 				2ABBF7092C5CC19600B12315 /* Then */,
-				2AFD05E42C8042D000F34C35 /* KakaoMapsSDK-SPM */,
+				2AFD06462C80B9CF00F34C35 /* KakaoMapsSDK-SPM */,
 			);
 			productName = "ATCH-iOS";
 			productReference = 2A85A92E2BF869C10030B4F4 /* ATCH-iOS.app */;
@@ -368,7 +377,7 @@
 			packageReferences = (
 				2ABBF7052C5CC16F00B12315 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				2ABBF7082C5CC19600B12315 /* XCRemoteSwiftPackageReference "Then" */,
-				2AFD05E32C8042D000F34C35 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
+				2AFD06452C80B9CF00F34C35 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
 			);
 			productRefGroup = 2A85A92F2BF869C10030B4F4 /* Products */;
 			projectDirPath = "";
@@ -407,15 +416,18 @@
 				2ABCDC632C71EC3C00AD649C /* AllChatVC.swift in Sources */,
 				2ABCDC6B2C71EC4300AD649C /* CoordinatorType.swift in Sources */,
 				2ABCDC822C71EC6C00AD649C /* MyChatVC.swift in Sources */,
+				2AFD06442C80B6D200F34C35 /* UIView+.swift in Sources */,
 				2ABCDC7B2C71EC6300AD649C /* MyPageVC.swift in Sources */,
 				2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */,
 				2ABCDC8B2C71EC9700AD649C /* TabBarCoordinator.swift in Sources */,
+				2AFD06492C80BAA500F34C35 /* BaseMapVC.swift in Sources */,
 				2ABCDC692C71EC4300AD649C /* AppCoordinator.swift in Sources */,
 				2A5052032C6D9FE700DC3E4A /* UIFont+.swift in Sources */,
 				2ABCDC8C2C71EC9700AD649C /* TabBarController.swift in Sources */,
 				2A85A9322BF869C20030B4F4 /* AppDelegate.swift in Sources */,
 				2A85A9342BF869C20030B4F4 /* SceneDelegate.swift in Sources */,
 				2ABCDC812C71EC6C00AD649C /* MyChatCoordinator.swift in Sources */,
+				2AFD06422C8059A700F34C35 /* Config.swift in Sources */,
 				2ABCDC732C71EC5C00AD649C /* MapCoordinator.swift in Sources */,
 				2ABCDC6D2C71EC5100AD649C /* UIWindow+.swift in Sources */,
 				2ABCDC6A2C71EC4300AD649C /* Coordinator.swift in Sources */,
@@ -438,6 +450,7 @@
 /* Begin XCBuildConfiguration section */
 		2A85A9402BF869C20030B4F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AFD06402C80588500F34C35 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -501,6 +514,7 @@
 		};
 		2A85A9412BF869C20030B4F4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AFD06402C80588500F34C35 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -557,6 +571,7 @@
 		};
 		2A85A9432BF869C20030B4F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AFD06402C80588500F34C35 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -584,6 +599,7 @@
 		};
 		2A85A9442BF869C20030B4F4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AFD06402C80588500F34C35 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -649,7 +665,7 @@
 				minimumVersion = 3.0.0;
 			};
 		};
-		2AFD05E32C8042D000F34C35 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */ = {
+		2AFD06452C80B9CF00F34C35 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kakao-mapsSDK/KakaoMapsSDK-SPM.git";
 			requirement = {
@@ -670,9 +686,9 @@
 			package = 2ABBF7082C5CC19600B12315 /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
 		};
-		2AFD05E42C8042D000F34C35 /* KakaoMapsSDK-SPM */ = {
+		2AFD06462C80B9CF00F34C35 /* KakaoMapsSDK-SPM */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2AFD05E32C8042D000F34C35 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */;
+			package = 2AFD06452C80B9CF00F34C35 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */;
 			productName = "KakaoMapsSDK-SPM";
 		};
 /* End XCSwiftPackageProductDependency section */

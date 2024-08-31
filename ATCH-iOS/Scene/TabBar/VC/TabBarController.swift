@@ -21,7 +21,7 @@ final class TabBarController: UITabBarController {
     private func configureTabBarController() {
         let borderLayer = CALayer()
         borderLayer.borderWidth = 1.0
-        borderLayer.borderColor = UIColor.atchBlack.cgColor
+        borderLayer.borderColor = UIColor.atchShadowGrey.cgColor
         self.tabBar.layer.addSublayer(borderLayer)
         borderLayer.frame = .init(origin: .zero, size: .init(width: UIScreen.main.bounds.width,
                                                              height: 1.0))
@@ -29,11 +29,11 @@ final class TabBarController: UITabBarController {
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.backgroundColor = .atchWhite
         tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [
-            .foregroundColor: UIColor.atchBlack,
+            .foregroundColor: UIColor.atchShadowGrey,
             .font: UIFont.font(.caption)
         ]
         tabBarAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [
-            .foregroundColor: UIColor.atchBlack,
+            .foregroundColor: UIColor.atchShadowGrey,
             .font: UIFont.font(.caption)
         ]
         tabBarAppearance.stackedItemWidth = 48

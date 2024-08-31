@@ -13,3 +13,10 @@ extension CGFloat {
         return self * ratio
     }
 }
+
+extension Int {
+    var adjusted: CGFloat {
+        let ratio: CGFloat = 0.46 * (UIScreen.main.bounds.height / UIScreen.main.bounds.width)
+        return CGFloat(self) * ratio
+    }
+}

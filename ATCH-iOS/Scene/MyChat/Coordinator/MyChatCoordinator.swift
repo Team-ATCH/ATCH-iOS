@@ -12,13 +12,34 @@ final class MyChatCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [any Coordinator] = []
     var type: CoordinatorType
-    
+    var myChatVC: MyChatVC?
+
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.type = CoordinatorType.myChat
     }
     
     func start() {
-        // 메롱
+        self.myChatVC = MyChatVC()
+        
+        if let vc = self.myChatVC {
+            vc.hidesBottomBarWhenPushed = false
+            self.navigationController.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func pushToChattingRoomView(chattingRoomName: String) {
+        let chattingRoomCoordinator = ChattingRoomCoordinator(navigationController)
+        chattingRoomCoordinator.finishDelegate = self
+        self.childCoordinators.append(chattingRoomCoordinator)
+        chattingRoomCoordinator.start(chattingRoomName: chattingRoomName)
     }
 }
+
+extension MyChatCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        self.childCoordinators = self.childCoordinators
+            .filter { $0.type != childCoordinator.type }
+    }
+}
+

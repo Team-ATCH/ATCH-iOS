@@ -9,6 +9,10 @@ import UIKit
 
 extension UIColor {
     static var atchBlack: UIColor {
+        return UIColor(hex: "#000000")
+    }
+    
+    static var atchShadowGrey: UIColor {
         return UIColor(hex: "#2E2E2E")
     }
     
