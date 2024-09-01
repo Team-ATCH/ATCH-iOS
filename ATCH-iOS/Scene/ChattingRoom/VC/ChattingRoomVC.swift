@@ -14,12 +14,14 @@ import Then
 final class ChattingRoomVC: UIViewController {
     
     var viewModel: ChattingRoomViewModel?
+    let coordinator: ChattingRoomCoordinator?
     
     private let disposeBag: DisposeBag = DisposeBag()
 
     private let chattingRoomNavigationView = NavigationView(backButtonHidden: false, backButtonTitle: "내 채팅")
     
-    init(chattingRoomName: String) {
+    init(coordinator: ChattingRoomCoordinator, chattingRoomName: String) {
+        self.coordinator = coordinator
         self.chattingRoomNavigationView.changeTitle(title: chattingRoomName)
         
         super.init(nibName: nil, bundle: nil)
@@ -54,7 +56,7 @@ final class ChattingRoomVC: UIViewController {
             .when(.recognized)
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
-                vc.viewModel?.coordinator?.back()
+                vc.coordinator?.back()
             }).disposed(by: disposeBag)
     }
 }

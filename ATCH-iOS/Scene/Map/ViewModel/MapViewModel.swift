@@ -11,10 +11,5 @@ import RxSwift
 
 final class MapViewModel: NSObject {
     
-    let coordinator: MapCoordinator?
-
-    init(coordinator: MapCoordinator) { // 나중에 유즈케이스도
-        self.coordinator = coordinator
-    }
     
 }

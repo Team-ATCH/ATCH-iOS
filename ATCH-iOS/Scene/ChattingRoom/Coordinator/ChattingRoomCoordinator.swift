@@ -22,8 +22,8 @@ final class ChattingRoomCoordinator: Coordinator {
     func start() { }
     
     func start(chattingRoomName: String) {
-        self.chattingRoomVC = ChattingRoomVC(chattingRoomName: chattingRoomName)
-        self.chattingRoomVC?.viewModel = ChattingRoomViewModel(coordinator: self)
+        self.chattingRoomVC = ChattingRoomVC(coordinator: self, chattingRoomName: chattingRoomName)
+        self.chattingRoomVC?.viewModel = ChattingRoomViewModel()
         
         if let vc = self.chattingRoomVC {
             vc.hidesBottomBarWhenPushed = false

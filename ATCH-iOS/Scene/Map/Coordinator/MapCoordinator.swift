@@ -20,8 +20,8 @@ final class MapCoordinator: Coordinator {
     }
     
     func start() {
-        self.mapVC = MapVC()
-        self.mapVC?.viewModel = MapViewModel(coordinator: self)
+        self.mapVC = MapVC(coordinator: self)
+        self.mapVC?.viewModel = MapViewModel()
         
         if let vc = self.mapVC {
             vc.hidesBottomBarWhenPushed = false

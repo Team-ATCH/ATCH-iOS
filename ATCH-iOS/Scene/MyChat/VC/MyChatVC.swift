@@ -13,6 +13,8 @@ import Then
 
 final class MyChatVC: UIViewController {
     
+    let coordinator: MyChatCoordinator?
+    
     private let myChatNavigationView = NavigationView(title: "내 채팅")
     private let myChatView = MyChatView()
     private var chatList: [MyChatData] = [MyChatData(characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", nickName: "탕탕 후루후루", chatting: "마침 하나 남았는데 오실거면...", tag: "#맛집 #사장 #버스킹 #주민"),
@@ -23,6 +25,16 @@ final class MyChatVC: UIViewController {
                                           MyChatData(characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", nickName: "닉네임은 최대 10글자", chatting: "최근 메시지 최대 20자까지 넣기...", tag: "#패션 #맛집 #홍대생 #오타쿠 #인디씬"),
                                           MyChatData(characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", nickName: "닉네임은 최대 10글자", chatting: "최근 메시지 최대 20자까지 넣기...", tag: "#패션 #맛집 #홍대생 #오타쿠 #인디씬"),
                                           MyChatData(characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", nickName: "닉네임은 최대 10글자", chatting: "최근 메시지 최대 20자까지 넣기...", tag: "#패션 #맛집 #덕질 #인디씬 #홍대생 #주민")]
+    
+    init(coordinator: MyChatCoordinator) {
+        self.coordinator = coordinator
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +78,8 @@ extension MyChatVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let nickname = chatList[indexPath.row].nickName
+        coordinator?.pushToChattingRoomView(chattingRoomName: nickname)
     }
 }
 

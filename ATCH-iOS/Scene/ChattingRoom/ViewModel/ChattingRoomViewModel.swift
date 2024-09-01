@@ -10,11 +10,5 @@ import RxRelay
 import RxSwift
 
 final class ChattingRoomViewModel: NSObject {
-    
-    let coordinator: ChattingRoomCoordinator?
-
-    init(coordinator: ChattingRoomCoordinator) { // 나중에 유즈케이스도
-        self.coordinator = coordinator
-    }
-    
+        
 }

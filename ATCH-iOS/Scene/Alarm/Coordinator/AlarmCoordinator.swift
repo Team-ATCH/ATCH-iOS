@@ -20,8 +20,7 @@ final class AlarmCoordinator: Coordinator {
     }
     
     func start() {
-        self.alarmVC = AlarmVC()
-        self.alarmVC?.viewModel = AlarmViewModel(coordinator: self)
+        self.alarmVC = AlarmVC(coordinator: self)
         
         if let vc = self.alarmVC {
             vc.hidesBottomBarWhenPushed = false

@@ -17,7 +17,8 @@ import Then
 final class MapVC: BaseMapVC {
     
     var viewModel: MapViewModel?
-    
+    let coordinator: MapCoordinator?
+
     private let disposeBag: DisposeBag = DisposeBag()
     
     private let locationManager = CLLocationManager()
@@ -34,6 +35,16 @@ final class MapVC: BaseMapVC {
     }
     
     private let bottomSheetView = MapBottomSheetView()
+    
+    init(coordinator: MapCoordinator) {
+        self.coordinator = coordinator
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,7 +112,7 @@ final class MapVC: BaseMapVC {
             .when(.recognized)
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
-                vc.viewModel?.coordinator?.pushToAlarmView()
+                vc.coordinator?.pushToAlarmView()
             }).disposed(by: disposeBag)
         
         bottomSheetView.rx.panGesture().asObservable()

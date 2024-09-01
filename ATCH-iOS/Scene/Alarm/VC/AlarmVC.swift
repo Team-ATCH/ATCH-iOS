@@ -14,10 +14,20 @@ import Then
 final class AlarmVC: UIViewController {
     
     var viewModel: AlarmViewModel?
-    
+    let coordinator: AlarmCoordinator?
     private let disposeBag: DisposeBag = DisposeBag()
 
     private let myChatNavigationView = NavigationView(title: "알림함", iconHidden: false, backButtonHidden: false, backButtonTitle: "지도")
+    
+    init(coordinator: AlarmCoordinator) {
+        self.coordinator = coordinator
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +54,7 @@ final class AlarmVC: UIViewController {
             .when(.recognized)
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
-                vc.viewModel?.coordinator?.back()
+                vc.coordinator?.back()
             }).disposed(by: disposeBag)
     }
 }

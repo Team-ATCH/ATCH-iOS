@@ -20,7 +20,7 @@ final class MyChatCoordinator: Coordinator {
     }
     
     func start() {
-        self.myChatVC = MyChatVC()
+        self.myChatVC = MyChatVC(coordinator: self)
         
         if let vc = self.myChatVC {
             vc.hidesBottomBarWhenPushed = false

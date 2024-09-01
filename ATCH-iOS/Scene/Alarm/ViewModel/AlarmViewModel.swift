@@ -11,10 +11,4 @@ import RxSwift
 
 final class AlarmViewModel: NSObject {
     
-    let coordinator: AlarmCoordinator?
-
-    init(coordinator: AlarmCoordinator) { // 나중에 유즈케이스도
-        self.coordinator = coordinator
-    }
-    
 }
