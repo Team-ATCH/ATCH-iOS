@@ -38,6 +38,23 @@
 		2AFD06442C80B6D200F34C35 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06432C80B6D200F34C35 /* UIView+.swift */; };
 		2AFD06472C80B9CF00F34C35 /* KakaoMapsSDK-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFD06462C80B9CF00F34C35 /* KakaoMapsSDK-SPM */; };
 		2AFD06492C80BAA500F34C35 /* BaseMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06482C80BAA500F34C35 /* BaseMapVC.swift */; };
+		2AFD06BA2C84A04A00F34C35 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06B52C84A04A00F34C35 /* MapViewModel.swift */; };
+		2AFD06BB2C84A04A00F34C35 /* MapBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06B72C84A04A00F34C35 /* MapBottomSheetView.swift */; };
+		2AFD06BC2C84A04A00F34C35 /* MapChatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06B82C84A04A00F34C35 /* MapChatCollectionViewCell.swift */; };
+		2AFD06CE2C84A06700F34C35 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06BD2C84A06700F34C35 /* NavigationView.swift */; };
+		2AFD06CF2C84A06700F34C35 /* ChattingRoomCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06C02C84A06700F34C35 /* ChattingRoomCoordinator.swift */; };
+		2AFD06D02C84A06700F34C35 /* ChattingRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06C22C84A06700F34C35 /* ChattingRoomVC.swift */; };
+		2AFD06D12C84A06700F34C35 /* ChattingRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06C42C84A06700F34C35 /* ChattingRoomViewModel.swift */; };
+		2AFD06D22C84A06700F34C35 /* AlarmCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06C72C84A06700F34C35 /* AlarmCoordinator.swift */; };
+		2AFD06D32C84A06700F34C35 /* AlarmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06C92C84A06700F34C35 /* AlarmVC.swift */; };
+		2AFD06D42C84A06700F34C35 /* AlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06CB2C84A06700F34C35 /* AlarmViewModel.swift */; };
+		2AFD06D72C84A0E800F34C35 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFD06D62C84A0E800F34C35 /* RxGesture */; };
+		2AFD06DA2C84A0F400F34C35 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFD06D92C84A0F400F34C35 /* RxCocoa */; };
+		2AFD06DC2C84A0F400F34C35 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFD06DB2C84A0F400F34C35 /* RxRelay */; };
+		2AFD06DF2C84A10100F34C35 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFD06DE2C84A10100F34C35 /* Kingfisher */; };
+		2AFD06E32C84A11D00F34C35 /* MapChatData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06E02C84A11D00F34C35 /* MapChatData.swift */; };
+		2AFD06E62C84A13700F34C35 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06E42C84A13700F34C35 /* NSObject+.swift */; };
+		2AFD06E72C84A13700F34C35 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06E52C84A13700F34C35 /* UIStackView+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +89,19 @@
 		2AFD06412C8059A700F34C35 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		2AFD06432C80B6D200F34C35 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		2AFD06482C80BAA500F34C35 /* BaseMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMapVC.swift; sourceTree = "<group>"; };
+		2AFD06B52C84A04A00F34C35 /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		2AFD06B72C84A04A00F34C35 /* MapBottomSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapBottomSheetView.swift; sourceTree = "<group>"; };
+		2AFD06B82C84A04A00F34C35 /* MapChatCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapChatCollectionViewCell.swift; sourceTree = "<group>"; };
+		2AFD06BD2C84A06700F34C35 /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
+		2AFD06C02C84A06700F34C35 /* ChattingRoomCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChattingRoomCoordinator.swift; sourceTree = "<group>"; };
+		2AFD06C22C84A06700F34C35 /* ChattingRoomVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChattingRoomVC.swift; sourceTree = "<group>"; };
+		2AFD06C42C84A06700F34C35 /* ChattingRoomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChattingRoomViewModel.swift; sourceTree = "<group>"; };
+		2AFD06C72C84A06700F34C35 /* AlarmCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmCoordinator.swift; sourceTree = "<group>"; };
+		2AFD06C92C84A06700F34C35 /* AlarmVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmVC.swift; sourceTree = "<group>"; };
+		2AFD06CB2C84A06700F34C35 /* AlarmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmViewModel.swift; sourceTree = "<group>"; };
+		2AFD06E02C84A11D00F34C35 /* MapChatData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapChatData.swift; sourceTree = "<group>"; };
+		2AFD06E42C84A13700F34C35 /* NSObject+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
+		2AFD06E52C84A13700F34C35 /* UIStackView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +109,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AFD06DC2C84A0F400F34C35 /* RxRelay in Frameworks */,
 				2ABBF7072C5CC16F00B12315 /* SnapKit in Frameworks */,
+				2AFD06DF2C84A10100F34C35 /* Kingfisher in Frameworks */,
 				2ABBF70A2C5CC19600B12315 /* Then in Frameworks */,
+				2AFD06DA2C84A0F400F34C35 /* RxCocoa in Frameworks */,
+				2AFD06D72C84A0E800F34C35 /* RxGesture in Frameworks */,
 				2AFD06472C80B9CF00F34C35 /* KakaoMapsSDK-SPM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +135,9 @@
 			isa = PBXGroup;
 			children = (
 				2ABCDC682C71EC4300AD649C /* Base */,
+				2AFD06BF2C84A06700F34C35 /* Components */,
+				2AFD06CD2C84A06700F34C35 /* Alarm */,
+				2AFD06C62C84A06700F34C35 /* ChattingRoom */,
 				2ABCDC722C71EC5C00AD649C /* Map */,
 				2ABCDC802C71EC6C00AD649C /* MyChat */,
 				2ABCDC612C71EC3C00AD649C /* AllChat */,
@@ -122,6 +159,8 @@
 		2A5051FF2C6D9EA800DC3E4A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				2AFD06E42C84A13700F34C35 /* NSObject+.swift */,
+				2AFD06E52C84A13700F34C35 /* UIStackView+.swift */,
 				2ABCDC6C2C71EC5100AD649C /* UIWindow+.swift */,
 				2A5052002C6D9EBB00DC3E4A /* UIColor+.swift */,
 				2A5052022C6D9FE700DC3E4A /* UIFont+.swift */,
@@ -163,6 +202,7 @@
 				2AFD06402C80588500F34C35 /* Config.xcconfig */,
 				2AFD06412C8059A700F34C35 /* Config.swift */,
 				2A5051FF2C6D9EA800DC3E4A /* Extension */,
+				2AFD06E22C84A11D00F34C35 /* Model */,
 				2A5051FD2C6D9E7900DC3E4A /* Scene */,
 				2A5051FE2C6D9E9200DC3E4A /* Resource */,
 				2A5051FC2C6D9E6D00DC3E4A /* Support */,
@@ -236,6 +276,8 @@
 			isa = PBXGroup;
 			children = (
 				2ABCDC6F2C71EC5C00AD649C /* Coordinator */,
+				2AFD06B62C84A04A00F34C35 /* ViewModel */,
+				2AFD06B92C84A04A00F34C35 /* View */,
 				2ABCDC712C71EC5C00AD649C /* VC */,
 			);
 			path = Map;
@@ -325,6 +367,123 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		2AFD06B62C84A04A00F34C35 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2AFD06B52C84A04A00F34C35 /* MapViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2AFD06B92C84A04A00F34C35 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2AFD06B72C84A04A00F34C35 /* MapBottomSheetView.swift */,
+				2AFD06B82C84A04A00F34C35 /* MapChatCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2AFD06BE2C84A06700F34C35 /* NavigationView */ = {
+			isa = PBXGroup;
+			children = (
+				2AFD06BD2C84A06700F34C35 /* NavigationView.swift */,
+			);
+			path = NavigationView;
+			sourceTree = "<group>";
+		};
+		2AFD06BF2C84A06700F34C35 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2AFD06BE2C84A06700F34C35 /* NavigationView */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		2AFD06C12C84A06700F34C35 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2AFD06C02C84A06700F34C35 /* ChattingRoomCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2AFD06C32C84A06700F34C35 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2AFD06C22C84A06700F34C35 /* ChattingRoomVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		2AFD06C52C84A06700F34C35 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2AFD06C42C84A06700F34C35 /* ChattingRoomViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2AFD06C62C84A06700F34C35 /* ChattingRoom */ = {
+			isa = PBXGroup;
+			children = (
+				2AFD06C12C84A06700F34C35 /* Coordinator */,
+				2AFD06C32C84A06700F34C35 /* VC */,
+				2AFD06C52C84A06700F34C35 /* ViewModel */,
+			);
+			path = ChattingRoom;
+			sourceTree = "<group>";
+		};
+		2AFD06C82C84A06700F34C35 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2AFD06C72C84A06700F34C35 /* AlarmCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2AFD06CA2C84A06700F34C35 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2AFD06C92C84A06700F34C35 /* AlarmVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		2AFD06CC2C84A06700F34C35 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2AFD06CB2C84A06700F34C35 /* AlarmViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2AFD06CD2C84A06700F34C35 /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				2AFD06C82C84A06700F34C35 /* Coordinator */,
+				2AFD06CA2C84A06700F34C35 /* VC */,
+				2AFD06CC2C84A06700F34C35 /* ViewModel */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
+		2AFD06E12C84A11D00F34C35 /* ViewData */ = {
+			isa = PBXGroup;
+			children = (
+				2AFD06E02C84A11D00F34C35 /* MapChatData.swift */,
+			);
+			path = ViewData;
+			sourceTree = "<group>";
+		};
+		2AFD06E22C84A11D00F34C35 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2AFD06E12C84A11D00F34C35 /* ViewData */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -345,6 +504,10 @@
 				2ABBF7062C5CC16F00B12315 /* SnapKit */,
 				2ABBF7092C5CC19600B12315 /* Then */,
 				2AFD06462C80B9CF00F34C35 /* KakaoMapsSDK-SPM */,
+				2AFD06D62C84A0E800F34C35 /* RxGesture */,
+				2AFD06D92C84A0F400F34C35 /* RxCocoa */,
+				2AFD06DB2C84A0F400F34C35 /* RxRelay */,
+				2AFD06DE2C84A10100F34C35 /* Kingfisher */,
 			);
 			productName = "ATCH-iOS";
 			productReference = 2A85A92E2BF869C10030B4F4 /* ATCH-iOS.app */;
@@ -378,6 +541,9 @@
 				2ABBF7052C5CC16F00B12315 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				2ABBF7082C5CC19600B12315 /* XCRemoteSwiftPackageReference "Then" */,
 				2AFD06452C80B9CF00F34C35 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
+				2AFD06D52C84A0E800F34C35 /* XCRemoteSwiftPackageReference "RxGesture" */,
+				2AFD06D82C84A0F400F34C35 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				2AFD06DD2C84A10100F34C35 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 2A85A92F2BF869C10030B4F4 /* Products */;
 			projectDirPath = "";
@@ -409,10 +575,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A5052052C6DA06700DC3E4A /* Adjust+.swift in Sources */,
+				2AFD06BC2C84A04A00F34C35 /* MapChatCollectionViewCell.swift in Sources */,
+				2AFD06D02C84A06700F34C35 /* ChattingRoomVC.swift in Sources */,
 				2ABCDC622C71EC3C00AD649C /* AllChatCoordinator.swift in Sources */,
 				2ABCDC742C71EC5C00AD649C /* MapVC.swift in Sources */,
 				2ABCDC7A2C71EC6300AD649C /* MyPageCoordinator.swift in Sources */,
 				2A5052012C6D9EBB00DC3E4A /* UIColor+.swift in Sources */,
+				2AFD06E72C84A13700F34C35 /* UIStackView+.swift in Sources */,
 				2ABCDC632C71EC3C00AD649C /* AllChatVC.swift in Sources */,
 				2ABCDC6B2C71EC4300AD649C /* CoordinatorType.swift in Sources */,
 				2ABCDC822C71EC6C00AD649C /* MyChatVC.swift in Sources */,
@@ -420,17 +589,27 @@
 				2ABCDC7B2C71EC6300AD649C /* MyPageVC.swift in Sources */,
 				2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */,
 				2ABCDC8B2C71EC9700AD649C /* TabBarCoordinator.swift in Sources */,
+				2AFD06E32C84A11D00F34C35 /* MapChatData.swift in Sources */,
+				2AFD06D32C84A06700F34C35 /* AlarmVC.swift in Sources */,
 				2AFD06492C80BAA500F34C35 /* BaseMapVC.swift in Sources */,
+				2AFD06D42C84A06700F34C35 /* AlarmViewModel.swift in Sources */,
 				2ABCDC692C71EC4300AD649C /* AppCoordinator.swift in Sources */,
+				2AFD06CF2C84A06700F34C35 /* ChattingRoomCoordinator.swift in Sources */,
+				2AFD06D22C84A06700F34C35 /* AlarmCoordinator.swift in Sources */,
 				2A5052032C6D9FE700DC3E4A /* UIFont+.swift in Sources */,
 				2ABCDC8C2C71EC9700AD649C /* TabBarController.swift in Sources */,
 				2A85A9322BF869C20030B4F4 /* AppDelegate.swift in Sources */,
 				2A85A9342BF869C20030B4F4 /* SceneDelegate.swift in Sources */,
+				2AFD06E62C84A13700F34C35 /* NSObject+.swift in Sources */,
+				2AFD06D12C84A06700F34C35 /* ChattingRoomViewModel.swift in Sources */,
+				2AFD06CE2C84A06700F34C35 /* NavigationView.swift in Sources */,
 				2ABCDC812C71EC6C00AD649C /* MyChatCoordinator.swift in Sources */,
 				2AFD06422C8059A700F34C35 /* Config.swift in Sources */,
 				2ABCDC732C71EC5C00AD649C /* MapCoordinator.swift in Sources */,
 				2ABCDC6D2C71EC5100AD649C /* UIWindow+.swift in Sources */,
 				2ABCDC6A2C71EC4300AD649C /* Coordinator.swift in Sources */,
+				2AFD06BB2C84A04A00F34C35 /* MapBottomSheetView.swift in Sources */,
+				2AFD06BA2C84A04A00F34C35 /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,6 +852,30 @@
 				minimumVersion = 2.10.5;
 			};
 		};
+		2AFD06D52C84A0E800F34C35 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.4;
+			};
+		};
+		2AFD06D82C84A0F400F34C35 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+		2AFD06DD2C84A10100F34C35 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -690,6 +893,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2AFD06452C80B9CF00F34C35 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */;
 			productName = "KakaoMapsSDK-SPM";
+		};
+		2AFD06D62C84A0E800F34C35 /* RxGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2AFD06D52C84A0E800F34C35 /* XCRemoteSwiftPackageReference "RxGesture" */;
+			productName = RxGesture;
+		};
+		2AFD06D92C84A0F400F34C35 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2AFD06D82C84A0F400F34C35 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		2AFD06DB2C84A0F400F34C35 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2AFD06D82C84A0F400F34C35 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		2AFD06DE2C84A10100F34C35 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2AFD06DD2C84A10100F34C35 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

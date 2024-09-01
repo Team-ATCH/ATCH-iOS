@@ -1,5 +1,5 @@
 {
-  "originHash" : "22e1ed588fbae48aee01d7326be8bb8102f64f1833d11682a39278f1f57f9cc7",
+  "originHash" : "1965e1357b8aee66033bbd4bc4c1b864728c6c46507a3c96fe25540998e39b42",
   "pins" : [
     {
       "identity" : "kakaomapssdk-spm",
@@ -8,6 +8,33 @@
       "state" : {
         "revision" : "eb68e7b2ada27deb652acf07b985d111b5c16895",
         "version" : "2.10.5"
+      }
+    },
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "revision" : "2ef543ee21d63734e1c004ad6c870255e8716c50",
+        "version" : "7.12.0"
+      }
+    },
+    {
+      "identity" : "rxgesture",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RxSwiftCommunity/RxGesture.git",
+      "state" : {
+        "revision" : "1b137c576b4aaaab949235752278956697c9e4a0",
+        "version" : "4.0.4"
+      }
+    },
+    {
+      "identity" : "rxswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveX/RxSwift.git",
+      "state" : {
+        "revision" : "b06a8c8596e4c3e8e7788e08e720e3248563ce6a",
+        "version" : "6.7.1"
       }
     },
     {
