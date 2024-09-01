@@ -55,6 +55,9 @@
 		2AFD06E32C84A11D00F34C35 /* MapChatData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06E02C84A11D00F34C35 /* MapChatData.swift */; };
 		2AFD06E62C84A13700F34C35 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06E42C84A13700F34C35 /* NSObject+.swift */; };
 		2AFD06E72C84A13700F34C35 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06E52C84A13700F34C35 /* UIStackView+.swift */; };
+		2AFD06EA2C84A26800F34C35 /* MyChatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06E92C84A26800F34C35 /* MyChatCollectionViewCell.swift */; };
+		2AFD06EC2C84AF2000F34C35 /* MyChatData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06EB2C84AF2000F34C35 /* MyChatData.swift */; };
+		2AFD06EE2C84B2C100F34C35 /* MyChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06ED2C84B2C100F34C35 /* MyChatView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +105,9 @@
 		2AFD06E02C84A11D00F34C35 /* MapChatData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapChatData.swift; sourceTree = "<group>"; };
 		2AFD06E42C84A13700F34C35 /* NSObject+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		2AFD06E52C84A13700F34C35 /* UIStackView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
+		2AFD06E92C84A26800F34C35 /* MyChatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatCollectionViewCell.swift; sourceTree = "<group>"; };
+		2AFD06EB2C84AF2000F34C35 /* MyChatData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatData.swift; sourceTree = "<group>"; };
+		2AFD06ED2C84B2C100F34C35 /* MyChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				2ABCDC7D2C71EC6C00AD649C /* Coordinator */,
+				2AFD06E82C84A25A00F34C35 /* View */,
 				2ABCDC7F2C71EC6C00AD649C /* VC */,
 			);
 			path = MyChat;
@@ -472,6 +479,7 @@
 			isa = PBXGroup;
 			children = (
 				2AFD06E02C84A11D00F34C35 /* MapChatData.swift */,
+				2AFD06EB2C84AF2000F34C35 /* MyChatData.swift */,
 			);
 			path = ViewData;
 			sourceTree = "<group>";
@@ -482,6 +490,15 @@
 				2AFD06E12C84A11D00F34C35 /* ViewData */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2AFD06E82C84A25A00F34C35 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2AFD06E92C84A26800F34C35 /* MyChatCollectionViewCell.swift */,
+				2AFD06ED2C84B2C100F34C35 /* MyChatView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -595,6 +612,7 @@
 				2AFD06D42C84A06700F34C35 /* AlarmViewModel.swift in Sources */,
 				2ABCDC692C71EC4300AD649C /* AppCoordinator.swift in Sources */,
 				2AFD06CF2C84A06700F34C35 /* ChattingRoomCoordinator.swift in Sources */,
+				2AFD06EC2C84AF2000F34C35 /* MyChatData.swift in Sources */,
 				2AFD06D22C84A06700F34C35 /* AlarmCoordinator.swift in Sources */,
 				2A5052032C6D9FE700DC3E4A /* UIFont+.swift in Sources */,
 				2ABCDC8C2C71EC9700AD649C /* TabBarController.swift in Sources */,
@@ -606,6 +624,8 @@
 				2ABCDC812C71EC6C00AD649C /* MyChatCoordinator.swift in Sources */,
 				2AFD06422C8059A700F34C35 /* Config.swift in Sources */,
 				2ABCDC732C71EC5C00AD649C /* MapCoordinator.swift in Sources */,
+				2AFD06EE2C84B2C100F34C35 /* MyChatView.swift in Sources */,
+				2AFD06EA2C84A26800F34C35 /* MyChatCollectionViewCell.swift in Sources */,
 				2ABCDC6D2C71EC5100AD649C /* UIWindow+.swift in Sources */,
 				2ABCDC6A2C71EC4300AD649C /* Coordinator.swift in Sources */,
 				2AFD06BB2C84A04A00F34C35 /* MapBottomSheetView.swift in Sources */,
