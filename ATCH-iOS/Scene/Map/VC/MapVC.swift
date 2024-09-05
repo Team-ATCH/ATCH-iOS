@@ -53,10 +53,6 @@ final class MapVC: BaseMapVC {
         setupLayout()
         setupAction()
         setupLocationManager()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         setBottomSheetDefault()
     }
     
@@ -215,6 +211,7 @@ extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let nickname = mapChatList[indexPath.row].nickName
+        coordinator?.pushToChattingRoomView(chattingRoomName: nickname)
     }
 }

@@ -35,6 +35,13 @@ final class MapCoordinator: Coordinator {
         self.childCoordinators.append(alarmCoordinator)
         alarmCoordinator.start()
     }
+    
+    func pushToChattingRoomView(chattingRoomName: String) {
+        let chattingRoomCoordinator = ChattingRoomCoordinator(navigationController)
+        chattingRoomCoordinator.finishDelegate = self
+        self.childCoordinators.append(chattingRoomCoordinator)
+        chattingRoomCoordinator.start(chattingRoomName: chattingRoomName)
+    }
 }
 
 extension MapCoordinator: CoordinatorFinishDelegate {
