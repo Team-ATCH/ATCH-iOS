@@ -58,6 +58,9 @@
 		2AFD06EA2C84A26800F34C35 /* MyChatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06E92C84A26800F34C35 /* MyChatCollectionViewCell.swift */; };
 		2AFD06EC2C84AF2000F34C35 /* MyChatData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06EB2C84AF2000F34C35 /* MyChatData.swift */; };
 		2AFD06EE2C84B2C100F34C35 /* MyChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06ED2C84B2C100F34C35 /* MyChatView.swift */; };
+		2AFD071B2C89793000F34C35 /* AlarmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD071A2C89793000F34C35 /* AlarmData.swift */; };
+		2AFD07222C8979F800F34C35 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD07212C8979F800F34C35 /* AlarmView.swift */; };
+		2AFD07242C897A5400F34C35 /* AlarmCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD07232C897A5400F34C35 /* AlarmCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +111,9 @@
 		2AFD06E92C84A26800F34C35 /* MyChatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatCollectionViewCell.swift; sourceTree = "<group>"; };
 		2AFD06EB2C84AF2000F34C35 /* MyChatData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatData.swift; sourceTree = "<group>"; };
 		2AFD06ED2C84B2C100F34C35 /* MyChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatView.swift; sourceTree = "<group>"; };
+		2AFD071A2C89793000F34C35 /* AlarmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmData.swift; sourceTree = "<group>"; };
+		2AFD07212C8979F800F34C35 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
+		2AFD07232C897A5400F34C35 /* AlarmCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,8 +475,9 @@
 			isa = PBXGroup;
 			children = (
 				2AFD06C82C84A06700F34C35 /* Coordinator */,
-				2AFD06CA2C84A06700F34C35 /* VC */,
 				2AFD06CC2C84A06700F34C35 /* ViewModel */,
+				2AFD071E2C8979E100F34C35 /* View */,
+				2AFD06CA2C84A06700F34C35 /* VC */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -480,6 +487,7 @@
 			children = (
 				2AFD06E02C84A11D00F34C35 /* MapChatData.swift */,
 				2AFD06EB2C84AF2000F34C35 /* MyChatData.swift */,
+				2AFD071A2C89793000F34C35 /* AlarmData.swift */,
 			);
 			path = ViewData;
 			sourceTree = "<group>";
@@ -497,6 +505,15 @@
 			children = (
 				2AFD06E92C84A26800F34C35 /* MyChatCollectionViewCell.swift */,
 				2AFD06ED2C84B2C100F34C35 /* MyChatView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2AFD071E2C8979E100F34C35 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2AFD07212C8979F800F34C35 /* AlarmView.swift */,
+				2AFD07232C897A5400F34C35 /* AlarmCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -599,9 +616,11 @@
 				2ABCDC7A2C71EC6300AD649C /* MyPageCoordinator.swift in Sources */,
 				2A5052012C6D9EBB00DC3E4A /* UIColor+.swift in Sources */,
 				2AFD06E72C84A13700F34C35 /* UIStackView+.swift in Sources */,
+				2AFD07222C8979F800F34C35 /* AlarmView.swift in Sources */,
 				2ABCDC632C71EC3C00AD649C /* AllChatVC.swift in Sources */,
 				2ABCDC6B2C71EC4300AD649C /* CoordinatorType.swift in Sources */,
 				2ABCDC822C71EC6C00AD649C /* MyChatVC.swift in Sources */,
+				2AFD07242C897A5400F34C35 /* AlarmCollectionViewCell.swift in Sources */,
 				2AFD06442C80B6D200F34C35 /* UIView+.swift in Sources */,
 				2ABCDC7B2C71EC6300AD649C /* MyPageVC.swift in Sources */,
 				2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */,
@@ -616,6 +635,7 @@
 				2AFD06D22C84A06700F34C35 /* AlarmCoordinator.swift in Sources */,
 				2A5052032C6D9FE700DC3E4A /* UIFont+.swift in Sources */,
 				2ABCDC8C2C71EC9700AD649C /* TabBarController.swift in Sources */,
+				2AFD071B2C89793000F34C35 /* AlarmData.swift in Sources */,
 				2A85A9322BF869C20030B4F4 /* AppDelegate.swift in Sources */,
 				2A85A9342BF869C20030B4F4 /* SceneDelegate.swift in Sources */,
 				2AFD06E62C84A13700F34C35 /* NSObject+.swift in Sources */,
