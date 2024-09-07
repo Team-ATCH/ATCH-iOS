@@ -61,6 +61,9 @@
 		2AFD071B2C89793000F34C35 /* AlarmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD071A2C89793000F34C35 /* AlarmData.swift */; };
 		2AFD07222C8979F800F34C35 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD07212C8979F800F34C35 /* AlarmView.swift */; };
 		2AFD07242C897A5400F34C35 /* AlarmCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD07232C897A5400F34C35 /* AlarmCollectionViewCell.swift */; };
+		2AFD072B2C8C229800F34C35 /* BaseChattingRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD072A2C8C229800F34C35 /* BaseChattingRoomVC.swift */; };
+		2AFD072E2C8C22E200F34C35 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFD072D2C8C22E200F34C35 /* MessageKit */; };
+		2AFD07302C8C25B000F34C35 /* ChattingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD072F2C8C25B000F34C35 /* ChattingData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +117,8 @@
 		2AFD071A2C89793000F34C35 /* AlarmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmData.swift; sourceTree = "<group>"; };
 		2AFD07212C8979F800F34C35 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		2AFD07232C897A5400F34C35 /* AlarmCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCollectionViewCell.swift; sourceTree = "<group>"; };
+		2AFD072A2C8C229800F34C35 /* BaseChattingRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseChattingRoomVC.swift; sourceTree = "<group>"; };
+		2AFD072F2C8C25B000F34C35 /* ChattingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +133,7 @@
 				2AFD06DA2C84A0F400F34C35 /* RxCocoa in Frameworks */,
 				2AFD06D72C84A0E800F34C35 /* RxGesture in Frameworks */,
 				2AFD06472C80B9CF00F34C35 /* KakaoMapsSDK-SPM in Frameworks */,
+				2AFD072E2C8C22E200F34C35 /* MessageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				2AFD06C22C84A06700F34C35 /* ChattingRoomVC.swift */,
+				2AFD072A2C8C229800F34C35 /* BaseChattingRoomVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -488,6 +495,7 @@
 				2AFD06E02C84A11D00F34C35 /* MapChatData.swift */,
 				2AFD06EB2C84AF2000F34C35 /* MyChatData.swift */,
 				2AFD071A2C89793000F34C35 /* AlarmData.swift */,
+				2AFD072F2C8C25B000F34C35 /* ChattingData.swift */,
 			);
 			path = ViewData;
 			sourceTree = "<group>";
@@ -542,6 +550,7 @@
 				2AFD06D92C84A0F400F34C35 /* RxCocoa */,
 				2AFD06DB2C84A0F400F34C35 /* RxRelay */,
 				2AFD06DE2C84A10100F34C35 /* Kingfisher */,
+				2AFD072D2C8C22E200F34C35 /* MessageKit */,
 			);
 			productName = "ATCH-iOS";
 			productReference = 2A85A92E2BF869C10030B4F4 /* ATCH-iOS.app */;
@@ -578,6 +587,7 @@
 				2AFD06D52C84A0E800F34C35 /* XCRemoteSwiftPackageReference "RxGesture" */,
 				2AFD06D82C84A0F400F34C35 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				2AFD06DD2C84A10100F34C35 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				2AFD072C2C8C22E200F34C35 /* XCRemoteSwiftPackageReference "MessageKit" */,
 			);
 			productRefGroup = 2A85A92F2BF869C10030B4F4 /* Products */;
 			projectDirPath = "";
@@ -609,6 +619,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A5052052C6DA06700DC3E4A /* Adjust+.swift in Sources */,
+				2AFD072B2C8C229800F34C35 /* BaseChattingRoomVC.swift in Sources */,
 				2AFD06BC2C84A04A00F34C35 /* MapChatCollectionViewCell.swift in Sources */,
 				2AFD06D02C84A06700F34C35 /* ChattingRoomVC.swift in Sources */,
 				2ABCDC622C71EC3C00AD649C /* AllChatCoordinator.swift in Sources */,
@@ -632,6 +643,7 @@
 				2ABCDC692C71EC4300AD649C /* AppCoordinator.swift in Sources */,
 				2AFD06CF2C84A06700F34C35 /* ChattingRoomCoordinator.swift in Sources */,
 				2AFD06EC2C84AF2000F34C35 /* MyChatData.swift in Sources */,
+				2AFD07302C8C25B000F34C35 /* ChattingData.swift in Sources */,
 				2AFD06D22C84A06700F34C35 /* AlarmCoordinator.swift in Sources */,
 				2A5052032C6D9FE700DC3E4A /* UIFont+.swift in Sources */,
 				2ABCDC8C2C71EC9700AD649C /* TabBarController.swift in Sources */,
@@ -916,6 +928,14 @@
 				minimumVersion = 7.12.0;
 			};
 		};
+		2AFD072C2C8C22E200F34C35 /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MessageKit/MessageKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -953,6 +973,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2AFD06DD2C84A10100F34C35 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		2AFD072D2C8C22E200F34C35 /* MessageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2AFD072C2C8C22E200F34C35 /* XCRemoteSwiftPackageReference "MessageKit" */;
+			productName = MessageKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
