@@ -24,10 +24,10 @@ final class MapVC: BaseMapVC {
     private let locationManager = CLLocationManager()
     private var currentPoi: Poi? = nil
 
-    private var mapChatList: [MapChatData] = [MapChatData(characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", itemCount: 1, itemUrl: "", nickName: "과제의요정", tag: "#맛집 #카페 #홍대생 #빈티지 #아티스트"),
-                                              MapChatData(characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", itemCount: 1, itemUrl: "", nickName: "말리부", tag: "#맛집 #카페 #버스킹 #공연 #클럽 #힙스터"),
-                                              MapChatData(characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", itemCount: 1, itemUrl: "", nickName: "탕탕 후루후루", tag: "#맛집 #사장님 #버스킹 #주민"),
-                                              MapChatData(characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", itemCount: 1, itemUrl: "", nickName: "동그라미동동동쓰", tag: "#패션 #버스킹 #인플루언서 #힙스터")]
+    private var mapChatList: [MapChatData] = [MapChatData(id: "", characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", itemCount: 1, itemUrl: "", nickName: "과제의요정", tag: "#맛집 #카페 #홍대생 #빈티지 #아티스트"),
+                                              MapChatData(id: "", characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", itemCount: 1, itemUrl: "", nickName: "말리부", tag: "#맛집 #카페 #버스킹 #공연 #클럽 #힙스터"),
+                                              MapChatData(id: "", characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", itemCount: 1, itemUrl: "", nickName: "탕탕 후루후루", tag: "#맛집 #사장님 #버스킹 #주민"),
+                                              MapChatData(id: "", characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", itemCount: 1, itemUrl: "", nickName: "동그라미동동동쓰", tag: "#패션 #버스킹 #인플루언서 #힙스터")]
     
     private let alarmImageView = UIImageView().then {
         $0.image = .icAlarmYellow
@@ -211,7 +211,7 @@ extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let nickname = mapChatList[indexPath.row].nickName
-        coordinator?.pushToChattingRoomView(chattingRoomName: nickname)
+        let opponent = Sender(senderId: mapChatList[indexPath.row].id, displayName: mapChatList[indexPath.row].nickName)
+        coordinator?.pushToChattingRoomView(opponent: opponent)
     }
 }

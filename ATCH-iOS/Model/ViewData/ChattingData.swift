@@ -28,7 +28,7 @@ struct ChattingData: MessageType {
     }
     
     init(content: String) {
-        sender = Sender(senderId: "id(TODO...)", displayName: "displayName(TODO...)")
+        sender = Sender(senderId: "myUserId", displayName: "heejoo")
         self.content = content
         sentDate = Date()
         id = nil
