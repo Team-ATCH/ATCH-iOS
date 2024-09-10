@@ -36,7 +36,6 @@
 		2ABCDC8C2C71EC9700AD649C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC872C71EC9700AD649C /* TabBarController.swift */; };
 		2AE7C9E22C8C4D1000A177EF /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7C9E12C8C4D1000A177EF /* UITextView+.swift */; };
 		2AE7C9E42C8D328300A177EF /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7C9E32C8D328300A177EF /* Date+.swift */; };
-		2AE7C9E72C8D3E1600A177EF /* CustomTextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7C9E62C8D3E1600A177EF /* CustomTextMessageCell.swift */; };
 		2AFD06422C8059A700F34C35 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06412C8059A700F34C35 /* Config.swift */; };
 		2AFD06442C80B6D200F34C35 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06432C80B6D200F34C35 /* UIView+.swift */; };
 		2AFD06472C80B9CF00F34C35 /* KakaoMapsSDK-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFD06462C80B9CF00F34C35 /* KakaoMapsSDK-SPM */; };
@@ -99,7 +98,6 @@
 		2ABCDC872C71EC9700AD649C /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		2AE7C9E12C8C4D1000A177EF /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		2AE7C9E32C8D328300A177EF /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
-		2AE7C9E62C8D3E1600A177EF /* CustomTextMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextMessageCell.swift; sourceTree = "<group>"; };
 		2AFD06402C80588500F34C35 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		2AFD06412C8059A700F34C35 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		2AFD06432C80B6D200F34C35 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -397,7 +395,6 @@
 		2AE7C9E52C8D3DFB00A177EF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2AE7C9E62C8D3E1600A177EF /* CustomTextMessageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -659,7 +656,6 @@
 				2AFD06D42C84A06700F34C35 /* AlarmViewModel.swift in Sources */,
 				2ABCDC692C71EC4300AD649C /* AppCoordinator.swift in Sources */,
 				2AE7C9E42C8D328300A177EF /* Date+.swift in Sources */,
-				2AE7C9E72C8D3E1600A177EF /* CustomTextMessageCell.swift in Sources */,
 				2AFD06CF2C84A06700F34C35 /* ChattingRoomCoordinator.swift in Sources */,
 				2AFD06EC2C84AF2000F34C35 /* MyChatData.swift in Sources */,
 				2AFD07302C8C25B000F34C35 /* ChattingData.swift in Sources */,

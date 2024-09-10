@@ -10,8 +10,9 @@ import UIKit
 import MessageKit
 
 struct Sender: SenderType {
-    var senderId: String
-    var displayName: String
+    let senderId: String
+    let displayName: String
+    var profileImageUrl: String = ""
 }
 
 struct ChattingData: MessageType {
@@ -20,18 +21,19 @@ struct ChattingData: MessageType {
     var messageId: String {
         return id ?? UUID().uuidString
     }
+    let sender: SenderType
     let content: String
     let sentDate: Date
-    let sender: SenderType
     var kind: MessageKind {
-        return .text(content)
+        return .attributedText(NSAttributedString(string: content, attributes: [.font: UIFont.font(.chat),
+                                                                                .foregroundColor: UIColor.atchShadowGrey]))
     }
     
-    init(content: String) {
-        sender = Sender(senderId: "myUserId", displayName: "heejoo")
+    init(sender: Sender, content: String, sendDate: Date) {
+        self.sender = sender
         self.content = content
-        sentDate = Date()
-        id = nil
+        self.sentDate = sendDate
+        self.id = UUID().uuidString
     }
 }
 

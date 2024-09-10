@@ -211,7 +211,7 @@ extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let opponent = Sender(senderId: mapChatList[indexPath.row].id, displayName: mapChatList[indexPath.row].nickName)
+        let opponent = Sender(senderId: mapChatList[indexPath.row].id, displayName: mapChatList[indexPath.row].nickName, profileImageUrl: mapChatList[indexPath.row].characterUrl)
         coordinator?.pushToChattingRoomView(opponent: opponent)
     }
 }

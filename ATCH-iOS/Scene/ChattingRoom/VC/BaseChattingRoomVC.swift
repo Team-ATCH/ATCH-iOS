@@ -9,6 +9,7 @@ import Combine
 import UIKit
 
 import InputBarAccessoryView
+import Kingfisher
 import MessageKit
 
 class State {
@@ -51,7 +52,6 @@ class BaseChattingRoomVC: MessagesViewController {
         $0.textColor = .atchBlack
         $0.font = .font(.smallButton)
     }
-
     
     private var automaticallyAddedBottomInset: CGFloat {
         messagesCollectionView.adjustedContentInset.bottom - messageCollectionViewBottomInset
@@ -66,11 +66,13 @@ class BaseChattingRoomVC: MessagesViewController {
         
         setupStyle()
         setupMessageInputBar()
-        removeOutgoingMessageAvatars()
+        setOutGoingMessageLayout()
+        setIncomingMessageLayout()
         setupLayout()
         setupDelegate()
         setupAction()
         setupDismissKeyboardGesture()
+        addDummyMessages()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -87,12 +89,22 @@ class BaseChattingRoomVC: MessagesViewController {
         
     }
     
-    private func removeOutgoingMessageAvatars() {
+    private func setIncomingMessageLayout() {
+        guard let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout else { return }
+        layout.setMessageIncomingAvatarSize(.init(width: 40, height: 40))
+        layout.setMessageIncomingAvatarPosition(.init(horizontal: .cellLeading, vertical: .cellTop))
+        layout.setMessageIncomingAccessoryViewPadding(.init(left: 4, right: 0))
+        layout.setMessageIncomingAccessoryViewSize(.init(width: 30, height: 30))
+        layout.setMessageIncomingAccessoryViewPosition(.cellBottom)
+    }
+    
+    private func setOutGoingMessageLayout() {
         guard let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout else { return }
         layout.textMessageSizeCalculator.outgoingAvatarSize = .zero
         layout.setMessageOutgoingAvatarSize(.zero)
-        let outgoingLabelAlignment = LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 15))
-        layout.setMessageOutgoingMessageTopLabelAlignment(outgoingLabelAlignment)
+        layout.setMessageOutgoingAccessoryViewPadding(.init(left: 0, right: 4))
+        layout.setMessageOutgoingAccessoryViewSize(.init(width: 30, height: 30))
+        layout.setMessageOutgoingAccessoryViewPosition(.cellBottom)
     }
     
     private func insertNewMessage(_ message: ChattingData) {
@@ -110,7 +122,7 @@ class BaseChattingRoomVC: MessagesViewController {
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
-        
+       
         messageInputBar.delegate = self
     }
     
@@ -153,13 +165,15 @@ class BaseChattingRoomVC: MessagesViewController {
             .removeDuplicates()
             .delay(for: .milliseconds(50), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
-                self?.updateMessageCollectionViewBottomInset()
+                guard let self = self else { return }
+
+                self.updateMessageCollectionViewBottomInset()
                 
-                if !(self?.maintainPositionOnInputBarHeightChanged ?? false) {
-                    self?.messagesCollectionView.scrollToLastItem()
+                if !(self.maintainPositionOnInputBarHeightChanged) {
+                    self.messagesCollectionView.scrollToLastItem()
                 }
                 
-                self?.numberOfLines = self?.messageInputBar.inputTextView.numberOfLine() ?? 0
+                self.numberOfLines = self.messageInputBar.inputTextView.numberOfLine()
             }
             .store(in: &disposeBag)
         
@@ -222,8 +236,8 @@ class BaseChattingRoomVC: MessagesViewController {
         if line > 1 {
             messageInputBar.inputTextView.snp.remakeConstraints {
                 $0.leading.equalToSuperview().inset(9)
-                $0.trailing.equalTo(messageInputBar.sendButton.snp.leading).offset(-10)
                 $0.centerY.equalToSuperview()
+                $0.width.equalTo(280)
                 $0.height.equalTo(39 + 20 * (line - 2))
             }
         }
@@ -232,11 +246,15 @@ class BaseChattingRoomVC: MessagesViewController {
             self?.view.layoutIfNeeded()
         }
     }
+    
+    func addDummyMessages() {
+        
+    }
 }
 
 extension BaseChattingRoomVC: MessagesDataSource {
     var currentSender: any MessageKit.SenderType {
-        return sender
+        return Sender(senderId: "333", displayName: "heejoo")
     }
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
@@ -251,62 +269,79 @@ extension BaseChattingRoomVC: MessagesDataSource {
         let name = message.sender.displayName
         return NSAttributedString(string: name, attributes: [.font: UIFont.font(.body),
                                                              .foregroundColor: UIColor.atchGrey3])
-    }
-    
-    func messageTimestampLabelAttributedText(for message: any MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-        let date = message.sentDate.toTimeString()
-        return NSAttributedString(string: date, attributes: [.font: UIFont.font(.caption),
-                                                             .foregroundColor: UIColor.atchGrey3])
-    }
+    }    
 }
 
 extension BaseChattingRoomVC: MessagesLayoutDelegate {
-    // 아래 여백
-    func footerViewSize(for section: Int, in messagesCollectionView: MessagesCollectionView) -> CGSize {
-        return CGSize(width: 0, height: 8)
-    }
-    
     // 말풍선 위 이름 나오는 곳의 height
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-//        return isFromCurrentSender(message: message) ? 20 : 0
-        return 20
+        return isFromCurrentSender(message: message) ? 0 : 20
     }
 }
-
 
 // 상대방이 보낸 메시지, 내가 보낸 메시지를 구분하여 색상과 모양 지정
 extension BaseChattingRoomVC: MessagesDisplayDelegate {
     // 말풍선의 배경 색상
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? .atchGreen : .atchWhite
+        return isFromCurrentSender(message: message) ? .atchWhite : .atchGreen
     }
     
     func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
         return .atchShadowGrey
     }
     
-    // 말풍선의 꼬리 모양 방향
+    // 말풍선 커스텀화
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
-        let cornerDirection: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
+        return .custom { [weak self] containerView in
+            guard let self else { return }
+            
+            let isFromCurrentSender = self.isFromCurrentSender(message: message)
+  
+            containerView.layer.cornerRadius = 12
+            containerView.layer.maskedCorners = isFromCurrentSender ? [.layerMinXMaxYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner] : [.layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+            containerView.layer.borderWidth = 1
+            containerView.layer.borderColor = UIColor.atchShadowGrey.cgColor
+        }
+    }
+    
+    func configureAvatarView(_ avatarView: AvatarView, for message: any MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        if let url = URL(string: sender.profileImageUrl) {
+            avatarView.kf.setImage(with: url)
+        }
         
-        return .bubbleTail(cornerDirection, .curved)
+        avatarView.layer.borderColor = UIColor.atchShadowGrey.cgColor
+        avatarView.layer.borderWidth = 1
+    }
+    
+    func configureAccessoryView(_ accessoryView: UIView, for message: any MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        accessoryView.removeAllSubViews()
+        
+        let timeStampLabel = UILabel().then {
+            $0.text = message.sentDate.toTimeString()
+            $0.textColor = .atchGrey3
+            $0.font = .font(.caption)
+        }
+        
+        accessoryView.addSubview(timeStampLabel)
+        timeStampLabel.snp.makeConstraints {
+            $0.leading.bottom.equalToSuperview()
+        }
     }
 }
 
 extension BaseChattingRoomVC: InputBarAccessoryViewDelegate {
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
-        let message = ChattingData(content: text)
+        let message = ChattingData(sender: Sender(senderId: "333", displayName: "heejoo"), content: text, sendDate: Date())
         
         print(message)
         
         insertNewMessage(message)
         inputBar.inputTextView.text.removeAll()
-        disposeBag.removeAll()
 
         messageInputBar.inputTextView.snp.remakeConstraints {
             $0.leading.equalToSuperview().inset(9)
-            $0.trailing.equalTo(messageInputBar.sendButton.snp.leading).offset(-10)
             $0.centerY.equalToSuperview()
+            $0.width.equalTo(280)
             $0.height.equalTo(39)
         }
     }

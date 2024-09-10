@@ -78,7 +78,7 @@ extension MyChatVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let opponent = Sender(senderId: chatList[indexPath.row].id, displayName: chatList[indexPath.row].nickName)
+        let opponent = Sender(senderId: chatList[indexPath.row].id, displayName: chatList[indexPath.row].nickName, profileImageUrl: chatList[indexPath.row].characterUrl)
         coordinator?.pushToChattingRoomView(opponent: opponent)
     }
 }

@@ -21,14 +21,14 @@ final class ChattingRoomVC: BaseChattingRoomVC {
     private let disposeBag: DisposeBag = DisposeBag()
 
     private let chattingRoomNavigationView = NavigationView(backButtonHidden: false, backButtonTitle: "내 채팅")
-    
+
     init(coordinator: ChattingRoomCoordinator, opponent: Sender) {
         self.coordinator = coordinator
         self.chattingRoomNavigationView.changeTitle(title: opponent.displayName)
         
         super.init(nibName: nil, bundle: nil)
         
-        self.sender = Sender(senderId: opponent.senderId, displayName: opponent.displayName)
+        self.sender = Sender(senderId: opponent.senderId, displayName: opponent.displayName, profileImageUrl: opponent.profileImageUrl)
     }
     
     required init?(coder: NSCoder) {
@@ -37,7 +37,8 @@ final class ChattingRoomVC: BaseChattingRoomVC {
     
     override func setupStyle() {
         messagesCollectionView.backgroundColor = .atchGrey1
-        
+        messagesCollectionView.contentInset = .init(top: 10, left: 0, bottom: 10, right: 0)
+
         messageInputBar.backgroundView.backgroundColor = .atchGrey2
         
         messageInputBar.separatorLine.backgroundColor = .atchShadowGrey
@@ -94,8 +95,8 @@ final class ChattingRoomVC: BaseChattingRoomVC {
 
         messageInputBar.inputTextView.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(9)
-            $0.trailing.equalTo(messageInputBar.sendButton.snp.leading).offset(-10)
             $0.centerY.equalToSuperview()
+            $0.width.equalTo(280)
             $0.height.equalTo(39)
         }
     
@@ -119,5 +120,14 @@ final class ChattingRoomVC: BaseChattingRoomVC {
             .subscribe(onNext: { vc, _ in
                 vc.coordinator?.back()
             }).disposed(by: disposeBag)
+    }
+    
+    override func addDummyMessages() {
+        let opponentMessage = ChattingData(sender: sender, content: "안녕하세여 저의 이름은", sendDate: Date())
+        messages.append(opponentMessage)
+                
+        // 리로드 후 마지막 메시지로 스크롤
+        messagesCollectionView.reloadData()
+        messagesCollectionView.scrollToLastItem()
     }
 }

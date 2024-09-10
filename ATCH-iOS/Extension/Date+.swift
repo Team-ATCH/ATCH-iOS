@@ -10,7 +10,7 @@ import Foundation
 extension Date {
     func toTimeString() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul") // 한국 시간대로 설정
         dateFormatter.dateFormat = "HH:mm"
         return dateFormatter.string(from: self)
     }
