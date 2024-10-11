@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A1BE0E42CB8ECD000908579 /* SigninCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE0E32CB8ECCF00908579 /* SigninCoordinator.swift */; };
+		2A1BE0E72CB8ECE100908579 /* SigninVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE0E62CB8ECE100908579 /* SigninVC.swift */; };
+		2A1BE0E92CB8ECE700908579 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE0E82CB8ECE700908579 /* SigninViewModel.swift */; };
 		2A5052012C6D9EBB00DC3E4A /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5052002C6D9EBB00DC3E4A /* UIColor+.swift */; };
 		2A5052032C6D9FE700DC3E4A /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5052022C6D9FE700DC3E4A /* UIFont+.swift */; };
 		2A5052052C6DA06700DC3E4A /* Adjust+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5052042C6DA06700DC3E4A /* Adjust+.swift */; };
@@ -64,6 +67,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A1BE0E32CB8ECCF00908579 /* SigninCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninCoordinator.swift; sourceTree = "<group>"; };
+		2A1BE0E62CB8ECE100908579 /* SigninVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninVC.swift; sourceTree = "<group>"; };
+		2A1BE0E82CB8ECE700908579 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
 		2A5052002C6D9EBB00DC3E4A /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		2A5052022C6D9FE700DC3E4A /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		2A5052042C6DA06700DC3E4A /* Adjust+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjust+.swift"; sourceTree = "<group>"; };
@@ -134,6 +140,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A1BE0DE2CB8EC8F00908579 /* Signin */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE0DF2CB8EC9E00908579 /* Coordinator */,
+				2A1BE0E02CB8ECAA00908579 /* VC */,
+				2A1BE0E12CB8ECAE00908579 /* ViewModel */,
+			);
+			path = Signin;
+			sourceTree = "<group>";
+		};
+		2A1BE0DF2CB8EC9E00908579 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE0E32CB8ECCF00908579 /* SigninCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2A1BE0E02CB8ECAA00908579 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE0E62CB8ECE100908579 /* SigninVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		2A1BE0E12CB8ECAE00908579 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE0E82CB8ECE700908579 /* SigninViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2A5051FC2C6D9E6D00DC3E4A /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +188,7 @@
 			children = (
 				2ABCDC682C71EC4300AD649C /* Base */,
 				2AFD06BF2C84A06700F34C35 /* Components */,
+				2A1BE0DE2CB8EC8F00908579 /* Signin */,
 				2AFD06CD2C84A06700F34C35 /* Alarm */,
 				2AFD06C62C84A06700F34C35 /* ChattingRoom */,
 				2ABCDC722C71EC5C00AD649C /* Map */,
@@ -618,7 +659,9 @@
 				2AFD06E72C84A13700F34C35 /* UIStackView+.swift in Sources */,
 				2AFD07222C8979F800F34C35 /* AlarmView.swift in Sources */,
 				2ABCDC632C71EC3C00AD649C /* AllChatVC.swift in Sources */,
+				2A1BE0E72CB8ECE100908579 /* SigninVC.swift in Sources */,
 				2ABCDC6B2C71EC4300AD649C /* CoordinatorType.swift in Sources */,
+				2A1BE0E92CB8ECE700908579 /* SigninViewModel.swift in Sources */,
 				2ABCDC822C71EC6C00AD649C /* MyChatVC.swift in Sources */,
 				2AFD07242C897A5400F34C35 /* AlarmCollectionViewCell.swift in Sources */,
 				2AFD06442C80B6D200F34C35 /* UIView+.swift in Sources */,
@@ -628,6 +671,7 @@
 				2AFD06E32C84A11D00F34C35 /* MapChatData.swift in Sources */,
 				2AFD06D32C84A06700F34C35 /* AlarmVC.swift in Sources */,
 				2AFD06492C80BAA500F34C35 /* BaseMapVC.swift in Sources */,
+				2A1BE0E42CB8ECD000908579 /* SigninCoordinator.swift in Sources */,
 				2AFD06D42C84A06700F34C35 /* AlarmViewModel.swift in Sources */,
 				2ABCDC692C71EC4300AD649C /* AppCoordinator.swift in Sources */,
 				2AFD06CF2C84A06700F34C35 /* ChattingRoomCoordinator.swift in Sources */,

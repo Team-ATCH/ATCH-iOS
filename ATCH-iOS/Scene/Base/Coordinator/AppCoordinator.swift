@@ -13,7 +13,7 @@ final class AppCoordinator: Coordinator {
     var childCoordinators: [any Coordinator] = []
     var type: CoordinatorType
     
-    var isLoggedIn = true
+    var isLoggedIn = false
     
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -36,7 +36,10 @@ final class AppCoordinator: Coordinator {
     }
     
     private func showLoginFlow() {
-        // 회원가입 및 로그인
+        let signinCoordinator = SigninCoordinator(self.navigationController)
+        signinCoordinator.finishDelegate = self
+        childCoordinators.append(signinCoordinator)
+        signinCoordinator.start()
     }
 }
 
