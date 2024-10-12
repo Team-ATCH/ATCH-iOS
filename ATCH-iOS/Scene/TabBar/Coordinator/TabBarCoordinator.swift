@@ -43,7 +43,8 @@ final class TabBarCoordinator: Coordinator {
     }
     
     private func addTabBarController() {
-        self.navigationController.pushViewController(self.tabBarController, animated: true)
+        self.navigationController.pushViewController(self.tabBarController, animated: false)
+        self.navigationController.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     private func createTabBarItem(of page: TabBarItemType) -> UITabBarItem {

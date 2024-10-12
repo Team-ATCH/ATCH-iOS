@@ -9,7 +9,7 @@ import UIKit
 
 enum FontName: String {
     case caption
-    case title, title2, subtitle
+    case title, title2, title3, subtitle
     case headline
     case body
     case smallButton, bigButton
@@ -22,6 +22,8 @@ enum FontName: String {
         case .title:
             return "Pretendard-SemiBold"
         case .title2:
+            return "Pretendard-Medium"
+        case .title3:
             return "Pretendard-Medium"
         case .subtitle:
             return "Pretendard-Medium"
@@ -46,6 +48,8 @@ enum FontName: String {
             return 22
         case .title2:
             return 20
+        case .title3:
+            return 18
         case .subtitle:
             return 14
         case .headline:

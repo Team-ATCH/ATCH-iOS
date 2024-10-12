@@ -16,7 +16,7 @@ final class SigninCoordinator: Coordinator {
 
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.type = CoordinatorType.chattingRoom
+        self.type = CoordinatorType.signin
     }
     
     func start() {
@@ -25,13 +25,16 @@ final class SigninCoordinator: Coordinator {
         
         if let vc = self.signinVC {
             vc.hidesBottomBarWhenPushed = false
-            self.navigationController.pushViewController(vc, animated: true)
+            self.navigationController.pushViewController(vc, animated: false)
+            self.navigationController.interactivePopGestureRecognizer?.isEnabled = false
         }
     }
     
-    func back() {
-        finish()
-        self.navigationController.popViewController(animated: true)
+    func pushToCharacterSettingView() {
+        let characterSettingCoordinator = CharacterSettingCoordinator(navigationController)
+        characterSettingCoordinator.finishDelegate = self
+        self.childCoordinators.append(characterSettingCoordinator)
+        characterSettingCoordinator.start()
     }
 }
 

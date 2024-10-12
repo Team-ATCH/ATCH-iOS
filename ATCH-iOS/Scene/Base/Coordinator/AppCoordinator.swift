@@ -12,34 +12,17 @@ final class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [any Coordinator] = []
     var type: CoordinatorType
-    
-    var isLoggedIn = false
-    
+        
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.type = CoordinatorType.app
     }
     
     func start() {
-        if isLoggedIn {
-            showMainFlow()
-        } else {
-            showLoginFlow()
-        }
-    }
-    
-    private func showMainFlow() {
-        let tabBarCoordinator = TabBarCoordinator(self.navigationController)
-        tabBarCoordinator.finishDelegate = self
-        childCoordinators.append(tabBarCoordinator)
-        tabBarCoordinator.start()
-    }
-    
-    private func showLoginFlow() {
-        let signinCoordinator = SigninCoordinator(self.navigationController)
-        signinCoordinator.finishDelegate = self
-        childCoordinators.append(signinCoordinator)
-        signinCoordinator.start()
+        let splashCoordinator = SplashCoordinator(self.navigationController)
+        splashCoordinator.finishDelegate = self
+        childCoordinators.append(splashCoordinator)
+        splashCoordinator.start()
     }
 }
 

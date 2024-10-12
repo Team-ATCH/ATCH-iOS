@@ -15,10 +15,12 @@ final class SigninVC: UIViewController {
     
     var viewModel: SigninViewModel?
     let coordinator: SigninCoordinator?
+    
+    private let disposeBag: DisposeBag = DisposeBag()
         
     private let atchLogoImageView = UIImageView().then {
         $0.image = .imgAppLogo
-        $0.contentMode = .scaleAspectFill
+        $0.contentMode = .scaleAspectFit
     }
     
     private let atchIntroLabel = UILabel().then {
@@ -54,6 +56,8 @@ final class SigninVC: UIViewController {
         
         setupStyle()
         setupLayout()
+        setupAction()
+        setupAnimation()
     }
     
     private func setupStyle() {
@@ -69,20 +73,19 @@ final class SigninVC: UIViewController {
         atchLogoImageView.snp.makeConstraints {
             $0.width.equalTo(260)
             $0.height.equalTo(110)
-            $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().inset(250)
+            $0.center.equalToSuperview()
         }
         
         atchIntroLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(atchLogoImageView.snp.bottom).offset(4)
+            $0.bottom.equalToSuperview().inset(429 * UIScreen.main.bounds.height / 812)
         }
         
         kakaoLoginButton.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(38)
             $0.height.equalTo(45)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(221)
+            $0.bottom.equalToSuperview().inset(221 * UIScreen.main.bounds.height / 812)
         }
         
         appleLoginButton.snp.makeConstraints {
@@ -90,6 +93,29 @@ final class SigninVC: UIViewController {
             $0.height.equalTo(45)
             $0.centerX.equalToSuperview()
             $0.top.equalTo(kakaoLoginButton.snp.bottom).offset(8)
+        }
+    }
+    
+    private func setupAction() {
+        kakaoLoginButton.rx.tapGesture().when(.recognized)
+            .asObservable()
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.coordinator?.pushToCharacterSettingView()
+            }).disposed(by: disposeBag)
+        
+        appleLoginButton.rx.tapGesture().when(.recognized)
+            .asObservable()
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.coordinator?.pushToCharacterSettingView()
+            }).disposed(by: disposeBag)
+
+    }
+    
+    private func setupAnimation() {
+        UIView.animate(withDuration: 0.7) {
+            self.atchLogoImageView.transform = CGAffineTransform(translationX: 0, y: -101 * UIScreen.main.bounds.height / 812)
         }
     }
 }
