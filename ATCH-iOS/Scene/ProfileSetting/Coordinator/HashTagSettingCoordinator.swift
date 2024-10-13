@@ -33,6 +33,13 @@ final class HashTagSettingCoordinator: Coordinator {
         finish()
         self.navigationController.popViewController(animated: true)
     }
+    
+    func pushToMainView() {
+        let tabBarCoordinator = TabBarCoordinator(self.navigationController)
+        tabBarCoordinator.finishDelegate = self
+        childCoordinators.append(tabBarCoordinator)
+        tabBarCoordinator.start()
+    }
 }
 
 extension HashTagSettingCoordinator: CoordinatorFinishDelegate {

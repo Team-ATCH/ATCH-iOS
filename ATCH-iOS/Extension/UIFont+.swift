@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum FontName: String {
+enum FontName {
     case caption
     case title, title2, title3, subtitle
     case headline

@@ -52,7 +52,9 @@ final class NicknameSettingVC: UIViewController {
             .when(.recognized)
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
-                vc.coordinator?.pushToHashTagSettingView()
+                if vc.nicknameSettingView.canGoNext {
+                    vc.coordinator?.pushToHashTagSettingView()
+                }
             }).disposed(by: disposeBag)
     }
 }

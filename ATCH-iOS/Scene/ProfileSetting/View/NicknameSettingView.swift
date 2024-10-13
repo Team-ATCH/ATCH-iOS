@@ -15,6 +15,8 @@ final class NicknameSettingView: UIView {
     
     private let disposeBag: DisposeBag = DisposeBag()
     
+    var canGoNext: Bool = false
+    
     private let stackView = UIStackView().then {
         $0.axis = .vertical
         $0.alignment = .center
@@ -63,7 +65,6 @@ final class NicknameSettingView: UIView {
     let nextButton = UIImageView().then {
         $0.image = .imgBigDisableButton
         $0.contentMode = .scaleAspectFill
-        $0.isUserInteractionEnabled = false
     }
     
     private let nextLabel = UILabel().then {
@@ -145,13 +146,13 @@ final class NicknameSettingView: UIView {
                 if let changedText = text {
                     if changedText.count > 0 && changedText.count < 11 {
                         view.nextButton.image = .imgBigButton
-                        view.nextButton.isUserInteractionEnabled = true
                         view.nextLabel.textColor = .atchBlack
+                        view.canGoNext = true
                         UserData.shared.nickname = changedText
                     } else {
                         view.nextButton.image = .imgBigDisableButton
-                        view.nextButton.isUserInteractionEnabled = false
                         view.nextLabel.textColor = .atchGrey3
+                        view.canGoNext = false
                     }
                 }
             }).disposed(by: disposeBag)

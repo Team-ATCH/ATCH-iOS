@@ -211,8 +211,8 @@
 		2A1BE0EA2CBA48B200908579 /* ProfileSetting */ = {
 			isa = PBXGroup;
 			children = (
-				2A1BE1112CBA5B1F00908579 /* View */,
 				2A1BE0ED2CBA48D900908579 /* Coordinator */,
+				2A1BE1112CBA5B1F00908579 /* View */,
 				2A1BE0EC2CBA48D600908579 /* VC */,
 				2A1BE0EB2CBA48D100908579 /* ViewModel */,
 			);
