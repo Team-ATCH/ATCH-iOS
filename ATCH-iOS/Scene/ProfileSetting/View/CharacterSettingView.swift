@@ -12,6 +12,7 @@ import SnapKit
 import Then
 
 final class CharacterSettingView: UIView {
+    
     private let disposeBag: DisposeBag = DisposeBag()
     
     private let characterlabel = UILabel().then {

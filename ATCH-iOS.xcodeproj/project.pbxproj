@@ -26,6 +26,7 @@
 		2A1BE1132CBA5B2D00908579 /* CharacterSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE1122CBA5B2D00908579 /* CharacterSettingView.swift */; };
 		2A1BE11E2CBA9B6700908579 /* AtchPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE11D2CBA9B6700908579 /* AtchPageControl.swift */; };
 		2A2591AF2CBABD5900B6181E /* NicknameSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591AE2CBABD5900B6181E /* NicknameSettingView.swift */; };
+		2A2591B12CBB835500B6181E /* HashTagSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591B02CBB835500B6181E /* HashTagSettingView.swift */; };
 		2A5052012C6D9EBB00DC3E4A /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5052002C6D9EBB00DC3E4A /* UIColor+.swift */; };
 		2A5052032C6D9FE700DC3E4A /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5052022C6D9FE700DC3E4A /* UIFont+.swift */; };
 		2A5052052C6DA06700DC3E4A /* Adjust+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5052042C6DA06700DC3E4A /* Adjust+.swift */; };
@@ -101,6 +102,7 @@
 		2A1BE1122CBA5B2D00908579 /* CharacterSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSettingView.swift; sourceTree = "<group>"; };
 		2A1BE11D2CBA9B6700908579 /* AtchPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtchPageControl.swift; sourceTree = "<group>"; };
 		2A2591AE2CBABD5900B6181E /* NicknameSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingView.swift; sourceTree = "<group>"; };
+		2A2591B02CBB835500B6181E /* HashTagSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTagSettingView.swift; sourceTree = "<group>"; };
 		2A5052002C6D9EBB00DC3E4A /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		2A5052022C6D9FE700DC3E4A /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		2A5052042C6DA06700DC3E4A /* Adjust+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjust+.swift"; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 			children = (
 				2A1BE1122CBA5B2D00908579 /* CharacterSettingView.swift */,
 				2A2591AE2CBABD5900B6181E /* NicknameSettingView.swift */,
+				2A2591B02CBB835500B6181E /* HashTagSettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A2591B12CBB835500B6181E /* HashTagSettingView.swift in Sources */,
 				2A5052052C6DA06700DC3E4A /* Adjust+.swift in Sources */,
 				2AFD06BC2C84A04A00F34C35 /* MapChatCollectionViewCell.swift in Sources */,
 				2AFD06D02C84A06700F34C35 /* ChattingRoomVC.swift in Sources */,

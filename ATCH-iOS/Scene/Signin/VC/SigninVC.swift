@@ -78,14 +78,14 @@ final class SigninVC: UIViewController {
         
         atchIntroLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(429 * UIScreen.main.bounds.height / 812)
+            $0.bottom.equalToSuperview().inset(429.adjustedH)
         }
         
         kakaoLoginButton.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(38)
             $0.height.equalTo(45)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(221 * UIScreen.main.bounds.height / 812)
+            $0.bottom.equalToSuperview().inset(221.adjustedH)
         }
         
         appleLoginButton.snp.makeConstraints {
@@ -115,7 +115,7 @@ final class SigninVC: UIViewController {
     
     private func setupAnimation() {
         UIView.animate(withDuration: 0.7) {
-            self.atchLogoImageView.transform = CGAffineTransform(translationX: 0, y: -101 * UIScreen.main.bounds.height / 812)
+            self.atchLogoImageView.transform = CGAffineTransform(translationX: 0, y: -101.adjustedH)
         }
     }
 }

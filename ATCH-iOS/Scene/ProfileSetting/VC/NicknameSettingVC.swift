@@ -18,6 +18,8 @@ final class NicknameSettingVC: UIViewController {
     
     private let disposeBag: DisposeBag = DisposeBag()
 
+    private let nicknameSettingView = NicknameSettingView()
+
     init(coordinator: NicknameSettingCoordinator) {
         self.coordinator = coordinator
         
@@ -28,23 +30,29 @@ final class NicknameSettingVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func loadView() {
+        super.loadView()
+        
+        self.view = nicknameSettingView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupStyle()
-        setupLayout()
         setupAction()
     }
     
     private func setupStyle() {
         self.view.backgroundColor = .atchWhite
-        print(UserData.shared.characterIndex)
     }
-    
-    private func setupLayout() {
-        
-    }
-    
+
     private func setupAction() {
+        nicknameSettingView.nextButton.rx.tapGesture().asObservable()
+            .when(.recognized)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.coordinator?.pushToHashTagSettingView()
+            }).disposed(by: disposeBag)
     }
 }

@@ -11,6 +11,7 @@ final class UserData {
     static var shared = UserData()
     
     var characterIndex: Int = 0
+    var nickname: String = ""
     
     func characterImage() -> UIImage {
         switch self.characterIndex {
