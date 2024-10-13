@@ -9,6 +9,9 @@ import Foundation
 
 enum CoordinatorType {
     case app
+    case splash
+    case signin
+    case profileSetting
     case tab
     case map
     case myChat

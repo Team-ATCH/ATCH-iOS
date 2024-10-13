@@ -7,6 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A1BE0E42CB8ECD000908579 /* SigninCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE0E32CB8ECCF00908579 /* SigninCoordinator.swift */; };
+		2A1BE0E72CB8ECE100908579 /* SigninVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE0E62CB8ECE100908579 /* SigninVC.swift */; };
+		2A1BE0E92CB8ECE700908579 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE0E82CB8ECE700908579 /* SigninViewModel.swift */; };
+		2A1BE0EF2CBA490700908579 /* CharacterSettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE0EE2CBA490700908579 /* CharacterSettingCoordinator.swift */; };
+		2A1BE0F12CBA491100908579 /* NicknameSettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE0F02CBA491100908579 /* NicknameSettingCoordinator.swift */; };
+		2A1BE0F32CBA491E00908579 /* HashTagSettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE0F22CBA491E00908579 /* HashTagSettingCoordinator.swift */; };
+		2A1BE0F52CBA494100908579 /* CharacterSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE0F42CBA494100908579 /* CharacterSettingVC.swift */; };
+		2A1BE0F72CBA494B00908579 /* NicknameSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE0F62CBA494B00908579 /* NicknameSettingVC.swift */; };
+		2A1BE0F92CBA495300908579 /* HashTagSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE0F82CBA495300908579 /* HashTagSettingVC.swift */; };
+		2A1BE0FB2CBA496A00908579 /* ProfileSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE0FA2CBA496A00908579 /* ProfileSettingViewModel.swift */; };
+		2A1BE0FE2CBA4D6900908579 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE0FD2CBA4D6900908579 /* UserData.swift */; };
+		2A1BE1032CBA4E1D00908579 /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE1022CBA4E1D00908579 /* SplashCoordinator.swift */; };
+		2A1BE1062CBA4E3800908579 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE1052CBA4E3800908579 /* SplashVC.swift */; };
+		2A1BE1092CBA4E4300908579 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE1082CBA4E4300908579 /* SplashViewModel.swift */; };
+		2A1BE10D2CBA4F9800908579 /* atch.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A1BE10B2CBA4F9800908579 /* atch.json */; };
+		2A1BE1102CBA509900908579 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2A1BE10F2CBA509900908579 /* Lottie */; };
+		2A1BE1132CBA5B2D00908579 /* CharacterSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE1122CBA5B2D00908579 /* CharacterSettingView.swift */; };
+		2A1BE11E2CBA9B6700908579 /* AtchPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE11D2CBA9B6700908579 /* AtchPageControl.swift */; };
+		2A2591AF2CBABD5900B6181E /* NicknameSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591AE2CBABD5900B6181E /* NicknameSettingView.swift */; };
+		2A2591B12CBB835500B6181E /* HashTagSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591B02CBB835500B6181E /* HashTagSettingView.swift */; };
 		2A5052012C6D9EBB00DC3E4A /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5052002C6D9EBB00DC3E4A /* UIColor+.swift */; };
 		2A5052032C6D9FE700DC3E4A /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5052022C6D9FE700DC3E4A /* UIFont+.swift */; };
 		2A5052052C6DA06700DC3E4A /* Adjust+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5052042C6DA06700DC3E4A /* Adjust+.swift */; };
@@ -64,6 +84,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A1BE0E32CB8ECCF00908579 /* SigninCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninCoordinator.swift; sourceTree = "<group>"; };
+		2A1BE0E62CB8ECE100908579 /* SigninVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninVC.swift; sourceTree = "<group>"; };
+		2A1BE0E82CB8ECE700908579 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
+		2A1BE0EE2CBA490700908579 /* CharacterSettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSettingCoordinator.swift; sourceTree = "<group>"; };
+		2A1BE0F02CBA491100908579 /* NicknameSettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingCoordinator.swift; sourceTree = "<group>"; };
+		2A1BE0F22CBA491E00908579 /* HashTagSettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTagSettingCoordinator.swift; sourceTree = "<group>"; };
+		2A1BE0F42CBA494100908579 /* CharacterSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSettingVC.swift; sourceTree = "<group>"; };
+		2A1BE0F62CBA494B00908579 /* NicknameSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingVC.swift; sourceTree = "<group>"; };
+		2A1BE0F82CBA495300908579 /* HashTagSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTagSettingVC.swift; sourceTree = "<group>"; };
+		2A1BE0FA2CBA496A00908579 /* ProfileSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewModel.swift; sourceTree = "<group>"; };
+		2A1BE0FD2CBA4D6900908579 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		2A1BE1022CBA4E1D00908579 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
+		2A1BE1052CBA4E3800908579 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		2A1BE1082CBA4E4300908579 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		2A1BE10C2CBA4F9800908579 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/atch.json; sourceTree = "<group>"; };
+		2A1BE1122CBA5B2D00908579 /* CharacterSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSettingView.swift; sourceTree = "<group>"; };
+		2A1BE11D2CBA9B6700908579 /* AtchPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtchPageControl.swift; sourceTree = "<group>"; };
+		2A2591AE2CBABD5900B6181E /* NicknameSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingView.swift; sourceTree = "<group>"; };
+		2A2591B02CBB835500B6181E /* HashTagSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTagSettingView.swift; sourceTree = "<group>"; };
 		2A5052002C6D9EBB00DC3E4A /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		2A5052022C6D9FE700DC3E4A /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		2A5052042C6DA06700DC3E4A /* Adjust+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjust+.swift"; sourceTree = "<group>"; };
@@ -128,12 +167,154 @@
 				2AFD06DA2C84A0F400F34C35 /* RxCocoa in Frameworks */,
 				2AFD06D72C84A0E800F34C35 /* RxGesture in Frameworks */,
 				2AFD06472C80B9CF00F34C35 /* KakaoMapsSDK-SPM in Frameworks */,
+				2A1BE1102CBA509900908579 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A1BE0DE2CB8EC8F00908579 /* Signin */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE0DF2CB8EC9E00908579 /* Coordinator */,
+				2A1BE0E02CB8ECAA00908579 /* VC */,
+				2A1BE0E12CB8ECAE00908579 /* ViewModel */,
+			);
+			path = Signin;
+			sourceTree = "<group>";
+		};
+		2A1BE0DF2CB8EC9E00908579 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE0E32CB8ECCF00908579 /* SigninCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2A1BE0E02CB8ECAA00908579 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE0E62CB8ECE100908579 /* SigninVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		2A1BE0E12CB8ECAE00908579 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE0E82CB8ECE700908579 /* SigninViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2A1BE0EA2CBA48B200908579 /* ProfileSetting */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE0ED2CBA48D900908579 /* Coordinator */,
+				2A1BE1112CBA5B1F00908579 /* View */,
+				2A1BE0EC2CBA48D600908579 /* VC */,
+				2A1BE0EB2CBA48D100908579 /* ViewModel */,
+			);
+			path = ProfileSetting;
+			sourceTree = "<group>";
+		};
+		2A1BE0EB2CBA48D100908579 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE0FA2CBA496A00908579 /* ProfileSettingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2A1BE0EC2CBA48D600908579 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE0F42CBA494100908579 /* CharacterSettingVC.swift */,
+				2A1BE0F62CBA494B00908579 /* NicknameSettingVC.swift */,
+				2A1BE0F82CBA495300908579 /* HashTagSettingVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		2A1BE0ED2CBA48D900908579 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE0EE2CBA490700908579 /* CharacterSettingCoordinator.swift */,
+				2A1BE0F02CBA491100908579 /* NicknameSettingCoordinator.swift */,
+				2A1BE0F22CBA491E00908579 /* HashTagSettingCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2A1BE0FC2CBA4D5200908579 /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE0FD2CBA4D6900908579 /* UserData.swift */,
+			);
+			path = Singleton;
+			sourceTree = "<group>";
+		};
+		2A1BE0FF2CBA4DD700908579 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE1012CBA4E1000908579 /* Coordinator */,
+				2A1BE1042CBA4E1F00908579 /* VC */,
+				2A1BE1072CBA4E3B00908579 /* ViewModel */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		2A1BE1012CBA4E1000908579 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE1022CBA4E1D00908579 /* SplashCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2A1BE1042CBA4E1F00908579 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE1052CBA4E3800908579 /* SplashVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		2A1BE1072CBA4E3B00908579 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE1082CBA4E4300908579 /* SplashViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2A1BE10A2CBA4F7B00908579 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE10B2CBA4F9800908579 /* atch.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		2A1BE1112CBA5B1F00908579 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE1122CBA5B2D00908579 /* CharacterSettingView.swift */,
+				2A2591AE2CBABD5900B6181E /* NicknameSettingView.swift */,
+				2A2591B02CBB835500B6181E /* HashTagSettingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2A1BE11C2CBA9B5C00908579 /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				2A1BE11D2CBA9B6700908579 /* AtchPageControl.swift */,
+			);
+			path = PageControl;
+			sourceTree = "<group>";
+		};
 		2A5051FC2C6D9E6D00DC3E4A /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +329,9 @@
 			children = (
 				2ABCDC682C71EC4300AD649C /* Base */,
 				2AFD06BF2C84A06700F34C35 /* Components */,
+				2A1BE0FF2CBA4DD700908579 /* Splash */,
+				2A1BE0DE2CB8EC8F00908579 /* Signin */,
+				2A1BE0EA2CBA48B200908579 /* ProfileSetting */,
 				2AFD06CD2C84A06700F34C35 /* Alarm */,
 				2AFD06C62C84A06700F34C35 /* ChattingRoom */,
 				2ABCDC722C71EC5C00AD649C /* Map */,
@@ -162,6 +346,7 @@
 		2A5051FE2C6D9E9200DC3E4A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2A1BE10A2CBA4F7B00908579 /* Lottie */,
 				2A5052062C6DA3B100DC3E4A /* Font */,
 				2A85A93A2BF869C20030B4F4 /* Assets.xcassets */,
 			);
@@ -215,6 +400,7 @@
 				2AFD06412C8059A700F34C35 /* Config.swift */,
 				2A5051FF2C6D9EA800DC3E4A /* Extension */,
 				2AFD06E22C84A11D00F34C35 /* Model */,
+				2A1BE0FC2CBA4D5200908579 /* Singleton */,
 				2A5051FD2C6D9E7900DC3E4A /* Scene */,
 				2A5051FE2C6D9E9200DC3E4A /* Resource */,
 				2A5051FC2C6D9E6D00DC3E4A /* Support */,
@@ -408,6 +594,7 @@
 		2AFD06BF2C84A06700F34C35 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2A1BE11C2CBA9B5C00908579 /* PageControl */,
 				2AFD06BE2C84A06700F34C35 /* NavigationView */,
 			);
 			path = Components;
@@ -542,6 +729,7 @@
 				2AFD06D92C84A0F400F34C35 /* RxCocoa */,
 				2AFD06DB2C84A0F400F34C35 /* RxRelay */,
 				2AFD06DE2C84A10100F34C35 /* Kingfisher */,
+				2A1BE10F2CBA509900908579 /* Lottie */,
 			);
 			productName = "ATCH-iOS";
 			productReference = 2A85A92E2BF869C10030B4F4 /* ATCH-iOS.app */;
@@ -578,6 +766,7 @@
 				2AFD06D52C84A0E800F34C35 /* XCRemoteSwiftPackageReference "RxGesture" */,
 				2AFD06D82C84A0F400F34C35 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				2AFD06DD2C84A10100F34C35 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				2A1BE10E2CBA509900908579 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 2A85A92F2BF869C10030B4F4 /* Products */;
 			projectDirPath = "";
@@ -594,6 +783,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A85A93E2BF869C20030B4F4 /* LaunchScreen.storyboard in Resources */,
+				2A1BE10D2CBA4F9800908579 /* atch.json in Resources */,
 				2A50520C2C6DAA4500DC3E4A /* Pretendard-Medium.otf in Resources */,
 				2A50520A2C6DAA4500DC3E4A /* Pretendard-Regular.otf in Resources */,
 				2A85A93B2BF869C20030B4F4 /* Assets.xcassets in Resources */,
@@ -608,27 +798,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A2591B12CBB835500B6181E /* HashTagSettingView.swift in Sources */,
 				2A5052052C6DA06700DC3E4A /* Adjust+.swift in Sources */,
 				2AFD06BC2C84A04A00F34C35 /* MapChatCollectionViewCell.swift in Sources */,
 				2AFD06D02C84A06700F34C35 /* ChattingRoomVC.swift in Sources */,
 				2ABCDC622C71EC3C00AD649C /* AllChatCoordinator.swift in Sources */,
+				2A1BE0F12CBA491100908579 /* NicknameSettingCoordinator.swift in Sources */,
 				2ABCDC742C71EC5C00AD649C /* MapVC.swift in Sources */,
 				2ABCDC7A2C71EC6300AD649C /* MyPageCoordinator.swift in Sources */,
 				2A5052012C6D9EBB00DC3E4A /* UIColor+.swift in Sources */,
 				2AFD06E72C84A13700F34C35 /* UIStackView+.swift in Sources */,
 				2AFD07222C8979F800F34C35 /* AlarmView.swift in Sources */,
+				2A1BE0EF2CBA490700908579 /* CharacterSettingCoordinator.swift in Sources */,
 				2ABCDC632C71EC3C00AD649C /* AllChatVC.swift in Sources */,
+				2A1BE0E72CB8ECE100908579 /* SigninVC.swift in Sources */,
 				2ABCDC6B2C71EC4300AD649C /* CoordinatorType.swift in Sources */,
+				2A1BE0E92CB8ECE700908579 /* SigninViewModel.swift in Sources */,
+				2A2591AF2CBABD5900B6181E /* NicknameSettingView.swift in Sources */,
+				2A1BE0FB2CBA496A00908579 /* ProfileSettingViewModel.swift in Sources */,
+				2A1BE1062CBA4E3800908579 /* SplashVC.swift in Sources */,
 				2ABCDC822C71EC6C00AD649C /* MyChatVC.swift in Sources */,
+				2A1BE0F92CBA495300908579 /* HashTagSettingVC.swift in Sources */,
 				2AFD07242C897A5400F34C35 /* AlarmCollectionViewCell.swift in Sources */,
 				2AFD06442C80B6D200F34C35 /* UIView+.swift in Sources */,
 				2ABCDC7B2C71EC6300AD649C /* MyPageVC.swift in Sources */,
+				2A1BE1032CBA4E1D00908579 /* SplashCoordinator.swift in Sources */,
 				2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */,
 				2ABCDC8B2C71EC9700AD649C /* TabBarCoordinator.swift in Sources */,
+				2A1BE1132CBA5B2D00908579 /* CharacterSettingView.swift in Sources */,
 				2AFD06E32C84A11D00F34C35 /* MapChatData.swift in Sources */,
 				2AFD06D32C84A06700F34C35 /* AlarmVC.swift in Sources */,
 				2AFD06492C80BAA500F34C35 /* BaseMapVC.swift in Sources */,
+				2A1BE0E42CB8ECD000908579 /* SigninCoordinator.swift in Sources */,
+				2A1BE11E2CBA9B6700908579 /* AtchPageControl.swift in Sources */,
+				2A1BE0F72CBA494B00908579 /* NicknameSettingVC.swift in Sources */,
 				2AFD06D42C84A06700F34C35 /* AlarmViewModel.swift in Sources */,
+				2A1BE1092CBA4E4300908579 /* SplashViewModel.swift in Sources */,
 				2ABCDC692C71EC4300AD649C /* AppCoordinator.swift in Sources */,
 				2AFD06CF2C84A06700F34C35 /* ChattingRoomCoordinator.swift in Sources */,
 				2AFD06EC2C84AF2000F34C35 /* MyChatData.swift in Sources */,
@@ -639,7 +844,9 @@
 				2A85A9322BF869C20030B4F4 /* AppDelegate.swift in Sources */,
 				2A85A9342BF869C20030B4F4 /* SceneDelegate.swift in Sources */,
 				2AFD06E62C84A13700F34C35 /* NSObject+.swift in Sources */,
+				2A1BE0F52CBA494100908579 /* CharacterSettingVC.swift in Sources */,
 				2AFD06D12C84A06700F34C35 /* ChattingRoomViewModel.swift in Sources */,
+				2A1BE0FE2CBA4D6900908579 /* UserData.swift in Sources */,
 				2AFD06CE2C84A06700F34C35 /* NavigationView.swift in Sources */,
 				2ABCDC812C71EC6C00AD649C /* MyChatCoordinator.swift in Sources */,
 				2AFD06422C8059A700F34C35 /* Config.swift in Sources */,
@@ -647,6 +854,7 @@
 				2AFD06EE2C84B2C100F34C35 /* MyChatView.swift in Sources */,
 				2AFD06EA2C84A26800F34C35 /* MyChatCollectionViewCell.swift in Sources */,
 				2ABCDC6D2C71EC5100AD649C /* UIWindow+.swift in Sources */,
+				2A1BE0F32CBA491E00908579 /* HashTagSettingCoordinator.swift in Sources */,
 				2ABCDC6A2C71EC4300AD649C /* Coordinator.swift in Sources */,
 				2AFD06BB2C84A04A00F34C35 /* MapBottomSheetView.swift in Sources */,
 				2AFD06BA2C84A04A00F34C35 /* MapViewModel.swift in Sources */,
@@ -656,6 +864,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		2A1BE10B2CBA4F9800908579 /* atch.json */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A1BE10C2CBA4F9800908579 /* en */,
+			);
+			name = atch.json;
+			sourceTree = "<group>";
+		};
 		2A85A93C2BF869C20030B4F4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -868,6 +1084,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2A1BE10E2CBA509900908579 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
 		2ABBF7052C5CC16F00B12315 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -919,6 +1143,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2A1BE10F2CBA509900908579 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2A1BE10E2CBA509900908579 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
 		2ABBF7062C5CC16F00B12315 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2ABBF7052C5CC16F00B12315 /* XCRemoteSwiftPackageReference "SnapKit" */;
