@@ -57,7 +57,6 @@ final class ProfileModalView: UIView {
     init() {
         super.init(frame: .zero)
         
-        self.setupStyle()
         self.setupLayout()
     }
     
@@ -68,6 +67,7 @@ final class ProfileModalView: UIView {
     func bindViewData(data: ProfileModalData) {
         profileNicknameLabel.text = data.nickname
         profileHashTagLabel.text = data.hashTag
+        setupHashTag()
         if let profileUrl = data.profileUrl,
            let url = URL(string: profileUrl) {
             profileImageView.kf.setImage(with: url)
@@ -78,7 +78,7 @@ final class ProfileModalView: UIView {
         profileEditLabel.text = data.buttonText
     }
     
-    private func setupStyle() {
+    private func setupHashTag() {
         if let hashtags = profileHashTagLabel.text {
             let words = hashtags.split(separator: " ").map { String($0) }
             

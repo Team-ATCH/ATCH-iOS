@@ -27,6 +27,7 @@ final class SigninVC: UIViewController {
         $0.text = "실시간 장소정보 공유 플랫폼"
         $0.textColor = .atchBlack
         $0.font = .font(.chat)
+        $0.alpha = 0
     }
     
     private let kakaoLoginButton = UIImageView().then {
@@ -71,29 +72,29 @@ final class SigninVC: UIViewController {
                               appleLoginButton)
         
         atchLogoImageView.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(362.adjustedH)
+            $0.top.equalToSuperview().inset(340.adjustedH)
             $0.width.equalTo(260)
             $0.height.equalTo(110)
             $0.centerX.equalToSuperview()
         }
         
         atchIntroLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(454.adjustedH)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(429.adjustedH)
         }
         
         kakaoLoginButton.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(38)
             $0.height.equalTo(45)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(221.adjustedH)
+            $0.bottom.equalToSuperview().inset(131.adjustedH)
         }
         
         appleLoginButton.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(38)
             $0.height.equalTo(45)
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(kakaoLoginButton.snp.bottom).offset(8)
+            $0.top.equalTo(kakaoLoginButton.snp.bottom).offset(8.adjustedH)
         }
     }
     
@@ -116,8 +117,8 @@ final class SigninVC: UIViewController {
     }
     
     private func setupAnimation() {
-        UIView.animate(withDuration: 0.7) {
-            self.atchLogoImageView.transform = CGAffineTransform(translationX: 0, y: -90.adjustedH)
+        UIView.animate(withDuration: 1.0) {
+            self.atchIntroLabel.alpha = 1
         }
     }
 }

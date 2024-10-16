@@ -169,6 +169,9 @@ final class CharacterSettingView: UIView {
             .asObservable()
             .withUnretained(self)
             .subscribe(onNext: { view, _ in
+                if view.characterPageControl.currentPage <= 0 {
+                    return
+                }
                 view.characterPageControl.currentPage -= 1
                 view.characterScrollView.setContentOffset(CGPoint(x: Int(UIScreen.main.bounds.width) * (view.characterPageControl.currentPage), y: 0), animated: true)
             }).disposed(by: disposeBag)
@@ -177,6 +180,9 @@ final class CharacterSettingView: UIView {
             .asObservable()
             .withUnretained(self)
             .subscribe(onNext: { view, _ in
+                if view.characterPageControl.currentPage >= 4 {
+                    return
+                }
                 view.characterPageControl.currentPage += 1
                 view.characterScrollView.setContentOffset(CGPoint(x: Int(UIScreen.main.bounds.width) * (view.characterPageControl.currentPage), y: 0), animated: true)
             }).disposed(by: disposeBag)

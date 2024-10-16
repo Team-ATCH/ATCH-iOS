@@ -14,7 +14,6 @@ import Then
 
 final class ProfileModalVC: UIViewController {
     
-    var viewModel: ProfileModalViewModel?
     let coordinator: ProfileModalCoordinator?
     
     private let disposeBag: DisposeBag = DisposeBag()
@@ -55,8 +54,10 @@ final class ProfileModalVC: UIViewController {
             }).disposed(by: disposeBag)
         
         profileModalView.profileEditButton.rx.tapGesture().asObservable()
+            .when(.recognized)
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
+                vc.dismiss(animated: false)
                 vc.coordinator?.pushToMyPage()
             }).disposed(by: disposeBag)
     }

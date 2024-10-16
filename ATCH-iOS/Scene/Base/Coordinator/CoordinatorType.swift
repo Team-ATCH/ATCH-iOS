@@ -20,4 +20,5 @@ enum CoordinatorType {
     case myPage
     case alarm
     case chattingRoom
+    case popup
 }

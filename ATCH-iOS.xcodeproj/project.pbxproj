@@ -31,6 +31,12 @@
 		2A2591B82CBBEEF000B6181E /* ProfileModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591B72CBBEEF000B6181E /* ProfileModalVC.swift */; };
 		2A2591BB2CBBF39500B6181E /* ProfileModalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591BA2CBBF39500B6181E /* ProfileModalCoordinator.swift */; };
 		2A2591C22CBF8EC900B6181E /* ProfileModalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591C12CBF8EC900B6181E /* ProfileModalData.swift */; };
+		2A2591C52CBFF5B700B6181E /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591C42CBFF5B700B6181E /* MyPageView.swift */; };
+		2A2591C82CBFF78100B6181E /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591C72CBFF78100B6181E /* SettingCell.swift */; };
+		2A2591CF2CC0016000B6181E /* PopUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591CE2CC0016000B6181E /* PopUpCoordinator.swift */; };
+		2A2591D12CC001B200B6181E /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591D02CC001B200B6181E /* PopUpView.swift */; };
+		2A2591D32CC001B900B6181E /* PopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591D22CC001B900B6181E /* PopUpVC.swift */; };
+		2A2591D52CC0020000B6181E /* PopUpData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591D42CC0020000B6181E /* PopUpData.swift */; };
 		2A5052012C6D9EBB00DC3E4A /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5052002C6D9EBB00DC3E4A /* UIColor+.swift */; };
 		2A5052032C6D9FE700DC3E4A /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5052022C6D9FE700DC3E4A /* UIFont+.swift */; };
 		2A5052052C6DA06700DC3E4A /* Adjust+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5052042C6DA06700DC3E4A /* Adjust+.swift */; };
@@ -111,6 +117,12 @@
 		2A2591B72CBBEEF000B6181E /* ProfileModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModalVC.swift; sourceTree = "<group>"; };
 		2A2591BA2CBBF39500B6181E /* ProfileModalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModalCoordinator.swift; sourceTree = "<group>"; };
 		2A2591C12CBF8EC900B6181E /* ProfileModalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModalData.swift; sourceTree = "<group>"; };
+		2A2591C42CBFF5B700B6181E /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		2A2591C72CBFF78100B6181E /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		2A2591CE2CC0016000B6181E /* PopUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpCoordinator.swift; sourceTree = "<group>"; };
+		2A2591D02CC001B200B6181E /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		2A2591D22CC001B900B6181E /* PopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpVC.swift; sourceTree = "<group>"; };
+		2A2591D42CC0020000B6181E /* PopUpData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpData.swift; sourceTree = "<group>"; };
 		2A5052002C6D9EBB00DC3E4A /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		2A5052022C6D9FE700DC3E4A /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		2A5052042C6DA06700DC3E4A /* Adjust+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjust+.swift"; sourceTree = "<group>"; };
@@ -357,6 +369,56 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		2A2591C32CBFF5AF00B6181E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A2591C42CBFF5B700B6181E /* MyPageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2A2591C62CBFF77700B6181E /* SettingCell */ = {
+			isa = PBXGroup;
+			children = (
+				2A2591C72CBFF78100B6181E /* SettingCell.swift */,
+			);
+			path = SettingCell;
+			sourceTree = "<group>";
+		};
+		2A2591C92CC0013A00B6181E /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				2A2591CA2CC0014400B6181E /* Coordinator */,
+				2A2591CC2CC0014C00B6181E /* View */,
+				2A2591CB2CC0014900B6181E /* VC */,
+			);
+			path = PopUp;
+			sourceTree = "<group>";
+		};
+		2A2591CA2CC0014400B6181E /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2A2591CE2CC0016000B6181E /* PopUpCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2A2591CB2CC0014900B6181E /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2A2591D22CC001B900B6181E /* PopUpVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		2A2591CC2CC0014C00B6181E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A2591D02CC001B200B6181E /* PopUpView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2A5051FC2C6D9E6D00DC3E4A /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -543,6 +605,7 @@
 			isa = PBXGroup;
 			children = (
 				2ABCDC762C71EC6300AD649C /* Coordinator */,
+				2A2591C32CBFF5AF00B6181E /* View */,
 				2ABCDC782C71EC6300AD649C /* VC */,
 			);
 			path = MyPage;
@@ -636,6 +699,8 @@
 		2AFD06BF2C84A06700F34C35 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2A2591C92CC0013A00B6181E /* PopUp */,
+				2A2591C62CBFF77700B6181E /* SettingCell */,
 				2A2591B52CBBEEDE00B6181E /* ProfileModal */,
 				2A1BE11C2CBA9B5C00908579 /* PageControl */,
 				2AFD06BE2C84A06700F34C35 /* NavigationView */,
@@ -719,6 +784,7 @@
 				2AFD06EB2C84AF2000F34C35 /* MyChatData.swift */,
 				2AFD071A2C89793000F34C35 /* AlarmData.swift */,
 				2A2591C12CBF8EC900B6181E /* ProfileModalData.swift */,
+				2A2591D42CC0020000B6181E /* PopUpData.swift */,
 			);
 			path = ViewData;
 			sourceTree = "<group>";
@@ -843,15 +909,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A2591B12CBB835500B6181E /* HashTagSettingView.swift in Sources */,
+				2A2591D12CC001B200B6181E /* PopUpView.swift in Sources */,
 				2A5052052C6DA06700DC3E4A /* Adjust+.swift in Sources */,
+				2A2591C52CBFF5B700B6181E /* MyPageView.swift in Sources */,
 				2AFD06BC2C84A04A00F34C35 /* MapChatCollectionViewCell.swift in Sources */,
 				2AFD06D02C84A06700F34C35 /* ChattingRoomVC.swift in Sources */,
 				2ABCDC622C71EC3C00AD649C /* AllChatCoordinator.swift in Sources */,
 				2A1BE0F12CBA491100908579 /* NicknameSettingCoordinator.swift in Sources */,
+				2A2591D52CC0020000B6181E /* PopUpData.swift in Sources */,
 				2ABCDC742C71EC5C00AD649C /* MapVC.swift in Sources */,
 				2ABCDC7A2C71EC6300AD649C /* MyPageCoordinator.swift in Sources */,
 				2A5052012C6D9EBB00DC3E4A /* UIColor+.swift in Sources */,
 				2AFD06E72C84A13700F34C35 /* UIStackView+.swift in Sources */,
+				2A2591D32CC001B900B6181E /* PopUpVC.swift in Sources */,
 				2AFD07222C8979F800F34C35 /* AlarmView.swift in Sources */,
 				2A1BE0EF2CBA490700908579 /* CharacterSettingCoordinator.swift in Sources */,
 				2ABCDC632C71EC3C00AD649C /* AllChatVC.swift in Sources */,
@@ -866,7 +936,9 @@
 				2A1BE0F92CBA495300908579 /* HashTagSettingVC.swift in Sources */,
 				2AFD07242C897A5400F34C35 /* AlarmCollectionViewCell.swift in Sources */,
 				2AFD06442C80B6D200F34C35 /* UIView+.swift in Sources */,
+				2A2591CF2CC0016000B6181E /* PopUpCoordinator.swift in Sources */,
 				2A2591B32CBBEAFB00B6181E /* ProfileModalView.swift in Sources */,
+				2A2591C82CBFF78100B6181E /* SettingCell.swift in Sources */,
 				2ABCDC7B2C71EC6300AD649C /* MyPageVC.swift in Sources */,
 				2A1BE1032CBA4E1D00908579 /* SplashCoordinator.swift in Sources */,
 				2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */,

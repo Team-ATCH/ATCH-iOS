@@ -12,6 +12,10 @@ extension UIColor {
         return UIColor(hex: "#000000")
     }
     
+    static var atchBlack2: UIColor {
+        return UIColor(hex: "32251E")
+    }
+    
     static var atchShadowGrey: UIColor {
         return UIColor(hex: "#2E2E2E")
     }

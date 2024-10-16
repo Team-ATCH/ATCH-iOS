@@ -1,38 +1,34 @@
 //
-//  ProfileModalCoordinator.swift
+//  PopUpCoordinator.swift
 //  ATCH-iOS
 //
-//  Created by 변희주 on 10/13/24.
+//  Created by 변희주 on 10/16/24.
 //
 
 import UIKit
 
-final class ProfileModalCoordinator: Coordinator {
+final class PopUpCoordinator: Coordinator {
     var finishDelegate: (any CoordinatorFinishDelegate)?
     var navigationController: UINavigationController
     var childCoordinators: [any Coordinator] = []
     var type: CoordinatorType
-    var profileModalVC: ProfileModalVC?
+    var popUpVC: PopUpVC?
     
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.type = CoordinatorType.profileModal
+        self.type = CoordinatorType.popup
     }
     
     func start() { }
     
-    func start(userData: ProfileModalData) {
-        self.profileModalVC = ProfileModalVC(coordinator: self)
-        self.profileModalVC?.bindUserInfo(data: userData)
+    func start(popUpData: PopUpData) {
+        self.popUpVC = PopUpVC(coordinator: self)
+        self.popUpVC?.bindPopUpData(data: popUpData)
         
-        if let vc = self.profileModalVC {
+        if let vc = self.popUpVC {
             vc.modalPresentationStyle = .overFullScreen
             self.navigationController.present(vc, animated: false)
         }
-    }
-        
-    func pushToMyPage() {
-        navigationController.tabBarController?.selectedIndex = 3
     }
     
     func back() {
@@ -41,7 +37,7 @@ final class ProfileModalCoordinator: Coordinator {
     }
 }
 
-extension ProfileModalCoordinator: CoordinatorFinishDelegate {
+extension PopUpCoordinator: CoordinatorFinishDelegate {
     func coordinatorDidFinish(childCoordinator: Coordinator) {
         self.childCoordinators = self.childCoordinators
             .filter { $0.type != childCoordinator.type }
