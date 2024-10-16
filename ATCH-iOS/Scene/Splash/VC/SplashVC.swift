@@ -65,7 +65,7 @@ final class SplashVC: UIViewController {
                 guard let self else { return }
                 if finished {
                     if self.isValidToken {
-                        self.coordinator?.pushMainView()
+                        self.coordinator?.pushToMainView()
                     } else {
                         self.coordinator?.pushToSignView()
                     }

@@ -34,23 +34,23 @@ final class CharacterSettingView: UIView {
     }
     
     private let characterImageViewOne = UIImageView().then {
-        $0.image = .imgCharacterOne
+        $0.image = .imgBigCharacterOne
     }
     
     private let characterImageViewTwo = UIImageView().then {
-        $0.image = .imgCharacterTwo
+        $0.image = .imgBigCharacterTwo
     }
     
     private let characterImageViewThree = UIImageView().then {
-        $0.image = .imgCharacterThree
+        $0.image = .imgBigCharacterThree
     }
     
     private let characterImageViewFour = UIImageView().then {
-        $0.image = .imgCharacterFour
+        $0.image = .imgBigCharacterFour
     }
     
     private let characterImageViewFive = UIImageView().then {
-        $0.image = .imgCharacterFive
+        $0.image = .imgBigCharacterFive
     }
     
     let characterPageControl = AtchPageControl().then {

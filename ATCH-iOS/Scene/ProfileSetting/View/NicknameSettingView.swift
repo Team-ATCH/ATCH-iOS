@@ -140,6 +140,13 @@ final class NicknameSettingView: UIView {
     }
     
     private func setupAction() {
+        self.rx.tapGesture()
+            .asObservable().when(.recognized)
+            .withUnretained(self)
+            .subscribe(onNext: { view, _ in
+                view.nicknameTextFiled.becomeFirstResponder()
+            }).disposed(by: disposeBag)
+        
         nicknameTextFiled.rx.text.asObservable()
             .withUnretained(self)
             .subscribe(onNext: { view, text in

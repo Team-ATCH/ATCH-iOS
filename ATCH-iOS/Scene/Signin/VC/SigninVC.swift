@@ -71,9 +71,10 @@ final class SigninVC: UIViewController {
                               appleLoginButton)
         
         atchLogoImageView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(362.adjustedH)
             $0.width.equalTo(260)
             $0.height.equalTo(110)
-            $0.center.equalToSuperview()
+            $0.centerX.equalToSuperview()
         }
         
         atchIntroLabel.snp.makeConstraints {
@@ -97,6 +98,7 @@ final class SigninVC: UIViewController {
     }
     
     private func setupAction() {
+        // 여기서 처음 가입하는 사람 or 이미 가입한 사람 구분 해야함
         kakaoLoginButton.rx.tapGesture().when(.recognized)
             .asObservable()
             .withUnretained(self)
@@ -115,7 +117,7 @@ final class SigninVC: UIViewController {
     
     private func setupAnimation() {
         UIView.animate(withDuration: 0.7) {
-            self.atchLogoImageView.transform = CGAffineTransform(translationX: 0, y: -101.adjustedH)
+            self.atchLogoImageView.transform = CGAffineTransform(translationX: 0, y: -90.adjustedH)
         }
     }
 }

@@ -27,6 +27,10 @@
 		2A1BE11E2CBA9B6700908579 /* AtchPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BE11D2CBA9B6700908579 /* AtchPageControl.swift */; };
 		2A2591AF2CBABD5900B6181E /* NicknameSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591AE2CBABD5900B6181E /* NicknameSettingView.swift */; };
 		2A2591B12CBB835500B6181E /* HashTagSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591B02CBB835500B6181E /* HashTagSettingView.swift */; };
+		2A2591B32CBBEAFB00B6181E /* ProfileModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591B22CBBEAFB00B6181E /* ProfileModalView.swift */; };
+		2A2591B82CBBEEF000B6181E /* ProfileModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591B72CBBEEF000B6181E /* ProfileModalVC.swift */; };
+		2A2591BB2CBBF39500B6181E /* ProfileModalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591BA2CBBF39500B6181E /* ProfileModalCoordinator.swift */; };
+		2A2591C22CBF8EC900B6181E /* ProfileModalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2591C12CBF8EC900B6181E /* ProfileModalData.swift */; };
 		2A5052012C6D9EBB00DC3E4A /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5052002C6D9EBB00DC3E4A /* UIColor+.swift */; };
 		2A5052032C6D9FE700DC3E4A /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5052022C6D9FE700DC3E4A /* UIFont+.swift */; };
 		2A5052052C6DA06700DC3E4A /* Adjust+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5052042C6DA06700DC3E4A /* Adjust+.swift */; };
@@ -103,6 +107,10 @@
 		2A1BE11D2CBA9B6700908579 /* AtchPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtchPageControl.swift; sourceTree = "<group>"; };
 		2A2591AE2CBABD5900B6181E /* NicknameSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingView.swift; sourceTree = "<group>"; };
 		2A2591B02CBB835500B6181E /* HashTagSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTagSettingView.swift; sourceTree = "<group>"; };
+		2A2591B22CBBEAFB00B6181E /* ProfileModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModalView.swift; sourceTree = "<group>"; };
+		2A2591B72CBBEEF000B6181E /* ProfileModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModalVC.swift; sourceTree = "<group>"; };
+		2A2591BA2CBBF39500B6181E /* ProfileModalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModalCoordinator.swift; sourceTree = "<group>"; };
+		2A2591C12CBF8EC900B6181E /* ProfileModalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModalData.swift; sourceTree = "<group>"; };
 		2A5052002C6D9EBB00DC3E4A /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		2A5052022C6D9FE700DC3E4A /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		2A5052042C6DA06700DC3E4A /* Adjust+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjust+.swift"; sourceTree = "<group>"; };
@@ -313,6 +321,40 @@
 				2A1BE11D2CBA9B6700908579 /* AtchPageControl.swift */,
 			);
 			path = PageControl;
+			sourceTree = "<group>";
+		};
+		2A2591B42CBBEB0100B6181E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A2591B22CBBEAFB00B6181E /* ProfileModalView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2A2591B52CBBEEDE00B6181E /* ProfileModal */ = {
+			isa = PBXGroup;
+			children = (
+				2A2591B92CBBF38900B6181E /* Coordinator */,
+				2A2591B62CBBEEE800B6181E /* VC */,
+				2A2591B42CBBEB0100B6181E /* View */,
+			);
+			path = ProfileModal;
+			sourceTree = "<group>";
+		};
+		2A2591B62CBBEEE800B6181E /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2A2591B72CBBEEF000B6181E /* ProfileModalVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		2A2591B92CBBF38900B6181E /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2A2591BA2CBBF39500B6181E /* ProfileModalCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		2A5051FC2C6D9E6D00DC3E4A /* Support */ = {
@@ -594,6 +636,7 @@
 		2AFD06BF2C84A06700F34C35 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2A2591B52CBBEEDE00B6181E /* ProfileModal */,
 				2A1BE11C2CBA9B5C00908579 /* PageControl */,
 				2AFD06BE2C84A06700F34C35 /* NavigationView */,
 			);
@@ -675,6 +718,7 @@
 				2AFD06E02C84A11D00F34C35 /* MapChatData.swift */,
 				2AFD06EB2C84AF2000F34C35 /* MyChatData.swift */,
 				2AFD071A2C89793000F34C35 /* AlarmData.swift */,
+				2A2591C12CBF8EC900B6181E /* ProfileModalData.swift */,
 			);
 			path = ViewData;
 			sourceTree = "<group>";
@@ -812,6 +856,7 @@
 				2A1BE0EF2CBA490700908579 /* CharacterSettingCoordinator.swift in Sources */,
 				2ABCDC632C71EC3C00AD649C /* AllChatVC.swift in Sources */,
 				2A1BE0E72CB8ECE100908579 /* SigninVC.swift in Sources */,
+				2A2591B82CBBEEF000B6181E /* ProfileModalVC.swift in Sources */,
 				2ABCDC6B2C71EC4300AD649C /* CoordinatorType.swift in Sources */,
 				2A1BE0E92CB8ECE700908579 /* SigninViewModel.swift in Sources */,
 				2A2591AF2CBABD5900B6181E /* NicknameSettingView.swift in Sources */,
@@ -821,6 +866,7 @@
 				2A1BE0F92CBA495300908579 /* HashTagSettingVC.swift in Sources */,
 				2AFD07242C897A5400F34C35 /* AlarmCollectionViewCell.swift in Sources */,
 				2AFD06442C80B6D200F34C35 /* UIView+.swift in Sources */,
+				2A2591B32CBBEAFB00B6181E /* ProfileModalView.swift in Sources */,
 				2ABCDC7B2C71EC6300AD649C /* MyPageVC.swift in Sources */,
 				2A1BE1032CBA4E1D00908579 /* SplashCoordinator.swift in Sources */,
 				2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */,
@@ -837,12 +883,14 @@
 				2ABCDC692C71EC4300AD649C /* AppCoordinator.swift in Sources */,
 				2AFD06CF2C84A06700F34C35 /* ChattingRoomCoordinator.swift in Sources */,
 				2AFD06EC2C84AF2000F34C35 /* MyChatData.swift in Sources */,
+				2A2591C22CBF8EC900B6181E /* ProfileModalData.swift in Sources */,
 				2AFD06D22C84A06700F34C35 /* AlarmCoordinator.swift in Sources */,
 				2A5052032C6D9FE700DC3E4A /* UIFont+.swift in Sources */,
 				2ABCDC8C2C71EC9700AD649C /* TabBarController.swift in Sources */,
 				2AFD071B2C89793000F34C35 /* AlarmData.swift in Sources */,
 				2A85A9322BF869C20030B4F4 /* AppDelegate.swift in Sources */,
 				2A85A9342BF869C20030B4F4 /* SceneDelegate.swift in Sources */,
+				2A2591BB2CBBF39500B6181E /* ProfileModalCoordinator.swift in Sources */,
 				2AFD06E62C84A13700F34C35 /* NSObject+.swift in Sources */,
 				2A1BE0F52CBA494100908579 /* CharacterSettingVC.swift in Sources */,
 				2AFD06D12C84A06700F34C35 /* ChattingRoomViewModel.swift in Sources */,

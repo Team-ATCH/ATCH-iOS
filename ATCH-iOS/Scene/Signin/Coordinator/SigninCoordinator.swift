@@ -30,6 +30,13 @@ final class SigninCoordinator: Coordinator {
         }
     }
     
+    func pushToMainView() {
+        let tabBarCoordinator = TabBarCoordinator(self.navigationController)
+        tabBarCoordinator.finishDelegate = self
+        childCoordinators.append(tabBarCoordinator)
+        tabBarCoordinator.start()
+    }
+    
     func pushToCharacterSettingView() {
         let characterSettingCoordinator = CharacterSettingCoordinator(navigationController)
         characterSettingCoordinator.finishDelegate = self

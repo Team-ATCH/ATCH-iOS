@@ -41,7 +41,8 @@ final class HashTagSettingView: UIView {
     
     private let hashTagLabel = UILabel().then {
         $0.numberOfLines = 0
-        $0.text = "해시태그를 골라 내 관심사와 \n 스타일을 소개해 보세요."
+        $0.text = "해시태그를 골라 내 관심사와\n스타일을 소개해 보세요."
+        $0.textAlignment = .center
         $0.textColor = .atchBlack
         $0.font = .font(.title3)
     }
