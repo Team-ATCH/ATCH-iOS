@@ -14,6 +14,8 @@ enum PopUpType {
 
 struct PopUpData {
     let type: PopUpType
-    let title: String
     let content: String
+    let leftButtonText: String
+    let rightButtonText: String
+    let oneButtonText: String
 }
