@@ -18,7 +18,9 @@ final class MapVC: BaseMapVC {
     
     var viewModel: MapViewModel?
     let coordinator: MapCoordinator?
-
+    
+    let isFromOnboarding: Bool?
+    
     private let disposeBag: DisposeBag = DisposeBag()
     
     private let locationManager = CLLocationManager()
@@ -36,8 +38,11 @@ final class MapVC: BaseMapVC {
     
     private let bottomSheetView = MapBottomSheetView()
     
-    init(coordinator: MapCoordinator) {
+    private let profileModalView = ProfileModalView()
+    
+    init(coordinator: MapCoordinator, fromOnboarding: Bool) {
         self.coordinator = coordinator
+        self.isFromOnboarding = fromOnboarding
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -104,6 +109,14 @@ final class MapVC: BaseMapVC {
     }
     
     private func setupAction() {
+        if isFromOnboarding == true {
+            // 내 프로필 모달
+            self.coordinator?.presentProfileModal(userData: ProfileModalData.init(nickname: UserData.shared.nickname,
+                                                                                  hashTag:  "#" + UserData.shared.hashTagRelay.value.map { $0.hashTagTitle }.joined(separator: " #"),
+                                                                                  profileUrl: nil,
+                                                                                  buttonText: "프로필수정"))
+        }
+        
         alarmImageView.rx.tapGesture().asObservable()
             .when(.recognized)
             .withUnretained(self)

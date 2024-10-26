@@ -15,6 +15,8 @@ final class TabBarCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var type: CoordinatorType
     
+    var isFromOnboarding: Bool = false
+    
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.type = CoordinatorType.tab
@@ -24,6 +26,12 @@ final class TabBarCoordinator: Coordinator {
     }
     
     func start() {
+        
+    }
+    
+    func start(fromOnboarding: Bool = false) {
+        self.isFromOnboarding = fromOnboarding
+
         // 1. 탭바 아이템 리스트 생성
         let pages: [TabBarItemType] = TabBarItemType.allCases
         // 2. 탭바 아이템 생성
@@ -39,6 +47,7 @@ final class TabBarCoordinator: Coordinator {
         if let tabBarVC = self.tabBarController as? TabBarController {
             tabBarVC.setViewControllersForTabs(controllers)
         }
+        
         self.addTabBarController()
     }
     
@@ -71,7 +80,7 @@ final class TabBarCoordinator: Coordinator {
             let mapCoordinator = MapCoordinator(tabNavigationController)
             mapCoordinator.finishDelegate = self
             self.childCoordinators.append(mapCoordinator)
-            mapCoordinator.start()
+            mapCoordinator.start(fromOnboarding: isFromOnboarding)
         case .myChat:
             let myChatCoordinator = MyChatCoordinator(tabNavigationController)
             myChatCoordinator.finishDelegate = self

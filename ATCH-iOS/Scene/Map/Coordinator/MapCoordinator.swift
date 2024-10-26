@@ -20,7 +20,11 @@ final class MapCoordinator: Coordinator {
     }
     
     func start() {
-        self.mapVC = MapVC(coordinator: self)
+        
+    }
+    
+    func start(fromOnboarding: Bool) {
+        self.mapVC = MapVC(coordinator: self, fromOnboarding: fromOnboarding)
         self.mapVC?.viewModel = MapViewModel()
         
         if let vc = self.mapVC {
@@ -41,6 +45,13 @@ final class MapCoordinator: Coordinator {
         chattingRoomCoordinator.finishDelegate = self
         self.childCoordinators.append(chattingRoomCoordinator)
         chattingRoomCoordinator.start(opponent: opponent)
+    }
+    
+    func presentProfileModal(userData: ProfileModalData) {
+        let profileModalCoordinator = ProfileModalCoordinator(navigationController)
+        profileModalCoordinator.finishDelegate = self
+        self.childCoordinators.append(profileModalCoordinator)
+        profileModalCoordinator.start(userData: userData)
     }
 }
 

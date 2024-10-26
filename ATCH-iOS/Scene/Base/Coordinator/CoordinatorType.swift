@@ -12,6 +12,9 @@ enum CoordinatorType {
     case splash
     case signin
     case profileSetting
+    case profileEdit
+    case profileModal
+    case adornCharacter
     case tab
     case map
     case myChat
@@ -19,4 +22,5 @@ enum CoordinatorType {
     case myPage
     case alarm
     case chattingRoom
+    case popup
 }

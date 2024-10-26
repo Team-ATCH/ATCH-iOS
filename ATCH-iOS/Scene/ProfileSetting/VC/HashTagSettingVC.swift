@@ -54,6 +54,7 @@ final class HashTagSettingVC: UIViewController {
             .subscribe(onNext: { vc, _ in
                 if vc.hashTagSettingView.canGoNext {
                     vc.coordinator?.pushToMainView()
+                    UserData.shared.hashTag = UserData.shared.hashTagRelay.value
                 }
             }).disposed(by: disposeBag)
     }

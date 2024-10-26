@@ -22,7 +22,7 @@ enum FontName {
         case .title:
             return "Pretendard-SemiBold"
         case .title2:
-            return "Pretendard-Medium"
+            return "Pretendard-SemiBold"
         case .title3:
             return "Pretendard-Medium"
         case .subtitle:

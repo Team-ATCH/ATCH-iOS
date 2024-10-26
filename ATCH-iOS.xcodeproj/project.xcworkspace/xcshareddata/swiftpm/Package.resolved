@@ -1,5 +1,5 @@
 {
-  "originHash" : "074923034f414dc4677605a80814c8fb6e7c798cf34ba09cd0c46cfd26af5da5",
+  "originHash" : "f215b41bab24cfdf8a68d9f69afaf2706f7d7d6eeba28d261a976ef240f1c414",
   "pins" : [
     {
       "identity" : "inputbaraccessoryview",
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kakao-mapsSDK/KakaoMapsSDK-SPM.git",
       "state" : {
-        "revision" : "eb68e7b2ada27deb652acf07b985d111b5c16895",
-        "version" : "2.10.5"
+        "revision" : "ddeadbe5166909370b7518366ad5ebd517452be6",
+        "version" : "2.12.0"
       }
     },
     {
@@ -60,8 +60,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ReactiveX/RxSwift.git",
       "state" : {
-        "revision" : "b06a8c8596e4c3e8e7788e08e720e3248563ce6a",
-        "version" : "6.7.1"
+        "revision" : "c7c7d2cf50a3211fe2843f76869c698e4e417930",
+        "version" : "6.8.0"
       }
     },
     {

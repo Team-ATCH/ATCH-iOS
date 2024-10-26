@@ -29,11 +29,11 @@ final class SplashCoordinator: Coordinator {
         }
     }
     
-    func pushMainView() {
+    func pushToMainView() {
         let tabBarCoordinator = TabBarCoordinator(self.navigationController)
         tabBarCoordinator.finishDelegate = self
         childCoordinators.append(tabBarCoordinator)
-        tabBarCoordinator.start()
+        tabBarCoordinator.start(fromOnboarding: false)
     }
     
     func pushToSignView() {

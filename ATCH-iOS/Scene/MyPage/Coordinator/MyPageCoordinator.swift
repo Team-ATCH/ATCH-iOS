@@ -20,12 +20,33 @@ final class MyPageCoordinator: Coordinator {
     }
     
     func start() {
-        self.myPageVC = MyPageVC()
+        self.myPageVC = MyPageVC(coordinator: self)
         
         if let vc = self.myPageVC {
             vc.hidesBottomBarWhenPushed = false
             self.navigationController.pushViewController(vc, animated: true)
         }
+    }
+    
+    func pushToProfileEditView() {
+        let profileEditCoordinator = ProfileEditCoordinator(self.navigationController)
+        profileEditCoordinator.finishDelegate = self
+        childCoordinators.append(profileEditCoordinator)
+        profileEditCoordinator.start()
+    }
+    
+    func pushToCharacterEditView() {
+        let characterEditCoordinator = CharacterEditCoordinator(self.navigationController)
+        characterEditCoordinator.finishDelegate = self
+        childCoordinators.append(characterEditCoordinator)
+        characterEditCoordinator.start()
+    }
+    
+    func pushToPopupView(data: PopUpData) {
+        let popUpCoordinator = PopUpCoordinator(self.navigationController)
+        popUpCoordinator.finishDelegate = self
+        childCoordinators.append(popUpCoordinator)
+        popUpCoordinator.start(popUpData: data)
     }
 }
 

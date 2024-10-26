@@ -12,6 +12,14 @@ extension UIColor {
         return UIColor(hex: "#000000")
     }
     
+    static var atchBlack2: UIColor {
+        return UIColor(hex: "32251E")
+    }
+    
+    static var atchBlack3: UIColor {
+        return UIColor(hex: "2F1D06")
+    }
+    
     static var atchShadowGrey: UIColor {
         return UIColor(hex: "#2E2E2E")
     }
@@ -60,17 +68,28 @@ extension UIColor {
 extension UIColor {
     convenience init(hex: String, alpha: CGFloat = 1.0) {
         var hexFormatted: String = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
-
+        
         if hexFormatted.hasPrefix("#") {
             hexFormatted = String(hexFormatted.dropFirst())
         }
-
+        
         assert(hexFormatted.count == 6, "Invalid hex code used.")
         var rgbValue: UInt64 = 0
         Scanner(string: hexFormatted).scanHexInt64(&rgbValue)
-
+        
         self.init(red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0, alpha: alpha)
+                  green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+                  blue: CGFloat(rgbValue & 0x0000FF) / 255.0, alpha: alpha)
     }
+}
+
+extension UIColor {
+    func asImage(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage? {
+        UIGraphicsBeginImageContext(size)
+        defer { UIGraphicsEndImageContext() }
+        self.setFill()
+        UIRectFill(CGRect(origin: .zero, size: size))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+    
 }

@@ -34,23 +34,23 @@ final class CharacterSettingView: UIView {
     }
     
     private let characterImageViewOne = UIImageView().then {
-        $0.image = .imgCharacterOne
+        $0.image = .imgBigCharacterOne
     }
     
     private let characterImageViewTwo = UIImageView().then {
-        $0.image = .imgCharacterTwo
+        $0.image = .imgBigCharacterTwo
     }
     
     private let characterImageViewThree = UIImageView().then {
-        $0.image = .imgCharacterThree
+        $0.image = .imgBigCharacterThree
     }
     
     private let characterImageViewFour = UIImageView().then {
-        $0.image = .imgCharacterFour
+        $0.image = .imgBigCharacterFour
     }
     
     private let characterImageViewFive = UIImageView().then {
-        $0.image = .imgCharacterFive
+        $0.image = .imgBigCharacterFive
     }
     
     let characterPageControl = AtchPageControl().then {
@@ -169,6 +169,9 @@ final class CharacterSettingView: UIView {
             .asObservable()
             .withUnretained(self)
             .subscribe(onNext: { view, _ in
+                if view.characterPageControl.currentPage <= 0 {
+                    return
+                }
                 view.characterPageControl.currentPage -= 1
                 view.characterScrollView.setContentOffset(CGPoint(x: Int(UIScreen.main.bounds.width) * (view.characterPageControl.currentPage), y: 0), animated: true)
             }).disposed(by: disposeBag)
@@ -177,6 +180,9 @@ final class CharacterSettingView: UIView {
             .asObservable()
             .withUnretained(self)
             .subscribe(onNext: { view, _ in
+                if view.characterPageControl.currentPage >= 4 {
+                    return
+                }
                 view.characterPageControl.currentPage += 1
                 view.characterScrollView.setContentOffset(CGPoint(x: Int(UIScreen.main.bounds.width) * (view.characterPageControl.currentPage), y: 0), animated: true)
             }).disposed(by: disposeBag)
