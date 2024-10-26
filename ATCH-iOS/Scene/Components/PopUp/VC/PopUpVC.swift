@@ -14,10 +14,11 @@ import Then
 
 final class PopUpVC: UIViewController {
     
-    let coordinator: PopUpCoordinator?
-    
+    private let coordinator: PopUpCoordinator?
     private let disposeBag: DisposeBag = DisposeBag()
         
+    let popupView: PopUpView = PopUpView()
+    
     init(coordinator: PopUpCoordinator) {
         self.coordinator = coordinator
         
@@ -31,7 +32,7 @@ final class PopUpVC: UIViewController {
     override func loadView() {
         super.loadView()
         
-//        self.view = profileModalView
+        self.view = popupView
     }
     
     override func viewDidLoad() {
@@ -41,21 +42,28 @@ final class PopUpVC: UIViewController {
     }
     
     func bindPopUpData(data: PopUpData) {
+        popupView.bindViewData(data: data)
     }
     
     private func setupAction() {
-//        profileModalView.closeButton.rx.tap.asObservable()
-//            .withUnretained(self)
-//            .subscribe(onNext: { vc, _ in
-//                vc.dismiss(animated: false)
-//            }).disposed(by: disposeBag)
-//        
-//        profileModalView.profileEditButton.rx.tapGesture().asObservable()
-//            .when(.recognized)
-//            .withUnretained(self)
-//            .subscribe(onNext: { vc, _ in
-//                vc.dismiss(animated: false)
-//                vc.coordinator?.pushToMyPage()
-//            }).disposed(by: disposeBag)
+        popupView.oneButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in                
+                // 탈퇴 서버통신
+
+                vc.dismiss(animated: false)
+                if let window = UIApplication.shared.windows.first {
+                    window.rootViewController?.dismiss(animated: false, completion: nil)
+                    window.rootViewController?.navigationController?.popToRootViewController(animated: true)
+
+                    let navigationController = UINavigationController()
+                    navigationController.navigationBar.isHidden = true
+                    window.rootViewController = navigationController
+                  
+                    let coordinator = SplashCoordinator(navigationController)
+                    coordinator.start()
+                }
+                
+            }).disposed(by: disposeBag)
     }
 }

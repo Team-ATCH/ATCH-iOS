@@ -33,7 +33,7 @@ final class SplashCoordinator: Coordinator {
         let tabBarCoordinator = TabBarCoordinator(self.navigationController)
         tabBarCoordinator.finishDelegate = self
         childCoordinators.append(tabBarCoordinator)
-        tabBarCoordinator.start()
+        tabBarCoordinator.start(fromOnboarding: false)
     }
     
     func pushToSignView() {

@@ -28,7 +28,7 @@ final class PopUpView: UIView {
     
     private let contentLabel = UILabel().then {
         $0.textColor = .atchBlack
-        $0.font = .font(.title2)
+        $0.font = .font(.smallButton)
         $0.numberOfLines = 0
         $0.textAlignment = .center
     }
@@ -37,22 +37,32 @@ final class PopUpView: UIView {
         $0.backgroundColor = .atchShadowGrey
     }
     
-    private let oneButton = UIButton().then {
+    let oneButton = UIButton().then {
         $0.backgroundColor = .clear
+        $0.setBackgroundImage(UIColor.atchGreen.asImage(), for: .highlighted)
         $0.setTitleColor(.atchBlack3, for: .normal)
         $0.titleLabel?.font = .font(.bigButton)
+        $0.layer.cornerRadius = 18
+        $0.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        $0.layer.masksToBounds = true
     }
     
-    private let leftButton = UIButton().then {
+    let leftButton = UIButton().then {
         $0.backgroundColor = .clear
+        $0.setBackgroundImage(UIColor.atchGreen.asImage(), for: .highlighted)
         $0.setTitleColor(.atchBlack3, for: .normal)
         $0.titleLabel?.font = .font(.bigButton)
+        $0.layer.cornerRadius = 18
+        $0.layer.masksToBounds = true
     }
     
-    private let rightButton = UIButton().then {
+    let rightButton = UIButton().then {
         $0.backgroundColor = .clear
+        $0.setBackgroundImage(UIColor.atchGreen.asImage(), for: .highlighted)
         $0.setTitleColor(.atchBlack3, for: .normal)
         $0.titleLabel?.font = .font(.bigButton)
+        $0.layer.cornerRadius = 18
+        $0.layer.masksToBounds = true
     }
     
     private let horizontalDividingLine = UIView().then {
@@ -70,8 +80,10 @@ final class PopUpView: UIView {
     }
     
     func bindViewData(data: PopUpData) {
-        self.type = data.type
-
+        type = data.type
+        
+        contentLabel.text = data.content
+        
         oneButton.setTitle(data.oneButtonText, for: .normal)
         leftButton.setTitle(data.leftButtonText, for: .normal)
         rightButton.setTitle(data.rightButtonText, for: .normal)
@@ -95,7 +107,7 @@ final class PopUpView: UIView {
         }
     
         contentLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(23.adjustedH)
+            $0.top.equalToSuperview().inset(26.adjustedH)
             $0.centerX.equalToSuperview()
         }
         
@@ -110,7 +122,8 @@ final class PopUpView: UIView {
             popUpBackground.addSubview(oneButton)
             oneButton.snp.makeConstraints {
                 $0.top.equalTo(verticalDividingLine.snp.bottom)
-                $0.horizontalEdges.equalToSuperview()
+                $0.leading.equalToSuperview().inset(1)
+                $0.trailing.equalToSuperview().inset(4.adjustedW)
                 $0.height.equalTo(62.adjustedH)
             }
             
@@ -126,12 +139,12 @@ final class PopUpView: UIView {
             }
             
             leftButton.snp.makeConstraints {
-                $0.leading.equalToSuperview()
+                $0.leading.equalToSuperview().inset(1)
                 $0.trailing.equalTo(horizontalDividingLine.snp.leading)
             }
             
             rightButton.snp.makeConstraints {
-                $0.trailing.equalToSuperview()
+                $0.trailing.equalToSuperview().inset(4.adjustedW)
                 $0.leading.equalTo(horizontalDividingLine.snp.trailing)
             }
             

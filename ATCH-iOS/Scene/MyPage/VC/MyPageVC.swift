@@ -13,14 +13,28 @@ import Then
 
 final class MyPageVC: UIViewController {
     
+    let coordinator: MyPageCoordinator?
+
+    private let disposeBag: DisposeBag = DisposeBag()
+
     private let myChatNavigationView = NavigationView(title: "My")
-    
     private let myPageView = MyPageView()
+    
+    init(coordinator: MyPageCoordinator) {
+        self.coordinator = coordinator
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupLayout()
+        setupAction()
     }
     
     private func setupLayout() {
@@ -36,6 +50,19 @@ final class MyPageVC: UIViewController {
             $0.top.equalTo(myChatNavigationView.snp.bottom)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
+    }
+    
+    private func setupAction() {
+        myPageView.logoutView.rx.tapGesture().asObservable()
+            .when(.recognized)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.coordinator?.pushToPopupView(data: PopUpData(type: .oneButton,
+                                                                content: "회원 탈퇴되었습니다.\n안녕히 가세요.",
+                                                                leftButtonText: "",
+                                                                rightButtonText: "",
+                                                                oneButtonText: "처음으로"))
+            }).disposed(by: disposeBag)
     }
     
 }
