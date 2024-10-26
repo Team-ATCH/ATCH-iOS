@@ -29,7 +29,6 @@ class BaseChattingRoomVC: MessagesViewController {
     var messages = [ChattingData]()
     
     private let state: State = .init()
-    private var keyboardManager: KeyboardManager { state.keyboardManager }
     private var disposeBag: Set<AnyCancellable> {
         get { state.disposeBag }
         set { state.disposeBag = newValue }
