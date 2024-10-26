@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct MapChatData {
+struct MapChatData { // 다른 유저들에 대한 정보
+    let id: String
     let characterUrl: String
     let itemCount: Int
     let itemUrl: String

@@ -28,11 +28,11 @@ final class MyChatCoordinator: Coordinator {
         }
     }
     
-    func pushToChattingRoomView(chattingRoomName: String) {
+    func pushToChattingRoomView(opponent: Sender) {
         let chattingRoomCoordinator = ChattingRoomCoordinator(navigationController)
         chattingRoomCoordinator.finishDelegate = self
         self.childCoordinators.append(chattingRoomCoordinator)
-        chattingRoomCoordinator.start(chattingRoomName: chattingRoomName)
+        chattingRoomCoordinator.start(opponent: opponent)
     }
 }
 

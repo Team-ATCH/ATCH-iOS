@@ -140,7 +140,7 @@ final class MyChatCollectionViewCell: UICollectionViewCell {
         }
         
         titleLabel.text = model.nickName
-        contentLabel.text = model.chatting
+        contentLabel.text = model.content
                 
         let hashtags = model.tag
         let words = hashtags.split(separator: " ").map { String($0) }

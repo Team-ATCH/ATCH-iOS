@@ -54,6 +54,8 @@
 		2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC832C71EC9700AD649C /* TabBar.swift */; };
 		2ABCDC8B2C71EC9700AD649C /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC852C71EC9700AD649C /* TabBarCoordinator.swift */; };
 		2ABCDC8C2C71EC9700AD649C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC872C71EC9700AD649C /* TabBarController.swift */; };
+		2AE7C9E22C8C4D1000A177EF /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7C9E12C8C4D1000A177EF /* UITextView+.swift */; };
+		2AE7C9E42C8D328300A177EF /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7C9E32C8D328300A177EF /* Date+.swift */; };
 		2AFD06422C8059A700F34C35 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06412C8059A700F34C35 /* Config.swift */; };
 		2AFD06442C80B6D200F34C35 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06432C80B6D200F34C35 /* UIView+.swift */; };
 		2AFD06472C80B9CF00F34C35 /* KakaoMapsSDK-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFD06462C80B9CF00F34C35 /* KakaoMapsSDK-SPM */; };
@@ -81,6 +83,9 @@
 		2AFD071B2C89793000F34C35 /* AlarmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD071A2C89793000F34C35 /* AlarmData.swift */; };
 		2AFD07222C8979F800F34C35 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD07212C8979F800F34C35 /* AlarmView.swift */; };
 		2AFD07242C897A5400F34C35 /* AlarmCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD07232C897A5400F34C35 /* AlarmCollectionViewCell.swift */; };
+		2AFD072E2C8C22E200F34C35 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFD072D2C8C22E200F34C35 /* MessageKit */; };
+		2AFD07302C8C25B000F34C35 /* ChattingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD072F2C8C25B000F34C35 /* ChattingData.swift */; };
+		2AFD07362C8C3AC400F34C35 /* BaseChattingRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD07352C8C3AC400F34C35 /* BaseChattingRoomVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +135,8 @@
 		2ABCDC832C71EC9700AD649C /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		2ABCDC852C71EC9700AD649C /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		2ABCDC872C71EC9700AD649C /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		2AE7C9E12C8C4D1000A177EF /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
+		2AE7C9E32C8D328300A177EF /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		2AFD06402C80588500F34C35 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		2AFD06412C8059A700F34C35 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		2AFD06432C80B6D200F34C35 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -153,6 +160,8 @@
 		2AFD071A2C89793000F34C35 /* AlarmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmData.swift; sourceTree = "<group>"; };
 		2AFD07212C8979F800F34C35 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		2AFD07232C897A5400F34C35 /* AlarmCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCollectionViewCell.swift; sourceTree = "<group>"; };
+		2AFD072F2C8C25B000F34C35 /* ChattingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingData.swift; sourceTree = "<group>"; };
+		2AFD07352C8C3AC400F34C35 /* BaseChattingRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseChattingRoomVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +177,7 @@
 				2AFD06D72C84A0E800F34C35 /* RxGesture in Frameworks */,
 				2AFD06472C80B9CF00F34C35 /* KakaoMapsSDK-SPM in Frameworks */,
 				2A1BE1102CBA509900908579 /* Lottie in Frameworks */,
+				2AFD072E2C8C22E200F34C35 /* MessageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +373,8 @@
 				2A5052022C6D9FE700DC3E4A /* UIFont+.swift */,
 				2A5052042C6DA06700DC3E4A /* Adjust+.swift */,
 				2AFD06432C80B6D200F34C35 /* UIView+.swift */,
+				2AE7C9E12C8C4D1000A177EF /* UITextView+.swift */,
+				2AE7C9E32C8D328300A177EF /* Date+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -566,6 +578,13 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		2AE7C9E52C8D3DFB00A177EF /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2AFD06B62C84A04A00F34C35 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,6 +631,7 @@
 			isa = PBXGroup;
 			children = (
 				2AFD06C22C84A06700F34C35 /* ChattingRoomVC.swift */,
+				2AFD07352C8C3AC400F34C35 /* BaseChattingRoomVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -628,8 +648,9 @@
 			isa = PBXGroup;
 			children = (
 				2AFD06C12C84A06700F34C35 /* Coordinator */,
-				2AFD06C32C84A06700F34C35 /* VC */,
 				2AFD06C52C84A06700F34C35 /* ViewModel */,
+				2AE7C9E52C8D3DFB00A177EF /* View */,
+				2AFD06C32C84A06700F34C35 /* VC */,
 			);
 			path = ChattingRoom;
 			sourceTree = "<group>";
@@ -675,6 +696,7 @@
 				2AFD06E02C84A11D00F34C35 /* MapChatData.swift */,
 				2AFD06EB2C84AF2000F34C35 /* MyChatData.swift */,
 				2AFD071A2C89793000F34C35 /* AlarmData.swift */,
+				2AFD072F2C8C25B000F34C35 /* ChattingData.swift */,
 			);
 			path = ViewData;
 			sourceTree = "<group>";
@@ -730,6 +752,7 @@
 				2AFD06DB2C84A0F400F34C35 /* RxRelay */,
 				2AFD06DE2C84A10100F34C35 /* Kingfisher */,
 				2A1BE10F2CBA509900908579 /* Lottie */,
+				2AFD072D2C8C22E200F34C35 /* MessageKit */,
 			);
 			productName = "ATCH-iOS";
 			productReference = 2A85A92E2BF869C10030B4F4 /* ATCH-iOS.app */;
@@ -767,6 +790,7 @@
 				2AFD06D82C84A0F400F34C35 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				2AFD06DD2C84A10100F34C35 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				2A1BE10E2CBA509900908579 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				2AFD072C2C8C22E200F34C35 /* XCRemoteSwiftPackageReference "MessageKit" */,
 			);
 			productRefGroup = 2A85A92F2BF869C10030B4F4 /* Products */;
 			projectDirPath = "";
@@ -821,6 +845,7 @@
 				2A1BE0F92CBA495300908579 /* HashTagSettingVC.swift in Sources */,
 				2AFD07242C897A5400F34C35 /* AlarmCollectionViewCell.swift in Sources */,
 				2AFD06442C80B6D200F34C35 /* UIView+.swift in Sources */,
+				2AFD07362C8C3AC400F34C35 /* BaseChattingRoomVC.swift in Sources */,
 				2ABCDC7B2C71EC6300AD649C /* MyPageVC.swift in Sources */,
 				2A1BE1032CBA4E1D00908579 /* SplashCoordinator.swift in Sources */,
 				2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */,
@@ -835,8 +860,10 @@
 				2AFD06D42C84A06700F34C35 /* AlarmViewModel.swift in Sources */,
 				2A1BE1092CBA4E4300908579 /* SplashViewModel.swift in Sources */,
 				2ABCDC692C71EC4300AD649C /* AppCoordinator.swift in Sources */,
+				2AE7C9E42C8D328300A177EF /* Date+.swift in Sources */,
 				2AFD06CF2C84A06700F34C35 /* ChattingRoomCoordinator.swift in Sources */,
 				2AFD06EC2C84AF2000F34C35 /* MyChatData.swift in Sources */,
+				2AFD07302C8C25B000F34C35 /* ChattingData.swift in Sources */,
 				2AFD06D22C84A06700F34C35 /* AlarmCoordinator.swift in Sources */,
 				2A5052032C6D9FE700DC3E4A /* UIFont+.swift in Sources */,
 				2ABCDC8C2C71EC9700AD649C /* TabBarController.swift in Sources */,
@@ -853,6 +880,7 @@
 				2ABCDC732C71EC5C00AD649C /* MapCoordinator.swift in Sources */,
 				2AFD06EE2C84B2C100F34C35 /* MyChatView.swift in Sources */,
 				2AFD06EA2C84A26800F34C35 /* MyChatCollectionViewCell.swift in Sources */,
+				2AE7C9E22C8C4D1000A177EF /* UITextView+.swift in Sources */,
 				2ABCDC6D2C71EC5100AD649C /* UIWindow+.swift in Sources */,
 				2A1BE0F32CBA491E00908579 /* HashTagSettingCoordinator.swift in Sources */,
 				2ABCDC6A2C71EC4300AD649C /* Coordinator.swift in Sources */,
@@ -1140,6 +1168,14 @@
 				minimumVersion = 7.12.0;
 			};
 		};
+		2AFD072C2C8C22E200F34C35 /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MessageKit/MessageKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1182,6 +1218,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2AFD06DD2C84A10100F34C35 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		2AFD072D2C8C22E200F34C35 /* MessageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2AFD072C2C8C22E200F34C35 /* XCRemoteSwiftPackageReference "MessageKit" */;
+			productName = MessageKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

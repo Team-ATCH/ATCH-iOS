@@ -21,8 +21,8 @@ final class ChattingRoomCoordinator: Coordinator {
     
     func start() { }
     
-    func start(chattingRoomName: String) {
-        self.chattingRoomVC = ChattingRoomVC(coordinator: self, chattingRoomName: chattingRoomName)
+    func start(opponent: Sender) {
+        self.chattingRoomVC = ChattingRoomVC(coordinator: self, opponent: opponent)
         self.chattingRoomVC?.viewModel = ChattingRoomViewModel()
         
         if let vc = self.chattingRoomVC {
