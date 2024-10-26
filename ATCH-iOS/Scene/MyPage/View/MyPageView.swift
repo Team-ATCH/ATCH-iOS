@@ -67,12 +67,10 @@ final class MyPageView: UIView {
                                              withdrawView)
         accountStackView.setCustomSpacing(12, after: accountTitle)
 
-        
         myProfileStackView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(30.adjustedH)
             $0.horizontalEdges.equalToSuperview().inset(40)
         }
-        
         
         [profileEditView, characterEditView, logoutView, inquireView, withdrawView].forEach {
             $0.snp.makeConstraints {
@@ -85,7 +83,6 @@ final class MyPageView: UIView {
             $0.top.equalTo(myProfileStackView.snp.bottom).offset(20.adjustedH)
             $0.horizontalEdges.equalToSuperview().inset(40)
         }
-        
         
     }
 }

@@ -7,7 +7,6 @@
 
 import UIKit
 
-import Lottie
 import RxSwift
 import SnapKit
 import Then
@@ -17,6 +16,8 @@ final class PopUpVC: UIViewController {
     private let coordinator: PopUpCoordinator?
     private let disposeBag: DisposeBag = DisposeBag()
         
+    private var type: PopUpType = .back
+    
     let popupView: PopUpView = PopUpView()
     
     init(coordinator: PopUpCoordinator) {
@@ -41,29 +42,45 @@ final class PopUpVC: UIViewController {
         setupAction()
     }
     
-    func bindPopUpData(data: PopUpData) {
+    func bindPopUpData(data: PopUpData) {     
+        type = data.type
         popupView.bindViewData(data: data)
     }
     
     private func setupAction() {
         popupView.oneButton.rx.tap
             .withUnretained(self)
-            .subscribe(onNext: { vc, _ in                
-                // 탈퇴 서버통신
+            .subscribe(onNext: { vc, _ in     
+                switch vc.type {
+                case .logout:
+                    break
+                case .withdraw:
+                    // 탈퇴 서버통신
 
-                vc.dismiss(animated: false)
-                if let window = UIApplication.shared.windows.first {
-                    window.rootViewController?.dismiss(animated: false, completion: nil)
-                    window.rootViewController?.navigationController?.popToRootViewController(animated: true)
+                    vc.dismiss(animated: false)
+                    if let window = UIApplication.shared.windows.first {
+                        window.rootViewController?.dismiss(animated: false, completion: nil)
+                        window.rootViewController?.navigationController?.popToRootViewController(animated: true)
 
-                    let navigationController = UINavigationController()
-                    navigationController.navigationBar.isHidden = true
-                    window.rootViewController = navigationController
-                  
-                    let coordinator = SplashCoordinator(navigationController)
-                    coordinator.start()
+                        let navigationController = UINavigationController()
+                        navigationController.navigationBar.isHidden = true
+                        window.rootViewController = navigationController
+                      
+                        let coordinator = SplashCoordinator(navigationController)
+                        coordinator.start()
+                    }
+                case .back:
+                    break
                 }
-                
+            }).disposed(by: disposeBag)
+        
+        popupView.dimView.rx.tapGesture().asObservable()
+            .when(.recognized)
+            .withUnretained(self)
+            .subscribe(onNext: { (vc, _) in
+                if vc.type != .withdraw {
+                    vc.dismiss(animated: false)
+                }
             }).disposed(by: disposeBag)
     }
 }

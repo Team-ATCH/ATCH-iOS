@@ -28,6 +28,13 @@ final class MyPageCoordinator: Coordinator {
         }
     }
     
+    func pushToProfileEditView() {
+        let profileEditCoordinator = ProfileEditCoordinator(self.navigationController)
+        profileEditCoordinator.finishDelegate = self
+        childCoordinators.append(profileEditCoordinator)
+        profileEditCoordinator.start()
+    }
+    
     func pushToPopupView(data: PopUpData) {
         let popUpCoordinator = PopUpCoordinator(self.navigationController)
         popUpCoordinator.finishDelegate = self

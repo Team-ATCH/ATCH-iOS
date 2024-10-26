@@ -17,8 +17,6 @@ final class HashTagSettingView: UIView {
     
     var canGoNext: Bool = false
     
-    var hashTagArray: [HashTag] = []
-
     private let stackView = UIStackView().then {
         $0.axis = .vertical
         $0.alignment = .center
@@ -26,18 +24,7 @@ final class HashTagSettingView: UIView {
         $0.spacing = 48
     }
     
-    private let allHashTagStackView = UIStackView().then {
-        $0.axis = .vertical
-        $0.alignment = .center
-        $0.distribution = .fill
-        $0.spacing = 6
-    }
-
-    private let hashTagStackViewOne = UIStackView()
-    private let hashTagStackViewTwo = UIStackView()
-    private let hashTagStackViewThree = UIStackView()
-    private let hashTagStackViewFour = UIStackView()
-    private let hashTagStackViewFive = UIStackView()
+    private let allHashTagStackView = HashTagStackView()
     
     private let hashTagLabel = UILabel().then {
         $0.numberOfLines = 0
@@ -62,7 +49,7 @@ final class HashTagSettingView: UIView {
     init() {
         super.init(frame: .zero)
         
-        self.setupHashTagStackView()
+        self.setupHashTag()
         self.setupLayout()
     }
     
@@ -70,112 +57,20 @@ final class HashTagSettingView: UIView {
         super.init(coder: coder)
     }
     
-    
-    private func setupHashTagStackView() {
-        [hashTagStackViewOne, hashTagStackViewTwo, hashTagStackViewThree, hashTagStackViewFour, hashTagStackViewFive].forEach {
-            $0.axis = .horizontal
-            $0.alignment = .center
-            $0.distribution = .fill
-            $0.spacing = 4
-        }
-        
-        let hashTags = HashTag.allCases
-       
-        hashTags[0...3].enumerated().forEach { [weak self] index, hashTag in
-            guard let self else { return }
-            let button = createButton(hashTag: hashTag, index: index)
-            hashTagStackViewOne.addArrangedSubview(button)
-        }
-        
-        hashTags[4...7].enumerated().forEach { [weak self] index, hashTag in
-            guard let self else { return }
-            let adjustedIndex = index + 4
-            let button = createButton(hashTag: hashTag, index: adjustedIndex)
-            hashTagStackViewTwo.addArrangedSubview(button)
-        }
-        
-        hashTags[8...11].enumerated().forEach { [weak self] index, hashTag in
-            guard let self else { return }
-            let adjustedIndex = index + 8
-            let button = createButton(hashTag: hashTag, index: adjustedIndex)
-            hashTagStackViewThree.addArrangedSubview(button)
-        }
-        
-        hashTags[12...14].enumerated().forEach { [weak self] index, hashTag in
-            guard let self else { return }
-            let adjustedIndex = index + 12
-            let button = createButton(hashTag: hashTag, index: adjustedIndex)
-            hashTagStackViewFour.addArrangedSubview(button)
-        }
-        
-        hashTags[15...17].enumerated().forEach { [weak self] index, hashTag in
-            guard let self else { return }
-            let adjustedIndex = index + 15
-            let button = createButton(hashTag: hashTag, index: adjustedIndex)
-            hashTagStackViewFive.addArrangedSubview(button)
-        }
-    }
-    
-    private func createButton(hashTag: HashTag, index: Int) -> UIImageView {
-        let buttonImageView = UIImageView()
-        buttonImageView.image = hashTag.hashTagDeSelectedImage
-        buttonImageView.contentMode = .scaleAspectFill
-        buttonImageView.tag = index
-        buttonImageView.isUserInteractionEnabled = true
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hashTagButtonTapped(_:)))
-        buttonImageView.addGestureRecognizer(tapGesture)
-        
-        buttonImageView.snp.makeConstraints {
-            $0.width.equalTo(hashTag.hashTagWitdh)
-            $0.height.equalTo(37)
-        }
-        
-        let buttonLabel = UILabel()
-        buttonLabel.text = hashTag.hashTagTitle
-        buttonLabel.textColor = .atchBlack
-        buttonLabel.font = .font(.smallButton)
-        
-        buttonImageView.addSubview(buttonLabel)
-        buttonLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(7.adjustedH)
-            $0.leading.equalToSuperview().inset(14.adjustedW)
-        }
-        
-        return buttonImageView
-    }
-    
-    @objc 
-    private func hashTagButtonTapped(_ sender: UITapGestureRecognizer) {
-        if let tappedButton = sender.view as? UIImageView {
-            let index = tappedButton.tag
-            let hashTag = HashTag.allCases[index] // 탭된 해시태그 가져옴
-    
-            // 이미지 변경 처리
-            let isSelected = tappedButton.image == hashTag.hashTagDeSelectedImage
-            tappedButton.image = isSelected ? hashTag.hashTagSelectedImage : hashTag.hashTagDeSelectedImage
-            
-            makeHashTagArray(hashTag: hashTag, isSelected: isSelected)
-        }
-    }
-
-    private func makeHashTagArray(hashTag: HashTag, isSelected: Bool) {
-        if isSelected {
-            hashTagArray.append(hashTag)
-        } else {
-            hashTagArray.removeAll { $0 == hashTag }
-        }
-                
-        if hashTagArray.isEmpty {
-            nextButton.image = .imgBigDisableButton
-            nextLabel.textColor = .atchGrey3
-            canGoNext = false
-        } else {
-            nextButton.image = .imgBigButton
-            nextLabel.textColor = .atchBlack
-            canGoNext = true
-            UserData.shared.hashTag = hashTagArray
-        }
+    private func setupHashTag() {
+        UserData.shared.hashTagRelay
+            .withUnretained(self)
+            .subscribe(onNext: { view, value in
+                if value.isEmpty {
+                    view.nextButton.image = .imgBigDisableButton
+                    view.nextLabel.textColor = .atchGrey3
+                    view.canGoNext = false
+                } else {
+                    view.nextButton.image = .imgBigButton
+                    view.nextLabel.textColor = .atchBlack
+                    view.canGoNext = true
+                }
+            }).disposed(by: disposeBag)
     }
     
     private func setupLayout() {
@@ -183,12 +78,6 @@ final class HashTagSettingView: UIView {
         stackView.addArrangedSubviews(hashTagLabel,
                                       allHashTagStackView,
                                       nextButton)
-        
-        allHashTagStackView.addArrangedSubviews(hashTagStackViewOne,
-                                                hashTagStackViewTwo,
-                                                hashTagStackViewThree,
-                                                hashTagStackViewFour,
-                                                hashTagStackViewFive)
         
         stackView.snp.makeConstraints {
             $0.top.equalToSuperview().inset((UIWindow.key?.safeAreaInsets.top ?? 0) + 133)

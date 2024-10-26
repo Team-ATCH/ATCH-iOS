@@ -14,10 +14,9 @@ import Then
 final class MyPageVC: UIViewController {
     
     let coordinator: MyPageCoordinator?
-
     private let disposeBag: DisposeBag = DisposeBag()
 
-    private let myChatNavigationView = NavigationView(title: "My")
+    private let myPageNavigationView = NavigationView(title: "My")
     private let myPageView = MyPageView()
     
     init(coordinator: MyPageCoordinator) {
@@ -38,26 +37,33 @@ final class MyPageVC: UIViewController {
     }
     
     private func setupLayout() {
-        self.view.addSubviews(myChatNavigationView,
+        self.view.addSubviews(myPageNavigationView,
                               myPageView)
         
-        myChatNavigationView.snp.makeConstraints {
+        myPageNavigationView.snp.makeConstraints {
             $0.top.horizontalEdges.equalToSuperview()
             $0.height.equalTo((UIWindow.key?.safeAreaInsets.top ?? 0) + 51)
         }
         
         myPageView.snp.makeConstraints {
-            $0.top.equalTo(myChatNavigationView.snp.bottom)
+            $0.top.equalTo(myPageNavigationView.snp.bottom)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
     }
     
     private func setupAction() {
-        myPageView.logoutView.rx.tapGesture().asObservable()
+        myPageView.profileEditView.nextButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { (vc, _) in
+                vc.coordinator?.pushToProfileEditView()
+            }).disposed(by: disposeBag)
+        
+        myPageView.withdrawView.rx.tapGesture().asObservable()
             .when(.recognized)
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
-                vc.coordinator?.pushToPopupView(data: PopUpData(type: .oneButton,
+                vc.coordinator?.pushToPopupView(data: PopUpData(type: .withdraw,
+                                                                buttonType: .oneButton,
                                                                 content: "회원 탈퇴되었습니다.\n안녕히 가세요.",
                                                                 leftButtonText: "",
                                                                 rightButtonText: "",

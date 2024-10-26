@@ -13,9 +13,9 @@ import Then
 
 final class PopUpView: UIView {
     
-    private var type: PopUpType = .oneButton
+    private var buttonType: PopUpButtonType = .oneButton
     
-    private let dimView = UIView().then {
+    let dimView = UIView().then {
         $0.backgroundColor = .atchBlack
         $0.alpha = 0.4
     }
@@ -80,7 +80,7 @@ final class PopUpView: UIView {
     }
     
     func bindViewData(data: PopUpData) {
-        type = data.type
+        buttonType = data.buttonType
         
         contentLabel.text = data.content
         
@@ -117,7 +117,7 @@ final class PopUpView: UIView {
             $0.height.equalTo(1)
         }
 
-        switch type {
+        switch buttonType {
         case .oneButton:
             popUpBackground.addSubview(oneButton)
             oneButton.snp.makeConstraints {

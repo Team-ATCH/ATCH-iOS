@@ -56,7 +56,8 @@ final class SettingCell: UIView {
         
         nextButton.snp.makeConstraints {
             $0.trailing.equalToSuperview()
-            $0.size.equalTo(24)
+            $0.width.equalTo(36)
+            $0.height.equalTo(24)
             $0.centerY.equalToSuperview()
         }
     }
