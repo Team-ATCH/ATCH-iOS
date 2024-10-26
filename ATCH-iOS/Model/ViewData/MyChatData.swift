@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct MyChatData {
+struct MyChatData { // 상대방, 상대방과 나눈 채팅 정보
     let characterUrl: String
+    let id: String
     let nickName: String
-    let chatting: String
+    let content: String
     let tag: String
 }

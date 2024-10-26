@@ -2,6 +2,15 @@
   "originHash" : "f215b41bab24cfdf8a68d9f69afaf2706f7d7d6eeba28d261a976ef240f1c414",
   "pins" : [
     {
+      "identity" : "inputbaraccessoryview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nathantannar4/InputBarAccessoryView",
+      "state" : {
+        "revision" : "093bdc71dc26bfcdaa71352d5ff0cd84b9b8d427",
+        "version" : "6.4.0"
+      }
+    },
+    {
       "identity" : "kakaomapssdk-spm",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kakao-mapsSDK/KakaoMapsSDK-SPM.git",
@@ -26,6 +35,15 @@
       "state" : {
         "revision" : "b842598f1295f3ffa1475b1580672d1fe5b83580",
         "version" : "4.5.0"
+      }
+    },
+    {
+      "identity" : "messagekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MessageKit/MessageKit",
+      "state" : {
+        "revision" : "1993e8e90d4e9a61b8d9bc8ceb733964ce943376",
+        "version" : "4.2.0"
       }
     },
     {
