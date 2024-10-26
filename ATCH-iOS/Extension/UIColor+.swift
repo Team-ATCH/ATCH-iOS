@@ -29,7 +29,11 @@ extension UIColor {
     }
     
     static var atchGrey3: UIColor {
-        return UIColor(hex: "#444444")
+        return UIColor(hex: "#6D6D6D")
+    }
+    
+    static var atchGrey4: UIColor {
+        return UIColor(hex: "#B9B9B9")
     }
     
     static var atchWhite: UIColor {

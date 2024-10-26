@@ -5,7 +5,8 @@
 //  Created by 변희주 on 9/1/24.
 //
 
-import ObjectiveC
+import Foundation
+
 import RxRelay
 import RxSwift
 
