@@ -53,6 +53,7 @@ final class PopUpView: UIView {
         $0.setTitleColor(.atchBlack3, for: .normal)
         $0.titleLabel?.font = .font(.bigButton)
         $0.layer.cornerRadius = 18
+        $0.layer.maskedCorners = [.layerMinXMaxYCorner]
         $0.layer.masksToBounds = true
     }
     
@@ -62,6 +63,7 @@ final class PopUpView: UIView {
         $0.setTitleColor(.atchBlack3, for: .normal)
         $0.titleLabel?.font = .font(.bigButton)
         $0.layer.cornerRadius = 18
+        $0.layer.maskedCorners = [.layerMaxXMaxYCorner]
         $0.layer.masksToBounds = true
     }
     
@@ -71,8 +73,6 @@ final class PopUpView: UIView {
     
     init() {
         super.init(frame: .zero)
-        
-        self.setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -80,13 +80,14 @@ final class PopUpView: UIView {
     }
     
     func bindViewData(data: PopUpData) {
-        buttonType = data.buttonType
-        
         contentLabel.text = data.content
         
         oneButton.setTitle(data.oneButtonText, for: .normal)
         leftButton.setTitle(data.leftButtonText, for: .normal)
         rightButton.setTitle(data.rightButtonText, for: .normal)
+        
+        buttonType = data.buttonType
+        setupLayout()
     }
     
     private func setupLayout() {
@@ -134,18 +135,23 @@ final class PopUpView: UIView {
             
             horizontalDividingLine.snp.makeConstraints {
                 $0.top.equalTo(verticalDividingLine.snp.bottom)
+                $0.bottom.equalToSuperview()
                 $0.leading.equalToSuperview().inset(120.adjustedW)
                 $0.width.equalTo(1)
             }
             
             leftButton.snp.makeConstraints {
+                $0.top.equalTo(verticalDividingLine.snp.bottom)
                 $0.leading.equalToSuperview().inset(1)
                 $0.trailing.equalTo(horizontalDividingLine.snp.leading)
+                $0.height.equalTo(61.adjustedH)
             }
             
             rightButton.snp.makeConstraints {
+                $0.top.equalTo(verticalDividingLine.snp.bottom)
                 $0.trailing.equalToSuperview().inset(4.adjustedW)
                 $0.leading.equalTo(horizontalDividingLine.snp.trailing)
+                $0.height.equalTo(61.adjustedH)
             }
             
         }

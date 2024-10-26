@@ -53,7 +53,19 @@ final class PopUpVC: UIViewController {
             .subscribe(onNext: { vc, _ in     
                 switch vc.type {
                 case .logout:
-                    break
+                    // 로그아웃 서버통신
+                    vc.dismiss(animated: false)
+                    if let window = UIApplication.shared.windows.first {
+                        window.rootViewController?.dismiss(animated: false, completion: nil)
+                        window.rootViewController?.navigationController?.popToRootViewController(animated: true)
+
+                        let navigationController = UINavigationController()
+                        navigationController.navigationBar.isHidden = true
+                        window.rootViewController = navigationController
+                      
+                        let coordinator = SplashCoordinator(navigationController)
+                        coordinator.start()
+                    }
                 case .withdraw:
                     // 탈퇴 서버통신
 

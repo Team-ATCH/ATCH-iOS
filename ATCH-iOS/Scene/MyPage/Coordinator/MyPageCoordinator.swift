@@ -35,6 +35,13 @@ final class MyPageCoordinator: Coordinator {
         profileEditCoordinator.start()
     }
     
+    func pushToCharacterEditView() {
+        let characterEditCoordinator = CharacterEditCoordinator(self.navigationController)
+        characterEditCoordinator.finishDelegate = self
+        childCoordinators.append(characterEditCoordinator)
+        characterEditCoordinator.start()
+    }
+    
     func pushToPopupView(data: PopUpData) {
         let popUpCoordinator = PopUpCoordinator(self.navigationController)
         popUpCoordinator.finishDelegate = self

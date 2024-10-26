@@ -113,7 +113,7 @@ final class HashTagStackView: UIStackView {
     
     private func initializeSelectedTags() {
         // 이미 저장된 해시태그 불러오기
-        let savedTags = UserData.shared.hashTagRelay.value
+        let savedTags = UserData.shared.hashTag
         
         // 저장된 해시태그들을 찾아 선택된 상태로 설정
         for (index, hashTag) in HashTag.allCases.enumerated() {

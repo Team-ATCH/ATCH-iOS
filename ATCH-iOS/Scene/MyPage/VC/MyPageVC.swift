@@ -58,6 +58,24 @@ final class MyPageVC: UIViewController {
                 vc.coordinator?.pushToProfileEditView()
             }).disposed(by: disposeBag)
         
+        myPageView.characterEditView.nextButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { (vc, _) in
+                vc.coordinator?.pushToCharacterEditView()
+            }).disposed(by: disposeBag)
+        
+        myPageView.logoutView.rx.tapGesture().asObservable()
+            .when(.recognized)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.coordinator?.pushToPopupView(data: PopUpData(type: .logout,
+                                                                buttonType: .twoButton,
+                                                                content: "정말로 로그아웃\n하시겠습니까?",
+                                                                leftButtonText: "취소",
+                                                                rightButtonText: "확인",
+                                                                oneButtonText: ""))
+            }).disposed(by: disposeBag)
+        
         myPageView.withdrawView.rx.tapGesture().asObservable()
             .when(.recognized)
             .withUnretained(self)

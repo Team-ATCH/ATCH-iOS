@@ -71,6 +71,7 @@ final class HashTagSettingView: UIView {
                     view.canGoNext = true
                 }
             }).disposed(by: disposeBag)
+       
     }
     
     private func setupLayout() {

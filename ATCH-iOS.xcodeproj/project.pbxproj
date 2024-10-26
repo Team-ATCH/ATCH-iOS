@@ -47,6 +47,8 @@
 		2A7B78BA2CCD2167003E6F37 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B78B92CCD2167003E6F37 /* ProfileEditView.swift */; };
 		2A7B78BC2CCD216F003E6F37 /* ProfileEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B78BB2CCD216F003E6F37 /* ProfileEditVC.swift */; };
 		2A7B78BF2CCD2AF9003E6F37 /* HashTagStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B78BE2CCD2AF9003E6F37 /* HashTagStackView.swift */; };
+		2A7B78C12CCD344F003E6F37 /* CharacterEditCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B78C02CCD344F003E6F37 /* CharacterEditCoordinator.swift */; };
+		2A7B78C32CCD3493003E6F37 /* CharacterEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B78C22CCD3493003E6F37 /* CharacterEditVC.swift */; };
 		2A85A9322BF869C20030B4F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A85A9312BF869C20030B4F4 /* AppDelegate.swift */; };
 		2A85A9342BF869C20030B4F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A85A9332BF869C20030B4F4 /* SceneDelegate.swift */; };
 		2A85A93B2BF869C20030B4F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A85A93A2BF869C20030B4F4 /* Assets.xcassets */; };
@@ -137,6 +139,8 @@
 		2A7B78B92CCD2167003E6F37 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		2A7B78BB2CCD216F003E6F37 /* ProfileEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditVC.swift; sourceTree = "<group>"; };
 		2A7B78BE2CCD2AF9003E6F37 /* HashTagStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTagStackView.swift; sourceTree = "<group>"; };
+		2A7B78C02CCD344F003E6F37 /* CharacterEditCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEditCoordinator.swift; sourceTree = "<group>"; };
+		2A7B78C22CCD3493003E6F37 /* CharacterEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEditVC.swift; sourceTree = "<group>"; };
 		2A85A92E2BF869C10030B4F4 /* ATCH-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ATCH-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A85A9312BF869C20030B4F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A85A9332BF869C20030B4F4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -439,7 +443,7 @@
 		2A5051FD2C6D9E7900DC3E4A /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				2A7B78B02CCD211D003E6F37 /* AdornCharacter */,
+				2A7B78B02CCD211D003E6F37 /* CharacterEdit */,
 				2A7B78AF2CCD2116003E6F37 /* ProfileEdit */,
 				2ABCDC682C71EC4300AD649C /* Base */,
 				2AFD06BF2C84A06700F34C35 /* Components */,
@@ -501,14 +505,14 @@
 			path = ProfileEdit;
 			sourceTree = "<group>";
 		};
-		2A7B78B02CCD211D003E6F37 /* AdornCharacter */ = {
+		2A7B78B02CCD211D003E6F37 /* CharacterEdit */ = {
 			isa = PBXGroup;
 			children = (
 				2A7B78B62CCD214F003E6F37 /* Coordinator */,
 				2A7B78B52CCD214C003E6F37 /* View */,
 				2A7B78B42CCD2149003E6F37 /* VC */,
 			);
-			path = AdornCharacter;
+			path = CharacterEdit;
 			sourceTree = "<group>";
 		};
 		2A7B78B12CCD213A003E6F37 /* VC */ = {
@@ -538,6 +542,7 @@
 		2A7B78B42CCD2149003E6F37 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				2A7B78C22CCD3493003E6F37 /* CharacterEditVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -552,6 +557,7 @@
 		2A7B78B62CCD214F003E6F37 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				2A7B78C02CCD344F003E6F37 /* CharacterEditCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -995,6 +1001,7 @@
 				2A2591B12CBB835500B6181E /* HashTagSettingView.swift in Sources */,
 				2A2591D12CC001B200B6181E /* PopUpView.swift in Sources */,
 				2A5052052C6DA06700DC3E4A /* Adjust+.swift in Sources */,
+				2A7B78C12CCD344F003E6F37 /* CharacterEditCoordinator.swift in Sources */,
 				2A2591C52CBFF5B700B6181E /* MyPageView.swift in Sources */,
 				2AFD06BC2C84A04A00F34C35 /* MapChatCollectionViewCell.swift in Sources */,
 				2AFD06D02C84A06700F34C35 /* ChattingRoomVC.swift in Sources */,
@@ -1050,6 +1057,7 @@
 				2A85A9322BF869C20030B4F4 /* AppDelegate.swift in Sources */,
 				2A85A9342BF869C20030B4F4 /* SceneDelegate.swift in Sources */,
 				2A2591BB2CBBF39500B6181E /* ProfileModalCoordinator.swift in Sources */,
+				2A7B78C32CCD3493003E6F37 /* CharacterEditVC.swift in Sources */,
 				2A7B78BF2CCD2AF9003E6F37 /* HashTagStackView.swift in Sources */,
 				2AFD06E62C84A13700F34C35 /* NSObject+.swift in Sources */,
 				2A1BE0F52CBA494100908579 /* CharacterSettingVC.swift in Sources */,

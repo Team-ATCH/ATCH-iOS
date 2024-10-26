@@ -101,7 +101,7 @@ final class ProfileEditView: UIView {
                          nextButton)
 
         stackView.snp.makeConstraints {
-            $0.top.equalToSuperview()
+            $0.top.equalToSuperview().inset(30)
             $0.leading.equalToSuperview().inset(39)
             $0.trailing.equalToSuperview().inset(41)
         }
@@ -117,7 +117,7 @@ final class ProfileEditView: UIView {
                                                     hashTagStackView)
         
         nicknameSettingStackView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(30)
+            $0.top.equalToSuperview()
             $0.horizontalEdges.equalToSuperview()
         }
         

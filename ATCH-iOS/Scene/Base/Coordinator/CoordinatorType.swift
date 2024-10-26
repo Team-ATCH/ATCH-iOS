@@ -14,6 +14,7 @@ enum CoordinatorType {
     case profileSetting
     case profileEdit
     case profileModal
+    case adornCharacter
     case tab
     case map
     case myChat

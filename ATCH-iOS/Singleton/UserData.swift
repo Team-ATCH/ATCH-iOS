@@ -14,6 +14,7 @@ final class UserData {
     
     var characterIndex: Int = 0
     var nickname: String = ""
+    var hashTag: [HashTag] = []
     var hashTagRelay: BehaviorRelay<[HashTag]> = BehaviorRelay<[HashTag]>(value: [])
     
     func characterImage() -> UIImage {

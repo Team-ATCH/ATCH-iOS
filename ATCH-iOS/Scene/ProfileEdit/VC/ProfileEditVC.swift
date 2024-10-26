@@ -70,6 +70,7 @@ final class ProfileEditVC: UIViewController {
             .subscribe(onNext: { (vc, _) in
                 // 수정사항 post
                 vc.coordinator?.back()
+                UserData.shared.hashTag = UserData.shared.hashTagRelay.value
             }).disposed(by: disposeBag)
     }
 }
