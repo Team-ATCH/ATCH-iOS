@@ -70,6 +70,13 @@
 		2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC832C71EC9700AD649C /* TabBar.swift */; };
 		2ABCDC8B2C71EC9700AD649C /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC852C71EC9700AD649C /* TabBarCoordinator.swift */; };
 		2ABCDC8C2C71EC9700AD649C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC872C71EC9700AD649C /* TabBarController.swift */; };
+		2AC343FD2CCE08C100BEEA5A /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC343FC2CCE08C100BEEA5A /* TokenManager.swift */; };
+		2AC344002CCE08EF00BEEA5A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC343FF2CCE08EF00BEEA5A /* NetworkService.swift */; };
+		2AC344022CCE094E00BEEA5A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC344012CCE094E00BEEA5A /* NetworkError.swift */; };
+		2AC344042CCE097400BEEA5A /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC344032CCE097400BEEA5A /* BaseResponse.swift */; };
+		2AC344062CCE098200BEEA5A /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC344052CCE098200BEEA5A /* HttpMethod.swift */; };
+		2AC344082CCE099D00BEEA5A /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC344072CCE099D00BEEA5A /* KeychainWrapper.swift */; };
+		2AC3440C2CCE0AC800BEEA5A /* NetworkServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC3440B2CCE0AC800BEEA5A /* NetworkServiceType.swift */; };
 		2AE7C9E22C8C4D1000A177EF /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7C9E12C8C4D1000A177EF /* UITextView+.swift */; };
 		2AE7C9E42C8D328300A177EF /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7C9E32C8D328300A177EF /* Date+.swift */; };
 		2AFD06422C8059A700F34C35 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06412C8059A700F34C35 /* Config.swift */; };
@@ -167,6 +174,13 @@
 		2ABCDC832C71EC9700AD649C /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		2ABCDC852C71EC9700AD649C /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		2ABCDC872C71EC9700AD649C /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		2AC343FC2CCE08C100BEEA5A /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		2AC343FF2CCE08EF00BEEA5A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		2AC344012CCE094E00BEEA5A /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		2AC344032CCE097400BEEA5A /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		2AC344052CCE098200BEEA5A /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		2AC344072CCE099D00BEEA5A /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		2AC3440B2CCE0AC800BEEA5A /* NetworkServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceType.swift; sourceTree = "<group>"; };
 		2AE7C9E12C8C4D1000A177EF /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		2AE7C9E32C8D328300A177EF /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		2AFD06402C80588500F34C35 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
@@ -604,6 +618,7 @@
 				2AFD06402C80588500F34C35 /* Config.xcconfig */,
 				2AFD06412C8059A700F34C35 /* Config.swift */,
 				2A5051FF2C6D9EA800DC3E4A /* Extension */,
+				2AC343FA2CCE08A600BEEA5A /* Network */,
 				2AFD06E22C84A11D00F34C35 /* Model */,
 				2A1BE0FC2CBA4D5200908579 /* Singleton */,
 				2A5051FD2C6D9E7900DC3E4A /* Scene */,
@@ -772,6 +787,43 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		2AC343F92CCE083400BEEA5A /* ServerData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ServerData;
+			sourceTree = "<group>";
+		};
+		2AC343FA2CCE08A600BEEA5A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2AC343FE2CCE08E500BEEA5A /* Foundation */,
+				2AC343FB2CCE08B500BEEA5A /* TokenManager */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		2AC343FB2CCE08B500BEEA5A /* TokenManager */ = {
+			isa = PBXGroup;
+			children = (
+				2AC343FC2CCE08C100BEEA5A /* TokenManager.swift */,
+			);
+			path = TokenManager;
+			sourceTree = "<group>";
+		};
+		2AC343FE2CCE08E500BEEA5A /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				2AC343FF2CCE08EF00BEEA5A /* NetworkService.swift */,
+				2AC344012CCE094E00BEEA5A /* NetworkError.swift */,
+				2AC344032CCE097400BEEA5A /* BaseResponse.swift */,
+				2AC344052CCE098200BEEA5A /* HttpMethod.swift */,
+				2AC344072CCE099D00BEEA5A /* KeychainWrapper.swift */,
+				2AC3440B2CCE0AC800BEEA5A /* NetworkServiceType.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
 		2AE7C9E52C8D3DFB00A177EF /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -904,6 +956,7 @@
 		2AFD06E22C84A11D00F34C35 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2AC343F92CCE083400BEEA5A /* ServerData */,
 				2AFD06E12C84A11D00F34C35 /* ViewData */,
 			);
 			path = Model;
@@ -1059,15 +1112,19 @@
 				2A2591C82CBFF78100B6181E /* SettingCell.swift in Sources */,
 				2ABCDC7B2C71EC6300AD649C /* MyPageVC.swift in Sources */,
 				2A1BE1032CBA4E1D00908579 /* SplashCoordinator.swift in Sources */,
+				2AC344082CCE099D00BEEA5A /* KeychainWrapper.swift in Sources */,
 				2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */,
 				2ABCDC8B2C71EC9700AD649C /* TabBarCoordinator.swift in Sources */,
+				2AC344042CCE097400BEEA5A /* BaseResponse.swift in Sources */,
 				2A7B78B82CCD2160003E6F37 /* ProfileEditCoordinator.swift in Sources */,
 				2A1BE1132CBA5B2D00908579 /* CharacterSettingView.swift in Sources */,
+				2AC344062CCE098200BEEA5A /* HttpMethod.swift in Sources */,
 				2AFD06E32C84A11D00F34C35 /* MapChatData.swift in Sources */,
 				2AFD06D32C84A06700F34C35 /* AlarmVC.swift in Sources */,
 				2AFD06492C80BAA500F34C35 /* BaseMapVC.swift in Sources */,
 				2A1BE0E42CB8ECD000908579 /* SigninCoordinator.swift in Sources */,
 				2A1BE11E2CBA9B6700908579 /* AtchPageControl.swift in Sources */,
+				2AC343FD2CCE08C100BEEA5A /* TokenManager.swift in Sources */,
 				2A1BE0F72CBA494B00908579 /* NicknameSettingVC.swift in Sources */,
 				2AFD06D42C84A06700F34C35 /* AlarmViewModel.swift in Sources */,
 				2A1BE1092CBA4E4300908579 /* SplashViewModel.swift in Sources */,
@@ -1075,6 +1132,7 @@
 				2AE7C9E42C8D328300A177EF /* Date+.swift in Sources */,
 				2AFD06CF2C84A06700F34C35 /* ChattingRoomCoordinator.swift in Sources */,
 				2AFD06EC2C84AF2000F34C35 /* MyChatData.swift in Sources */,
+				2AC3440C2CCE0AC800BEEA5A /* NetworkServiceType.swift in Sources */,
 				2AFD07302C8C25B000F34C35 /* ChattingData.swift in Sources */,
 				2A2591C22CBF8EC900B6181E /* ProfileModalData.swift in Sources */,
 				2AFD06D22C84A06700F34C35 /* AlarmCoordinator.swift in Sources */,
@@ -1087,7 +1145,9 @@
 				2A7B78C32CCD3493003E6F37 /* CharacterEditVC.swift in Sources */,
 				2A7B78BF2CCD2AF9003E6F37 /* HashTagStackView.swift in Sources */,
 				2AFD06E62C84A13700F34C35 /* NSObject+.swift in Sources */,
+				2AC344002CCE08EF00BEEA5A /* NetworkService.swift in Sources */,
 				2A1BE0F52CBA494100908579 /* CharacterSettingVC.swift in Sources */,
+				2AC344022CCE094E00BEEA5A /* NetworkError.swift in Sources */,
 				2AFD06D12C84A06700F34C35 /* ChattingRoomViewModel.swift in Sources */,
 				2A1BE0FE2CBA4D6900908579 /* UserData.swift in Sources */,
 				2AFD06CE2C84A06700F34C35 /* NavigationView.swift in Sources */,
