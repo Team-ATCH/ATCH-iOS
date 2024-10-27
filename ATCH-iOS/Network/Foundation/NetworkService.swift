@@ -12,7 +12,7 @@ final class NetworkService: NetworkServiceType {
     
     func makeRequest(type: HttpMethod,
                      baseURL: String,
-                     accessToken: String,
+                     accessToken: String?,
                      body: Encodable,
                      pathVariables: [String: String]) -> URLRequest {
         var urlComponents = URLComponents(string: baseURL)
@@ -31,9 +31,15 @@ final class NetworkService: NetworkServiceType {
         var request = URLRequest(url: url)
         request.httpMethod = type.method
         
-        let header = ["Content-Type": "application/json",
+        var header: [String: String] = [:]
+
+        if let accessToken = accessToken {
+            header = ["Content-Type": "application/json",
                       "Authorization": "Bearer \(accessToken)"]
-        
+        } else {
+            header = ["Content-Type": "application/json"]
+        }
+       
         header.forEach {
             request.addValue($0.value, forHTTPHeaderField: $0.key)
         }
@@ -55,7 +61,7 @@ final class NetworkService: NetworkServiceType {
     
     func network<T: Decodable>(type: HttpMethod,
                                baseURL: String,
-                               accessToken: String,
+                               accessToken: String?,
                                body: Encodable,
                                pathVariables: [String: String])  async throws -> T? {
         do {
@@ -71,10 +77,10 @@ final class NetworkService: NetworkServiceType {
             }
             
             switch httpResponse.statusCode {
-            case 200..<401:
+            case 200..<400:
                 let result = try JSONDecoder().decode(T.self, from: data)
                 return result
-            case 401:
+            case 400:
                 throw NetworkError.badRequestError
             case 404:
                 throw NetworkError.notFoundError

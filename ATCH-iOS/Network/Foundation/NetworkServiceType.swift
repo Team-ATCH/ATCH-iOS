@@ -10,13 +10,13 @@ import Foundation
 protocol NetworkServiceType {
     func makeRequest(type: HttpMethod,
                      baseURL: String,
-                     accessToken: String,
+                     accessToken: String?,
                      body: Encodable,
                      pathVariables: [String: String]) -> URLRequest
     
     func network<T: Decodable>(type: HttpMethod,
                                baseURL: String,
-                               accessToken: String,
+                               accessToken: String?,
                                body: Encodable,
                                pathVariables: [String: String]) async throws -> T?
 }
