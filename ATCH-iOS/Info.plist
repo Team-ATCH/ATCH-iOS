@@ -49,5 +49,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>WEB_SOCKET_URL</key>
+	<string>${WEB_SOCKET_URL}</string>
 </dict>
 </plist>

@@ -111,7 +111,7 @@ final class SigninVC: UIViewController {
             .asObservable()
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
-                vc.coordinator?.pushToCharacterSettingView()
+                vc.viewModel?.performAppleLogin()
             }).disposed(by: disposeBag)
 
     }
