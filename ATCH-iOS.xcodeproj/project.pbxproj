@@ -116,6 +116,7 @@
 		2AFD072E2C8C22E200F34C35 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFD072D2C8C22E200F34C35 /* MessageKit */; };
 		2AFD07302C8C25B000F34C35 /* ChattingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD072F2C8C25B000F34C35 /* ChattingData.swift */; };
 		2AFD07362C8C3AC400F34C35 /* BaseChattingRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD07352C8C3AC400F34C35 /* BaseChattingRoomVC.swift */; };
+		3D16E0A7CB5D37D4F14E0123 /* Pods_ATCH_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -218,6 +219,9 @@
 		2AFD07232C897A5400F34C35 /* AlarmCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCollectionViewCell.swift; sourceTree = "<group>"; };
 		2AFD072F2C8C25B000F34C35 /* ChattingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingData.swift; sourceTree = "<group>"; };
 		2AFD07352C8C3AC400F34C35 /* BaseChattingRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseChattingRoomVC.swift; sourceTree = "<group>"; };
+		559D6D8F22DF04CD75C9BCC6 /* Pods-ATCH-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.release.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATCH_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0AC03EEAF5A52DB29F667C5 /* Pods-ATCH-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.debug.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,12 +243,22 @@
 				2A1BE1102CBA509900908579 /* Lottie in Frameworks */,
 				2AFD072E2C8C22E200F34C35 /* MessageKit in Frameworks */,
 				2AC3441B2CCE198200BEEA5A /* KakaoSDKCertCore in Frameworks */,
+				3D16E0A7CB5D37D4F14E0123 /* Pods_ATCH_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1219718CAF1908DAF9C0F501 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F0AC03EEAF5A52DB29F667C5 /* Pods-ATCH-iOS.debug.xcconfig */,
+				559D6D8F22DF04CD75C9BCC6 /* Pods-ATCH-iOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		2A1BE0DE2CB8EC8F00908579 /* Signin */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,6 +630,8 @@
 			children = (
 				2A85A9302BF869C10030B4F4 /* ATCH-iOS */,
 				2A85A92F2BF869C10030B4F4 /* Products */,
+				1219718CAF1908DAF9C0F501 /* Pods */,
+				60DB2F161168AA92B48FDAD5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1006,6 +1022,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		60DB2F161168AA92B48FDAD5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1013,9 +1037,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A85A9422BF869C20030B4F4 /* Build configuration list for PBXNativeTarget "ATCH-iOS" */;
 			buildPhases = (
+				D4BEE8722AC816865ECA00E0 /* [CP] Check Pods Manifest.lock */,
 				2A85A92A2BF869C10030B4F4 /* Sources */,
 				2A85A92B2BF869C10030B4F4 /* Frameworks */,
 				2A85A92C2BF869C10030B4F4 /* Resources */,
+				B6A1F353C85286D9767BB52A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1101,6 +1127,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B6A1F353C85286D9767BB52A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4BEE8722AC816865ECA00E0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ATCH-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2A85A92A2BF869C10030B4F4 /* Sources */ = {
@@ -1260,6 +1328,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1324,6 +1393,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1352,6 +1422,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 349HWJV2J8;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ATCH-iOS/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
@@ -1360,6 +1431,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1383,6 +1455,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 349HWJV2J8;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ATCH-iOS/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
@@ -1391,6 +1464,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
