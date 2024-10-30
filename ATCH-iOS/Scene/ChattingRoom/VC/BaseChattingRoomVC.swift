@@ -71,7 +71,7 @@ class BaseChattingRoomVC: MessagesViewController {
         setupDelegate()
         setupAction()
         setupDismissKeyboardGesture()
-        addDummyMessages()
+        bindViewModel()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -80,13 +80,9 @@ class BaseChattingRoomVC: MessagesViewController {
         removeKeyboardObservers()
     }
     
-    func setupStyle() {
+    func setupStyle() { }
     
-    }
-    
-    func setupMessageInputBar() {
-        
-    }
+    func setupMessageInputBar() { }
     
     private func setIncomingMessageLayout() {
         guard let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout else { return }
@@ -106,16 +102,9 @@ class BaseChattingRoomVC: MessagesViewController {
         layout.setMessageOutgoingAccessoryViewPosition(.cellBottom)
     }
     
-    private func insertNewMessage(_ message: ChattingData) {
-        messages.append(message)
-        messages.sort()
-        
-        messagesCollectionView.reloadData()
-    }
+    func insertNewMessage(_ message: ChattingData) { }
     
-    func setupLayout() {
-        
-    }
+    func setupLayout() { }
     
     private func setupDelegate() {
         messagesCollectionView.messagesDataSource = self
@@ -125,9 +114,7 @@ class BaseChattingRoomVC: MessagesViewController {
         messageInputBar.delegate = self
     }
     
-    func setupAction() {
-        
-    }
+    func setupAction() { }
     
     func addKeyboardObservers() {
         keyboardManager.bind(inputAccessoryView: inputContainerView)
@@ -236,7 +223,7 @@ class BaseChattingRoomVC: MessagesViewController {
             messageInputBar.inputTextView.snp.remakeConstraints {
                 $0.leading.equalToSuperview().inset(9)
                 $0.centerY.equalToSuperview()
-                $0.width.equalTo(280)
+                $0.width.equalTo(280.adjustedW)
                 $0.height.equalTo(39 + 20 * (line - 2))
             }
         }
@@ -245,10 +232,8 @@ class BaseChattingRoomVC: MessagesViewController {
             self?.view.layoutIfNeeded()
         }
     }
-    
-    func addDummyMessages() {
         
-    }
+    func bindViewModel() { }
 }
 
 extension BaseChattingRoomVC: MessagesDataSource {
@@ -340,7 +325,7 @@ extension BaseChattingRoomVC: InputBarAccessoryViewDelegate {
         messageInputBar.inputTextView.snp.remakeConstraints {
             $0.leading.equalToSuperview().inset(9)
             $0.centerY.equalToSuperview()
-            $0.width.equalTo(280)
+            $0.width.equalTo(280.adjustedW)
             $0.height.equalTo(39)
         }
     }

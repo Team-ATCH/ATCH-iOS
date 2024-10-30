@@ -12,6 +12,7 @@ import RxRelay
 final class UserData {
     static var shared = UserData()
     
+    var userId: Int = 0
     var characterIndex: Int = 0
     var nickname: String = ""
     var hashTag: [HashTag] = []

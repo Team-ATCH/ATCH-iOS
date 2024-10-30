@@ -28,7 +28,9 @@ final class ChattingRoomVC: BaseChattingRoomVC {
         
         super.init(nibName: nil, bundle: nil)
         
-        self.sender = Sender(senderId: opponent.senderId, displayName: opponent.displayName, profileImageUrl: opponent.profileImageUrl)
+        self.sender = Sender(senderId: opponent.senderId, 
+                             displayName: opponent.displayName,
+                             profileImageUrl: opponent.profileImageUrl)
     }
     
     required init?(coder: NSCoder) {
@@ -36,6 +38,8 @@ final class ChattingRoomVC: BaseChattingRoomVC {
     }
     
     override func setupStyle() {
+        overrideUserInterfaceStyle = .light
+        
         messagesCollectionView.backgroundColor = .atchGrey1
         messagesCollectionView.contentInset = .init(top: 10, left: 0, bottom: 10, right: 0)
 
@@ -96,7 +100,7 @@ final class ChattingRoomVC: BaseChattingRoomVC {
         messageInputBar.inputTextView.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(9)
             $0.centerY.equalToSuperview()
-            $0.width.equalTo(280)
+            $0.width.equalTo(280.adjustedW)
             $0.height.equalTo(39)
         }
     
@@ -113,21 +117,32 @@ final class ChattingRoomVC: BaseChattingRoomVC {
         addKeyboardObservers()
     }
     
+    override func insertNewMessage(_ message: ChattingData) {
+        viewModel?.sendMessage(message: message)
+        messages.append(message)
+        messages.sort()
+        
+        messagesCollectionView.reloadData()
+    }
+    
     override func setupAction() {
         chattingRoomNavigationView.navigationBackButton.rx.tapGesture().asObservable()
             .when(.recognized)
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
+                vc.viewModel?.disconnect()
                 vc.coordinator?.back()
             }).disposed(by: disposeBag)
     }
     
-    override func addDummyMessages() {
-        let opponentMessage = ChattingData(sender: sender, content: "안녕하세여 저의 이름은", sendDate: Date())
-        messages.append(opponentMessage)
-                
-        // 리로드 후 마지막 메시지로 스크롤
-        messagesCollectionView.reloadData()
-        messagesCollectionView.scrollToLastItem()
+    override func bindViewModel() {
+        viewModel?.messageRelay
+            .withUnretained(self)
+            .subscribe(onNext: { vc, message in
+                vc.messages.append(message)
+                vc.messages.sort()
+                vc.messagesCollectionView.reloadData()
+                vc.messagesCollectionView.scrollToLastItem()
+            }).disposed(by: disposeBag)
     }
 }

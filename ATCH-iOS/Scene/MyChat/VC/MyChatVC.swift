@@ -17,7 +17,7 @@ final class MyChatVC: UIViewController {
     
     private let myChatNavigationView = NavigationView(title: "내 채팅")
     private let myChatView = MyChatView()
-    private var chatList: [MyChatData] = [MyChatData(characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", id: "", nickName: "탕탕 후루후루", content: "마침 하나 남았는데 오실거면...", tag: "#맛집 #사장 #버스킹 #주민"),
+    private var chatList: [MyChatData] = [MyChatData(characterUrl: "https://i.pinimg.com/236x/da/65/af/da65afb14c7f4bfe63e29368d84cfb3e.jpg", id: "11111111", nickName: "탕탕 후루후루", content: "마침 하나 남았는데 오실거면...", tag: "#맛집 #사장 #버스킹 #주민"),
                                           MyChatData(characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", id: "", nickName: "맛집헌터", content: "카미야 너무 유명해졌어요", tag: "#맛집 #홍대생"),
                                           MyChatData(characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", id: "", nickName: "호롤롤로", content: "근데 좀 심심해요ㅋ", tag: "#홍대생 #클럽"),
                                           MyChatData(characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", id: "", nickName: "안돼요교수님", content: "제발요ㅠㅠ", tag: "#카페 #덕질 #홍대생 #버스킹"),

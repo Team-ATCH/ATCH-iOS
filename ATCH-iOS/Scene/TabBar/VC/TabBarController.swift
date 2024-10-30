@@ -36,10 +36,10 @@ final class TabBarController: UITabBarController {
             .foregroundColor: UIColor.atchShadowGrey,
             .font: UIFont.font(.caption)
         ]
-        tabBarAppearance.stackedItemWidth = 48
+        tabBarAppearance.stackedItemWidth = 48.adjustedW
         tabBarAppearance.stackedLayoutAppearance.normal.titlePositionAdjustment = .init(horizontal: 0, vertical: -6)
         tabBarAppearance.stackedLayoutAppearance.selected.titlePositionAdjustment = .init(horizontal: 0, vertical: -6)
-        tabBarAppearance.stackedItemSpacing = 42
+        tabBarAppearance.stackedItemSpacing = 42.adjustedW
         tabBarAppearance.stackedItemPositioning = .centered
         tabBarAppearance.backgroundEffect = nil
         
