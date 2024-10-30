@@ -10,6 +10,111 @@ import Foundation
 import RxRelay
 import RxSwift
 
+import StompClientLib
+
 final class ChattingRoomViewModel: NSObject {
+    
+    private var socketClient = StompClientLib()
+
+    private var messages: [ChattingData] = []
+    private var sender = Sender(senderId: "", displayName: "")
+
+    var messageRelay: PublishRelay<ChattingData> = PublishRelay<ChattingData>()
+    
+    init(opponent: Sender) {
+        super.init()
         
+        self.sender = Sender(senderId: opponent.senderId,
+                             displayName: opponent.displayName,
+                             profileImageUrl: opponent.profileImageUrl)
+        
+        self.registerSockect()
+    }
+    
+    func registerSockect() {
+        if let url = URL(string: Config.webSocketURL),
+           let accessToken = KeychainWrapper.loadToken(forKey: "accessToken") {
+            socketClient.openSocketWithURLRequest(
+                request: NSURLRequest(url: url),
+                delegate: self,
+                connectionHeaders: [ "Authorization" : "Bearer \(accessToken)" ]
+            )
+        }
+    }
+    
+    func subscribe() {
+        socketClient.subscribe(destination: "/sub/messages/1")
+    }
+    
+    func sendMessage(message: ChattingData) {
+        let payloadObject : [String : Any] = [ "content" : message.content ]
+        
+        socketClient.sendJSONForDict(
+            dict: payloadObject as AnyObject,
+            toDestination: "/pub/messages/1")
+    }
+    
+    func disconnect() {
+        socketClient.disconnect()
+    }
+    
+}
+
+extension ChattingRoomViewModel: StompClientLibDelegate {
+    func stompClient(
+        client: StompClientLib!,
+        didReceiveMessageWithJSONBody jsonBody: AnyObject?,
+        akaStringBody stringBody: String?,
+        withHeader header: [String : String]?,
+        withDestination destination: String
+    ) {
+
+        guard let json = jsonBody as? [String : AnyObject] else { return }
+        guard let innerJSON_FromID = json ["fromId"] as? Int else { return }
+        guard let innerJSON_Message = json ["content"] as? String else { return }
+        
+        if innerJSON_FromID != UserData.shared.userId {
+            // 내가 보내는 메세지에 대해선 나에게 pub X
+            messageRelay.accept(ChattingData(sender: sender,
+                                             content: innerJSON_Message,
+                                             sendDate: Date()))
+        }
+    }
+    
+    func stompClientJSONBody(
+        client: StompClientLib!,
+        didReceiveMessageWithJSONBody jsonBody: String?,
+        withHeader header: [String : String]?,
+        withDestination destination: String
+    ) {
+        
+    }
+    
+    // Unsubscribe Topic
+    func stompClientDidDisconnect(client: StompClientLib!) {
+        print("Stomp socket is disconnected")
+    }
+    
+    // Subscribe Topic after Connection
+    func stompClientDidConnect(client: StompClientLib!) {
+        print("Stomp socket is connected")
+        
+        subscribe()
+    }
+    
+    // Error - disconnect and reconnect socket
+    func serverDidSendError(client: StompClientLib!, withErrorMessage description: String, detailedErrorMessage message: String?) {
+        print("Error send : " + description)
+        
+        socketClient.disconnect()
+        registerSockect()
+    }
+    
+    func serverDidSendPing() {
+        print("Server ping")
+    }
+    
+    func serverDidSendReceipt(client: StompClientLib!, withReceiptId receiptId: String) {
+        print("Receipt : \(receiptId)")
+    }
 }

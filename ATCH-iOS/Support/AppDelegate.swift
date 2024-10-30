@@ -8,6 +8,7 @@
 import UIKit
 
 import KakaoMapsSDK
+import KakaoSDKCommon
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         SDKInitializer.InitSDK(appKey: Config.kakaoAPPKey)
-
+        KakaoSDK.initSDK(appKey: Config.kakaoAPPKey)
+        
         return true
     }
 
