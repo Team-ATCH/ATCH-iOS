@@ -116,6 +116,7 @@
 		2AFD072E2C8C22E200F34C35 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFD072D2C8C22E200F34C35 /* MessageKit */; };
 		2AFD07302C8C25B000F34C35 /* ChattingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD072F2C8C25B000F34C35 /* ChattingData.swift */; };
 		2AFD07362C8C3AC400F34C35 /* BaseChattingRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD07352C8C3AC400F34C35 /* BaseChattingRoomVC.swift */; };
+		2AFE09B02CD1C406001CF26B /* SigninRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09AF2CD1C406001CF26B /* SigninRepository.swift */; };
 		3D16E0A7CB5D37D4F14E0123 /* Pods_ATCH_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -219,6 +220,7 @@
 		2AFD07232C897A5400F34C35 /* AlarmCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCollectionViewCell.swift; sourceTree = "<group>"; };
 		2AFD072F2C8C25B000F34C35 /* ChattingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingData.swift; sourceTree = "<group>"; };
 		2AFD07352C8C3AC400F34C35 /* BaseChattingRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseChattingRoomVC.swift; sourceTree = "<group>"; };
+		2AFE09AF2CD1C406001CF26B /* SigninRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRepository.swift; sourceTree = "<group>"; };
 		559D6D8F22DF04CD75C9BCC6 /* Pods-ATCH-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.release.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATCH_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AC03EEAF5A52DB29F667C5 /* Pods-ATCH-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.debug.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -830,6 +832,7 @@
 		2AC343FA2CCE08A600BEEA5A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				2AFE09AD2CD1C3D1001CF26B /* Repository */,
 				2AC343FE2CCE08E500BEEA5A /* Foundation */,
 				2AC343FB2CCE08B500BEEA5A /* TokenManager */,
 			);
@@ -1020,6 +1023,14 @@
 				2AFD07232C897A5400F34C35 /* AlarmCollectionViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2AFE09AD2CD1C3D1001CF26B /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				2AFE09AF2CD1C406001CF26B /* SigninRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		60DB2F161168AA92B48FDAD5 /* Frameworks */ = {
@@ -1262,6 +1273,7 @@
 				2ABCDC6D2C71EC5100AD649C /* UIWindow+.swift in Sources */,
 				2A1BE0F32CBA491E00908579 /* HashTagSettingCoordinator.swift in Sources */,
 				2ABCDC6A2C71EC4300AD649C /* Coordinator.swift in Sources */,
+				2AFE09B02CD1C406001CF26B /* SigninRepository.swift in Sources */,
 				2AFD06BB2C84A04A00F34C35 /* MapBottomSheetView.swift in Sources */,
 				2AFD06BA2C84A04A00F34C35 /* MapViewModel.swift in Sources */,
 			);

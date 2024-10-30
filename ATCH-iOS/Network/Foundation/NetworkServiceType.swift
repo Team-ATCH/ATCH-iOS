@@ -14,7 +14,7 @@ protocol NetworkServiceType {
                      body: Encodable,
                      pathVariables: [String: String]) -> URLRequest
     
-    func network<T: Decodable>(type: HttpMethod,
+    func request<T: Decodable>(type: HttpMethod,
                                baseURL: String,
                                accessToken: String?,
                                body: Encodable,
