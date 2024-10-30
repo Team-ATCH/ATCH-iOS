@@ -10,4 +10,5 @@ import Foundation
 struct SigninResposeDTO: Decodable {
     let accessToken: String
     let refreshToken: String?
+    let newUser: Bool
 }

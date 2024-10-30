@@ -117,6 +117,8 @@
 		2AFD07302C8C25B000F34C35 /* ChattingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD072F2C8C25B000F34C35 /* ChattingData.swift */; };
 		2AFD07362C8C3AC400F34C35 /* BaseChattingRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD07352C8C3AC400F34C35 /* BaseChattingRoomVC.swift */; };
 		2AFE09B02CD1C406001CF26B /* SigninRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09AF2CD1C406001CF26B /* SigninRepository.swift */; };
+		2AFE09B42CD1D5AA001CF26B /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09B32CD1D5AA001CF26B /* HomeRepository.swift */; };
+		2AFE09B72CD1D657001CF26B /* LocationRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09B62CD1D657001CF26B /* LocationRequestBody.swift */; };
 		3D16E0A7CB5D37D4F14E0123 /* Pods_ATCH_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -221,6 +223,8 @@
 		2AFD072F2C8C25B000F34C35 /* ChattingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingData.swift; sourceTree = "<group>"; };
 		2AFD07352C8C3AC400F34C35 /* BaseChattingRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseChattingRoomVC.swift; sourceTree = "<group>"; };
 		2AFE09AF2CD1C406001CF26B /* SigninRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRepository.swift; sourceTree = "<group>"; };
+		2AFE09B32CD1D5AA001CF26B /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
+		2AFE09B62CD1D657001CF26B /* LocationRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRequestBody.swift; sourceTree = "<group>"; };
 		559D6D8F22DF04CD75C9BCC6 /* Pods-ATCH-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.release.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATCH_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AC03EEAF5A52DB29F667C5 /* Pods-ATCH-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.debug.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -824,6 +828,7 @@
 		2AC343F92CCE083400BEEA5A /* ServerData */ = {
 			isa = PBXGroup;
 			children = (
+				2AFE09B52CD1D63C001CF26B /* Home */,
 				2AC344122CCE0FFE00BEEA5A /* Signin */,
 			);
 			path = ServerData;
@@ -1029,8 +1034,17 @@
 			isa = PBXGroup;
 			children = (
 				2AFE09AF2CD1C406001CF26B /* SigninRepository.swift */,
+				2AFE09B32CD1D5AA001CF26B /* HomeRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		2AFE09B52CD1D63C001CF26B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2AFE09B62CD1D657001CF26B /* LocationRequestBody.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		60DB2F161168AA92B48FDAD5 /* Frameworks */ = {
@@ -1187,6 +1201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A2591B12CBB835500B6181E /* HashTagSettingView.swift in Sources */,
+				2AFE09B42CD1D5AA001CF26B /* HomeRepository.swift in Sources */,
 				2A2591D12CC001B200B6181E /* PopUpView.swift in Sources */,
 				2A5052052C6DA06700DC3E4A /* Adjust+.swift in Sources */,
 				2A7B78C12CCD344F003E6F37 /* CharacterEditCoordinator.swift in Sources */,
@@ -1201,6 +1216,7 @@
 				2ABCDC7A2C71EC6300AD649C /* MyPageCoordinator.swift in Sources */,
 				2A5052012C6D9EBB00DC3E4A /* UIColor+.swift in Sources */,
 				2AFD06E72C84A13700F34C35 /* UIStackView+.swift in Sources */,
+				2AFE09B72CD1D657001CF26B /* LocationRequestBody.swift in Sources */,
 				2A2591D32CC001B900B6181E /* PopUpVC.swift in Sources */,
 				2AFD07222C8979F800F34C35 /* AlarmView.swift in Sources */,
 				2A1BE0EF2CBA490700908579 /* CharacterSettingCoordinator.swift in Sources */,

@@ -19,7 +19,7 @@ final class SigninViewModel: NSObject {
     
     private let signinRepository: SigninRepository = SigninRepository()
 
-    let successRelay: PublishRelay<Bool> = PublishRelay<Bool>()
+    let loginRelay: PublishRelay<(Bool, Bool)> = PublishRelay<(Bool, Bool)>() // 1.로그인 실패 여부 2.새로운 유저 여부
     
     override init() {
         super.init()
@@ -46,11 +46,11 @@ final class SigninViewModel: NSObject {
             Task {
                 do {
                     let result = try await signinRepository.postKakaoLogin(code: authorizationCode)
-                    if let accessToken = result?.accessToken {
-                        KeychainWrapper.saveToken(accessToken, forKey: .accessToken)
-                        successRelay.accept(true)
+                    if let result = result {
+                        KeychainWrapper.saveToken(result.accessToken, forKey: .accessToken)
+                        loginRelay.accept((true, result.newUser))
                     } else {
-                        successRelay.accept(false)
+                        loginRelay.accept((false, false))
                     }
                 }
             }
@@ -80,11 +80,11 @@ extension SigninViewModel: ASAuthorizationControllerDelegate {
             Task {
                 do {
                     let result = try await signinRepository.postAppleLogin(code: token)
-                    if let accessToken = result?.accessToken {
-                        KeychainWrapper.saveToken(accessToken, forKey: .accessToken)
-                        successRelay.accept(true)
+                    if let result = result {
+                        KeychainWrapper.saveToken(result.accessToken, forKey: .accessToken)
+                        loginRelay.accept((true, result.newUser))
                     } else {
-                        successRelay.accept(false)
+                        loginRelay.accept((false, false))
                     }
                 }
             }

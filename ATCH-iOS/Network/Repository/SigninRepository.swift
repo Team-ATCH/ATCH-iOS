@@ -11,39 +11,34 @@ final class SigninRepository {
     
     private let networkProvider: NetworkServiceType = NetworkService()
 
-    func postKakaoLogin(code: String) async throws -> SigninResposeDTO? {
+    private func postLogin(code: String, provider: String) async throws -> SigninResposeDTO? {
         let requestDTO = SigninRequestBody(code: code)
-        do {
-            let data: SigninResposeDTO? = try await 
+        let response: NetworkResult<SigninResposeDTO> = try await
             networkProvider.request(
                 type: .post,
                 baseURL: Config.appBaseURL + "/login",
                 accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
                 body: requestDTO,
-                pathVariables: ["provider":"KAKAO"]
+                pathVariables: ["provider": provider]
             )
+        
+        switch response {
+        case .success(let data):
             return data
-        }
-        catch {
+        case .failure(let error):
+            print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
             return nil
-       }
+        }
+    }
+
+    
+    // 카카오 로그인
+    func postKakaoLogin(code: String) async throws -> SigninResposeDTO? {
+        return try await postLogin(code: code, provider: "KAKAO")
     }
     
+    // 애플 로그인
     func postAppleLogin(code: String) async throws -> SigninResposeDTO? {
-        let requestDTO = SigninRequestBody(code: code)
-        do {
-            let data: SigninResposeDTO? = try await
-            networkProvider.request(
-                type: .post,
-                baseURL: Config.appBaseURL + "/login",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
-                body: requestDTO,
-                pathVariables: ["provider":"APPLE"]
-            )
-            return data
-        }
-        catch {
-            return nil
-       }
+        return try await postLogin(code: code, provider: "APPLE")
     }
 }

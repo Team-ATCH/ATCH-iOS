@@ -63,12 +63,16 @@ final class SigninVC: UIViewController {
     }
     
     private func bindViewModel() {
-        viewModel?.successRelay
+        viewModel?.loginRelay
             .observe(on: MainScheduler.instance)
             .withUnretained(self)
-            .subscribe(onNext: { vc, success in
-                if success {
-                    vc.coordinator?.pushToCharacterSettingView()
+            .subscribe(onNext: { vc, value in
+                if value.0 == true { // 로그인 성공
+                    if value.1 == true { // 새로운 유저
+                        vc.coordinator?.pushToCharacterSettingView()
+                    } else {
+                        vc.coordinator?.pushToMainView()
+                    }
                 }
             }).disposed(by: disposeBag)
     }

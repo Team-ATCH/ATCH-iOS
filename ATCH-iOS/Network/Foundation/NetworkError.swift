@@ -5,25 +5,39 @@
 //  Created by 변희주 on 10/27/24.
 //
 
-import UIKit
+import Foundation
 
-enum NetworkError: Int, Error, CustomStringConvertible {
-    var description: String { self.errorDescription }
+enum NetworkError: Error, CustomStringConvertible {
     case responseError
-    case badRequestError = 400
-    case unautohorizedError = 401
-    case notFoundError = 404
-    case internalServerError = 500
+    case serverError(ErrorResponse)
     case unknownError
     
-    var errorDescription: String {
+    var description: String {
         switch self {
-        case .responseError: return "REQUEST_ERROR"
-        case .badRequestError: return "BAD_REQUEST_ERROR"
-        case .unautohorizedError: return "UNAUTHORIZED_ERROR"
-        case .notFoundError: return "NOT_FOUND_ERROR"
-        case .internalServerError: return "SERVER_ERROR"
-        case .unknownError: return "UNKNOWN_ERROR"
+        case .responseError:
+            return "RESPONSE_ERROR"
+        case .serverError(let errorResponse):
+            return "SERVER_ERROR: Code - \(errorResponse.code), Message - \(errorResponse.message)"
+        case .unknownError:
+            return "UNKNOWN_ERROR"
+        }
+    }
+    
+    var code: String? {
+        switch self {
+        case .serverError(let errorResponse):
+            return errorResponse.code
+        default:
+            return nil
+        }
+    }
+    
+    var message: String? {
+        switch self {
+        case .serverError(let errorResponse):
+            return errorResponse.message
+        default:
+            return nil
         }
     }
 }
