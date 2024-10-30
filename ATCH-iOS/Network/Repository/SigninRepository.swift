@@ -18,7 +18,7 @@ final class SigninRepository {
             networkProvider.request(
                 type: .post,
                 baseURL: Config.appBaseURL + "/login",
-                accessToken: nil,
+                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
                 body: requestDTO,
                 pathVariables: ["provider":"KAKAO"]
             )
@@ -36,11 +36,10 @@ final class SigninRepository {
             networkProvider.request(
                 type: .post,
                 baseURL: Config.appBaseURL + "/login",
-                accessToken: nil,
+                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
                 body: requestDTO,
                 pathVariables: ["provider":"APPLE"]
             )
-            
             return data
         }
         catch {

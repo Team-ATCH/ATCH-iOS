@@ -73,7 +73,6 @@ final class NetworkService: NetworkServiceType {
             
             let (data, response) = try await URLSession.shared.data(for: request)
             guard let httpResponse = response as? HTTPURLResponse else {
-                print(NetworkError.responseError.description)
                 throw NetworkError.responseError
             }
             
@@ -82,16 +81,12 @@ final class NetworkService: NetworkServiceType {
                 let result = try JSONDecoder().decode(T.self, from: data)
                 return result
             case 400:
-                print(NetworkError.badRequestError.description)
                 throw NetworkError.badRequestError
             case 404:
-                print(NetworkError.notFoundError.description)
                 throw NetworkError.notFoundError
             case 500:
-                print(NetworkError.internalServerError.description)
                 throw NetworkError.internalServerError
             default:
-                print(NetworkError.unknownError.description)
                 throw NetworkError.unknownError
             }
         } catch {

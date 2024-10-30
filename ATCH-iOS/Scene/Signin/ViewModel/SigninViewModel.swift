@@ -19,6 +19,8 @@ final class SigninViewModel: NSObject {
     
     private let signinRepository: SigninRepository = SigninRepository()
 
+    let successRelay: PublishRelay<Bool> = PublishRelay<Bool>()
+    
     override init() {
         super.init()
     }
@@ -40,14 +42,17 @@ final class SigninViewModel: NSObject {
     }
     
     private func handleKakaoLoginResult(oauthToken: OAuthToken?, error: Error?) {
-        if let error = error {
-        } else if let authorizationCode = oauthToken?.idToken {
-            print(authorizationCode)
+         if let authorizationCode = oauthToken?.idToken {
             Task {
-                let result = try await signinRepository.postKakaoLogin(code: authorizationCode)
-                guard let accessToken = result?.accessToken else { return }
-                KeychainWrapper.saveToken(accessToken, forKey: .accessToken)
-                print(accessToken)
+                do {
+                    let result = try await signinRepository.postKakaoLogin(code: authorizationCode)
+                    if let accessToken = result?.accessToken {
+                        KeychainWrapper.saveToken(accessToken, forKey: .accessToken)
+                        successRelay.accept(true)
+                    } else {
+                        successRelay.accept(false)
+                    }
+                }
             }
         }
     }
@@ -73,10 +78,15 @@ extension SigninViewModel: ASAuthorizationControllerDelegate {
         if let identifyToken = credential.identityToken,
            let token = String(data: identifyToken, encoding: .utf8) {
             Task {
-                let result = try await signinRepository.postAppleLogin(code: token)
-                guard let accessToken = result?.accessToken else { return }
-                KeychainWrapper.saveToken(accessToken, forKey: .accessToken)
-                print(accessToken)
+                do {
+                    let result = try await signinRepository.postAppleLogin(code: token)
+                    if let accessToken = result?.accessToken {
+                        KeychainWrapper.saveToken(accessToken, forKey: .accessToken)
+                        successRelay.accept(true)
+                    } else {
+                        successRelay.accept(false)
+                    }
+                }
             }
         }
     }
