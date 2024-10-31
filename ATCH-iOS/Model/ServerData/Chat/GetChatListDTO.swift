@@ -5,6 +5,8 @@
 //  Created by 변희주 on 10/31/24.
 //
 
+import Foundation
+
 struct ChatList: Codable {
     let content: String
     let fromID: Int
@@ -19,3 +21,15 @@ struct ChatList: Codable {
 }
 
 typealias GetChatListDTO = [ChatList]
+
+extension GetChatListDTO {
+    func mapToChattingRoomView() -> [ChattingData] {
+        let chattingDataList: [ChattingData] = self.map { data in
+            let chattingData: ChattingData = .init(sender: Sender(senderId: String(data.fromID), displayName: data.fromNickname),
+                                                   content: data.content,
+                                                   sendDate: data.createdAt.convertToDate() ?? Date())
+            return chattingData
+        }
+        return chattingDataList
+    }
+}

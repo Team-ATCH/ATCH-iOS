@@ -23,3 +23,19 @@ struct RoomList: Codable {
 }
 
 typealias GetRoomListDTO = [RoomList]
+
+extension GetRoomListDTO {
+    func mapToAllChatView() -> [AllChattingData] {
+        let allChatDataList: [AllChattingData] = self.map { data in
+            let allChatData: AllChattingData = .init(roomID: data.roomID,
+                                                     content: data.content,
+                                                     fromID: data.fromID,
+                                                     fromNickname: data.fromNickname,
+                                                     createdAt: data.createdAt,
+                                                     read: data.read)
+            return allChatData
+        }
+        return allChatDataList
+    }
+    
+}

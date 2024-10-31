@@ -139,6 +139,8 @@
 		2AFE09E02CD317F3001CF26B /* GetChatListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09DF2CD317F3001CF26B /* GetChatListDTO.swift */; };
 		2AFE09E22CD32315001CF26B /* UserInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09E12CD32315001CF26B /* UserInfoData.swift */; };
 		2AFE09E62CD32960001CF26B /* CharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09E52CD32960001CF26B /* CharacterData.swift */; };
+		2AFE09E82CD32BE7001CF26B /* AllChattingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09E72CD32BE7001CF26B /* AllChattingData.swift */; };
+		2AFE09EA2CD32FCB001CF26B /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09E92CD32FCB001CF26B /* String+.swift */; };
 		3D16E0A7CB5D37D4F14E0123 /* Pods_ATCH_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -265,6 +267,8 @@
 		2AFE09DF2CD317F3001CF26B /* GetChatListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetChatListDTO.swift; sourceTree = "<group>"; };
 		2AFE09E12CD32315001CF26B /* UserInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoData.swift; sourceTree = "<group>"; };
 		2AFE09E52CD32960001CF26B /* CharacterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
+		2AFE09E72CD32BE7001CF26B /* AllChattingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChattingData.swift; sourceTree = "<group>"; };
+		2AFE09E92CD32FCB001CF26B /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		559D6D8F22DF04CD75C9BCC6 /* Pods-ATCH-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.release.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATCH_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AC03EEAF5A52DB29F667C5 /* Pods-ATCH-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.debug.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -582,6 +586,7 @@
 				2AFD06432C80B6D200F34C35 /* UIView+.swift */,
 				2AE7C9E12C8C4D1000A177EF /* UITextView+.swift */,
 				2AE7C9E32C8D328300A177EF /* Date+.swift */,
+				2AFE09E92CD32FCB001CF26B /* String+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1034,6 +1039,7 @@
 				2A2591C12CBF8EC900B6181E /* ProfileModalData.swift */,
 				2A2591D42CC0020000B6181E /* PopUpData.swift */,
 				2AFE09E52CD32960001CF26B /* CharacterData.swift */,
+				2AFE09E72CD32BE7001CF26B /* AllChattingData.swift */,
 			);
 			path = ViewData;
 			sourceTree = "<group>";
@@ -1268,6 +1274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AFE09E82CD32BE7001CF26B /* AllChattingData.swift in Sources */,
 				2A2591B12CBB835500B6181E /* HashTagSettingView.swift in Sources */,
 				2AFE09B42CD1D5AA001CF26B /* HomeRepository.swift in Sources */,
 				2A2591D12CC001B200B6181E /* PopUpView.swift in Sources */,
@@ -1367,6 +1374,7 @@
 				2AFD06CE2C84A06700F34C35 /* NavigationView.swift in Sources */,
 				2ABCDC812C71EC6C00AD649C /* MyChatCoordinator.swift in Sources */,
 				2AFE09C62CD3124E001CF26B /* HashTagRequestBody.swift in Sources */,
+				2AFE09EA2CD32FCB001CF26B /* String+.swift in Sources */,
 				2AFD06422C8059A700F34C35 /* Config.swift in Sources */,
 				2ABCDC732C71EC5C00AD649C /* MapCoordinator.swift in Sources */,
 				2AFD06EE2C84B2C100F34C35 /* MyChatView.swift in Sources */,
