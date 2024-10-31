@@ -18,3 +18,14 @@ struct BackgroundList: Decodable {
 }
 
 typealias GetBackgroundListDTO = [BackgroundList]
+
+extension GetBackgroundListDTO {
+    func mapToBackgroundSelectView() -> [BackgroundData] {
+        let backgroundDataList: [BackgroundData] = self.map { data in
+            let backgroundData: BackgroundData = .init(itemID: data.itemID,
+                                                 itemImageURL: data.itemImageURL)
+            return backgroundData
+        }
+        return backgroundDataList
+    }
+}

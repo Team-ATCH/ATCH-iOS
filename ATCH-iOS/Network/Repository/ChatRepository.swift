@@ -59,7 +59,7 @@ final class ChatRepository {
         let requestDTO = RoomRequestBody(userId: userId)
         do {
             let response: NetworkResult<RoomResponseDTO> = try await networkProvider.request(
-                type: .get,
+                type: .post,
                 baseURL: Config.appBaseURL + "/rooms",
                 accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
                 body: requestDTO,
