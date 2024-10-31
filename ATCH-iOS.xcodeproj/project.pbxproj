@@ -138,6 +138,7 @@
 		2AFE09DE2CD317A4001CF26B /* GetMyRoomListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09DD2CD317A4001CF26B /* GetMyRoomListDTO.swift */; };
 		2AFE09E02CD317F3001CF26B /* GetChatListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09DF2CD317F3001CF26B /* GetChatListDTO.swift */; };
 		2AFE09E22CD32315001CF26B /* UserInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09E12CD32315001CF26B /* UserInfoData.swift */; };
+		2AFE09E62CD32960001CF26B /* CharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09E52CD32960001CF26B /* CharacterData.swift */; };
 		3D16E0A7CB5D37D4F14E0123 /* Pods_ATCH_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -263,6 +264,7 @@
 		2AFE09DD2CD317A4001CF26B /* GetMyRoomListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyRoomListDTO.swift; sourceTree = "<group>"; };
 		2AFE09DF2CD317F3001CF26B /* GetChatListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetChatListDTO.swift; sourceTree = "<group>"; };
 		2AFE09E12CD32315001CF26B /* UserInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoData.swift; sourceTree = "<group>"; };
+		2AFE09E52CD32960001CF26B /* CharacterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
 		559D6D8F22DF04CD75C9BCC6 /* Pods-ATCH-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.release.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATCH_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AC03EEAF5A52DB29F667C5 /* Pods-ATCH-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.debug.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1031,6 +1033,7 @@
 				2AFD072F2C8C25B000F34C35 /* ChattingData.swift */,
 				2A2591C12CBF8EC900B6181E /* ProfileModalData.swift */,
 				2A2591D42CC0020000B6181E /* PopUpData.swift */,
+				2AFE09E52CD32960001CF26B /* CharacterData.swift */,
 			);
 			path = ViewData;
 			sourceTree = "<group>";
@@ -1286,6 +1289,7 @@
 				2AFE09B72CD1D657001CF26B /* LocationRequestBody.swift in Sources */,
 				2A2591D32CC001B900B6181E /* PopUpVC.swift in Sources */,
 				2AFD07222C8979F800F34C35 /* AlarmView.swift in Sources */,
+				2AFE09E62CD32960001CF26B /* CharacterData.swift in Sources */,
 				2A1BE0EF2CBA490700908579 /* CharacterSettingCoordinator.swift in Sources */,
 				2ABCDC632C71EC3C00AD649C /* AllChatVC.swift in Sources */,
 				2A1BE0E72CB8ECE100908579 /* SigninVC.swift in Sources */,

@@ -18,3 +18,14 @@ struct CharacterList: Decodable {
 }
 
 typealias GetCharacterListDTO = [CharacterList]
+
+extension GetCharacterListDTO {
+    func mapToCharacterSelectView() -> [CharacterData] {
+        let characterDataList: [CharacterData] = self.map { data in
+            let characterData: CharacterData = .init(characterID: data.characterID,
+                                                     imageURL: data.imageURL)
+            return characterData
+        }
+        return characterDataList
+    }
+}
