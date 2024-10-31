@@ -13,7 +13,7 @@ final class SigninRepository {
 
     private func postLogin(code: String, provider: String) async throws -> SigninResposeDTO? {
         let requestDTO = SigninRequestBody(code: code)
-        let response: NetworkResult<SigninResposeDTO> = try await
+        let response: NetworkResult<SigninResposeDTO?> = try await
             networkProvider.request(
                 type: .post,
                 baseURL: Config.appBaseURL + "/login",

@@ -82,9 +82,13 @@ final class NetworkService: NetworkServiceType {
             dump(response)
             
             if 200..<300 ~= httpResponse.statusCode {
-                let result = try JSONDecoder().decode(T.self, from: data)
-                dump(result)
-                return .success(result)
+                if data.isEmpty {
+                    return .success(nil)
+                } else {
+                    let result = try JSONDecoder().decode(T.self, from: data)
+                    dump(result)
+                    return .success(result)
+                }
             } else {
                 // 실패 응답 처리
                 let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)

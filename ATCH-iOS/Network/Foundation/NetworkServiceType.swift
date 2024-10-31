@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NetworkResult<T> {
+enum NetworkResult<T: Decodable & ExpressibleByNilLiteral> {
     case success(T)
     case failure(NetworkError)
 }

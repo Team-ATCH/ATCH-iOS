@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Kingfisher
 import RxSwift
 import SnapKit
 import Then
@@ -33,25 +34,11 @@ final class CharacterSettingView: UIView {
         $0.alignment = .center
     }
     
-    private let characterImageViewOne = UIImageView().then {
-        $0.image = .imgBigCharacterOne
-    }
-    
-    private let characterImageViewTwo = UIImageView().then {
-        $0.image = .imgBigCharacterTwo
-    }
-    
-    private let characterImageViewThree = UIImageView().then {
-        $0.image = .imgBigCharacterThree
-    }
-    
-    private let characterImageViewFour = UIImageView().then {
-        $0.image = .imgBigCharacterFour
-    }
-    
-    private let characterImageViewFive = UIImageView().then {
-        $0.image = .imgBigCharacterFive
-    }
+    private let characterImageViewOne = UIImageView()
+    private let characterImageViewTwo = UIImageView()
+    private let characterImageViewThree = UIImageView()
+    private let characterImageViewFour = UIImageView()
+    private let characterImageViewFive = UIImageView()
     
     let characterPageControl = AtchPageControl().then {
         $0.numberOfPages = 5
@@ -89,6 +76,14 @@ final class CharacterSettingView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    func bindImageURL(imageURL: [String]) {
+        let imageViews = [characterImageViewOne, characterImageViewTwo, characterImageViewThree, characterImageViewFour, characterImageViewFive]
+        
+        for (_, (imageView, url)) in zip(imageViews, imageURL).enumerated() {
+            imageView.kf.setImage(with: URL(string: url))
+        }
     }
     
     private func setupDelegate() {

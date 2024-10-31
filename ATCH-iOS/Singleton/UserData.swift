@@ -12,7 +12,7 @@ import RxRelay
 final class UserData {
     static var shared = UserData()
     
-    var characterIndex: Int = 0
+    var characterIndex: Int = 0 // 0, 1, 2, 3, 4
     var nickname: String = ""
     var hashTag: [HashTag] = []
     var hashTagRelay: BehaviorRelay<[HashTag]> = BehaviorRelay<[HashTag]>(value: [])

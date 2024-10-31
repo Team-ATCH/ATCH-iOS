@@ -15,7 +15,7 @@ final class HomeRepository {
         let requestDTO = LocationRequestBody(latitude: latitude,
                                              longitude: longitude)
         do {
-            let response: NetworkResult<EmptyResponse> = try await networkProvider.request(
+            let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .patch,
                 baseURL: Config.appBaseURL + "/home/locate",
                 accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
@@ -37,7 +37,7 @@ final class HomeRepository {
     
     func getUserList() async throws -> [UserInfoData] {
         do {
-            let response: NetworkResult<GetUserListDTO> = try await networkProvider.request(
+            let response: NetworkResult<GetUserListDTO?> = try await networkProvider.request(
                 type: .get,
                 baseURL: Config.appBaseURL + "/home",
                 accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
@@ -47,7 +47,7 @@ final class HomeRepository {
     
             switch response {
             case .success(let data):
-                return data.mapToMapView()
+                return data?.mapToMapView() ?? []
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
                 return []
@@ -59,7 +59,7 @@ final class HomeRepository {
     
     func getNoticeList() async throws -> [AlarmData] {
         do {
-            let response: NetworkResult<GetNoticeListDTO> = try await networkProvider.request(
+            let response: NetworkResult<GetNoticeListDTO?> = try await networkProvider.request(
                 type: .get,
                 baseURL: Config.appBaseURL + "/home",
                 accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
@@ -69,7 +69,7 @@ final class HomeRepository {
     
             switch response {
             case .success(let data):
-                return data.mapToAlarmView()
+                return data?.mapToAlarmView() ?? []
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
                 return []

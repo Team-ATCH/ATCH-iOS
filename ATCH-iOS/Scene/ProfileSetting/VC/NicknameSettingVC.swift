@@ -39,8 +39,20 @@ final class NicknameSettingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bindViewModel()
         setupStyle()
         setupAction()
+    }
+    
+    private func bindViewModel() {
+        viewModel?.successRelay
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, success in
+                if success {
+                    vc.coordinator?.pushToHashTagSettingView()
+                }
+            }).disposed(by: disposeBag)
     }
     
     private func setupStyle() {
@@ -53,7 +65,7 @@ final class NicknameSettingVC: UIViewController {
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
                 if vc.nicknameSettingView.canGoNext {
-                    vc.coordinator?.pushToHashTagSettingView()
+                    vc.viewModel?.updateNickname(nickname: UserData.shared.nickname)
                 }
             }).disposed(by: disposeBag)
     }
