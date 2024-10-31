@@ -144,6 +144,8 @@
 		2AFE09EA2CD32FCB001CF26B /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09E92CD32FCB001CF26B /* String+.swift */; };
 		2AFE09EC2CD35173001CF26B /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09EB2CD35173001CF26B /* ItemData.swift */; };
 		2AFE09EE2CD3535E001CF26B /* BackgroundData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09ED2CD3535E001CF26B /* BackgroundData.swift */; };
+		2AFE09F12CD35C61001CF26B /* PopUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09F02CD35C61001CF26B /* PopUpViewModel.swift */; };
+		2AFE09F42CD36176001CF26B /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09F32CD36176001CF26B /* MyPageViewModel.swift */; };
 		3D16E0A7CB5D37D4F14E0123 /* Pods_ATCH_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -275,6 +277,8 @@
 		2AFE09E92CD32FCB001CF26B /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		2AFE09EB2CD35173001CF26B /* ItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
 		2AFE09ED2CD3535E001CF26B /* BackgroundData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundData.swift; sourceTree = "<group>"; };
+		2AFE09F02CD35C61001CF26B /* PopUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewModel.swift; sourceTree = "<group>"; };
+		2AFE09F32CD36176001CF26B /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		559D6D8F22DF04CD75C9BCC6 /* Pods-ATCH-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.release.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATCH_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AC03EEAF5A52DB29F667C5 /* Pods-ATCH-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.debug.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -509,6 +513,7 @@
 		2A2591C92CC0013A00B6181E /* PopUp */ = {
 			isa = PBXGroup;
 			children = (
+				2AFE09EF2CD35C52001CF26B /* ViewModel */,
 				2A2591CA2CC0014400B6181E /* Coordinator */,
 				2A2591CC2CC0014C00B6181E /* View */,
 				2A2591CB2CC0014900B6181E /* VC */,
@@ -810,6 +815,7 @@
 		2ABCDC792C71EC6300AD649C /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				2AFE09F22CD3616A001CF26B /* ViewModel */,
 				2ABCDC762C71EC6300AD649C /* Coordinator */,
 				2A2591C32CBFF5AF00B6181E /* View */,
 				2ABCDC782C71EC6300AD649C /* VC */,
@@ -1130,6 +1136,22 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
+		2AFE09EF2CD35C52001CF26B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2AFE09F02CD35C61001CF26B /* PopUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2AFE09F22CD3616A001CF26B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2AFE09F32CD36176001CF26B /* MyPageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		60DB2F161168AA92B48FDAD5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1294,6 +1316,7 @@
 				2AFE09CF2CD314A2001CF26B /* GetItemListDTO.swift in Sources */,
 				2AFD06D02C84A06700F34C35 /* ChattingRoomVC.swift in Sources */,
 				2ABCDC622C71EC3C00AD649C /* AllChatCoordinator.swift in Sources */,
+				2AFE09F42CD36176001CF26B /* MyPageViewModel.swift in Sources */,
 				2A1BE0F12CBA491100908579 /* NicknameSettingCoordinator.swift in Sources */,
 				2A2591D52CC0020000B6181E /* PopUpData.swift in Sources */,
 				2ABCDC742C71EC5C00AD649C /* MapVC.swift in Sources */,
@@ -1353,6 +1376,7 @@
 				2A1BE0F72CBA494B00908579 /* NicknameSettingVC.swift in Sources */,
 				2AFE09DC2CD31706001CF26B /* RoomResponseDTO.swift in Sources */,
 				2AFD06D42C84A06700F34C35 /* AlarmViewModel.swift in Sources */,
+				2AFE09F12CD35C61001CF26B /* PopUpViewModel.swift in Sources */,
 				2A1BE1092CBA4E4300908579 /* SplashViewModel.swift in Sources */,
 				2ABCDC692C71EC4300AD649C /* AppCoordinator.swift in Sources */,
 				2AE7C9E42C8D328300A177EF /* Date+.swift in Sources */,

@@ -23,7 +23,7 @@ final class UserRepository {
             )
             
             switch response {
-            case .success(let data):
+            case .success:
                 return true
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
@@ -46,7 +46,7 @@ final class UserRepository {
             )
             
             switch response {
-            case .success(let data):
+            case .success:
                 return true
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
@@ -91,7 +91,7 @@ final class UserRepository {
             )
             
             switch response {
-            case .success(let data):
+            case .success:
                 return true
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
@@ -114,7 +114,7 @@ final class UserRepository {
             )
             
             switch response {
-            case .success(let data):
+            case .success:
                 return true
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
@@ -159,7 +159,7 @@ final class UserRepository {
             )
             
             switch response {
-            case .success(let data):
+            case .success:
                 return true
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
@@ -204,7 +204,7 @@ final class UserRepository {
             )
             
             switch response {
-            case .success(let data):
+            case .success:
                 return true
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
@@ -226,7 +226,7 @@ final class UserRepository {
             )
             
             switch response {
-            case .success(let data):
+            case .success:
                 return true
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")

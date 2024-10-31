@@ -23,6 +23,7 @@ final class PopUpCoordinator: Coordinator {
     
     func start(popUpData: PopUpData) {
         self.popUpVC = PopUpVC(coordinator: self)
+        self.popUpVC?.viewModel = PopUpViewModel()
         self.popUpVC?.bindPopUpData(data: popUpData)
         
         if let vc = self.popUpVC {

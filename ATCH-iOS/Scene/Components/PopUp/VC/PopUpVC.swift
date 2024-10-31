@@ -14,6 +14,8 @@ import Then
 final class PopUpVC: UIViewController {
     
     private let coordinator: PopUpCoordinator?
+    var viewModel: PopUpViewModel?
+    
     private let disposeBag: DisposeBag = DisposeBag()
         
     private var type: PopUpType = .back
@@ -39,12 +41,17 @@ final class PopUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bindViewModel()
         setupAction()
     }
     
     func bindPopUpData(data: PopUpData) {     
         type = data.type
         popupView.bindViewData(data: data)
+    }
+    
+    private func bindViewModel() {
+       
     }
     
     private func setupAction() {
@@ -67,8 +74,6 @@ final class PopUpVC: UIViewController {
                         coordinator.start()
                     }
                 case .withdraw:
-                    // 탈퇴 서버통신
-
                     vc.dismiss(animated: false)
                     if let window = UIApplication.shared.windows.first {
                         window.rootViewController?.dismiss(animated: false, completion: nil)
