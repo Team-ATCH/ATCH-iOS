@@ -119,6 +119,25 @@
 		2AFE09B02CD1C406001CF26B /* SigninRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09AF2CD1C406001CF26B /* SigninRepository.swift */; };
 		2AFE09B42CD1D5AA001CF26B /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09B32CD1D5AA001CF26B /* HomeRepository.swift */; };
 		2AFE09B72CD1D657001CF26B /* LocationRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09B62CD1D657001CF26B /* LocationRequestBody.swift */; };
+		2AFE09B92CD2121C001CF26B /* OnboardingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09B82CD2121C001CF26B /* OnboardingRepository.swift */; };
+		2AFE09BB2CD21231001CF26B /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09BA2CD21231001CF26B /* UserRepository.swift */; };
+		2AFE09BD2CD21249001CF26B /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09BC2CD21249001CF26B /* ChatRepository.swift */; };
+		2AFE09BF2CD21A7D001CF26B /* GetUserListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09BE2CD21A7D001CF26B /* GetUserListDTO.swift */; };
+		2AFE09C12CD21B7F001CF26B /* GetNoticeListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09C02CD21B7F001CF26B /* GetNoticeListDTO.swift */; };
+		2AFE09C42CD21EFC001CF26B /* NicknameRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09C32CD21EFC001CF26B /* NicknameRequestBody.swift */; };
+		2AFE09C62CD3124E001CF26B /* HashTagRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09C52CD3124E001CF26B /* HashTagRequestBody.swift */; };
+		2AFE09C82CD312E4001CF26B /* CharacterRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09C72CD312E4001CF26B /* CharacterRequestBody.swift */; };
+		2AFE09CA2CD31312001CF26B /* GetCharacterListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09C92CD31312001CF26B /* GetCharacterListDTO.swift */; };
+		2AFE09CD2CD3142F001CF26B /* BlockRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09CC2CD3142F001CF26B /* BlockRequestBody.swift */; };
+		2AFE09CF2CD314A2001CF26B /* GetItemListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09CE2CD314A2001CF26B /* GetItemListDTO.swift */; };
+		2AFE09D12CD3159F001CF26B /* ItemRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09D02CD3159F001CF26B /* ItemRequestBody.swift */; };
+		2AFE09D32CD315F6001CF26B /* GetBackgroundListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09D22CD315F6001CF26B /* GetBackgroundListDTO.swift */; };
+		2AFE09D52CD3163F001CF26B /* BackgroundRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09D42CD3163F001CF26B /* BackgroundRequestBody.swift */; };
+		2AFE09D82CD3167F001CF26B /* GetRoomListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09D72CD3167F001CF26B /* GetRoomListDTO.swift */; };
+		2AFE09DA2CD316B8001CF26B /* RoomRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09D92CD316B8001CF26B /* RoomRequestBody.swift */; };
+		2AFE09DC2CD31706001CF26B /* RoomResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09DB2CD31706001CF26B /* RoomResponseDTO.swift */; };
+		2AFE09DE2CD317A4001CF26B /* GetMyRoomListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09DD2CD317A4001CF26B /* GetMyRoomListDTO.swift */; };
+		2AFE09E02CD317F3001CF26B /* GetChatListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09DF2CD317F3001CF26B /* GetChatListDTO.swift */; };
 		3D16E0A7CB5D37D4F14E0123 /* Pods_ATCH_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -225,6 +244,25 @@
 		2AFE09AF2CD1C406001CF26B /* SigninRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRepository.swift; sourceTree = "<group>"; };
 		2AFE09B32CD1D5AA001CF26B /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
 		2AFE09B62CD1D657001CF26B /* LocationRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRequestBody.swift; sourceTree = "<group>"; };
+		2AFE09B82CD2121C001CF26B /* OnboardingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRepository.swift; sourceTree = "<group>"; };
+		2AFE09BA2CD21231001CF26B /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		2AFE09BC2CD21249001CF26B /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
+		2AFE09BE2CD21A7D001CF26B /* GetUserListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserListDTO.swift; sourceTree = "<group>"; };
+		2AFE09C02CD21B7F001CF26B /* GetNoticeListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNoticeListDTO.swift; sourceTree = "<group>"; };
+		2AFE09C32CD21EFC001CF26B /* NicknameRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameRequestBody.swift; sourceTree = "<group>"; };
+		2AFE09C52CD3124E001CF26B /* HashTagRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTagRequestBody.swift; sourceTree = "<group>"; };
+		2AFE09C72CD312E4001CF26B /* CharacterRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRequestBody.swift; sourceTree = "<group>"; };
+		2AFE09C92CD31312001CF26B /* GetCharacterListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharacterListDTO.swift; sourceTree = "<group>"; };
+		2AFE09CC2CD3142F001CF26B /* BlockRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockRequestBody.swift; sourceTree = "<group>"; };
+		2AFE09CE2CD314A2001CF26B /* GetItemListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetItemListDTO.swift; sourceTree = "<group>"; };
+		2AFE09D02CD3159F001CF26B /* ItemRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRequestBody.swift; sourceTree = "<group>"; };
+		2AFE09D22CD315F6001CF26B /* GetBackgroundListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBackgroundListDTO.swift; sourceTree = "<group>"; };
+		2AFE09D42CD3163F001CF26B /* BackgroundRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRequestBody.swift; sourceTree = "<group>"; };
+		2AFE09D72CD3167F001CF26B /* GetRoomListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRoomListDTO.swift; sourceTree = "<group>"; };
+		2AFE09D92CD316B8001CF26B /* RoomRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomRequestBody.swift; sourceTree = "<group>"; };
+		2AFE09DB2CD31706001CF26B /* RoomResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomResponseDTO.swift; sourceTree = "<group>"; };
+		2AFE09DD2CD317A4001CF26B /* GetMyRoomListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyRoomListDTO.swift; sourceTree = "<group>"; };
+		2AFE09DF2CD317F3001CF26B /* GetChatListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetChatListDTO.swift; sourceTree = "<group>"; };
 		559D6D8F22DF04CD75C9BCC6 /* Pods-ATCH-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.release.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATCH_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AC03EEAF5A52DB29F667C5 /* Pods-ATCH-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.debug.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -828,6 +866,8 @@
 		2AC343F92CCE083400BEEA5A /* ServerData */ = {
 			isa = PBXGroup;
 			children = (
+				2AFE09D62CD31660001CF26B /* Chat */,
+				2AFE09CB2CD31423001CF26B /* User */,
 				2AFE09B52CD1D63C001CF26B /* Home */,
 				2AC344122CCE0FFE00BEEA5A /* Signin */,
 			);
@@ -855,12 +895,12 @@
 		2AC343FE2CCE08E500BEEA5A /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				2AC343FF2CCE08EF00BEEA5A /* NetworkService.swift */,
 				2AC344012CCE094E00BEEA5A /* NetworkError.swift */,
+				2AC343FF2CCE08EF00BEEA5A /* NetworkService.swift */,
+				2AC3440B2CCE0AC800BEEA5A /* NetworkServiceType.swift */,
 				2AC344032CCE097400BEEA5A /* BaseResponse.swift */,
 				2AC344052CCE098200BEEA5A /* HttpMethod.swift */,
 				2AC344072CCE099D00BEEA5A /* KeychainWrapper.swift */,
-				2AC3440B2CCE0AC800BEEA5A /* NetworkServiceType.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -1035,6 +1075,9 @@
 			children = (
 				2AFE09AF2CD1C406001CF26B /* SigninRepository.swift */,
 				2AFE09B32CD1D5AA001CF26B /* HomeRepository.swift */,
+				2AFE09B82CD2121C001CF26B /* OnboardingRepository.swift */,
+				2AFE09BA2CD21231001CF26B /* UserRepository.swift */,
+				2AFE09BC2CD21249001CF26B /* ChatRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1043,8 +1086,38 @@
 			isa = PBXGroup;
 			children = (
 				2AFE09B62CD1D657001CF26B /* LocationRequestBody.swift */,
+				2AFE09BE2CD21A7D001CF26B /* GetUserListDTO.swift */,
+				2AFE09C02CD21B7F001CF26B /* GetNoticeListDTO.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		2AFE09CB2CD31423001CF26B /* User */ = {
+			isa = PBXGroup;
+			children = (
+				2AFE09CC2CD3142F001CF26B /* BlockRequestBody.swift */,
+				2AFE09C32CD21EFC001CF26B /* NicknameRequestBody.swift */,
+				2AFE09C52CD3124E001CF26B /* HashTagRequestBody.swift */,
+				2AFE09C72CD312E4001CF26B /* CharacterRequestBody.swift */,
+				2AFE09CE2CD314A2001CF26B /* GetItemListDTO.swift */,
+				2AFE09D02CD3159F001CF26B /* ItemRequestBody.swift */,
+				2AFE09C92CD31312001CF26B /* GetCharacterListDTO.swift */,
+				2AFE09D22CD315F6001CF26B /* GetBackgroundListDTO.swift */,
+				2AFE09D42CD3163F001CF26B /* BackgroundRequestBody.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		2AFE09D62CD31660001CF26B /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				2AFE09D72CD3167F001CF26B /* GetRoomListDTO.swift */,
+				2AFE09D92CD316B8001CF26B /* RoomRequestBody.swift */,
+				2AFE09DB2CD31706001CF26B /* RoomResponseDTO.swift */,
+				2AFE09DD2CD317A4001CF26B /* GetMyRoomListDTO.swift */,
+				2AFE09DF2CD317F3001CF26B /* GetChatListDTO.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		60DB2F161168AA92B48FDAD5 /* Frameworks */ = {
@@ -1207,6 +1280,7 @@
 				2A7B78C12CCD344F003E6F37 /* CharacterEditCoordinator.swift in Sources */,
 				2A2591C52CBFF5B700B6181E /* MyPageView.swift in Sources */,
 				2AFD06BC2C84A04A00F34C35 /* MapChatCollectionViewCell.swift in Sources */,
+				2AFE09CF2CD314A2001CF26B /* GetItemListDTO.swift in Sources */,
 				2AFD06D02C84A06700F34C35 /* ChattingRoomVC.swift in Sources */,
 				2ABCDC622C71EC3C00AD649C /* AllChatCoordinator.swift in Sources */,
 				2A1BE0F12CBA491100908579 /* NicknameSettingCoordinator.swift in Sources */,
@@ -1214,6 +1288,7 @@
 				2ABCDC742C71EC5C00AD649C /* MapVC.swift in Sources */,
 				2A7B78BA2CCD2167003E6F37 /* ProfileEditView.swift in Sources */,
 				2ABCDC7A2C71EC6300AD649C /* MyPageCoordinator.swift in Sources */,
+				2AFE09D52CD3163F001CF26B /* BackgroundRequestBody.swift in Sources */,
 				2A5052012C6D9EBB00DC3E4A /* UIColor+.swift in Sources */,
 				2AFD06E72C84A13700F34C35 /* UIStackView+.swift in Sources */,
 				2AFE09B72CD1D657001CF26B /* LocationRequestBody.swift in Sources */,
@@ -1222,6 +1297,7 @@
 				2A1BE0EF2CBA490700908579 /* CharacterSettingCoordinator.swift in Sources */,
 				2ABCDC632C71EC3C00AD649C /* AllChatVC.swift in Sources */,
 				2A1BE0E72CB8ECE100908579 /* SigninVC.swift in Sources */,
+				2AFE09E02CD317F3001CF26B /* GetChatListDTO.swift in Sources */,
 				2A2591B82CBBEEF000B6181E /* ProfileModalVC.swift in Sources */,
 				2ABCDC6B2C71EC4300AD649C /* CoordinatorType.swift in Sources */,
 				2A1BE0E92CB8ECE700908579 /* SigninViewModel.swift in Sources */,
@@ -1235,35 +1311,45 @@
 				2AFD06442C80B6D200F34C35 /* UIView+.swift in Sources */,
 				2AFD07362C8C3AC400F34C35 /* BaseChattingRoomVC.swift in Sources */,
 				2A2591CF2CC0016000B6181E /* PopUpCoordinator.swift in Sources */,
+				2AFE09B92CD2121C001CF26B /* OnboardingRepository.swift in Sources */,
 				2AC3440F2CCE0FF100BEEA5A /* SigninRequestBody.swift in Sources */,
+				2AFE09C82CD312E4001CF26B /* CharacterRequestBody.swift in Sources */,
 				2A2591B32CBBEAFB00B6181E /* ProfileModalView.swift in Sources */,
 				2A2591C82CBFF78100B6181E /* SettingCell.swift in Sources */,
 				2ABCDC7B2C71EC6300AD649C /* MyPageVC.swift in Sources */,
 				2A1BE1032CBA4E1D00908579 /* SplashCoordinator.swift in Sources */,
 				2AC344082CCE099D00BEEA5A /* KeychainWrapper.swift in Sources */,
+				2AFE09DA2CD316B8001CF26B /* RoomRequestBody.swift in Sources */,
 				2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */,
 				2ABCDC8B2C71EC9700AD649C /* TabBarCoordinator.swift in Sources */,
 				2AC344042CCE097400BEEA5A /* BaseResponse.swift in Sources */,
 				2A7B78B82CCD2160003E6F37 /* ProfileEditCoordinator.swift in Sources */,
+				2AFE09D82CD3167F001CF26B /* GetRoomListDTO.swift in Sources */,
 				2A1BE1132CBA5B2D00908579 /* CharacterSettingView.swift in Sources */,
 				2AC344062CCE098200BEEA5A /* HttpMethod.swift in Sources */,
 				2AFD06E32C84A11D00F34C35 /* MapChatData.swift in Sources */,
+				2AFE09BD2CD21249001CF26B /* ChatRepository.swift in Sources */,
 				2AFD06D32C84A06700F34C35 /* AlarmVC.swift in Sources */,
 				2AFD06492C80BAA500F34C35 /* BaseMapVC.swift in Sources */,
+				2AFE09C12CD21B7F001CF26B /* GetNoticeListDTO.swift in Sources */,
+				2AFE09D32CD315F6001CF26B /* GetBackgroundListDTO.swift in Sources */,
 				2A1BE0E42CB8ECD000908579 /* SigninCoordinator.swift in Sources */,
 				2A1BE11E2CBA9B6700908579 /* AtchPageControl.swift in Sources */,
 				2AC343FD2CCE08C100BEEA5A /* TokenManager.swift in Sources */,
 				2A1BE0F72CBA494B00908579 /* NicknameSettingVC.swift in Sources */,
+				2AFE09DC2CD31706001CF26B /* RoomResponseDTO.swift in Sources */,
 				2AFD06D42C84A06700F34C35 /* AlarmViewModel.swift in Sources */,
 				2A1BE1092CBA4E4300908579 /* SplashViewModel.swift in Sources */,
 				2ABCDC692C71EC4300AD649C /* AppCoordinator.swift in Sources */,
 				2AE7C9E42C8D328300A177EF /* Date+.swift in Sources */,
 				2AFD06CF2C84A06700F34C35 /* ChattingRoomCoordinator.swift in Sources */,
+				2AFE09CD2CD3142F001CF26B /* BlockRequestBody.swift in Sources */,
 				2AFD06EC2C84AF2000F34C35 /* MyChatData.swift in Sources */,
 				2AC3440C2CCE0AC800BEEA5A /* NetworkServiceType.swift in Sources */,
 				2AFD07302C8C25B000F34C35 /* ChattingData.swift in Sources */,
 				2A2591C22CBF8EC900B6181E /* ProfileModalData.swift in Sources */,
 				2AFD06D22C84A06700F34C35 /* AlarmCoordinator.swift in Sources */,
+				2AFE09D12CD3159F001CF26B /* ItemRequestBody.swift in Sources */,
 				2A5052032C6D9FE700DC3E4A /* UIFont+.swift in Sources */,
 				2ABCDC8C2C71EC9700AD649C /* TabBarController.swift in Sources */,
 				2AFD071B2C89793000F34C35 /* AlarmData.swift in Sources */,
@@ -1273,14 +1359,18 @@
 				2A2591BB2CBBF39500B6181E /* ProfileModalCoordinator.swift in Sources */,
 				2A7B78C32CCD3493003E6F37 /* CharacterEditVC.swift in Sources */,
 				2A7B78BF2CCD2AF9003E6F37 /* HashTagStackView.swift in Sources */,
+				2AFE09BF2CD21A7D001CF26B /* GetUserListDTO.swift in Sources */,
 				2AFD06E62C84A13700F34C35 /* NSObject+.swift in Sources */,
 				2AC344002CCE08EF00BEEA5A /* NetworkService.swift in Sources */,
+				2AFE09DE2CD317A4001CF26B /* GetMyRoomListDTO.swift in Sources */,
+				2AFE09C42CD21EFC001CF26B /* NicknameRequestBody.swift in Sources */,
 				2A1BE0F52CBA494100908579 /* CharacterSettingVC.swift in Sources */,
 				2AC344022CCE094E00BEEA5A /* NetworkError.swift in Sources */,
 				2AFD06D12C84A06700F34C35 /* ChattingRoomViewModel.swift in Sources */,
 				2A1BE0FE2CBA4D6900908579 /* UserData.swift in Sources */,
 				2AFD06CE2C84A06700F34C35 /* NavigationView.swift in Sources */,
 				2ABCDC812C71EC6C00AD649C /* MyChatCoordinator.swift in Sources */,
+				2AFE09C62CD3124E001CF26B /* HashTagRequestBody.swift in Sources */,
 				2AFD06422C8059A700F34C35 /* Config.swift in Sources */,
 				2ABCDC732C71EC5C00AD649C /* MapCoordinator.swift in Sources */,
 				2AFD06EE2C84B2C100F34C35 /* MyChatView.swift in Sources */,
@@ -1291,7 +1381,9 @@
 				2ABCDC6A2C71EC4300AD649C /* Coordinator.swift in Sources */,
 				2AFE09B02CD1C406001CF26B /* SigninRepository.swift in Sources */,
 				2AFD06BB2C84A04A00F34C35 /* MapBottomSheetView.swift in Sources */,
+				2AFE09BB2CD21231001CF26B /* UserRepository.swift in Sources */,
 				2AFD06BA2C84A04A00F34C35 /* MapViewModel.swift in Sources */,
+				2AFE09CA2CD31312001CF26B /* GetCharacterListDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
