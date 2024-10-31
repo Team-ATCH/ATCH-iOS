@@ -8,6 +8,20 @@
 import Foundation
 import Security
 
+enum KeyChainKeyType {
+    case accessToken
+    case refreshToken
+    
+    var keyString: String {
+        switch self {
+        case .accessToken:
+            "accessToken"
+        case .refreshToken:
+            "refreshToken"
+        }
+    }
+}
+
 class KeychainWrapper {
 
     static let serviceName = "com.naver.heejoo-byun.ATCH-iOS"
@@ -16,7 +30,7 @@ class KeychainWrapper {
     // - parameter token: 저장할 토큰
     // - parameter key: Keychain에 저장될 키
     // - parameter access: 추가적인 접근 제어 설정 (기본값은 nil)
-    static func saveToken(_ token: String, forKey key: String, withAccess access: SecAccessControl? = nil) {
+    static func saveToken(_ token: String, forKey key: KeyChainKeyType, withAccess access: SecAccessControl? = nil) {
         // 해당 키에 대한 토큰이 이미 존재하는지 확인
         if let existingToken = loadToken(forKey: key) {
             // 토큰이 이미 존재하면 업데이트 또는 필요에 따라 처리
@@ -32,7 +46,7 @@ class KeychainWrapper {
             var query: [String: Any] = [
                 kSecClass as String: kSecClassGenericPassword,
                 kSecAttrService as String: serviceName,
-                kSecAttrAccount as String: key,
+                kSecAttrAccount as String: key.keyString,
                 kSecValueData as String: data,
                 kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlockedThisDeviceOnly
             ]
@@ -51,11 +65,11 @@ class KeychainWrapper {
     // Keychain에서 특정 키에 대한 토큰을 불러오는 함수
     // - parameter key: 불러올 토큰의 키
     // - returns: 키에 대한 토큰이 존재하면 해당 토큰을 반환, 그렇지 않으면 nil 반환
-    static func loadToken(forKey key: String) -> String? {
+    static func loadToken(forKey key: KeyChainKeyType) -> String? {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: serviceName,
-            kSecAttrAccount as String: key,
+            kSecAttrAccount as String: key.keyString,
             kSecReturnData as String: kCFBooleanTrue!,
             kSecMatchLimit as String: kSecMatchLimitOne
         ]
@@ -73,11 +87,11 @@ class KeychainWrapper {
 
     // Keychain에서 특정 키에 대한 토큰을 삭제하는 함수
     // - parameter key: 삭제할 토큰의 키
-    static func deleteToken(forKey key: String) {
+    static func deleteToken(forKey key: KeyChainKeyType) {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: serviceName,
-            kSecAttrAccount as String: key
+            kSecAttrAccount as String: key.keyString
         ]
 
         let status = SecItemDelete(query as CFDictionary)
@@ -89,12 +103,12 @@ class KeychainWrapper {
     // Keychain에 저장된 특정 키에 대한 토큰을 업데이트하는 함수
     // - parameter token: 업데이트할 토큰
     // - parameter key: 업데이트할 토큰의 키
-    private static func updateToken(_ token: String, forKey key: String) {
+    private static func updateToken(_ token: String, forKey key: KeyChainKeyType) {
         if let data = token.data(using: .utf8) {
             let query: [String: Any] = [
                 kSecClass as String: kSecClassGenericPassword,
                 kSecAttrService as String: serviceName,
-                kSecAttrAccount as String: key
+                kSecAttrAccount as String: key.keyString
             ]
 
             let attributes: [String: Any] = [

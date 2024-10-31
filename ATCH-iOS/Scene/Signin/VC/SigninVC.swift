@@ -55,10 +55,26 @@ final class SigninVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bindViewModel()
         setupStyle()
         setupLayout()
         setupAction()
         setupAnimation()
+    }
+    
+    private func bindViewModel() {
+        viewModel?.loginRelay
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, value in
+                if value.0 == true { // 로그인 성공
+                    if value.1 == true { // 새로운 유저
+                        vc.coordinator?.pushToCharacterSettingView()
+                    } else {
+                        vc.coordinator?.pushToMainView()
+                    }
+                }
+            }).disposed(by: disposeBag)
     }
     
     private func setupStyle() {

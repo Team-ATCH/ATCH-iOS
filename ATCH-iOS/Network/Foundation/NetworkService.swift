@@ -8,19 +8,20 @@
 import UIKit
 
 final class NetworkService: NetworkServiceType {
-    private let tokenManager = TokenManager()
     
     func makeRequest(type: HttpMethod,
                      baseURL: String,
                      accessToken: String?,
-                     body: Encodable,
-                     pathVariables: [String: String]) -> URLRequest {
+                     body: Encodable?,
+                     pathVariables: [String: String]?) -> URLRequest {
         var urlComponents = URLComponents(string: baseURL)
         
         // Path Variable 추가
-        for (key, value) in pathVariables {
-            let pathVariableItem = URLQueryItem(name: key, value: value)
-            urlComponents?.queryItems = [pathVariableItem]
+        if let pathVariables = pathVariables {
+            for (key, value) in pathVariables {
+                let pathVariableItem = URLQueryItem(name: key, value: value)
+                urlComponents?.queryItems = [pathVariableItem]
+            }
         }
         
         // 기존의 URL이 존재하지 않으면 fatalError
@@ -32,21 +33,19 @@ final class NetworkService: NetworkServiceType {
         request.httpMethod = type.method
         
         var header: [String: String] = [:]
-
+        
         if let accessToken = accessToken {
             header = ["Content-Type": "application/json",
                       "Authorization": "Bearer \(accessToken)"]
         } else {
             header = ["Content-Type": "application/json"]
         }
-       
+        
         header.forEach {
             request.addValue($0.value, forHTTPHeaderField: $0.key)
         }
         
-        if type == .get {
-            request.httpBody = nil
-        } else {
+        if let body = body {
             // 리퀘스트 바디 설정 (구조체)
             do {
                 let jsonData = try JSONEncoder().encode(body)
@@ -59,36 +58,39 @@ final class NetworkService: NetworkServiceType {
         return request
     }
     
-    func network<T: Decodable>(type: HttpMethod,
+    func request<T: Decodable>(type: HttpMethod,
                                baseURL: String,
                                accessToken: String?,
-                               body: Encodable,
-                               pathVariables: [String: String])  async throws -> T? {
+                               body: Encodable?,
+                               pathVariables: [String: String]?) async throws -> NetworkResult<T> {
         do {
-            let request = self.makeRequest(type: type,
-                                           baseURL: baseURL,
-                                           accessToken: accessToken,
-                                           body: body,
-                                           pathVariables: pathVariables)
+            let request = self.makeRequest(
+                type: type,
+                baseURL: baseURL,
+                accessToken: accessToken,
+                body: body,
+                pathVariables: pathVariables
+            )
+            
+            dump(request)
             
             let (data, response) = try await URLSession.shared.data(for: request)
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw NetworkError.responseError
             }
             
-            switch httpResponse.statusCode {
-            case 200..<400:
+            dump(response)
+            
+            if 200..<300 ~= httpResponse.statusCode {
                 let result = try JSONDecoder().decode(T.self, from: data)
-                return result
-            case 400:
-                throw NetworkError.badRequestError
-            case 404:
-                throw NetworkError.notFoundError
-            case 500:
-                throw NetworkError.internalServerError
-            default:
-                throw NetworkError.unknownError
+                dump(result)
+                return .success(result)
+            } else {
+                // 실패 응답 처리
+                let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
+                return .failure(.serverError(errorResponse))
             }
+            
         } catch {
             throw error
         }

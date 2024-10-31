@@ -29,7 +29,7 @@ final class TabBarCoordinator: Coordinator {
         
     }
     
-    func start(fromOnboarding: Bool = false) {
+    func start(fromOnboarding: Bool) {
         self.isFromOnboarding = fromOnboarding
 
         // 1. 탭바 아이템 리스트 생성

@@ -17,8 +17,10 @@ import KakaoSDKUser
 
 final class SigninViewModel: NSObject {
     
-    private let networkProvider: NetworkServiceType = NetworkService()
+    private let signinRepository: SigninRepository = SigninRepository()
 
+    let loginRelay: PublishRelay<(Bool, Bool)> = PublishRelay<(Bool, Bool)>() // 1.로그인 실패 여부 2.새로운 유저 여부
+    
     override init() {
         super.init()
     }
@@ -39,6 +41,22 @@ final class SigninViewModel: NSObject {
         }
     }
     
+    private func handleKakaoLoginResult(oauthToken: OAuthToken?, error: Error?) {
+         if let authorizationCode = oauthToken?.idToken {
+            Task {
+                do {
+                    let result = try await signinRepository.postKakaoLogin(code: authorizationCode)
+                    if let result = result {
+                        KeychainWrapper.saveToken(result.accessToken, forKey: .accessToken)
+                        loginRelay.accept((true, result.newUser))
+                    } else {
+                        loginRelay.accept((false, false))
+                    }
+                }
+            }
+        }
+    }
+    
     func performAppleLogin() {
         let appleProvider = ASAuthorizationAppleIDProvider()
         let request = appleProvider.createRequest()
@@ -47,59 +65,6 @@ final class SigninViewModel: NSObject {
         let controller = ASAuthorizationController(authorizationRequests: [request])
         controller.delegate = self
         controller.performRequests()
-    }
-    
-    private func handleKakaoLoginResult(oauthToken: OAuthToken?, error: Error?) {
-        if let error = error {
-        } else if let authorizationCode = oauthToken?.idToken {
-            print(authorizationCode)
-            Task {
-                do {
-                    let result = try await self.postKakaoLogin(code: authorizationCode)
-                    guard let accessToken = result?.accessToken else { return }
-                    KeychainWrapper.saveToken(accessToken, forKey: "accessToken")
-                    print(accessToken)
-                } catch {
-                    print(error)
-                }
-            }
-        }
-    }
-    
-    func postKakaoLogin(code: String) async throws -> SigninResposeDTO? {
-        let requestDTO = SigninRequestBody(code: code)
-        do {
-            let data: SigninResposeDTO? = try await self.networkProvider.network(
-                type: .post,
-                baseURL: Config.appBaseURL + "/login",
-                accessToken: nil,
-                body: requestDTO,
-                pathVariables: ["provider":"KAKAO"])
-            
-            return data
-        }
-        catch {
-            print(error.localizedDescription)
-            return nil
-       }
-    }
-    
-    func postAppleLogin(code: String) async throws -> SigninResposeDTO? {
-        let requestDTO = SigninRequestBody(code: code)
-        do {
-            let data: SigninResposeDTO? = try await self.networkProvider.network(
-                type: .post,
-                baseURL: Config.appBaseURL + "/login",
-                accessToken: nil,
-                body: requestDTO,
-                pathVariables: ["provider":"APPLE"])
-            
-            return data
-        }
-        catch {
-            print(error.localizedDescription)
-            return nil
-       }
     }
 }
 
@@ -114,12 +79,13 @@ extension SigninViewModel: ASAuthorizationControllerDelegate {
            let token = String(data: identifyToken, encoding: .utf8) {
             Task {
                 do {
-                    let result = try await self.postAppleLogin(code: token)
-                    guard let accessToken = result?.accessToken else { return }
-                    KeychainWrapper.saveToken(accessToken, forKey: "accessToken")
-                    print(accessToken)
-                } catch {
-                    print(error)
+                    let result = try await signinRepository.postAppleLogin(code: token)
+                    if let result = result {
+                        KeychainWrapper.saveToken(result.accessToken, forKey: .accessToken)
+                        loginRelay.accept((true, result.newUser))
+                    } else {
+                        loginRelay.accept((false, false))
+                    }
                 }
             }
         }

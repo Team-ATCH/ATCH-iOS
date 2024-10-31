@@ -16,6 +16,6 @@ final class SplashViewModel: NSObject {
     
     func checkTokenValid() {
         // 토큰 유효한지 체크
-        tokenValidRelay.accept(true)
+        tokenValidRelay.accept(false)
     }
 }
