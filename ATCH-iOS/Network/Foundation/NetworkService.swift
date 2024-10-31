@@ -8,12 +8,11 @@
 import UIKit
 
 final class NetworkService: NetworkServiceType {
-    private let tokenManager = TokenManager()
     
     func makeRequest(type: HttpMethod,
                      baseURL: String,
                      accessToken: String?,
-                     body: Encodable,
+                     body: Encodable?,
                      pathVariables: [String: String]?) -> URLRequest {
         var urlComponents = URLComponents(string: baseURL)
         
@@ -46,9 +45,7 @@ final class NetworkService: NetworkServiceType {
             request.addValue($0.value, forHTTPHeaderField: $0.key)
         }
         
-        if type == .get {
-            request.httpBody = nil
-        } else {
+        if let body = body {
             // 리퀘스트 바디 설정 (구조체)
             do {
                 let jsonData = try JSONEncoder().encode(body)
@@ -64,7 +61,7 @@ final class NetworkService: NetworkServiceType {
     func request<T: Decodable>(type: HttpMethod,
                                baseURL: String,
                                accessToken: String?,
-                               body: Encodable,
+                               body: Encodable?,
                                pathVariables: [String: String]?) async throws -> NetworkResult<T> {
         do {
             let request = self.makeRequest(
@@ -75,13 +72,18 @@ final class NetworkService: NetworkServiceType {
                 pathVariables: pathVariables
             )
             
+            dump(request)
+            
             let (data, response) = try await URLSession.shared.data(for: request)
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw NetworkError.responseError
             }
             
+            dump(response)
+            
             if 200..<300 ~= httpResponse.statusCode {
                 let result = try JSONDecoder().decode(T.self, from: data)
+                dump(result)
                 return .success(result)
             } else {
                 // 실패 응답 처리

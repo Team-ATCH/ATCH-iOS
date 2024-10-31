@@ -70,7 +70,6 @@
 		2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC832C71EC9700AD649C /* TabBar.swift */; };
 		2ABCDC8B2C71EC9700AD649C /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC852C71EC9700AD649C /* TabBarCoordinator.swift */; };
 		2ABCDC8C2C71EC9700AD649C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC872C71EC9700AD649C /* TabBarController.swift */; };
-		2AC343FD2CCE08C100BEEA5A /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC343FC2CCE08C100BEEA5A /* TokenManager.swift */; };
 		2AC344002CCE08EF00BEEA5A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC343FF2CCE08EF00BEEA5A /* NetworkService.swift */; };
 		2AC344022CCE094E00BEEA5A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC344012CCE094E00BEEA5A /* NetworkError.swift */; };
 		2AC344042CCE097400BEEA5A /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC344032CCE097400BEEA5A /* BaseResponse.swift */; };
@@ -138,6 +137,7 @@
 		2AFE09DC2CD31706001CF26B /* RoomResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09DB2CD31706001CF26B /* RoomResponseDTO.swift */; };
 		2AFE09DE2CD317A4001CF26B /* GetMyRoomListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09DD2CD317A4001CF26B /* GetMyRoomListDTO.swift */; };
 		2AFE09E02CD317F3001CF26B /* GetChatListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09DF2CD317F3001CF26B /* GetChatListDTO.swift */; };
+		2AFE09E22CD32315001CF26B /* UserInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09E12CD32315001CF26B /* UserInfoData.swift */; };
 		3D16E0A7CB5D37D4F14E0123 /* Pods_ATCH_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -205,7 +205,6 @@
 		2ABCDC832C71EC9700AD649C /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		2ABCDC852C71EC9700AD649C /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		2ABCDC872C71EC9700AD649C /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		2AC343FC2CCE08C100BEEA5A /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		2AC343FF2CCE08EF00BEEA5A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		2AC344012CCE094E00BEEA5A /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		2AC344032CCE097400BEEA5A /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
@@ -263,6 +262,7 @@
 		2AFE09DB2CD31706001CF26B /* RoomResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomResponseDTO.swift; sourceTree = "<group>"; };
 		2AFE09DD2CD317A4001CF26B /* GetMyRoomListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyRoomListDTO.swift; sourceTree = "<group>"; };
 		2AFE09DF2CD317F3001CF26B /* GetChatListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetChatListDTO.swift; sourceTree = "<group>"; };
+		2AFE09E12CD32315001CF26B /* UserInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoData.swift; sourceTree = "<group>"; };
 		559D6D8F22DF04CD75C9BCC6 /* Pods-ATCH-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.release.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATCH_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AC03EEAF5A52DB29F667C5 /* Pods-ATCH-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.debug.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -879,17 +879,8 @@
 			children = (
 				2AFE09AD2CD1C3D1001CF26B /* Repository */,
 				2AC343FE2CCE08E500BEEA5A /* Foundation */,
-				2AC343FB2CCE08B500BEEA5A /* TokenManager */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		2AC343FB2CCE08B500BEEA5A /* TokenManager */ = {
-			isa = PBXGroup;
-			children = (
-				2AC343FC2CCE08C100BEEA5A /* TokenManager.swift */,
-			);
-			path = TokenManager;
 			sourceTree = "<group>";
 		};
 		2AC343FE2CCE08E500BEEA5A /* Foundation */ = {
@@ -1033,6 +1024,7 @@
 		2AFD06E12C84A11D00F34C35 /* ViewData */ = {
 			isa = PBXGroup;
 			children = (
+				2AFE09E12CD32315001CF26B /* UserInfoData.swift */,
 				2AFD06E02C84A11D00F34C35 /* MapChatData.swift */,
 				2AFD06EB2C84AF2000F34C35 /* MyChatData.swift */,
 				2AFD071A2C89793000F34C35 /* AlarmData.swift */,
@@ -1322,6 +1314,7 @@
 				2AFE09DA2CD316B8001CF26B /* RoomRequestBody.swift in Sources */,
 				2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */,
 				2ABCDC8B2C71EC9700AD649C /* TabBarCoordinator.swift in Sources */,
+				2AFE09E22CD32315001CF26B /* UserInfoData.swift in Sources */,
 				2AC344042CCE097400BEEA5A /* BaseResponse.swift in Sources */,
 				2A7B78B82CCD2160003E6F37 /* ProfileEditCoordinator.swift in Sources */,
 				2AFE09D82CD3167F001CF26B /* GetRoomListDTO.swift in Sources */,
@@ -1335,7 +1328,6 @@
 				2AFE09D32CD315F6001CF26B /* GetBackgroundListDTO.swift in Sources */,
 				2A1BE0E42CB8ECD000908579 /* SigninCoordinator.swift in Sources */,
 				2A1BE11E2CBA9B6700908579 /* AtchPageControl.swift in Sources */,
-				2AC343FD2CCE08C100BEEA5A /* TokenManager.swift in Sources */,
 				2A1BE0F72CBA494B00908579 /* NicknameSettingVC.swift in Sources */,
 				2AFE09DC2CD31706001CF26B /* RoomResponseDTO.swift in Sources */,
 				2AFD06D42C84A06700F34C35 /* AlarmViewModel.swift in Sources */,

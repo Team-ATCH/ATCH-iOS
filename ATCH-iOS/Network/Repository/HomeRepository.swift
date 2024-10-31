@@ -34,4 +34,48 @@ final class HomeRepository {
             return false
         }
     }
+    
+    func getUserList() async throws -> [UserInfoData] {
+        do {
+            let response: NetworkResult<GetUserListDTO> = try await networkProvider.request(
+                type: .get,
+                baseURL: Config.appBaseURL + "/home",
+                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                body: nil,
+                pathVariables: nil
+            )
+    
+            switch response {
+            case .success(let data):
+                return data.mapToMapView()
+            case .failure(let error):
+                print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
+                return []
+            }
+        } catch {
+            return []
+        }
+    }
+    
+    func getNoticeList() async throws -> [AlarmData] {
+        do {
+            let response: NetworkResult<GetNoticeListDTO> = try await networkProvider.request(
+                type: .get,
+                baseURL: Config.appBaseURL + "/home",
+                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                body: nil,
+                pathVariables: nil
+            )
+    
+            switch response {
+            case .success(let data):
+                return data.mapToAlarmView()
+            case .failure(let error):
+                print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
+                return []
+            }
+        } catch {
+            return []
+        }
+    }
 }

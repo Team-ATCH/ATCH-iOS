@@ -16,12 +16,12 @@ protocol NetworkServiceType {
     func makeRequest(type: HttpMethod,
                      baseURL: String,
                      accessToken: String?,
-                     body: Encodable,
+                     body: Encodable?,
                      pathVariables: [String: String]?) -> URLRequest
     
     func request<T: Decodable>(type: HttpMethod,
                                baseURL: String,
                                accessToken: String?,
-                               body: Encodable,
+                               body: Encodable?,
                                pathVariables: [String: String]?) async throws -> NetworkResult<T>
 }

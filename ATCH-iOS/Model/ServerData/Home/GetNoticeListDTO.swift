@@ -14,3 +14,15 @@ struct NoticeList: Decodable {
 }
 
 typealias GetNoticeListDTO = [NoticeList]
+
+extension GetNoticeListDTO {
+    func mapToAlarmView() -> [AlarmData] {
+        let alarmDataList: [AlarmData] = self.map { data in
+            let alarmData: AlarmData = .init(type: data.isItem ? .item : .notice,
+                                             title: data.title,
+                                             content: data.content)
+            return alarmData
+        }
+        return alarmDataList
+    }
+}
