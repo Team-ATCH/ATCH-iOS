@@ -16,7 +16,6 @@ struct Sender: SenderType {
 }
 
 struct ChattingData: MessageType {
-    
     let id: String?
     var messageId: String {
         return id ?? UUID().uuidString

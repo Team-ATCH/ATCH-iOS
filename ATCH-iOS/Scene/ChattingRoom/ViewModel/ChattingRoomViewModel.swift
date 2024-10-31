@@ -73,7 +73,7 @@ extension ChattingRoomViewModel: StompClientLibDelegate {
         guard let innerJSON_FromID = json ["fromId"] as? Int else { return }
         guard let innerJSON_Message = json ["content"] as? String else { return }
         
-        if innerJSON_FromID != UserData.shared.userId {
+        if innerJSON_FromID == Int(sender.senderId) {
             // 내가 보내는 메세지에 대해선 나에게 pub X
             messageRelay.accept(ChattingData(sender: sender,
                                              content: innerJSON_Message,
