@@ -25,11 +25,6 @@ final class MapVC: BaseMapVC {
     
     private let locationManager = CLLocationManager()
     private var currentPoi: Poi? = nil
-
-    private var mapChatList: [MapChatData] = [MapChatData(id: "", characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", itemCount: 1, itemUrl: "", nickName: "과제의요정", tag: "#맛집 #카페 #홍대생 #빈티지 #아티스트"),
-                                              MapChatData(id: "", characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", itemCount: 1, itemUrl: "", nickName: "말리부", tag: "#맛집 #카페 #버스킹 #공연 #클럽 #힙스터"),
-                                              MapChatData(id: "", characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", itemCount: 1, itemUrl: "", nickName: "탕탕 후루후루", tag: "#맛집 #사장님 #버스킹 #주민"),
-                                              MapChatData(id: "", characterUrl: "https://i.namu.wiki/i/UfLKudDv6-jzO7_osc0VEqzb7_8HXfLXmIFzUBudsybDoiNHlFRzbFezzFyAkCoY4AIrqcpKTi5CRgcPIHv-ee0SQc-oOJEv1_wno8RjFt6G1aJrhQ9zBMUilCIjHOeTgZGNou2qteBqRPMXynaZ4w.webp", itemCount: 1, itemUrl: "", nickName: "동그라미동동동쓰", tag: "#패션 #버스킹 #인플루언서 #힙스터")]
     
     private let alarmImageView = UIImageView().then {
         $0.image = .icAlarmYellow
@@ -54,11 +49,24 @@ final class MapVC: BaseMapVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bindViewModel()
         setupDelegate()
         setupLayout()
         setupAction()
         setupLocationManager()
         setBottomSheetDefault()
+    }
+    
+    private func bindViewModel() {
+        // bindMapChatList
+        viewModel?.mapChatListRelay
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.bottomSheetView.chatCollectionView.reloadData()
+            }).disposed(by: disposeBag)
+        
+        viewModel?.getMapChatList()
     }
     
     override func addViews() {
@@ -128,9 +136,7 @@ final class MapVC: BaseMapVC {
             .when(.recognized)
             .withUnretained(self)
             .subscribe(onNext: {(vc, gesture) in
-                if vc.isCollectionViewScrolling() {
-                    return
-                }
+                if vc.isCollectionViewScrolling() { return }
                 
                 let translation = gesture.translation(in: vc.bottomSheetView).y
                 if translation > 30 {
@@ -170,7 +176,7 @@ extension MapVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let currentLocation = locations.last else { return }
         
-        let mapPoint = MapPoint(longitude: currentLocation.coordinate.longitude, latitude: currentLocation.coordinate.latitude)
+        let mapPoint = MapPoint(longitude: 126.92390068909582, latitude: 37.55697173535178)
         guard let mapView = mapController?.getView("mapview") as? KakaoMap else { return }
         
         let manager = mapView.getLabelManager()
@@ -189,8 +195,10 @@ extension MapVC: CLLocationManagerDelegate {
             poiOption.rank = 0
             poiOption.clickable = true
             
-            // POI 추가 및 저장
-            currentPoi = layer?.addPoi(option: poiOption, at: mapPoint, callback: { poi in
+            // POI 추가 및 서버에 현재 위치 전달
+            currentPoi = layer?.addPoi(option: poiOption, at: mapPoint, callback: { [weak self] poi in
+                guard let self else { return }
+                self.viewModel?.updateMyLoaction(latitude: 126.92390068909582, longitude: 37.55697173535178)
                 print("POI added")
             })
             
@@ -214,17 +222,21 @@ extension MapVC: CLLocationManagerDelegate {
 extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return mapChatList.count
+        return viewModel?.mapChatList.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MapChatCollectionViewCell.reuseIdentifier, for: indexPath) as? MapChatCollectionViewCell else {return UICollectionViewCell()}
-        cell.bindCell(model: mapChatList[indexPath.item])
+        if let mapChatList = viewModel?.mapChatList {
+            cell.bindCell(model: mapChatList[indexPath.item])
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let opponent = Sender(senderId: mapChatList[indexPath.row].id, displayName: mapChatList[indexPath.row].nickName, profileImageUrl: mapChatList[indexPath.row].characterUrl)
-        coordinator?.pushToChattingRoomView(opponent: opponent)
+        if let mapChatList = viewModel?.mapChatList {
+            let opponent = Sender(senderId: mapChatList[indexPath.row].id, displayName: mapChatList[indexPath.row].nickName, profileImageUrl: mapChatList[indexPath.row].characterUrl)
+            coordinator?.pushToChattingRoomView (opponent: opponent)
+        }
     }
 }
