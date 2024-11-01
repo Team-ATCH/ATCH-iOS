@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct MyRoomList: Codable {
+struct GetMyRoomListDTO: Decodable {
+    let data: [MyRoomList]
+}
+
+struct MyRoomList: Decodable {
     let roomID: Int
     let content: String
     let fromID: Int
@@ -24,11 +28,9 @@ struct MyRoomList: Codable {
     }
 }
 
-typealias GetMyRoomListDTO = [MyRoomList]
-
 extension GetMyRoomListDTO {
     func mapToMyChatView() -> [MyChatData] {
-        let myChatDataList: [MyChatData] = self.map { data in
+        let myChatDataList: [MyChatData] = self.data.map { data in
             let myChatData: MyChatData = .init(characterUrl: data.imageURL,
                                                id: String(data.fromID),
                                                nickName: data.fromNickname,

@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct GetUserListDTO: Decodable {
+    let data: [UserList]
+}
+
 struct UserList: Decodable {
     let userID: Int
     let nickname: String
@@ -37,11 +41,9 @@ struct Slot: Decodable {
     let x, y: Double
 }
 
-typealias GetUserListDTO = [UserList]
-
 extension GetUserListDTO {
     func mapToMapView() -> [UserInfoData] {
-        let userInfoDataList: [UserInfoData] = self.map { data in
+        let userInfoDataList: [UserInfoData] = self.data.map { data in
             let userInfoData: UserInfoData = .init(userID: data.userID,
                                                    nickname: data.nickname,
                                                    hashTag: data.hashTag,

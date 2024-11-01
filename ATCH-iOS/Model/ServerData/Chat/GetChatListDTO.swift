@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct ChatList: Codable {
+struct GetChatListDTO: Decodable {
+    let data: [ChatList]
+}
+
+struct ChatList: Decodable {
     let content: String
     let fromID: Int
     let fromNickname, createdAt: String
@@ -20,11 +24,9 @@ struct ChatList: Codable {
     }
 }
 
-typealias GetChatListDTO = [ChatList]
-
 extension GetChatListDTO {
     func mapToChattingRoomView() -> [ChattingData] {
-        let chattingDataList: [ChattingData] = self.map { data in
+        let chattingDataList: [ChattingData] = self.data.map { data in
             let chattingData: ChattingData = .init(sender: Sender(senderId: String(data.fromID), displayName: data.fromNickname),
                                                    content: data.content,
                                                    sendDate: data.createdAt.convertToDate() ?? Date())

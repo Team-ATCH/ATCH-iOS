@@ -7,17 +7,20 @@
 
 import Foundation
 
+struct GetNoticeListDTO: Decodable {
+    let data: [NoticeList]
+}
+
 struct NoticeList: Decodable {
     let title: String
     let content: String
     let isItem: Bool
 }
 
-typealias GetNoticeListDTO = [NoticeList]
 
 extension GetNoticeListDTO {
     func mapToAlarmView() -> [AlarmData] {
-        let alarmDataList: [AlarmData] = self.map { data in
+        let alarmDataList: [AlarmData] = self.data.map { data in
             let alarmData: AlarmData = .init(type: data.isItem ? .item : .notice,
                                              title: data.title,
                                              content: data.content)

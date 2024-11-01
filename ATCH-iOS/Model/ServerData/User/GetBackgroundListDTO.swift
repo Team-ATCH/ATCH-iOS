@@ -7,6 +7,9 @@
 
 import Foundation
 
+struct GetBackgroundListDTO: Decodable {
+    let data: [BackgroundList]
+}
 struct BackgroundList: Decodable {
     let itemID: Int
     let itemImageURL: String
@@ -17,11 +20,9 @@ struct BackgroundList: Decodable {
     }
 }
 
-typealias GetBackgroundListDTO = [BackgroundList]
-
 extension GetBackgroundListDTO {
     func mapToBackgroundSelectView() -> [BackgroundData] {
-        let backgroundDataList: [BackgroundData] = self.map { data in
+        let backgroundDataList: [BackgroundData] = self.data.map { data in
             let backgroundData: BackgroundData = .init(itemID: data.itemID,
                                                  itemImageURL: data.itemImageURL)
             return backgroundData

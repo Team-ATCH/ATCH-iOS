@@ -7,6 +7,9 @@
 
 import Foundation
 
+struct GetItemListDTO: Decodable {
+    let data: [ItemList]
+}
 struct ItemList: Decodable {
     let characterImageURL: String
     let slots: [Slot]
@@ -18,12 +21,9 @@ struct ItemList: Decodable {
     }
 }
 
-typealias GetItemListDTO = [ItemList]
-
-
 extension GetItemListDTO {
     func mapToItemSelectView() -> [ItemData] {
-        let itemDataList: [ItemData] = self.map { data in
+        let itemDataList: [ItemData] = self.data.map { data in
             let itemData: ItemData = .init(characterImageURL: data.characterImageURL, 
                                            items: data.items.map { item in UserItem(itemID: item.itemID, itemImageURL: item.itemImageURL) },
                                            slots: data.slots.map { slot in ItemSlot(slotX: slot.x, slotY: slot.y)})
