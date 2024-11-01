@@ -10,8 +10,7 @@ import Foundation
 struct MapChatData { // 다른 유저들에 대한 정보
     let id: String
     let characterUrl: String
-    let itemCount: Int
-    let itemUrl: String
+    let itemUrl: [String]
     let nickName: String
     let tag: String
 }
