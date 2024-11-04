@@ -28,8 +28,8 @@ struct UserList: Decodable {
 }
 
 struct Item: Decodable {
-    let itemID: Int
-    let itemImageURL: String
+    let itemID: Int?
+    let itemImageURL: String?
 
     enum CodingKeys: String, CodingKey {
         case itemID = "itemId"
@@ -50,7 +50,7 @@ extension GetUserListDTO {
                                                    latitude: data.latitude,
                                                    longitude: data.longitude,
                                                    characterImageURL: data.characterImageURL,
-                                                   items: data.items.map { item in UserItem(itemID: item.itemID, itemImageURL: item.itemImageURL) },
+                                                   items: data.items.map { item in UserItem(itemID: item.itemID ?? 0, itemImageURL: item.itemImageURL ?? "") },
                                                    slots: data.slots.map { slot in ItemSlot(slotX: slot.x, slotY: slot.y)})
             return userInfoData
         }

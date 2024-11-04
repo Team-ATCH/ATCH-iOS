@@ -25,7 +25,7 @@ extension GetItemListDTO {
     func mapToItemSelectView() -> [ItemData] {
         let itemDataList: [ItemData] = self.data.map { data in
             let itemData: ItemData = .init(characterImageURL: data.characterImageURL, 
-                                           items: data.items.map { item in UserItem(itemID: item.itemID, itemImageURL: item.itemImageURL) },
+                                           items: data.items.map { item in UserItem(itemID: item.itemID ?? 0, itemImageURL: item.itemImageURL ?? "") },
                                            slots: data.slots.map { slot in ItemSlot(slotX: slot.x, slotY: slot.y)})
             return itemData
         }
