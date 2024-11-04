@@ -41,6 +41,7 @@ final class MyPageVC: UIViewController {
     
     private func bindViewModel() {
         viewModel?.successRelay
+            .observe(on: MainScheduler.instance)
             .withUnretained(self)
             .subscribe(onNext: { vc, success in
                 if success {
