@@ -66,12 +66,12 @@ final class ProfileEditView: UIView {
         $0.alignment = .leading
     }
     
-    let nextButton = UIImageView().then {
+    let saveButton = UIImageView().then {
         $0.image = .imgBigButton
         $0.contentMode = .scaleAspectFill
     }
     
-    private let nextLabel = UILabel().then {
+    private let saveLabel = UILabel().then {
         $0.text = "저장"
         $0.textColor = .atchBlack
         $0.font = .font(.bigButton)
@@ -98,7 +98,7 @@ final class ProfileEditView: UIView {
     
     private func setupLayout() {
         self.addSubviews(stackView, 
-                         nextButton)
+                         saveButton)
 
         stackView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(30)
@@ -131,15 +131,15 @@ final class ProfileEditView: UIView {
             $0.height.equalTo(1)
         }
         
-        nextButton.snp.makeConstraints {
+        saveButton.snp.makeConstraints {
             $0.width.equalTo(295)
             $0.height.equalTo(53)
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview().inset((UIWindow.key?.safeAreaInsets.bottom ?? 0) + 63 + 29)
         }
         
-        nextButton.addSubview(nextLabel)
-        nextLabel.snp.makeConstraints {
+        saveButton.addSubview(saveLabel)
+        saveLabel.snp.makeConstraints {
             $0.top.equalTo(14.adjustedW)
             $0.leading.equalTo(131.adjustedW)
         }

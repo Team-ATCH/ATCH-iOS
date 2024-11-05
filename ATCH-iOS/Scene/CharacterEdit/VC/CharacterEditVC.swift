@@ -31,9 +31,14 @@ final class CharacterEditVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+     
+        setupStyle()
         setupLayout()
         setupAction()
+    }
+    
+    private func setupStyle() {
+        self.view.backgroundColor = .atchGrey1
     }
     
     private func setupLayout() {
@@ -52,6 +57,11 @@ final class CharacterEditVC: UIViewController {
     }
         
     private func setupAction() {
-  
+        characterEditNavigationView.navigationBackButton.rx.tapGesture()
+            .when(.recognized)
+            .withUnretained(self)
+            .subscribe(onNext: { (vc, _) in
+                vc.coordinator?.back()
+            }).disposed(by: disposeBag)
     }
 }

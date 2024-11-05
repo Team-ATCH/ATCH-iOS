@@ -38,7 +38,7 @@ final class ProfileEditVC: UIViewController {
     }
     
     private func setupStyle() {
-        self.view.backgroundColor = .atchWhite
+        self.view.backgroundColor = .atchGrey1
     }
     
     private func setupLayout() {
@@ -64,7 +64,7 @@ final class ProfileEditVC: UIViewController {
                 vc.coordinator?.back()
             }).disposed(by: disposeBag)
         
-        profileEditView.nextButton.rx.tapGesture()
+        profileEditView.saveButton.rx.tapGesture()
             .when(.recognized)
             .withUnretained(self)
             .subscribe(onNext: { (vc, _) in

@@ -15,4 +15,18 @@ extension UIView {
     func removeAllSubViews() {
         self.subviews.forEach { $0.removeFromSuperview() }
     }
+    
+    func addLeftBorder(borderColor: UIColor, borderWidth: CGFloat) {
+        let leftBorder = CALayer()
+        leftBorder.backgroundColor = borderColor.cgColor
+        leftBorder.frame = CGRect(x: 0, y: 0, width: borderWidth, height: frame.height)
+        layer.addSublayer(leftBorder)
+    }
+    
+    func addRightBorder(borderColor: UIColor, borderWidth: CGFloat) {
+        let rightBorder = CALayer()
+        rightBorder.backgroundColor = borderColor.cgColor
+        rightBorder.frame = CGRect(x: frame.width - borderWidth, y: 0, width: borderWidth, height: frame.height)
+        layer.addSublayer(rightBorder)
+    }
 }
