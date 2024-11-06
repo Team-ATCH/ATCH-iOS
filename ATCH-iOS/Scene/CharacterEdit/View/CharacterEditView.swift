@@ -13,6 +13,8 @@ import Then
 
 final class CharacterEditView: UIView {
     
+    private let disposeBag: DisposeBag = DisposeBag()
+    
     private let characterImageView = UIImageView()
     
     private let itemButton = UIButton().then {
@@ -64,6 +66,7 @@ final class CharacterEditView: UIView {
         
         self.setupStyle()
         self.setupLayout()
+        self.setupButton()
     }
     
     required init?(coder: NSCoder) {
@@ -73,9 +76,9 @@ final class CharacterEditView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-
+        
         backgroundButton.addRightBorder(borderColor: .atchShadowGrey, borderWidth: 1)
-
+        
         allItemBackground.addLeftBorder(borderColor: .atchShadowGrey, borderWidth: 1)
         allItemBackground.addRightBorder(borderColor: .atchShadowGrey, borderWidth: 1)
     }
@@ -97,10 +100,18 @@ final class CharacterEditView: UIView {
             $0.backgroundColor = .atchWhite
         }
         
+        setInitButtonState()
+        
         [itemBackgroundOne, itemBackgroundTwo, itemBackgroundThree, itemBackgroundFour, itemBackgroundFive].forEach {
             $0.image = .imgItemButtonBackground
             $0.contentMode = .scaleAspectFill
         }
+    }
+    
+    private func setInitButtonState() {
+        itemButton.backgroundColor = .atchWhite
+        characterButtonBottomLine.isHidden = true
+        backgroundButtonBottomLine.isHidden = true
     }
 
     private func setupLayout() {
@@ -190,4 +201,47 @@ final class CharacterEditView: UIView {
             $0.leading.equalTo(131.adjustedW)
         }
     }
+    
+    private func setupButton() {
+        setupButton(itemButton,
+                    selectedBackground: .atchWhite,
+                    otherButtons: [characterButton, backgroundButton],
+                    bottomLine: itemButtonBottomLine,
+                    otherBottomLines: [characterButtonBottomLine, backgroundButtonBottomLine])
+        
+        setupButton(characterButton,
+                    selectedBackground: .atchWhite,
+                    otherButtons: [itemButton, backgroundButton],
+                    bottomLine: characterButtonBottomLine,
+                    otherBottomLines: [itemButtonBottomLine, backgroundButtonBottomLine])
+        
+        setupButton(backgroundButton,
+                    selectedBackground: .atchWhite,
+                    otherButtons: [itemButton, characterButton],
+                    bottomLine: backgroundButtonBottomLine,
+                    otherBottomLines: [itemButtonBottomLine, characterButtonBottomLine])
+    }
+
+    private func setupButton(_ button: UIButton, selectedBackground: UIColor, otherButtons: [UIButton], bottomLine: UIView, otherBottomLines: [UIView]) {
+        button.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                guard let self else { return }
+                
+                // 현재 버튼 설정
+                button.backgroundColor = selectedBackground
+                button.isSelected = true
+                bottomLine.isHidden = false
+                
+                // 나머지 버튼 비활성화 설정
+                otherButtons.forEach { otherButton in
+                    otherButton.backgroundColor = .atchGrey1
+                    otherButton.isSelected = false
+                }
+                otherBottomLines.forEach { otherBottomLine in
+                    otherBottomLine.isHidden = true
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+
 }
