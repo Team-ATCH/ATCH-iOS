@@ -16,8 +16,8 @@ final class CharacterEditVC: UIViewController {
     private let coordinator: CharacterEditCoordinator?
     private let disposeBag: DisposeBag = DisposeBag()
         
-    private let adornCharacterNavigationView = NavigationView(title: "캐릭터 꾸미기", backButtonHidden: false)
-    private let adornCharacterView: ProfileEditView = ProfileEditView()
+    private let characterEditNavigationView = NavigationView(title: "캐릭터 꾸미기", backButtonHidden: false)
+    private let characterEditView: CharacterEditView = CharacterEditView()
     
     init(coordinator: CharacterEditCoordinator) {
         self.coordinator = coordinator
@@ -31,32 +31,37 @@ final class CharacterEditVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+     
         setupStyle()
         setupLayout()
         setupAction()
     }
     
     private func setupStyle() {
-        self.view.backgroundColor = .atchWhite
+        self.view.backgroundColor = .atchGrey1
     }
     
     private func setupLayout() {
-        self.view.addSubviews(adornCharacterNavigationView,
-                              adornCharacterView)
+        self.view.addSubviews(characterEditNavigationView,
+                              characterEditView)
         
-        adornCharacterNavigationView.snp.makeConstraints {
+        characterEditNavigationView.snp.makeConstraints {
             $0.top.horizontalEdges.equalToSuperview()
             $0.height.equalTo((UIWindow.key?.safeAreaInsets.top ?? 0) + 51)
         }
         
-        adornCharacterView.snp.makeConstraints {
-            $0.top.equalTo(adornCharacterNavigationView.snp.bottom)
+        characterEditView.snp.makeConstraints {
+            $0.top.equalTo(characterEditNavigationView.snp.bottom)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
     }
         
     private func setupAction() {
-  
+        characterEditNavigationView.navigationBackButton.rx.tapGesture()
+            .when(.recognized)
+            .withUnretained(self)
+            .subscribe(onNext: { (vc, _) in
+                vc.coordinator?.back()
+            }).disposed(by: disposeBag)
     }
 }
