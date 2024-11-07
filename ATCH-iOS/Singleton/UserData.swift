@@ -13,6 +13,7 @@ final class UserData {
     static var shared = UserData()
     
     var characterIndex: Int = 0 // 0, 1, 2, 3, 4
+    var characterImageUrl: String = ""
     var nickname: String = ""
     var hashTag: [HashTag] = []
     var hashTagRelay: BehaviorRelay<[HashTag]> = BehaviorRelay<[HashTag]>(value: [])
@@ -32,6 +33,13 @@ final class UserData {
         default:
             return .imgCharacterOne
         }
+    }
+    
+    func initData() {
+        characterIndex = 0
+        nickname = ""
+        hashTag = []
+        hashTagRelay = BehaviorRelay<[HashTag]>(value: [])
     }
 }
 

@@ -121,7 +121,7 @@ final class MapVC: BaseMapVC {
             // 내 프로필 모달
             self.coordinator?.presentProfileModal(userData: ProfileModalData.init(nickname: UserData.shared.nickname,
                                                                                   hashTag:  "#" + UserData.shared.hashTagRelay.value.map { $0.hashTagTitle }.joined(separator: " #"),
-                                                                                  profileUrl: nil,
+                                                                                  profileUrl: UserData.shared.characterImageUrl,
                                                                                   buttonText: "프로필수정"))
         }
         

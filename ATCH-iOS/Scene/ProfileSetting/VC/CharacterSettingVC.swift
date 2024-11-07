@@ -18,6 +18,8 @@ final class CharacterSettingVC: UIViewController {
     
     private let disposeBag: DisposeBag = DisposeBag()
 
+    private var characterImageUrl: [String] = []
+    
     private let characterSettingView = CharacterSettingView()
     
     init(coordinator: CharacterSettingCoordinator) {
@@ -47,7 +49,9 @@ final class CharacterSettingVC: UIViewController {
     private func bindViewModel() {
         viewModel?.getAllCharacter()
             .withUnretained(self)
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { vc, result in
+                vc.characterImageUrl = result.map { $0.imageURL }
                 vc.characterSettingView.bindImageURL(imageURL: result.map { $0.imageURL })
             }).disposed(by: disposeBag)
         
@@ -70,7 +74,9 @@ final class CharacterSettingVC: UIViewController {
             .asObservable()
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
-                UserData.shared.characterIndex = vc.characterSettingView.characterPageControl.currentPage
+                let selectIndex = vc.characterSettingView.characterPageControl.currentPage
+                UserData.shared.characterImageUrl = vc.characterImageUrl[selectIndex]
+                UserData.shared.characterIndex = selectIndex
                 vc.viewModel?.updateCharacter(characterID: UserData.shared.characterIndex + 1)
             }).disposed(by: disposeBag)
     }

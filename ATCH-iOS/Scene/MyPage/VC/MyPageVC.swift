@@ -45,6 +45,7 @@ final class MyPageVC: UIViewController {
             .withUnretained(self)
             .subscribe(onNext: { vc, success in
                 if success {
+                    UserData.shared.initData()
                     KeychainWrapper.deleteToken(forKey: .accessToken)
                     vc.coordinator?.pushToPopupView(data: PopUpData(type: .withdraw,
                                                                     buttonType: .oneButton,

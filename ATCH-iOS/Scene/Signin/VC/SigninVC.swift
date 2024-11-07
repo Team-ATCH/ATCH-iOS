@@ -71,7 +71,7 @@ final class SigninVC: UIViewController {
                     if value.1 == true { // 새로운 유저
                         vc.coordinator?.pushToCharacterSettingView()
                     } else {
-                        vc.coordinator?.pushToCharacterSettingView()
+                        vc.coordinator?.pushToMainView()
                     }
                 }
             }).disposed(by: disposeBag)

@@ -41,7 +41,7 @@ final class ProfileModalView: UIView {
     }
     
     private let profileImageView = UIImageView().then {
-        $0.contentMode = .scaleAspectFill
+        $0.contentMode = .scaleAspectFit
     }
 
     let profileEditButton = UIImageView().then {
@@ -152,7 +152,7 @@ final class ProfileModalView: UIView {
         }
         
         profileImageView.snp.makeConstraints {
-            $0.top.equalTo(profileHashTagLabel.snp.bottom).offset(8)
+            $0.top.equalToSuperview().inset(115)
             $0.bottom.equalTo(profileEditButton.snp.top).offset(-13)
             $0.width.equalTo(178)
             $0.centerX.equalToSuperview()
