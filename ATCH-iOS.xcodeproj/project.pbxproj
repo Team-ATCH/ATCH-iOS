@@ -54,6 +54,8 @@
 		2A85A9342BF869C20030B4F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A85A9332BF869C20030B4F4 /* SceneDelegate.swift */; };
 		2A85A93B2BF869C20030B4F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A85A93A2BF869C20030B4F4 /* Assets.xcassets */; };
 		2A85A93E2BF869C20030B4F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A85A93C2BF869C20030B4F4 /* LaunchScreen.storyboard */; };
+		2AB534EF2CDCC2EB00A7BE66 /* UserLocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB534EE2CDCC2EB00A7BE66 /* UserLocationData.swift */; };
+		2AB534F42CDDEB5100A7BE66 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB534F32CDDEB5100A7BE66 /* UIImage+.swift */; };
 		2ABBF7072C5CC16F00B12315 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2ABBF7062C5CC16F00B12315 /* SnapKit */; };
 		2ABBF70A2C5CC19600B12315 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 2ABBF7092C5CC19600B12315 /* Then */; };
 		2ABCDC622C71EC3C00AD649C /* AllChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC5D2C71EC3C00AD649C /* AllChatCoordinator.swift */; };
@@ -199,6 +201,8 @@
 		2A85A93D2BF869C20030B4F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A85A93F2BF869C20030B4F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A94B6282CCE3D1800C281B9 /* ATCH-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ATCH-iOS.entitlements"; sourceTree = "<group>"; };
+		2AB534EE2CDCC2EB00A7BE66 /* UserLocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationData.swift; sourceTree = "<group>"; };
+		2AB534F32CDDEB5100A7BE66 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		2ABCDC5D2C71EC3C00AD649C /* AllChatCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatCoordinator.swift; sourceTree = "<group>"; };
 		2ABCDC5F2C71EC3C00AD649C /* AllChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatVC.swift; sourceTree = "<group>"; };
 		2ABCDC642C71EC4300AD649C /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -598,6 +602,7 @@
 				2AE7C9E12C8C4D1000A177EF /* UITextView+.swift */,
 				2AE7C9E32C8D328300A177EF /* Date+.swift */,
 				2AFE09E92CD32FCB001CF26B /* String+.swift */,
+				2AB534F32CDDEB5100A7BE66 /* UIImage+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1055,6 +1060,7 @@
 				2AFE09E72CD32BE7001CF26B /* AllChattingData.swift */,
 				2AFE09EB2CD35173001CF26B /* ItemData.swift */,
 				2AFE09ED2CD3535E001CF26B /* BackgroundData.swift */,
+				2AB534EE2CDCC2EB00A7BE66 /* UserLocationData.swift */,
 			);
 			path = ViewData;
 			sourceTree = "<group>";
@@ -1357,6 +1363,7 @@
 				2A1BE1032CBA4E1D00908579 /* SplashCoordinator.swift in Sources */,
 				2AC344082CCE099D00BEEA5A /* KeychainWrapper.swift in Sources */,
 				2AFE09DA2CD316B8001CF26B /* RoomRequestBody.swift in Sources */,
+				2AB534F42CDDEB5100A7BE66 /* UIImage+.swift in Sources */,
 				2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */,
 				2ABCDC8B2C71EC9700AD649C /* TabBarCoordinator.swift in Sources */,
 				2AFE09E22CD32315001CF26B /* UserInfoData.swift in Sources */,
@@ -1372,6 +1379,7 @@
 				2AFE09C12CD21B7F001CF26B /* GetNoticeListDTO.swift in Sources */,
 				2AFE09D32CD315F6001CF26B /* GetBackgroundListDTO.swift in Sources */,
 				2A1BE0E42CB8ECD000908579 /* SigninCoordinator.swift in Sources */,
+				2AB534EF2CDCC2EB00A7BE66 /* UserLocationData.swift in Sources */,
 				2A1BE11E2CBA9B6700908579 /* AtchPageControl.swift in Sources */,
 				2A1BE0F72CBA494B00908579 /* NicknameSettingVC.swift in Sources */,
 				2AFE09DC2CD31706001CF26B /* RoomResponseDTO.swift in Sources */,

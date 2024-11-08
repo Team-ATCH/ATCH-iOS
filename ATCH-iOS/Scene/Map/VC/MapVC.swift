@@ -66,7 +66,29 @@ final class MapVC: BaseMapVC {
                 vc.bottomSheetView.chatCollectionView.reloadData()
             }).disposed(by: disposeBag)
         
-        viewModel?.getMapChatList()
+        viewModel?.locationListRelay
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.updateMapView()
+            }).disposed(by: disposeBag)
+    }
+    
+    func updateMapView() {
+        guard let mapView = mapController?.getView("mapview") as? KakaoMap else { return }
+
+        let manager = mapView.getLabelManager()
+        let layer = manager.getLabelLayer(layerID: "PoiLayer")
+        let poiOption = PoiOptions(styleID: "customStyle2")
+        poiOption.rank = 0
+        poiOption.clickable = true
+        
+        viewModel?.locationList.forEach { location in
+            let mapPoint = MapPoint(longitude: location.latitude, latitude: location.longitude)
+            let _ = layer?.addPoi(option: poiOption, at: mapPoint)
+        }
+        
+        layer?.showAllPois()
     }
     
     override func addViews() {
@@ -176,12 +198,11 @@ extension MapVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let currentLocation = locations.last else { return }
         
-        let mapPoint = MapPoint(longitude: 126.92390068909582, latitude: 37.55697173535178)
+        let mapPoint = MapPoint(longitude: 126.9238083, latitude: 37.5564418)
         guard let mapView = mapController?.getView("mapview") as? KakaoMap else { return }
-        
         let manager = mapView.getLabelManager()
-        if currentPoi == nil {
-            // POI가 아직 추가되지 않았다면 새로 추가
+        
+        if currentPoi == nil { // POI가 아직 추가되지 않았다면 새로 추가
             let layerOption = LabelLayerOptions(layerID: "PoiLayer", competitionType: .none, competitionUnit: .poi, orderType: .rank, zOrder: 10001)
             let _ = manager.addLabelLayer(option: layerOption)
             
@@ -190,20 +211,22 @@ extension MapVC: CLLocationManagerDelegate {
             let poiStyle = PoiStyle(styleID: "customStyle1", styles: [perLevelStyle])
             manager.addPoiStyle(poiStyle)
             
+            let iconStyleTwo = PoiIconStyle(symbol: .icOnMap.resized(to: CGSize(width: 18, height: 20)), anchorPoint: CGPoint(x: 0.0, y: 0.5))
+            let perLevelStyleTwo = PerLevelPoiStyle(iconStyle: iconStyleTwo, level: 0)
+            let poiStyleTwo = PoiStyle(styleID: "customStyle2", styles: [perLevelStyleTwo])
+            manager.addPoiStyle(poiStyleTwo)
+            
             let layer = manager.getLabelLayer(layerID: "PoiLayer")
+            
             let poiOption = PoiOptions(styleID: "customStyle1")
             poiOption.rank = 0
-            poiOption.clickable = true
             
             // POI 추가 및 서버에 현재 위치 전달
             currentPoi = layer?.addPoi(option: poiOption, at: mapPoint, callback: { [weak self] poi in
                 guard let self else { return }
-                self.viewModel?.updateMyLoaction(latitude: 126.92390068909582, longitude: 37.55697173535178)
-                print("POI added")
+                self.viewModel?.updateMyLoaction(latitude: 126.9238083, longitude: 37.5564418)
+                print("Current POI added")
             })
-            
-            let _ = currentPoi?.addPoiTappedEventHandler(target: self, handler: MapVC.poiTappedHandler)
-            currentPoi?.show()
         } else {
             // 이미 추가된 POI가 있다면 위치만 업데이트
             currentPoi?.moveAt(mapPoint, duration: 1)
@@ -215,7 +238,7 @@ extension MapVC: CLLocationManagerDelegate {
     }
     
     func poiTappedHandler(_ param: PoiInteractionEventParam) {
-        param.poiItem.hide()
+       print("포이탭포이탭포이탭포이탭포이탭")
     }
 }
 
