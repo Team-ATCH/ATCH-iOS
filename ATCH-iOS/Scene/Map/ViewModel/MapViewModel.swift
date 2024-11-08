@@ -42,7 +42,7 @@ final class MapViewModel: NSObject {
             do {
                 let result = try await homeRepository.getUserList()
                 let mapChatDataList: [MapChatData] = result.map { data in
-                    let mapChatData: MapChatData = .init(id: String(data.userID),
+                    let mapChatData: MapChatData = .init(userID: String(data.userID),
                                                          characterUrl: data.characterImageURL,
                                                          itemUrl: data.items.map { $0.itemImageURL },
                                                          nickName: data.nickname,

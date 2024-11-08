@@ -44,7 +44,7 @@ final class ProfileModalView: UIView {
         $0.contentMode = .scaleAspectFit
     }
 
-    let profileEditButton = UIImageView().then {
+    let bottomButton = UIImageView().then {
         $0.image = .imgMediumButton
         $0.contentMode = .scaleAspectFill
     }
@@ -75,7 +75,7 @@ final class ProfileModalView: UIView {
             profileImageView.image = UserData.shared.characterImage()
         }
         
-        profileEditLabel.text = data.buttonText
+        profileEditLabel.text = data.buttonString
     }
     
     private func setupHashTag() {
@@ -109,7 +109,7 @@ final class ProfileModalView: UIView {
                                     profileNicknameLabel,
                                     profileHashTagLabel,
                                     profileImageView,
-                                    profileEditButton)
+                                    bottomButton)
         
         dimView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -138,22 +138,22 @@ final class ProfileModalView: UIView {
             $0.centerX.equalToSuperview()
         }
             
-        profileEditButton.snp.makeConstraints {
+        bottomButton.snp.makeConstraints {
             $0.width.equalTo(231)
             $0.height.equalTo(53)
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview().inset(30)
         }
         
-        profileEditButton.addSubview(profileEditLabel)
+        bottomButton.addSubview(profileEditLabel)
         profileEditLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(14)
-            $0.leading.equalToSuperview().inset(75)
+            $0.top.equalToSuperview().inset(14.adjustedH)
+            $0.centerX.equalToSuperview()
         }
         
         profileImageView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(115)
-            $0.bottom.equalTo(profileEditButton.snp.top).offset(-13)
+            $0.bottom.equalTo(bottomButton.snp.top).offset(-13)
             $0.width.equalTo(178)
             $0.centerX.equalToSuperview()
         }

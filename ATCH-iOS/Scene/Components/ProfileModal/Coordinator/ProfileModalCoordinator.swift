@@ -35,6 +35,13 @@ final class ProfileModalCoordinator: Coordinator {
         navigationController.tabBarController?.selectedIndex = 3
     }
     
+    func pushToChattingRoomView(opponent: Sender) {
+        let chattingRoomCoordinator = ChattingRoomCoordinator(navigationController)
+        chattingRoomCoordinator.finishDelegate = self
+        self.childCoordinators.append(chattingRoomCoordinator)
+        chattingRoomCoordinator.start(opponent: opponent)
+    }
+    
     func back() {
         finish()
         self.navigationController.popViewController(animated: true)

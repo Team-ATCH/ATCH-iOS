@@ -17,7 +17,10 @@ final class ProfileModalVC: UIViewController {
     let coordinator: ProfileModalCoordinator?
     
     private let disposeBag: DisposeBag = DisposeBag()
-        
+    
+    private var sender: Sender?
+    private var buttonType: ProfileModalButtonType = .profileEdit
+    
     private let profileModalView = ProfileModalView()
     
     init(coordinator: ProfileModalCoordinator) {
@@ -43,6 +46,8 @@ final class ProfileModalVC: UIViewController {
     }
     
     func bindUserInfo(data: ProfileModalData) {
+        buttonType = data.buttonType
+        sender = data.senderData
         profileModalView.bindViewData(data: data)
     }
     
@@ -53,12 +58,20 @@ final class ProfileModalVC: UIViewController {
                 vc.dismiss(animated: false)
             }).disposed(by: disposeBag)
         
-        profileModalView.profileEditButton.rx.tapGesture().asObservable()
+        profileModalView.bottomButton.rx.tapGesture().asObservable()
             .when(.recognized)
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
-                vc.dismiss(animated: false)
-                vc.coordinator?.pushToMyPage()
+                switch vc.buttonType {
+                case .profileEdit:
+                    vc.dismiss(animated: false)
+                    vc.coordinator?.pushToMyPage()
+                case .chatting:
+                    vc.dismiss(animated: false)
+                    if let sender = vc.sender {
+                        vc.coordinator?.pushToChattingRoomView(opponent: sender)
+                    }
+                }
             }).disposed(by: disposeBag)
     }
 }

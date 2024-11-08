@@ -122,7 +122,7 @@ final class MapChatCollectionViewCell: UICollectionViewCell {
         let hashtags = model.tag
         let words = hashtags.split(separator: " ").map { String($0) }
         
-        let lineLength = 10
+        let lineLength = 9
         var resultText = ""
         var currentLine = ""
         
