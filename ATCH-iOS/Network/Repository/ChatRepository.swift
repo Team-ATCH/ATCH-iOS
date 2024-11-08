@@ -16,7 +16,7 @@ final class ChatRepository {
             let response: NetworkResult<GetRoomListDTO?> = try await networkProvider.request(
                 type: .get,
                 baseURL: Config.appBaseURL + "/rooms",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
                 pathVariables: nil
             )
@@ -38,7 +38,7 @@ final class ChatRepository {
             let response: NetworkResult<GetMyRoomListDTO?> = try await networkProvider.request(
                 type: .get,
                 baseURL: Config.appBaseURL + "/rooms/active",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
                 pathVariables: nil
             )
@@ -61,7 +61,7 @@ final class ChatRepository {
             let response: NetworkResult<RoomResponseDTO?> = try await networkProvider.request(
                 type: .post,
                 baseURL: Config.appBaseURL + "/rooms",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
@@ -83,7 +83,7 @@ final class ChatRepository {
             let response: NetworkResult<GetChatListDTO?> = try await networkProvider.request(
                 type: .get,
                 baseURL: Config.appBaseURL + "/messages/\(roomId)",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
                 pathVariables: nil
             )

@@ -17,7 +17,7 @@ final class UserRepository {
             let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .post,
                 baseURL: Config.appBaseURL + "/users/block",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
@@ -40,7 +40,7 @@ final class UserRepository {
             let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .patch,
                 baseURL: Config.appBaseURL + "/users/nickname",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
@@ -62,7 +62,7 @@ final class UserRepository {
             let response: NetworkResult<GetItemListDTO?> = try await networkProvider.request(
                 type: .get,
                 baseURL: Config.appBaseURL + "/users/item",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
                 pathVariables: nil
             )
@@ -85,7 +85,7 @@ final class UserRepository {
             let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .patch,
                 baseURL: Config.appBaseURL + "/users/item",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
@@ -108,7 +108,7 @@ final class UserRepository {
             let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .patch,
                 baseURL: Config.appBaseURL + "/users/hash-tag",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
@@ -130,7 +130,7 @@ final class UserRepository {
             let response: NetworkResult<GetCharacterListDTO?> = try await networkProvider.request(
                 type: .get,
                 baseURL: Config.appBaseURL + "/users/character",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
                 pathVariables: nil
             )
@@ -153,7 +153,7 @@ final class UserRepository {
             let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .patch,
                 baseURL: Config.appBaseURL + "/users/character",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
@@ -175,7 +175,7 @@ final class UserRepository {
             let response: NetworkResult<GetBackgroundListDTO?> = try await networkProvider.request(
                 type: .get,
                 baseURL: Config.appBaseURL + "/users/background",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
                 pathVariables: nil
             )
@@ -198,7 +198,7 @@ final class UserRepository {
             let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .patch,
                 baseURL: Config.appBaseURL + "/users/background",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
@@ -220,7 +220,7 @@ final class UserRepository {
             let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .delete,
                 baseURL: Config.appBaseURL + "/users",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
                 pathVariables: nil
             )

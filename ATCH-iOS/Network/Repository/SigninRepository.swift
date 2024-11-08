@@ -17,7 +17,7 @@ final class SigninRepository {
             networkProvider.request(
                 type: .post,
                 baseURL: Config.appBaseURL + "/login",
-                accessToken: nil,
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: ["provider": provider]
             )

@@ -17,6 +17,9 @@ final class MapViewModel: NSObject {
     var mapChatList: [MapChatData] = []
     let mapChatListRelay: PublishRelay<Bool> = PublishRelay<Bool>()
 
+    var locationList: [UserLocationData] = []
+    let locationListRelay: PublishRelay<Bool> = PublishRelay<Bool>()
+
     override init() {
         super.init()
     }
@@ -29,11 +32,12 @@ final class MapViewModel: NSObject {
         Task {
             do {
                 _ = try await homeRepository.patchLocation(latitude: latitude, longitude: longitude)
+                getUserList()
             }
         }
     }
     
-    func getMapChatList() {
+    func getUserList() {
         Task {
             do {
                 let result = try await homeRepository.getUserList()
@@ -45,8 +49,19 @@ final class MapViewModel: NSObject {
                                                          tag: "#" + data.hashTag.joined(separator: " #"))
                     return mapChatData
                 }
+                
                 mapChatList.append(contentsOf: mapChatDataList)
                 mapChatListRelay.accept(!mapChatList.isEmpty)
+                
+                let locationDataList: [UserLocationData] = result.map { data in
+                    let locationData: UserLocationData = .init(latitude: data.latitude,
+                                                               longitude: data.longitude)
+                    return locationData
+                }
+                
+                locationList.append(contentsOf: locationDataList)
+                locationListRelay.accept(!locationList.isEmpty)
+                
             }
         }
     }

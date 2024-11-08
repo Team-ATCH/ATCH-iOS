@@ -17,7 +17,7 @@ final class OnboardingRepository {
             let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .post,
                 baseURL: Config.appBaseURL + "/onboarding/nickname",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
@@ -40,7 +40,7 @@ final class OnboardingRepository {
             let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .post,
                 baseURL: Config.appBaseURL + "/onboarding/hash-tag",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
@@ -63,7 +63,7 @@ final class OnboardingRepository {
             let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .post,
                 baseURL: Config.appBaseURL + "/onboarding/character",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
@@ -85,7 +85,7 @@ final class OnboardingRepository {
             let response: NetworkResult<GetCharacterListDTO?> = try await networkProvider.request(
                 type: .get,
                 baseURL: Config.appBaseURL + "/onboarding/character",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
                 pathVariables: nil
             )

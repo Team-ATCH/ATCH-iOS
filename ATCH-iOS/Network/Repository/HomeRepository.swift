@@ -18,7 +18,7 @@ final class HomeRepository {
             let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .patch,
                 baseURL: Config.appBaseURL + "/home/locate",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
@@ -40,7 +40,7 @@ final class HomeRepository {
             let response: NetworkResult<GetUserListDTO?> = try await networkProvider.request(
                 type: .get,
                 baseURL: Config.appBaseURL + "/home",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
                 pathVariables: nil
             )
@@ -62,7 +62,7 @@ final class HomeRepository {
             let response: NetworkResult<GetNoticeListDTO?> = try await networkProvider.request(
                 type: .get,
                 baseURL: Config.appBaseURL + "/home",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
                 pathVariables: nil
             )

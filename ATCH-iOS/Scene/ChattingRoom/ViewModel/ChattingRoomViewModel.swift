@@ -33,7 +33,7 @@ final class ChattingRoomViewModel: NSObject {
     
     func registerSockect() {
         if let url = URL(string: Config.webSocketURL),
-           let accessToken = KeychainWrapper.loadToken(forKey: .accessToken) {
+           let accessToken = KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()) {
             socketClient.openSocketWithURLRequest(
                 request: NSURLRequest(url: url),
                 delegate: self,

@@ -12,6 +12,7 @@ import RxRelay
 final class UserData {
     static var shared = UserData()
     
+    var loginType: LoginType = .kakao
     var characterIndex: Int = 0 // 0, 1, 2, 3, 4
     var characterImageUrl: String = ""
     var nickname: String = ""
@@ -32,6 +33,15 @@ final class UserData {
             return .imgCharacterFive
         default:
             return .imgCharacterOne
+        }
+    }
+    
+    func getAccessTokenType() -> KeyChainKeyType {
+        switch self.loginType {
+        case .kakao:
+            return .kakaoAccessToken
+        case .apple:
+            return .appleAccessToken
         }
     }
     
@@ -130,4 +140,9 @@ enum HashTag: CaseIterable {
         }
     }
 
+}
+
+enum LoginType {
+    case kakao
+    case apple
 }

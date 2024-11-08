@@ -107,8 +107,8 @@ final class MapChatCollectionViewCell: UICollectionViewCell {
         
         chatButtonImageView.addSubview(chatButtonLabel)
         chatButtonLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(7)
-            $0.leading.equalToSuperview().inset(14)
+            $0.top.equalToSuperview().inset(7.adjustedH)
+            $0.leading.equalToSuperview().inset(14.adjustedW)
         }
     }
     
@@ -122,7 +122,7 @@ final class MapChatCollectionViewCell: UICollectionViewCell {
         let hashtags = model.tag
         let words = hashtags.split(separator: " ").map { String($0) }
         
-        let lineLength = 9
+        let lineLength = 10
         var resultText = ""
         var currentLine = ""
         
