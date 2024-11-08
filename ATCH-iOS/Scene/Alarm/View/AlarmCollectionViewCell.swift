@@ -42,7 +42,7 @@ final class AlarmCollectionViewCell: UICollectionViewCell {
     }
     
     private let itemGetButtonLabel = UILabel().then {
-        $0.text = "아이템 받기"
+        $0.text = "아이템 보기"
         $0.textColor = .atchBlack
         $0.font = .font(.smallButton)
     }

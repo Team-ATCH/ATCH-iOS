@@ -61,7 +61,7 @@ final class HomeRepository {
         do {
             let response: NetworkResult<GetNoticeListDTO?> = try await networkProvider.request(
                 type: .get,
-                baseURL: Config.appBaseURL + "/home",
+                baseURL: Config.appBaseURL + "/home/notice",
                 accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
                 pathVariables: nil
