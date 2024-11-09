@@ -44,6 +44,15 @@ final class ChattingRoomViewModel: NSObject {
         }
     }
     
+    func getAllChattingMessages() {
+        Task {
+            do {
+                let result = try await chatRepository.getChattingList(roomId: roomID)
+                previousMessagesRelay.accept(result)
+            }
+        }
+    }
+    
     func registerSockect() {
         if let url = URL(string: Config.webSocketURL),
            let accessToken = KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()) {
@@ -87,7 +96,6 @@ extension ChattingRoomViewModel: StompClientLibDelegate {
         guard let innerJSON_Message = json ["content"] as? String else { return }
         
         if innerJSON_FromID == Int(sender.senderId) {
-            print("asdfasdfsafsafasgdfd")
             // 내가 보내는 메세지에 대해선 나에게 pub X
             messageRelay.accept(ChattingData(sender: sender,
                                              content: innerJSON_Message,

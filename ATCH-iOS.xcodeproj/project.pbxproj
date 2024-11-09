@@ -58,6 +58,9 @@
 		2AB534F42CDDEB5100A7BE66 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB534F32CDDEB5100A7BE66 /* UIImage+.swift */; };
 		2AB535082CDF28B900A7BE66 /* MyChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB535072CDF28B900A7BE66 /* MyChatViewModel.swift */; };
 		2AB5350B2CDF303A00A7BE66 /* ProfileModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB5350A2CDF303A00A7BE66 /* ProfileModalViewModel.swift */; };
+		2AB5350E2CDF40A600A7BE66 /* AllChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB5350D2CDF40A600A7BE66 /* AllChatViewModel.swift */; };
+		2AB535122CDF41EE00A7BE66 /* AllChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB535112CDF41EE00A7BE66 /* AllChatView.swift */; };
+		2AB535142CDF420300A7BE66 /* AllChatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB535132CDF420300A7BE66 /* AllChatCollectionViewCell.swift */; };
 		2ABBF7072C5CC16F00B12315 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2ABBF7062C5CC16F00B12315 /* SnapKit */; };
 		2ABBF70A2C5CC19600B12315 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 2ABBF7092C5CC19600B12315 /* Then */; };
 		2ABCDC622C71EC3C00AD649C /* AllChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC5D2C71EC3C00AD649C /* AllChatCoordinator.swift */; };
@@ -207,6 +210,9 @@
 		2AB534F32CDDEB5100A7BE66 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		2AB535072CDF28B900A7BE66 /* MyChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatViewModel.swift; sourceTree = "<group>"; };
 		2AB5350A2CDF303A00A7BE66 /* ProfileModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModalViewModel.swift; sourceTree = "<group>"; };
+		2AB5350D2CDF40A600A7BE66 /* AllChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChatViewModel.swift; sourceTree = "<group>"; };
+		2AB535112CDF41EE00A7BE66 /* AllChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChatView.swift; sourceTree = "<group>"; };
+		2AB535132CDF420300A7BE66 /* AllChatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChatCollectionViewCell.swift; sourceTree = "<group>"; };
 		2ABCDC5D2C71EC3C00AD649C /* AllChatCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatCoordinator.swift; sourceTree = "<group>"; };
 		2ABCDC5F2C71EC3C00AD649C /* AllChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatVC.swift; sourceTree = "<group>"; };
 		2ABCDC642C71EC4300AD649C /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -751,6 +757,23 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		2AB5350C2CDF409A00A7BE66 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2AB5350D2CDF40A600A7BE66 /* AllChatViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2AB535102CDF41E600A7BE66 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2AB535112CDF41EE00A7BE66 /* AllChatView.swift */,
+				2AB535132CDF420300A7BE66 /* AllChatCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2ABCDC5E2C71EC3C00AD649C /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -770,6 +793,8 @@
 		2ABCDC612C71EC3C00AD649C /* AllChat */ = {
 			isa = PBXGroup;
 			children = (
+				2AB535102CDF41E600A7BE66 /* View */,
+				2AB5350C2CDF409A00A7BE66 /* ViewModel */,
 				2ABCDC5E2C71EC3C00AD649C /* Coordinator */,
 				2ABCDC602C71EC3C00AD649C /* VC */,
 			);
@@ -1366,6 +1391,7 @@
 				2ABCDC6B2C71EC4300AD649C /* CoordinatorType.swift in Sources */,
 				2A1BE0E92CB8ECE700908579 /* SigninViewModel.swift in Sources */,
 				2A2591AF2CBABD5900B6181E /* NicknameSettingView.swift in Sources */,
+				2AB535122CDF41EE00A7BE66 /* AllChatView.swift in Sources */,
 				2A7B78BC2CCD216F003E6F37 /* ProfileEditVC.swift in Sources */,
 				2A1BE0FB2CBA496A00908579 /* ProfileSettingViewModel.swift in Sources */,
 				2A1BE1062CBA4E3800908579 /* SplashVC.swift in Sources */,
@@ -1443,6 +1469,7 @@
 				2AFE09C62CD3124E001CF26B /* HashTagRequestBody.swift in Sources */,
 				2AFE09EA2CD32FCB001CF26B /* String+.swift in Sources */,
 				2AB535082CDF28B900A7BE66 /* MyChatViewModel.swift in Sources */,
+				2AB5350E2CDF40A600A7BE66 /* AllChatViewModel.swift in Sources */,
 				2AFD06422C8059A700F34C35 /* Config.swift in Sources */,
 				2ABCDC732C71EC5C00AD649C /* MapCoordinator.swift in Sources */,
 				2AFD06EE2C84B2C100F34C35 /* MyChatView.swift in Sources */,
@@ -1451,6 +1478,7 @@
 				2ABCDC6D2C71EC5100AD649C /* UIWindow+.swift in Sources */,
 				2A1BE0F32CBA491E00908579 /* HashTagSettingCoordinator.swift in Sources */,
 				2ABCDC6A2C71EC4300AD649C /* Coordinator.swift in Sources */,
+				2AB535142CDF420300A7BE66 /* AllChatCollectionViewCell.swift in Sources */,
 				2AFE09B02CD1C406001CF26B /* SigninRepository.swift in Sources */,
 				2AFD06BB2C84A04A00F34C35 /* MapBottomSheetView.swift in Sources */,
 				2AFE09BB2CD21231001CF26B /* UserRepository.swift in Sources */,

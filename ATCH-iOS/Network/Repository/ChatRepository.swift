@@ -11,14 +11,14 @@ final class ChatRepository {
     
     private let networkProvider: NetworkServiceType = NetworkService()
     
-    func getAllChattingRoomList() async throws -> [AllChattingData] {
+    func getAllChattingRoomList(limit: String, lastID: String) async throws -> [AllChattingData] {
         do {
             let response: NetworkResult<GetRoomListDTO?> = try await networkProvider.request(
                 type: .get,
                 baseURL: Config.appBaseURL + "/rooms",
                 accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
-                pathVariables: nil
+                pathVariables: ["limit": limit, "lastId": lastID]
             )
             
             switch response {
@@ -40,7 +40,7 @@ final class ChatRepository {
                 baseURL: Config.appBaseURL + "/rooms/active",
                 accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
-                pathVariables:  ["limit": limit, "lastId": lastID]
+                pathVariables: ["limit": limit, "lastId": lastID]
             )
             
             switch response {

@@ -14,15 +14,15 @@ struct GetRoomListDTO: Decodable {
 struct RoomList: Decodable {
     let roomID: Int
     let content: String
-    let opponentID: Int
-    let opponentNickname, createdAt: String
+    let fromID: Int
+    let fromNickname, createdAt: String
     let read: Bool
 
     enum CodingKeys: String, CodingKey {
         case roomID = "roomId"
         case content
-        case opponentID = "opponentId"
-        case opponentNickname, createdAt, read
+        case fromID = "fromId"
+        case fromNickname, createdAt, read
     }
 }
 
@@ -31,8 +31,8 @@ extension GetRoomListDTO {
         let allChatDataList: [AllChattingData] = self.data.map { data in
             let allChatData: AllChattingData = .init(roomID: data.roomID,
                                                      content: data.content,
-                                                     opponentID: data.opponentID,
-                                                     opponentNickname: data.opponentNickname,
+                                                     fromID: data.fromID,
+                                                     fromNickname: data.fromNickname,
                                                      createdAt: data.createdAt,
                                                      read: data.read)
             return allChatData

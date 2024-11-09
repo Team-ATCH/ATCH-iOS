@@ -10,8 +10,8 @@ import Foundation
 struct AllChattingData {
     let roomID: Int
     let content: String
-    let opponentID: Int
-    let opponentNickname: String
+    let fromID: Int
+    let fromNickname: String
     let createdAt: String
     let read: Bool
 }

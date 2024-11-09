@@ -26,6 +26,7 @@ struct ChatList: Decodable {
 
 extension GetChatListDTO {
     func mapToChattingRoomView() -> [ChattingData] {
+        // 여기에 profileURL 추가해서 받아야함
         let chattingDataList: [ChattingData] = self.data.map { data in
             let chattingData: ChattingData = .init(sender: Sender(senderId: String(data.fromID), displayName: data.fromNickname),
                                                    content: data.content,

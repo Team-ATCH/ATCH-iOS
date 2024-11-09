@@ -20,11 +20,14 @@ final class ChattingRoomVC: BaseChattingRoomVC {
     
     private let disposeBag: DisposeBag = DisposeBag()
 
+    private let allChatMode: Bool?
+    
     private let chattingRoomNavigationView = NavigationView(backButtonHidden: false, backButtonTitle: "내 채팅")
 
-    init(coordinator: ChattingRoomCoordinator, opponent: Sender) {
+    init(coordinator: ChattingRoomCoordinator, opponent: Sender, allChatMode: Bool = false) {
         self.coordinator = coordinator
         self.chattingRoomNavigationView.changeTitle(title: opponent.displayName)
+        self.allChatMode = allChatMode
         
         super.init(nibName: nil, bundle: nil)
         
@@ -39,7 +42,7 @@ final class ChattingRoomVC: BaseChattingRoomVC {
         
     override func bindViewModel() {
         // 여기서 senderID에 myID 넣어야함
-        inputSender = Sender(senderId: "19", displayName: "heejoo")
+        inputSender = Sender(senderId: "17", displayName: "heejoo")
 
         viewModel?.previousMessagesRelay
             .observe(on: MainScheduler.instance)
@@ -51,7 +54,11 @@ final class ChattingRoomVC: BaseChattingRoomVC {
                 vc.messagesCollectionView.scrollToLastItem()
             }).disposed(by: disposeBag)
         
-        viewModel?.getPreviousChattingMessages()
+        if allChatMode == true {
+            viewModel?.getAllChattingMessages()
+        } else {
+            viewModel?.getPreviousChattingMessages()
+        }
 
         viewModel?.messageRelay
             .observe(on: MainScheduler.instance)
@@ -83,45 +90,53 @@ final class ChattingRoomVC: BaseChattingRoomVC {
             $0.height.equalTo((UIWindow.key?.safeAreaInsets.top ?? 0) + 51)
         }
         
-        messagesCollectionView.snp.makeConstraints {
-            $0.top.equalTo(chattingRoomNavigationView.snp.bottom)
-            $0.horizontalEdges.equalToSuperview()
-            $0.bottom.equalToSuperview().inset((UIWindow.key?.safeAreaInsets.bottom ?? 0) + 62 + 60)
+        if allChatMode == true {
+            messagesCollectionView.snp.makeConstraints {
+                $0.top.equalTo(chattingRoomNavigationView.snp.bottom)
+                $0.horizontalEdges.equalToSuperview()
+                $0.bottom.equalToSuperview().inset((UIWindow.key?.safeAreaInsets.bottom ?? 0) + 62)
+            }
+        } else {
+            messagesCollectionView.snp.makeConstraints {
+                $0.top.equalTo(chattingRoomNavigationView.snp.bottom)
+                $0.horizontalEdges.equalToSuperview()
+                $0.bottom.equalToSuperview().inset((UIWindow.key?.safeAreaInsets.bottom ?? 0) + 62 + 60)
+            }
+            
+            inputContainerView.snp.makeConstraints {
+                $0.horizontalEdges.equalToSuperview()
+                $0.bottom.equalToSuperview().inset((UIWindow.key?.safeAreaInsets.bottom ?? 0) + 62)
+                $0.height.equalTo(60)
+            }
+            
+            messageInputBar.addSubviews(messageInputBar.sendButton, messageInputBar.inputTextView)
+            
+            messageInputBar.sendButton.snp.makeConstraints {
+                $0.trailing.equalToSuperview().inset(9)
+                $0.centerY.equalToSuperview()
+                $0.width.equalTo(67)
+                $0.height.equalTo(39)
+            }
+            
+            messageInputBar.inputTextView.snp.makeConstraints {
+                $0.leading.equalToSuperview().inset(9)
+                $0.centerY.equalToSuperview()
+                $0.width.equalTo(280.adjustedW)
+                $0.height.equalTo(39)
+            }
+            
+            messageInputBar.sendButton.addSubviews(sendImageView,
+                                                   sendLabel)
+            sendImageView.snp.makeConstraints {
+                $0.edges.equalToSuperview()
+            }
+            sendLabel.snp.makeConstraints {
+                $0.top.equalToSuperview().inset(8)
+                $0.leading.equalToSuperview().inset(14)
+            }
+            
+            addKeyboardObservers()
         }
-        
-        inputContainerView.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview()
-            $0.bottom.equalToSuperview().inset((UIWindow.key?.safeAreaInsets.bottom ?? 0) + 62)
-            $0.height.equalTo(60)
-        }
-        
-        messageInputBar.addSubviews(messageInputBar.sendButton, messageInputBar.inputTextView)
-
-        messageInputBar.sendButton.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(9)
-            $0.centerY.equalToSuperview()
-            $0.width.equalTo(67)
-            $0.height.equalTo(39)
-        }
-
-        messageInputBar.inputTextView.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(9)
-            $0.centerY.equalToSuperview()
-            $0.width.equalTo(280.adjustedW)
-            $0.height.equalTo(39)
-        }
-    
-        messageInputBar.sendButton.addSubviews(sendImageView,
-                                               sendLabel)
-        sendImageView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        sendLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(8)
-            $0.leading.equalToSuperview().inset(14)
-        }
-        
-        addKeyboardObservers()
     }
     
     override func setupDelegate() {
