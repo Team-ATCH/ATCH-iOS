@@ -15,11 +15,13 @@ import Then
 final class ProfileModalVC: UIViewController {
     
     let coordinator: ProfileModalCoordinator?
+    var viewModel: ProfileModalViewModel?
     
     private let disposeBag: DisposeBag = DisposeBag()
     
     private var sender: Sender?
     private var buttonType: ProfileModalButtonType = .profileEdit
+    private var opponentUserID: Int = 0
     
     private let profileModalView = ProfileModalView()
     
@@ -42,13 +44,30 @@ final class ProfileModalVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bindViewModel()
         setupAction()
     }
     
     func bindUserInfo(data: ProfileModalData) {
         buttonType = data.buttonType
         sender = data.senderData
+        if let userID = data.userID {
+            opponentUserID = userID
+        }
+        
         profileModalView.bindViewData(data: data)
+    }
+    
+    private func bindViewModel() {
+        viewModel?.chatRelay
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, data in
+                vc.dismiss(animated: false)
+                if let sender = vc.sender {
+                    self.coordinator?.pushToChattingRoomView(opponent: sender, roomID: data.roomID)
+                }
+            }).disposed(by: disposeBag)
     }
     
     private func setupAction() {
@@ -67,10 +86,7 @@ final class ProfileModalVC: UIViewController {
                     vc.dismiss(animated: false)
                     vc.coordinator?.pushToMyPage()
                 case .chatting:
-                    vc.dismiss(animated: false)
-                    if let sender = vc.sender {
-                        vc.coordinator?.pushToChattingRoomView(opponent: sender)
-                    }
+                    vc.viewModel?.postChattingRoom(userID: vc.opponentUserID)
                 }
             }).disposed(by: disposeBag)
     }

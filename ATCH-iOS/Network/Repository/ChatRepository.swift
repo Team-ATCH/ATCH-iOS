@@ -33,14 +33,14 @@ final class ChatRepository {
         }
     }
     
-    func getMyChattingRoomList() async throws -> [MyChatData] {
+    func getMyChattingRoomList(limit: String, lastID: String) async throws -> [MyChatData] {
         do {
             let response: NetworkResult<GetMyRoomListDTO?> = try await networkProvider.request(
                 type: .get,
                 baseURL: Config.appBaseURL + "/rooms/active",
                 accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
-                pathVariables: nil
+                pathVariables:  ["limit": limit, "lastId": lastID]
             )
             
             switch response {

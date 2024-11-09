@@ -40,11 +40,11 @@ final class MapCoordinator: Coordinator {
         alarmCoordinator.start()
     }
     
-    func pushToChattingRoomView(opponent: Sender) {
+    func pushToChattingRoomView(opponent: Sender, roomID: Int) {
         let chattingRoomCoordinator = ChattingRoomCoordinator(navigationController)
         chattingRoomCoordinator.finishDelegate = self
         self.childCoordinators.append(chattingRoomCoordinator)
-        chattingRoomCoordinator.start(opponent: opponent)
+        chattingRoomCoordinator.start(opponent: opponent, roomID: roomID)
     }
     
     func presentProfileModal(userData: ProfileModalData) {

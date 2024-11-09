@@ -21,9 +21,9 @@ final class ChattingRoomCoordinator: Coordinator {
     
     func start() { }
     
-    func start(opponent: Sender) {
+    func start(opponent: Sender, roomID: Int) {
         self.chattingRoomVC = ChattingRoomVC(coordinator: self, opponent: opponent)
-        self.chattingRoomVC?.viewModel = ChattingRoomViewModel(opponent: opponent)
+        self.chattingRoomVC?.viewModel = ChattingRoomViewModel(opponent: opponent, roomID: roomID)
         
         if let vc = self.chattingRoomVC {
             vc.hidesBottomBarWhenPushed = false

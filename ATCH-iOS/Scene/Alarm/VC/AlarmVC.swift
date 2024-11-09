@@ -13,8 +13,8 @@ import Then
 
 final class AlarmVC: UIViewController {
     
-    var viewModel: AlarmViewModel?
     let coordinator: AlarmCoordinator?
+    var viewModel: AlarmViewModel?
     private let disposeBag: DisposeBag = DisposeBag()
 
     private let alarmNavigationView = NavigationView(title: "알림함", iconHidden: false, backButtonHidden: false, backButtonTitle: "지도")

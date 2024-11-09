@@ -12,12 +12,6 @@ extension String {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         
-        guard let date = formatter.date(from: self) else {
-            return nil
-        }
-        
-        let seoulTimeOffset = TimeZone(identifier: "Asia/Seoul")?.secondsFromGMT(for: date) ?? 0
-        
-        return date.addingTimeInterval(TimeInterval(seoulTimeOffset))
+        return formatter.date(from: self)
     }
 }

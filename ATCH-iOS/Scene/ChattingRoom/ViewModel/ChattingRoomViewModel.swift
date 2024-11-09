@@ -14,21 +14,34 @@ import StompClientLib
 
 final class ChattingRoomViewModel: NSObject {
     
+    private let chatRepository: ChatRepository = ChatRepository()
     private var socketClient = StompClientLib()
-
-    private var messages: [ChattingData] = []
+    
     private var sender = Sender(senderId: "", displayName: "")
+    private var roomID: Int = 0
 
+    var previousMessagesRelay: PublishRelay<[ChattingData]> = PublishRelay<[ChattingData]>()
     var messageRelay: PublishRelay<ChattingData> = PublishRelay<ChattingData>()
     
-    init(opponent: Sender) {
+    
+    init(opponent: Sender, roomID: Int) {
         super.init()
         
         self.sender = Sender(senderId: opponent.senderId,
                              displayName: opponent.displayName,
                              profileImageUrl: opponent.profileImageUrl)
+        self.roomID = roomID
         
         self.registerSockect()
+    }
+    
+    func getPreviousChattingMessages() {
+        Task {
+            do {
+                let result = try await chatRepository.getChattingList(roomId: roomID)
+                previousMessagesRelay.accept(result)
+            }
+        }
     }
     
     func registerSockect() {
@@ -43,7 +56,7 @@ final class ChattingRoomViewModel: NSObject {
     }
     
     func subscribe() {
-        socketClient.subscribe(destination: "/sub/messages/1")
+        socketClient.subscribe(destination: "/sub/messages/\(roomID)")
     }
     
     func sendMessage(message: ChattingData) {
@@ -51,7 +64,7 @@ final class ChattingRoomViewModel: NSObject {
         
         socketClient.sendJSONForDict(
             dict: payloadObject as AnyObject,
-            toDestination: "/pub/messages/1")
+            toDestination: "/pub/messages/\(roomID)")
     }
     
     func disconnect() {
@@ -74,6 +87,7 @@ extension ChattingRoomViewModel: StompClientLibDelegate {
         guard let innerJSON_Message = json ["content"] as? String else { return }
         
         if innerJSON_FromID == Int(sender.senderId) {
+            print("asdfasdfsafsafasgdfd")
             // 내가 보내는 메세지에 대해선 나에게 pub X
             messageRelay.accept(ChattingData(sender: sender,
                                              content: innerJSON_Message,

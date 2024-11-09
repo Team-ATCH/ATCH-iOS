@@ -14,16 +14,16 @@ struct GetMyRoomListDTO: Decodable {
 struct MyRoomList: Decodable {
     let roomID: Int
     let content: String
-    let fromID: Int
-    let fromNickname: String
+    let opponentID: Int
+    let opponentNickname: String
     let hashTag: [String]
     let imageURL, createdAt: String
 
     enum CodingKeys: String, CodingKey {
         case roomID = "roomId"
         case content
-        case fromID = "fromId"
-        case fromNickname, hashTag, createdAt
+        case opponentID = "opponentId"
+        case opponentNickname, hashTag, createdAt
         case imageURL = "image"
     }
 }
@@ -32,10 +32,11 @@ extension GetMyRoomListDTO {
     func mapToMyChatView() -> [MyChatData] {
         let myChatDataList: [MyChatData] = self.data.map { data in
             let myChatData: MyChatData = .init(characterUrl: data.imageURL,
-                                               id: String(data.fromID),
-                                               nickName: data.fromNickname,
+                                               id: String(data.opponentID),
+                                               nickName: data.opponentNickname,
                                                content: data.content,
-                                               tag: "#" + data.hashTag.joined(separator: " #"))
+                                               tag: "#" + data.hashTag.joined(separator: " #"), 
+                                               roomID: data.roomID)
             return myChatData
         }
         return myChatDataList

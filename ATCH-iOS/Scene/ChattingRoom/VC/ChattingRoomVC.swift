@@ -36,31 +36,38 @@ final class ChattingRoomVC: BaseChattingRoomVC {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+        
+    override func bindViewModel() {
+        // 여기서 senderID에 myID 넣어야함
+        inputSender = Sender(senderId: "19", displayName: "heejoo")
+
+        viewModel?.previousMessagesRelay
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, messages in
+                vc.messages = messages
+                vc.messages.sort()
+                vc.messagesCollectionView.reloadData()
+                vc.messagesCollectionView.scrollToLastItem()
+            }).disposed(by: disposeBag)
+        
+        viewModel?.getPreviousChattingMessages()
+
+        viewModel?.messageRelay
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, message in
+                vc.messages.append(message)
+                vc.messages.sort()
+                vc.messagesCollectionView.reloadData()
+                vc.messagesCollectionView.scrollToLastItem()
+            }).disposed(by: disposeBag)
+    }
     
     override func setupStyle() {
+        super.setupStyle()
+        
         overrideUserInterfaceStyle = .light
-        
-        messagesCollectionView.backgroundColor = .atchGrey1
-        messagesCollectionView.contentInset = .init(top: 10, left: 0, bottom: 10, right: 0)
-
-        messageInputBar.backgroundView.backgroundColor = .atchGrey2
-        
-        messageInputBar.separatorLine.backgroundColor = .atchShadowGrey
-        messageInputBar.separatorLine.height = 1
-
-        messageInputBar.sendButton.removeFromSuperview()
-        messageInputBar.inputTextView.removeFromSuperview()
-                        
-        messageInputBar.inputTextView.do {
-            $0.backgroundColor = .atchWhite
-            $0.layer.cornerRadius = 12
-            $0.layer.borderColor = UIColor.atchShadowGrey.cgColor
-            $0.layer.borderWidth = 1
-            $0.layer.masksToBounds = true
-            $0.tintColor = .atchShadowGrey
-            $0.placeholder = ""
-            $0.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        }
     }
     
     override func setupLayout() {
@@ -117,6 +124,12 @@ final class ChattingRoomVC: BaseChattingRoomVC {
         addKeyboardObservers()
     }
     
+    override func setupDelegate() {
+        super.setupDelegate()
+        
+        messageInputBar.delegate = self
+    }
+    
     override func insertNewMessage(_ message: ChattingData) {
         viewModel?.sendMessage(message: message)
         messages.append(message)
@@ -134,15 +147,23 @@ final class ChattingRoomVC: BaseChattingRoomVC {
                 vc.coordinator?.back()
             }).disposed(by: disposeBag)
     }
-    
-    override func bindViewModel() {
-        viewModel?.messageRelay
-            .withUnretained(self)
-            .subscribe(onNext: { vc, message in
-                vc.messages.append(message)
-                vc.messages.sort()
-                vc.messagesCollectionView.reloadData()
-                vc.messagesCollectionView.scrollToLastItem()
-            }).disposed(by: disposeBag)
+}
+
+extension ChattingRoomVC: InputBarAccessoryViewDelegate {
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        let message = ChattingData(sender: Sender(senderId: inputSender.senderId,
+                                                  displayName: inputSender.displayName),
+                                   content: text,
+                                   sendDate: Date())
+                
+        insertNewMessage(message)
+        inputBar.inputTextView.text.removeAll()
+
+        messageInputBar.inputTextView.snp.remakeConstraints {
+            $0.leading.equalToSuperview().inset(9)
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(280.adjustedW)
+            $0.height.equalTo(39)
+        }
     }
 }

@@ -13,6 +13,7 @@ enum ProfileModalButtonType {
 }
 
 struct ProfileModalData {
+    let userID: Int?
     let nickname: String
     let hashTag: String
     let profileUrl: String?

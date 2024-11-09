@@ -13,4 +13,5 @@ struct MyChatData { // 상대방, 상대방과 나눈 채팅 정보
     let nickName: String
     let content: String
     let tag: String
+    let roomID: Int
 }

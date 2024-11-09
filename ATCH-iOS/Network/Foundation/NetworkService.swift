@@ -18,9 +18,8 @@ final class NetworkService: NetworkServiceType {
         
         // Path Variable 추가
         if let pathVariables = pathVariables {
-            for (key, value) in pathVariables {
-                let pathVariableItem = URLQueryItem(name: key, value: value)
-                urlComponents?.queryItems = [pathVariableItem]
+            urlComponents?.queryItems = pathVariables.map {
+                URLQueryItem(name: $0.key, value: $0.value)
             }
         }
         

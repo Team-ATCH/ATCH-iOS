@@ -56,6 +56,8 @@
 		2A85A93E2BF869C20030B4F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A85A93C2BF869C20030B4F4 /* LaunchScreen.storyboard */; };
 		2AB534EF2CDCC2EB00A7BE66 /* UserLocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB534EE2CDCC2EB00A7BE66 /* UserLocationData.swift */; };
 		2AB534F42CDDEB5100A7BE66 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB534F32CDDEB5100A7BE66 /* UIImage+.swift */; };
+		2AB535082CDF28B900A7BE66 /* MyChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB535072CDF28B900A7BE66 /* MyChatViewModel.swift */; };
+		2AB5350B2CDF303A00A7BE66 /* ProfileModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB5350A2CDF303A00A7BE66 /* ProfileModalViewModel.swift */; };
 		2ABBF7072C5CC16F00B12315 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2ABBF7062C5CC16F00B12315 /* SnapKit */; };
 		2ABBF70A2C5CC19600B12315 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 2ABBF7092C5CC19600B12315 /* Then */; };
 		2ABCDC622C71EC3C00AD649C /* AllChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC5D2C71EC3C00AD649C /* AllChatCoordinator.swift */; };
@@ -203,6 +205,8 @@
 		2A94B6282CCE3D1800C281B9 /* ATCH-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ATCH-iOS.entitlements"; sourceTree = "<group>"; };
 		2AB534EE2CDCC2EB00A7BE66 /* UserLocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationData.swift; sourceTree = "<group>"; };
 		2AB534F32CDDEB5100A7BE66 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		2AB535072CDF28B900A7BE66 /* MyChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatViewModel.swift; sourceTree = "<group>"; };
+		2AB5350A2CDF303A00A7BE66 /* ProfileModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModalViewModel.swift; sourceTree = "<group>"; };
 		2ABCDC5D2C71EC3C00AD649C /* AllChatCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatCoordinator.swift; sourceTree = "<group>"; };
 		2ABCDC5F2C71EC3C00AD649C /* AllChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatVC.swift; sourceTree = "<group>"; };
 		2ABCDC642C71EC4300AD649C /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -475,6 +479,7 @@
 		2A2591B52CBBEEDE00B6181E /* ProfileModal */ = {
 			isa = PBXGroup;
 			children = (
+				2AB535092CDF301F00A7BE66 /* ViewModel */,
 				2A2591B92CBBF38900B6181E /* Coordinator */,
 				2A2591B62CBBEEE800B6181E /* VC */,
 				2A2591B42CBBEB0100B6181E /* View */,
@@ -730,6 +735,22 @@
 			path = "ATCH-iOS";
 			sourceTree = "<group>";
 		};
+		2AB535062CDF28A900A7BE66 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2AB535072CDF28B900A7BE66 /* MyChatViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2AB535092CDF301F00A7BE66 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2AB5350A2CDF303A00A7BE66 /* ProfileModalViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2ABCDC5E2C71EC3C00AD649C /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -847,6 +868,7 @@
 		2ABCDC802C71EC6C00AD649C /* MyChat */ = {
 			isa = PBXGroup;
 			children = (
+				2AB535062CDF28A900A7BE66 /* ViewModel */,
 				2ABCDC7D2C71EC6C00AD649C /* Coordinator */,
 				2AFD06E82C84A25A00F34C35 /* View */,
 				2ABCDC7F2C71EC6C00AD649C /* VC */,
@@ -1321,6 +1343,7 @@
 				2AFD06BC2C84A04A00F34C35 /* MapChatCollectionViewCell.swift in Sources */,
 				2AFE09CF2CD314A2001CF26B /* GetItemListDTO.swift in Sources */,
 				2AFD06D02C84A06700F34C35 /* ChattingRoomVC.swift in Sources */,
+				2AB5350B2CDF303A00A7BE66 /* ProfileModalViewModel.swift in Sources */,
 				2ABCDC622C71EC3C00AD649C /* AllChatCoordinator.swift in Sources */,
 				2AFE09F42CD36176001CF26B /* MyPageViewModel.swift in Sources */,
 				2A1BE0F12CBA491100908579 /* NicknameSettingCoordinator.swift in Sources */,
@@ -1419,6 +1442,7 @@
 				2ABCDC812C71EC6C00AD649C /* MyChatCoordinator.swift in Sources */,
 				2AFE09C62CD3124E001CF26B /* HashTagRequestBody.swift in Sources */,
 				2AFE09EA2CD32FCB001CF26B /* String+.swift in Sources */,
+				2AB535082CDF28B900A7BE66 /* MyChatViewModel.swift in Sources */,
 				2AFD06422C8059A700F34C35 /* Config.swift in Sources */,
 				2ABCDC732C71EC5C00AD649C /* MapCoordinator.swift in Sources */,
 				2AFD06EE2C84B2C100F34C35 /* MyChatView.swift in Sources */,

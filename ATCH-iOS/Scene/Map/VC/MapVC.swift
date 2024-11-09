@@ -74,6 +74,19 @@ final class MapVC: BaseMapVC {
             .subscribe(onNext: { vc, _ in
                 vc.updateMapView()
             }).disposed(by: disposeBag)
+        
+        viewModel?.chatRelay
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, data in
+                if let index = vc.viewModel?.mapChatList.firstIndex(where: { $0.userID == String(data.toID) }),
+                   let mapChatList = vc.viewModel?.mapChatList {
+                    let opponent = Sender(senderId: mapChatList[index].userID,
+                                          displayName: mapChatList[index].nickName,
+                                          profileImageUrl: mapChatList[index].characterUrl)
+                    vc.coordinator?.pushToChattingRoomView(opponent: opponent, roomID: data.roomID)
+                }
+            }).disposed(by: disposeBag)
     }
     
     func updateMapView() {
@@ -153,7 +166,8 @@ final class MapVC: BaseMapVC {
     private func setupAction() {
         if isFromOnboarding == true {
             // 내 프로필 모달
-            self.coordinator?.presentProfileModal(userData: ProfileModalData.init(nickname: UserData.shared.nickname,
+            self.coordinator?.presentProfileModal(userData: ProfileModalData.init(userID: nil,
+                                                                                  nickname: UserData.shared.nickname,
                                                                                   hashTag: "#" + UserData.shared.hashTagRelay.value.map { $0.hashTagTitle }.joined(separator: " #"),
                                                                                   profileUrl: UserData.shared.characterImageUrl,
                                                                                   buttonType: .profileEdit,
@@ -249,7 +263,8 @@ extension MapVC: CLLocationManagerDelegate {
            let mapChatData = viewModel?.mapChatList[index] {
             let opponent = Sender(senderId: mapChatData.userID, displayName: mapChatData.nickName, profileImageUrl: mapChatData.characterUrl)
             
-            let profileModalData = ProfileModalData(nickname: mapChatData.nickName,
+            let profileModalData = ProfileModalData(userID: Int(mapChatData.userID),
+                                                    nickname: mapChatData.nickName,
                                                     hashTag: mapChatData.tag,
                                                     profileUrl: mapChatData.characterUrl,
                                                     buttonType: .chatting, 
@@ -275,9 +290,9 @@ extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let mapChatList = viewModel?.mapChatList {
-            let opponent = Sender(senderId: mapChatList[indexPath.row].userID, displayName: mapChatList[indexPath.row].nickName, profileImageUrl: mapChatList[indexPath.row].characterUrl)
-            coordinator?.pushToChattingRoomView(opponent: opponent)
+        if let mapChatList = viewModel?.mapChatList,
+           let userID = Int(mapChatList[indexPath.row].userID) {
+            viewModel?.postChattingRoom(userID: userID)
         }
     }
 }

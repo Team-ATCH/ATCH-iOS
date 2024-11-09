@@ -21,6 +21,7 @@ final class MyChatCoordinator: Coordinator {
     
     func start() {
         self.myChatVC = MyChatVC(coordinator: self)
+        self.myChatVC?.viewModel = MyChatViewModel()
         
         if let vc = self.myChatVC {
             vc.hidesBottomBarWhenPushed = false
@@ -28,11 +29,11 @@ final class MyChatCoordinator: Coordinator {
         }
     }
     
-    func pushToChattingRoomView(opponent: Sender) {
+    func pushToChattingRoomView(opponent: Sender, roomID: Int) {
         let chattingRoomCoordinator = ChattingRoomCoordinator(navigationController)
         chattingRoomCoordinator.finishDelegate = self
         self.childCoordinators.append(chattingRoomCoordinator)
-        chattingRoomCoordinator.start(opponent: opponent)
+        chattingRoomCoordinator.start(opponent: opponent, roomID: roomID)
     }
 }
 

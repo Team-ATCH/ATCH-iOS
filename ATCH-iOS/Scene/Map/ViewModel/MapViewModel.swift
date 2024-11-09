@@ -13,6 +13,7 @@ import RxSwift
 final class MapViewModel: NSObject {
     
     private let homeRepository: HomeRepository = HomeRepository()
+    private let chatRepository: ChatRepository = ChatRepository()
     
     var mapChatList: [MapChatData] = []
     let mapChatListRelay: PublishRelay<Bool> = PublishRelay<Bool>()
@@ -20,6 +21,8 @@ final class MapViewModel: NSObject {
     var locationList: [UserLocationData] = []
     let locationListRelay: PublishRelay<Bool> = PublishRelay<Bool>()
 
+    let chatRelay: PublishRelay<RoomResponseDTO> = PublishRelay<RoomResponseDTO>()
+    
     override init() {
         super.init()
     }
@@ -62,6 +65,17 @@ final class MapViewModel: NSObject {
                 locationList.append(contentsOf: locationDataList)
                 locationListRelay.accept(!locationList.isEmpty)
                 
+            }
+        }
+    }
+    
+    func postChattingRoom(userID: Int) {
+        Task {
+            do {
+                let result = try await chatRepository.postChattingRoom(userId: userID)
+                if let result = result {
+                    chatRelay.accept(result)
+                }
             }
         }
     }
