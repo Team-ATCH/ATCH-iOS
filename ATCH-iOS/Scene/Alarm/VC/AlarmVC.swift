@@ -13,21 +13,12 @@ import Then
 
 final class AlarmVC: UIViewController {
     
-    var viewModel: AlarmViewModel?
     let coordinator: AlarmCoordinator?
+    var viewModel: AlarmViewModel?
     private let disposeBag: DisposeBag = DisposeBag()
 
     private let alarmNavigationView = NavigationView(title: "알림함", iconHidden: false, backButtonHidden: false, backButtonTitle: "지도")
     private let alarmView = AlarmView()
-    private let alarmList: [AlarmData] = [AlarmData(type: .item, title: "‘피곤한 홍대생의 과잠’ 아이템 도착!", content: "(알림 내용) 홍익대학교 캠퍼스 내에서 앱 1회 실행 완료! ㅇㅇㅇ님을 위한 특별한 아이템이 도착했어요. 우측 하단의 아이템 받기 버튼을 클릭하고 ’피곤한 홍대생의 과잠’을 장착해 보세요."),
-                                          AlarmData(type: .notice, title: "시스템 정기점검", content: "시스템 정기점검을 위해 5/30 (목) 하루 동안 서비스가 중단됩니다. 5/31 (금)에 다시 만나요!"),
-                                          AlarmData(type: .item, title: "‘피곤한 홍대생의 과잠’ 아이템 도착!", content: "(알림 내용) 홍익대학교 캠퍼스 내에서 앱 1회 실행 완료! ㅇㅇㅇ님을 위한 특별한 아이템이 도착했어요. 우측 하단의 아이템 받기 버튼을 클릭하고 ’피곤한 홍대생의 과잠’을 장착해 보세요."),
-                                          AlarmData(type: .notice, title: "시스템 정기점검", content: "시스템 정기점검을 위해 5/30 (목) 하루 동안 서비스가 중단됩니다. 5/31 (금)에 다시 만나요!"),
-                                          AlarmData(type: .item, title: "‘피곤한 홍대생의 과잠’ 아이템 도착!", content: "(알림 내용) 홍익대학교 캠퍼스 내에서 앱 1회 실행 완료! ㅇㅇㅇ님을 위한 특별한 아이템이 도착했어요. 우측 하단의 아이템 받기 버튼을 클릭하고 ’피곤한 홍대생의 과잠’을 장착해 보세요."),
-                                          AlarmData(type: .notice, title: "시스템 정기점검", content: "시스템 정기점검을 위해 5/30 (목) 하루 동안 서비스가 중단됩니다. 5/31 (금)에 다시 만나요!"),
-                                          AlarmData(type: .item, title: "‘피곤한 홍대생의 과잠’ 아이템 도착!", content: "(알림 내용) 홍익대학교 캠퍼스 내에서 앱 1회 실행 완료! ㅇㅇㅇ님을 위한 특별한 아이템이 도착했어요. 우측 하단의 아이템 받기 버튼을 클릭하고 ’피곤한 홍대생의 과잠’을 장착해 보세요."),
-                                          AlarmData(type: .notice, title: "시스템 정기점검", content: "시스템 정기점검을 위해 5/30 (목) 하루 동안 서비스가 중단됩니다. 5/31 (금)에 다시 만나요!")]
-    
     
     init(coordinator: AlarmCoordinator) {
         self.coordinator = coordinator
@@ -42,10 +33,22 @@ final class AlarmVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bindViewModel()
         setupStyle()
         setupDelegate()
         setupLayout()
         setupAction()
+    }
+    
+    private func bindViewModel() {
+        viewModel?.alarmListRelay
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.alarmView.alarmCollectionView.reloadData()
+            }).disposed(by: disposeBag)
+        
+        viewModel?.getNoticeList()
     }
     
     private func setupStyle() {
@@ -86,21 +89,26 @@ final class AlarmVC: UIViewController {
 extension AlarmVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return alarmList.count
+        return viewModel?.alarmList.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlarmCollectionViewCell.reuseIdentifier, for: indexPath) as? AlarmCollectionViewCell else {return UICollectionViewCell()}
-        cell.bindCell(model: alarmList[indexPath.item])
+        if let alarmList = viewModel?.alarmList {
+            cell.bindCell(model: alarmList[indexPath.item])
+        }
+
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch alarmList[indexPath.item].type {
+        switch viewModel?.alarmList[indexPath.item].type {
         case .item:
             return CGSize(width: Int(UIScreen.main.bounds.width) - 19 - 18, height:  167 * (Int(UIScreen.main.bounds.width) - 19 - 18) / 338)
         case .notice:
             return CGSize(width: Int(UIScreen.main.bounds.width) - 19 - 18, height:  99 * (Int(UIScreen.main.bounds.width) - 19 - 18) / 338)
+        case .none:
+            return CGSize(width: 0, height: 0)
         }
     }
 }

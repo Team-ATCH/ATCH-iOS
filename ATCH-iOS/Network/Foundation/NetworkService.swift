@@ -18,9 +18,8 @@ final class NetworkService: NetworkServiceType {
         
         // Path Variable 추가
         if let pathVariables = pathVariables {
-            for (key, value) in pathVariables {
-                let pathVariableItem = URLQueryItem(name: key, value: value)
-                urlComponents?.queryItems = [pathVariableItem]
+            urlComponents?.queryItems = pathVariables.map {
+                URLQueryItem(name: $0.key, value: $0.value)
             }
         }
         
@@ -82,9 +81,13 @@ final class NetworkService: NetworkServiceType {
             dump(response)
             
             if 200..<300 ~= httpResponse.statusCode {
-                let result = try JSONDecoder().decode(T.self, from: data)
-                dump(result)
-                return .success(result)
+                if data.isEmpty {
+                    return .success(nil)
+                } else {
+                    let result = try JSONDecoder().decode(T.self, from: data)
+                    dump(result)
+                    return .success(result)
+                }
             } else {
                 // 실패 응답 처리
                 let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)

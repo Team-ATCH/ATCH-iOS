@@ -23,6 +23,7 @@ final class ProfileModalCoordinator: Coordinator {
     
     func start(userData: ProfileModalData) {
         self.profileModalVC = ProfileModalVC(coordinator: self)
+        self.profileModalVC?.viewModel = ProfileModalViewModel()
         self.profileModalVC?.bindUserInfo(data: userData)
         
         if let vc = self.profileModalVC {
@@ -33,6 +34,13 @@ final class ProfileModalCoordinator: Coordinator {
         
     func pushToMyPage() {
         navigationController.tabBarController?.selectedIndex = 3
+    }
+    
+    func pushToChattingRoomView(opponent: Sender, roomID: Int) {
+        let chattingRoomCoordinator = ChattingRoomCoordinator(navigationController)
+        chattingRoomCoordinator.finishDelegate = self
+        self.childCoordinators.append(chattingRoomCoordinator)
+        chattingRoomCoordinator.start(opponent: opponent, roomID: roomID)
     }
     
     func back() {

@@ -11,13 +11,19 @@ import Security
 enum KeyChainKeyType {
     case accessToken
     case refreshToken
+    case appleAccessToken
+    case kakaoAccessToken
     
     var keyString: String {
         switch self {
         case .accessToken:
-            "accessToken"
+            return "accessToken"
         case .refreshToken:
-            "refreshToken"
+            return "refreshToken"
+        case .appleAccessToken:
+            return "appleAccessToken"
+        case .kakaoAccessToken:
+            return "kakaoAccessToken"
         }
     }
 }

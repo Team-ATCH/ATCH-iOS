@@ -107,8 +107,8 @@ final class MapChatCollectionViewCell: UICollectionViewCell {
         
         chatButtonImageView.addSubview(chatButtonLabel)
         chatButtonLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(7)
-            $0.leading.equalToSuperview().inset(14)
+            $0.top.equalToSuperview().inset(7.adjustedH)
+            $0.leading.equalToSuperview().inset(14.adjustedW)
         }
     }
     

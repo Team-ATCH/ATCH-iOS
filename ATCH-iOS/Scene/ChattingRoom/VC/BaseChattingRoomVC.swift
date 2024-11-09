@@ -26,6 +26,8 @@ class State {
 class BaseChattingRoomVC: MessagesViewController {
     
     var sender = Sender(senderId: "", displayName: "")
+    var inputSender: SenderType = Sender(senderId: "", displayName: "")
+        
     var messages = [ChattingData]()
     
     private let state: State = .init()
@@ -80,7 +82,29 @@ class BaseChattingRoomVC: MessagesViewController {
         removeKeyboardObservers()
     }
     
-    func setupStyle() { }
+    func setupStyle() {         
+        messagesCollectionView.backgroundColor = .atchGrey1
+        messagesCollectionView.contentInset = .init(top: 10, left: 0, bottom: 10, right: 0)
+
+        messageInputBar.backgroundView.backgroundColor = .atchGrey2
+        
+        messageInputBar.separatorLine.backgroundColor = .atchShadowGrey
+        messageInputBar.separatorLine.height = 1
+
+        messageInputBar.sendButton.removeFromSuperview()
+        messageInputBar.inputTextView.removeFromSuperview()
+                        
+        messageInputBar.inputTextView.do {
+            $0.backgroundColor = .atchWhite
+            $0.layer.cornerRadius = 12
+            $0.layer.borderColor = UIColor.atchShadowGrey.cgColor
+            $0.layer.borderWidth = 1
+            $0.layer.masksToBounds = true
+            $0.tintColor = .atchShadowGrey
+            $0.placeholder = ""
+            $0.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        }
+    }
     
     func setupMessageInputBar() { }
     
@@ -106,12 +130,10 @@ class BaseChattingRoomVC: MessagesViewController {
     
     func setupLayout() { }
     
-    private func setupDelegate() {
+    func setupDelegate() {
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
-       
-        messageInputBar.delegate = self
     }
     
     func setupAction() { }
@@ -237,8 +259,8 @@ class BaseChattingRoomVC: MessagesViewController {
 }
 
 extension BaseChattingRoomVC: MessagesDataSource {
-    var currentSender: any MessageKit.SenderType {
-        return Sender(senderId: "333", displayName: "heejoo")
+    var currentSender: SenderType {
+        return self.inputSender
     }
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
@@ -309,24 +331,6 @@ extension BaseChattingRoomVC: MessagesDisplayDelegate {
         accessoryView.addSubview(timeStampLabel)
         timeStampLabel.snp.makeConstraints {
             $0.leading.bottom.equalToSuperview()
-        }
-    }
-}
-
-extension BaseChattingRoomVC: InputBarAccessoryViewDelegate {
-    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
-        let message = ChattingData(sender: Sender(senderId: "333", displayName: "heejoo"), content: text, sendDate: Date())
-        
-        print(message)
-        
-        insertNewMessage(message)
-        inputBar.inputTextView.text.removeAll()
-
-        messageInputBar.inputTextView.snp.remakeConstraints {
-            $0.leading.equalToSuperview().inset(9)
-            $0.centerY.equalToSuperview()
-            $0.width.equalTo(280.adjustedW)
-            $0.height.equalTo(39)
         }
     }
 }

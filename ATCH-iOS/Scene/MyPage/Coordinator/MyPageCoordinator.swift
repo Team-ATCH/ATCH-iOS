@@ -21,6 +21,7 @@ final class MyPageCoordinator: Coordinator {
     
     func start() {
         self.myPageVC = MyPageVC(coordinator: self)
+        self.myPageVC?.viewModel = MyPageViewModel()
         
         if let vc = self.myPageVC {
             vc.hidesBottomBarWhenPushed = false

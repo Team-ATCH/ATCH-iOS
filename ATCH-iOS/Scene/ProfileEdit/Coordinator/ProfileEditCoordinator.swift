@@ -21,6 +21,7 @@ final class ProfileEditCoordinator: Coordinator {
     
     func start() {
         self.profileEditVC = ProfileEditVC(coordinator: self)
+        self.profileEditVC?.viewModel = ProfileEditViewModel()
         
         if let vc = self.profileEditVC {
             vc.hidesBottomBarWhenPushed = false

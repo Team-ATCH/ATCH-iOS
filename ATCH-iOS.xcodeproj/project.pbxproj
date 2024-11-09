@@ -54,6 +54,14 @@
 		2A85A9342BF869C20030B4F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A85A9332BF869C20030B4F4 /* SceneDelegate.swift */; };
 		2A85A93B2BF869C20030B4F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A85A93A2BF869C20030B4F4 /* Assets.xcassets */; };
 		2A85A93E2BF869C20030B4F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A85A93C2BF869C20030B4F4 /* LaunchScreen.storyboard */; };
+		2AB534EF2CDCC2EB00A7BE66 /* UserLocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB534EE2CDCC2EB00A7BE66 /* UserLocationData.swift */; };
+		2AB534F42CDDEB5100A7BE66 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB534F32CDDEB5100A7BE66 /* UIImage+.swift */; };
+		2AB535082CDF28B900A7BE66 /* MyChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB535072CDF28B900A7BE66 /* MyChatViewModel.swift */; };
+		2AB5350B2CDF303A00A7BE66 /* ProfileModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB5350A2CDF303A00A7BE66 /* ProfileModalViewModel.swift */; };
+		2AB5350E2CDF40A600A7BE66 /* AllChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB5350D2CDF40A600A7BE66 /* AllChatViewModel.swift */; };
+		2AB535122CDF41EE00A7BE66 /* AllChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB535112CDF41EE00A7BE66 /* AllChatView.swift */; };
+		2AB535142CDF420300A7BE66 /* AllChatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB535132CDF420300A7BE66 /* AllChatCollectionViewCell.swift */; };
+		2AB535172CDF56E500A7BE66 /* ProfileEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB535162CDF56E500A7BE66 /* ProfileEditViewModel.swift */; };
 		2ABBF7072C5CC16F00B12315 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2ABBF7062C5CC16F00B12315 /* SnapKit */; };
 		2ABBF70A2C5CC19600B12315 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 2ABBF7092C5CC19600B12315 /* Then */; };
 		2ABCDC622C71EC3C00AD649C /* AllChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCDC5D2C71EC3C00AD649C /* AllChatCoordinator.swift */; };
@@ -144,6 +152,8 @@
 		2AFE09EA2CD32FCB001CF26B /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09E92CD32FCB001CF26B /* String+.swift */; };
 		2AFE09EC2CD35173001CF26B /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09EB2CD35173001CF26B /* ItemData.swift */; };
 		2AFE09EE2CD3535E001CF26B /* BackgroundData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09ED2CD3535E001CF26B /* BackgroundData.swift */; };
+		2AFE09F12CD35C61001CF26B /* PopUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09F02CD35C61001CF26B /* PopUpViewModel.swift */; };
+		2AFE09F42CD36176001CF26B /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFE09F32CD36176001CF26B /* MyPageViewModel.swift */; };
 		3D16E0A7CB5D37D4F14E0123 /* Pods_ATCH_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -197,6 +207,14 @@
 		2A85A93D2BF869C20030B4F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A85A93F2BF869C20030B4F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A94B6282CCE3D1800C281B9 /* ATCH-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ATCH-iOS.entitlements"; sourceTree = "<group>"; };
+		2AB534EE2CDCC2EB00A7BE66 /* UserLocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationData.swift; sourceTree = "<group>"; };
+		2AB534F32CDDEB5100A7BE66 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		2AB535072CDF28B900A7BE66 /* MyChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatViewModel.swift; sourceTree = "<group>"; };
+		2AB5350A2CDF303A00A7BE66 /* ProfileModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModalViewModel.swift; sourceTree = "<group>"; };
+		2AB5350D2CDF40A600A7BE66 /* AllChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChatViewModel.swift; sourceTree = "<group>"; };
+		2AB535112CDF41EE00A7BE66 /* AllChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChatView.swift; sourceTree = "<group>"; };
+		2AB535132CDF420300A7BE66 /* AllChatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChatCollectionViewCell.swift; sourceTree = "<group>"; };
+		2AB535162CDF56E500A7BE66 /* ProfileEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewModel.swift; sourceTree = "<group>"; };
 		2ABCDC5D2C71EC3C00AD649C /* AllChatCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatCoordinator.swift; sourceTree = "<group>"; };
 		2ABCDC5F2C71EC3C00AD649C /* AllChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatVC.swift; sourceTree = "<group>"; };
 		2ABCDC642C71EC4300AD649C /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -275,6 +293,8 @@
 		2AFE09E92CD32FCB001CF26B /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		2AFE09EB2CD35173001CF26B /* ItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
 		2AFE09ED2CD3535E001CF26B /* BackgroundData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundData.swift; sourceTree = "<group>"; };
+		2AFE09F02CD35C61001CF26B /* PopUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewModel.swift; sourceTree = "<group>"; };
+		2AFE09F32CD36176001CF26B /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		559D6D8F22DF04CD75C9BCC6 /* Pods-ATCH-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.release.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D26DC690A54597533FCE3D4F /* Pods_ATCH_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATCH_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AC03EEAF5A52DB29F667C5 /* Pods-ATCH-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATCH-iOS.debug.xcconfig"; path = "Target Support Files/Pods-ATCH-iOS/Pods-ATCH-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -467,6 +487,7 @@
 		2A2591B52CBBEEDE00B6181E /* ProfileModal */ = {
 			isa = PBXGroup;
 			children = (
+				2AB535092CDF301F00A7BE66 /* ViewModel */,
 				2A2591B92CBBF38900B6181E /* Coordinator */,
 				2A2591B62CBBEEE800B6181E /* VC */,
 				2A2591B42CBBEB0100B6181E /* View */,
@@ -509,6 +530,7 @@
 		2A2591C92CC0013A00B6181E /* PopUp */ = {
 			isa = PBXGroup;
 			children = (
+				2AFE09EF2CD35C52001CF26B /* ViewModel */,
 				2A2591CA2CC0014400B6181E /* Coordinator */,
 				2A2591CC2CC0014C00B6181E /* View */,
 				2A2591CB2CC0014900B6181E /* VC */,
@@ -593,6 +615,7 @@
 				2AE7C9E12C8C4D1000A177EF /* UITextView+.swift */,
 				2AE7C9E32C8D328300A177EF /* Date+.swift */,
 				2AFE09E92CD32FCB001CF26B /* String+.swift */,
+				2AB534F32CDDEB5100A7BE66 /* UIImage+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -610,6 +633,7 @@
 		2A7B78AF2CCD2116003E6F37 /* ProfileEdit */ = {
 			isa = PBXGroup;
 			children = (
+				2AB535152CDF56D800A7BE66 /* ViewModel */,
 				2A7B78B22CCD213F003E6F37 /* Coordinator */,
 				2A7B78B32CCD2144003E6F37 /* View */,
 				2A7B78B12CCD213A003E6F37 /* VC */,
@@ -720,6 +744,47 @@
 			path = "ATCH-iOS";
 			sourceTree = "<group>";
 		};
+		2AB535062CDF28A900A7BE66 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2AB535072CDF28B900A7BE66 /* MyChatViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2AB535092CDF301F00A7BE66 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2AB5350A2CDF303A00A7BE66 /* ProfileModalViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2AB5350C2CDF409A00A7BE66 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2AB5350D2CDF40A600A7BE66 /* AllChatViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2AB535102CDF41E600A7BE66 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2AB535112CDF41EE00A7BE66 /* AllChatView.swift */,
+				2AB535132CDF420300A7BE66 /* AllChatCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2AB535152CDF56D800A7BE66 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2AB535162CDF56E500A7BE66 /* ProfileEditViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2ABCDC5E2C71EC3C00AD649C /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -739,6 +804,8 @@
 		2ABCDC612C71EC3C00AD649C /* AllChat */ = {
 			isa = PBXGroup;
 			children = (
+				2AB535102CDF41E600A7BE66 /* View */,
+				2AB5350C2CDF409A00A7BE66 /* ViewModel */,
 				2ABCDC5E2C71EC3C00AD649C /* Coordinator */,
 				2ABCDC602C71EC3C00AD649C /* VC */,
 			);
@@ -810,6 +877,7 @@
 		2ABCDC792C71EC6300AD649C /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				2AFE09F22CD3616A001CF26B /* ViewModel */,
 				2ABCDC762C71EC6300AD649C /* Coordinator */,
 				2A2591C32CBFF5AF00B6181E /* View */,
 				2ABCDC782C71EC6300AD649C /* VC */,
@@ -836,6 +904,7 @@
 		2ABCDC802C71EC6C00AD649C /* MyChat */ = {
 			isa = PBXGroup;
 			children = (
+				2AB535062CDF28A900A7BE66 /* ViewModel */,
 				2ABCDC7D2C71EC6C00AD649C /* Coordinator */,
 				2AFD06E82C84A25A00F34C35 /* View */,
 				2ABCDC7F2C71EC6C00AD649C /* VC */,
@@ -1049,6 +1118,7 @@
 				2AFE09E72CD32BE7001CF26B /* AllChattingData.swift */,
 				2AFE09EB2CD35173001CF26B /* ItemData.swift */,
 				2AFE09ED2CD3535E001CF26B /* BackgroundData.swift */,
+				2AB534EE2CDCC2EB00A7BE66 /* UserLocationData.swift */,
 			);
 			path = ViewData;
 			sourceTree = "<group>";
@@ -1128,6 +1198,22 @@
 				2AFE09DF2CD317F3001CF26B /* GetChatListDTO.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		2AFE09EF2CD35C52001CF26B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2AFE09F02CD35C61001CF26B /* PopUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2AFE09F22CD3616A001CF26B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2AFE09F32CD36176001CF26B /* MyPageViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		60DB2F161168AA92B48FDAD5 /* Frameworks */ = {
@@ -1293,7 +1379,9 @@
 				2AFD06BC2C84A04A00F34C35 /* MapChatCollectionViewCell.swift in Sources */,
 				2AFE09CF2CD314A2001CF26B /* GetItemListDTO.swift in Sources */,
 				2AFD06D02C84A06700F34C35 /* ChattingRoomVC.swift in Sources */,
+				2AB5350B2CDF303A00A7BE66 /* ProfileModalViewModel.swift in Sources */,
 				2ABCDC622C71EC3C00AD649C /* AllChatCoordinator.swift in Sources */,
+				2AFE09F42CD36176001CF26B /* MyPageViewModel.swift in Sources */,
 				2A1BE0F12CBA491100908579 /* NicknameSettingCoordinator.swift in Sources */,
 				2A2591D52CC0020000B6181E /* PopUpData.swift in Sources */,
 				2ABCDC742C71EC5C00AD649C /* MapVC.swift in Sources */,
@@ -1306,6 +1394,7 @@
 				2A2591D32CC001B900B6181E /* PopUpVC.swift in Sources */,
 				2AFD07222C8979F800F34C35 /* AlarmView.swift in Sources */,
 				2AFE09E62CD32960001CF26B /* CharacterData.swift in Sources */,
+				2AB535172CDF56E500A7BE66 /* ProfileEditViewModel.swift in Sources */,
 				2A1BE0EF2CBA490700908579 /* CharacterSettingCoordinator.swift in Sources */,
 				2ABCDC632C71EC3C00AD649C /* AllChatVC.swift in Sources */,
 				2A1BE0E72CB8ECE100908579 /* SigninVC.swift in Sources */,
@@ -1314,6 +1403,7 @@
 				2ABCDC6B2C71EC4300AD649C /* CoordinatorType.swift in Sources */,
 				2A1BE0E92CB8ECE700908579 /* SigninViewModel.swift in Sources */,
 				2A2591AF2CBABD5900B6181E /* NicknameSettingView.swift in Sources */,
+				2AB535122CDF41EE00A7BE66 /* AllChatView.swift in Sources */,
 				2A7B78BC2CCD216F003E6F37 /* ProfileEditVC.swift in Sources */,
 				2A1BE0FB2CBA496A00908579 /* ProfileSettingViewModel.swift in Sources */,
 				2A1BE1062CBA4E3800908579 /* SplashVC.swift in Sources */,
@@ -1334,6 +1424,7 @@
 				2A1BE1032CBA4E1D00908579 /* SplashCoordinator.swift in Sources */,
 				2AC344082CCE099D00BEEA5A /* KeychainWrapper.swift in Sources */,
 				2AFE09DA2CD316B8001CF26B /* RoomRequestBody.swift in Sources */,
+				2AB534F42CDDEB5100A7BE66 /* UIImage+.swift in Sources */,
 				2ABCDC8A2C71EC9700AD649C /* TabBar.swift in Sources */,
 				2ABCDC8B2C71EC9700AD649C /* TabBarCoordinator.swift in Sources */,
 				2AFE09E22CD32315001CF26B /* UserInfoData.swift in Sources */,
@@ -1349,10 +1440,12 @@
 				2AFE09C12CD21B7F001CF26B /* GetNoticeListDTO.swift in Sources */,
 				2AFE09D32CD315F6001CF26B /* GetBackgroundListDTO.swift in Sources */,
 				2A1BE0E42CB8ECD000908579 /* SigninCoordinator.swift in Sources */,
+				2AB534EF2CDCC2EB00A7BE66 /* UserLocationData.swift in Sources */,
 				2A1BE11E2CBA9B6700908579 /* AtchPageControl.swift in Sources */,
 				2A1BE0F72CBA494B00908579 /* NicknameSettingVC.swift in Sources */,
 				2AFE09DC2CD31706001CF26B /* RoomResponseDTO.swift in Sources */,
 				2AFD06D42C84A06700F34C35 /* AlarmViewModel.swift in Sources */,
+				2AFE09F12CD35C61001CF26B /* PopUpViewModel.swift in Sources */,
 				2A1BE1092CBA4E4300908579 /* SplashViewModel.swift in Sources */,
 				2ABCDC692C71EC4300AD649C /* AppCoordinator.swift in Sources */,
 				2AE7C9E42C8D328300A177EF /* Date+.swift in Sources */,
@@ -1387,6 +1480,8 @@
 				2ABCDC812C71EC6C00AD649C /* MyChatCoordinator.swift in Sources */,
 				2AFE09C62CD3124E001CF26B /* HashTagRequestBody.swift in Sources */,
 				2AFE09EA2CD32FCB001CF26B /* String+.swift in Sources */,
+				2AB535082CDF28B900A7BE66 /* MyChatViewModel.swift in Sources */,
+				2AB5350E2CDF40A600A7BE66 /* AllChatViewModel.swift in Sources */,
 				2AFD06422C8059A700F34C35 /* Config.swift in Sources */,
 				2ABCDC732C71EC5C00AD649C /* MapCoordinator.swift in Sources */,
 				2AFD06EE2C84B2C100F34C35 /* MyChatView.swift in Sources */,
@@ -1395,6 +1490,7 @@
 				2ABCDC6D2C71EC5100AD649C /* UIWindow+.swift in Sources */,
 				2A1BE0F32CBA491E00908579 /* HashTagSettingCoordinator.swift in Sources */,
 				2ABCDC6A2C71EC4300AD649C /* Coordinator.swift in Sources */,
+				2AB535142CDF420300A7BE66 /* AllChatCollectionViewCell.swift in Sources */,
 				2AFE09B02CD1C406001CF26B /* SigninRepository.swift in Sources */,
 				2AFD06BB2C84A04A00F34C35 /* MapBottomSheetView.swift in Sources */,
 				2AFE09BB2CD21231001CF26B /* UserRepository.swift in Sources */,

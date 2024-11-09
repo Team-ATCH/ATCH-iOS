@@ -47,7 +47,8 @@ final class SigninViewModel: NSObject {
                 do {
                     let result = try await signinRepository.postKakaoLogin(code: authorizationCode)
                     if let result = result {
-                        KeychainWrapper.saveToken(result.accessToken, forKey: .accessToken)
+                        UserData.shared.loginType = .kakao
+                        KeychainWrapper.saveToken(result.accessToken, forKey: .kakaoAccessToken)
                         loginRelay.accept((true, result.newUser))
                     } else {
                         loginRelay.accept((false, false))
@@ -81,7 +82,8 @@ extension SigninViewModel: ASAuthorizationControllerDelegate {
                 do {
                     let result = try await signinRepository.postAppleLogin(code: token)
                     if let result = result {
-                        KeychainWrapper.saveToken(result.accessToken, forKey: .accessToken)
+                        UserData.shared.loginType = .apple
+                        KeychainWrapper.saveToken(result.accessToken, forKey: .appleAccessToken)
                         loginRelay.accept((true, result.newUser))
                     } else {
                         loginRelay.accept((false, false))

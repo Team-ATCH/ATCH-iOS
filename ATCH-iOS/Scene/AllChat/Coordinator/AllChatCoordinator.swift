@@ -20,12 +20,20 @@ final class AllChatCoordinator: Coordinator {
     }
     
     func start() {
-        self.allChatVC = AllChatVC()
+        self.allChatVC = AllChatVC(coordinator: self)
+        self.allChatVC?.viewModel = AllChatViewModel()
         
         if let vc = self.allChatVC {
             vc.hidesBottomBarWhenPushed = false
             self.navigationController.pushViewController(vc, animated: true)
         }
+    }
+    
+    func pushToChattingRoomView(opponent: Sender, roomID: Int, allChatMode: Bool) {
+        let chattingRoomCoordinator = ChattingRoomCoordinator(navigationController)
+        chattingRoomCoordinator.finishDelegate = self
+        self.childCoordinators.append(chattingRoomCoordinator)
+        chattingRoomCoordinator.start(opponent: opponent, roomID: roomID, allChatMode: allChatMode)
     }
 }
 

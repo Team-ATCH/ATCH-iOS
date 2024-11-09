@@ -12,12 +12,25 @@ extension String {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         
-        guard let date = formatter.date(from: self) else {
+        return formatter.date(from: self)
+    }
+    
+    func toSeoulDateString() -> String? {
+        // ISO 8601 날짜 포맷터 설정
+        let isoFormatter = ISO8601DateFormatter()
+        isoFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        
+        // 문자열을 Date 타입으로 변환
+        guard let utcDate = isoFormatter.date(from: self) else {
             return nil
         }
         
-        let seoulTimeOffset = TimeZone(identifier: "Asia/Seoul")?.secondsFromGMT(for: date) ?? 0
+        // 서울 시간대로 변환할 DateFormatter 설정
+        let seoulFormatter = DateFormatter()
+        seoulFormatter.dateFormat = "yyyy/MM/dd HH:mm"
+        seoulFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
         
-        return date.addingTimeInterval(TimeInterval(seoulTimeOffset))
+        // 서울 시간대에 맞춘 문자열 반환
+        return seoulFormatter.string(from: utcDate)
     }
 }

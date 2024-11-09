@@ -14,10 +14,10 @@ final class OnboardingRepository {
     func postNickname(nickname: String) async throws -> Bool {
         let requestDTO = NicknameRequestBody(nickname: nickname)
         do {
-            let response: NetworkResult<EmptyResponse> = try await networkProvider.request(
+            let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .post,
                 baseURL: Config.appBaseURL + "/onboarding/nickname",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
@@ -37,10 +37,10 @@ final class OnboardingRepository {
     func postHashTag(hashTag: [String]) async throws -> Bool {
         let requestDTO = HashTagRequestBody(hashTag: hashTag)
         do {
-            let response: NetworkResult<EmptyResponse> = try await networkProvider.request(
+            let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .post,
                 baseURL: Config.appBaseURL + "/onboarding/hash-tag",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
@@ -60,10 +60,10 @@ final class OnboardingRepository {
     func postCharacter(characterID: Int) async throws -> Bool {
         let requestDTO = CharacterRequestBody(characterId: characterID)
         do {
-            let response: NetworkResult<EmptyResponse> = try await networkProvider.request(
+            let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .post,
                 baseURL: Config.appBaseURL + "/onboarding/character",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
@@ -82,17 +82,17 @@ final class OnboardingRepository {
     
     func getCharacterList() async throws -> [CharacterData] {
         do {
-            let response: NetworkResult<GetCharacterListDTO> = try await networkProvider.request(
+            let response: NetworkResult<GetCharacterListDTO?> = try await networkProvider.request(
                 type: .get,
                 baseURL: Config.appBaseURL + "/onboarding/character",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
                 pathVariables: nil
             )
     
             switch response {
             case .success(let data):
-                return data.mapToCharacterSelectView()
+                return data?.mapToCharacterSelectView() ?? []
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
                 return []

@@ -7,6 +7,9 @@
 
 import Foundation
 
+struct GetCharacterListDTO: Decodable {
+    let data: [CharacterList]
+}
 struct CharacterList: Decodable {
     let characterID: Int
     let imageURL: String
@@ -17,11 +20,9 @@ struct CharacterList: Decodable {
     }
 }
 
-typealias GetCharacterListDTO = [CharacterList]
-
 extension GetCharacterListDTO {
     func mapToCharacterSelectView() -> [CharacterData] {
-        let characterDataList: [CharacterData] = self.map { data in
+        let characterDataList: [CharacterData] = self.data.map { data in
             let characterData: CharacterData = .init(characterID: data.characterID,
                                                      imageURL: data.imageURL)
             return characterData

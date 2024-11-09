@@ -14,16 +14,16 @@ final class UserRepository {
     func postUserBlock(userID: Int) async throws -> Bool {
         let requestDTO = BlockRequestBody(userId: userID)
         do {
-            let response: NetworkResult<EmptyResponse> = try await networkProvider.request(
+            let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .post,
                 baseURL: Config.appBaseURL + "/users/block",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
             
             switch response {
-            case .success(let data):
+            case .success:
                 return true
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
@@ -37,16 +37,16 @@ final class UserRepository {
     func patchUserNickname(nickname: String) async throws -> Bool {
         let requestDTO = NicknameRequestBody(nickname: nickname)
         do {
-            let response: NetworkResult<EmptyResponse> = try await networkProvider.request(
+            let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .patch,
                 baseURL: Config.appBaseURL + "/users/nickname",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
             
             switch response {
-            case .success(let data):
+            case .success:
                 return true
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
@@ -59,17 +59,17 @@ final class UserRepository {
     
     func getUserItem() async throws -> [ItemData] {
         do {
-            let response: NetworkResult<GetItemListDTO> = try await networkProvider.request(
+            let response: NetworkResult<GetItemListDTO?> = try await networkProvider.request(
                 type: .get,
                 baseURL: Config.appBaseURL + "/users/item",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
                 pathVariables: nil
             )
             
             switch response {
             case .success(let data):
-                return data.mapToItemSelectView()
+                return data?.mapToItemSelectView() ?? []
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
                 return []
@@ -82,16 +82,16 @@ final class UserRepository {
     func patchUserItem(item: ItemRequestBody) async throws -> Bool {
         let requestDTO = item
         do {
-            let response: NetworkResult<EmptyResponse> = try await networkProvider.request(
+            let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .patch,
                 baseURL: Config.appBaseURL + "/users/item",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
             
             switch response {
-            case .success(let data):
+            case .success:
                 return true
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
@@ -105,16 +105,16 @@ final class UserRepository {
     func patchUserHashTag(hashTag: [String]) async throws -> Bool {
         let requestDTO = HashTagRequestBody(hashTag: hashTag)
         do {
-            let response: NetworkResult<EmptyResponse> = try await networkProvider.request(
+            let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .patch,
                 baseURL: Config.appBaseURL + "/users/hash-tag",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
             
             switch response {
-            case .success(let data):
+            case .success:
                 return true
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
@@ -127,17 +127,17 @@ final class UserRepository {
     
     func getUserCharacterList() async throws -> [CharacterData] {
         do {
-            let response: NetworkResult<GetCharacterListDTO> = try await networkProvider.request(
+            let response: NetworkResult<GetCharacterListDTO?> = try await networkProvider.request(
                 type: .get,
                 baseURL: Config.appBaseURL + "/users/character",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
                 pathVariables: nil
             )
             
             switch response {
             case .success(let data):
-                return data.mapToCharacterSelectView()
+                return data?.mapToCharacterSelectView() ?? []
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
                 return []
@@ -150,16 +150,16 @@ final class UserRepository {
     func patchUserCharacter(characterID: Int) async throws -> Bool {
         let requestDTO = CharacterRequestBody(characterId: characterID)
         do {
-            let response: NetworkResult<EmptyResponse> = try await networkProvider.request(
+            let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .patch,
                 baseURL: Config.appBaseURL + "/users/character",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
             
             switch response {
-            case .success(let data):
+            case .success:
                 return true
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
@@ -172,17 +172,17 @@ final class UserRepository {
     
     func getUserBackgroundList() async throws -> [BackgroundData] {
         do {
-            let response: NetworkResult<GetBackgroundListDTO> = try await networkProvider.request(
+            let response: NetworkResult<GetBackgroundListDTO?> = try await networkProvider.request(
                 type: .get,
                 baseURL: Config.appBaseURL + "/users/background",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
                 pathVariables: nil
             )
             
             switch response {
             case .success(let data):
-                return data.mapToBackgroundSelectView()
+                return data?.mapToBackgroundSelectView() ?? []
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
                 return []
@@ -195,16 +195,16 @@ final class UserRepository {
     func patchUserBackground(backgroundID: Int) async throws -> Bool {
         let requestDTO = BackgroundRequestBody(backgroundId: backgroundID)
         do {
-            let response: NetworkResult<EmptyResponse> = try await networkProvider.request(
+            let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .patch,
                 baseURL: Config.appBaseURL + "/users/background",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: requestDTO,
                 pathVariables: nil
             )
             
             switch response {
-            case .success(let data):
+            case .success:
                 return true
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
@@ -217,16 +217,16 @@ final class UserRepository {
     
     func deleteUser() async throws -> Bool {
         do {
-            let response: NetworkResult<EmptyResponse> = try await networkProvider.request(
+            let response: NetworkResult<EmptyResponse?> = try await networkProvider.request(
                 type: .delete,
                 baseURL: Config.appBaseURL + "/users",
-                accessToken: KeychainWrapper.loadToken(forKey: .accessToken),
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
                 body: nil,
                 pathVariables: nil
             )
             
             switch response {
-            case .success(let data):
+            case .success:
                 return true
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")

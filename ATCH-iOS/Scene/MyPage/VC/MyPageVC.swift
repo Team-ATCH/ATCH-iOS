@@ -14,6 +14,8 @@ import Then
 final class MyPageVC: UIViewController {
     
     let coordinator: MyPageCoordinator?
+    var viewModel: MyPageViewModel?
+    
     private let disposeBag: DisposeBag = DisposeBag()
 
     private let myPageNavigationView = NavigationView(title: "My")
@@ -32,8 +34,27 @@ final class MyPageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bindViewModel()
         setupLayout()
         setupAction()
+    }
+    
+    private func bindViewModel() {
+        viewModel?.successRelay
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, success in
+                if success {
+                    UserData.shared.initData()
+                    KeychainWrapper.deleteToken(forKey: UserData.shared.getAccessTokenType())
+                    vc.coordinator?.pushToPopupView(data: PopUpData(type: .withdraw,
+                                                                    buttonType: .oneButton,
+                                                                    content: "회원 탈퇴되었습니다.\n안녕히 가세요.",
+                                                                    leftButtonText: "",
+                                                                    rightButtonText: "",
+                                                                    oneButtonText: "처음으로"))
+                }
+            }).disposed(by: disposeBag)
     }
     
     private func setupLayout() {
@@ -80,12 +101,7 @@ final class MyPageVC: UIViewController {
             .when(.recognized)
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
-                vc.coordinator?.pushToPopupView(data: PopUpData(type: .withdraw,
-                                                                buttonType: .oneButton,
-                                                                content: "회원 탈퇴되었습니다.\n안녕히 가세요.",
-                                                                leftButtonText: "",
-                                                                rightButtonText: "",
-                                                                oneButtonText: "처음으로"))
+                vc.viewModel?.withdraw()
             }).disposed(by: disposeBag)
     }
     

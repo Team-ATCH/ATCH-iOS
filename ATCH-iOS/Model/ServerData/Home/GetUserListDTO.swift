@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct GetUserListDTO: Decodable {
+    let data: [UserList]
+}
+
 struct UserList: Decodable {
     let userID: Int
     let nickname: String
@@ -24,8 +28,8 @@ struct UserList: Decodable {
 }
 
 struct Item: Decodable {
-    let itemID: Int
-    let itemImageURL: String
+    let itemID: Int?
+    let itemImageURL: String?
 
     enum CodingKeys: String, CodingKey {
         case itemID = "itemId"
@@ -37,18 +41,16 @@ struct Slot: Decodable {
     let x, y: Double
 }
 
-typealias GetUserListDTO = [UserList]
-
 extension GetUserListDTO {
     func mapToMapView() -> [UserInfoData] {
-        let userInfoDataList: [UserInfoData] = self.map { data in
+        let userInfoDataList: [UserInfoData] = self.data.map { data in
             let userInfoData: UserInfoData = .init(userID: data.userID,
                                                    nickname: data.nickname,
                                                    hashTag: data.hashTag,
                                                    latitude: data.latitude,
                                                    longitude: data.longitude,
                                                    characterImageURL: data.characterImageURL,
-                                                   items: data.items.map { item in UserItem(itemID: item.itemID, itemImageURL: item.itemImageURL) },
+                                                   items: data.items.map { item in UserItem(itemID: item.itemID ?? 0, itemImageURL: item.itemImageURL ?? "") },
                                                    slots: data.slots.map { slot in ItemSlot(slotX: slot.x, slotY: slot.y)})
             return userInfoData
         }

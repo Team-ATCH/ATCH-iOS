@@ -39,8 +39,20 @@ final class HashTagSettingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bindViewModel()
         setupStyle()
         setupAction()
+    }
+    
+    private func bindViewModel() {
+        viewModel?.successRelay
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, success in
+                if success {
+                    vc.coordinator?.pushToMainView()
+                }
+            }).disposed(by: disposeBag)
     }
     
     private func setupStyle() {
@@ -53,8 +65,8 @@ final class HashTagSettingVC: UIViewController {
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
                 if vc.hashTagSettingView.canGoNext {
-                    vc.coordinator?.pushToMainView()
                     UserData.shared.hashTag = UserData.shared.hashTagRelay.value
+                    vc.viewModel?.updateHashTag(hashTag: UserData.shared.hashTag.map { $0.hashTagTitle })
                 }
             }).disposed(by: disposeBag)
     }

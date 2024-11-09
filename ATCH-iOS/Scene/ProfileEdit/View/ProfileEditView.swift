@@ -34,7 +34,7 @@ final class ProfileEditView: UIView {
         $0.font = .font(.smallButton)
     }
     
-    private let nicknameTextFiled = UITextField().then {
+    let nicknameTextFiled = UITextField().then {
         $0.attributedPlaceholder = NSAttributedString(
             string: "닉네임은 최대 10글자",
             attributes: [
@@ -82,6 +82,7 @@ final class ProfileEditView: UIView {
         
         self.setupHashTag()
         self.setupLayout()
+        self.setupDismissKeyboardGesture()
     }
     
     required init?(coder: NSCoder) {
@@ -143,6 +144,15 @@ final class ProfileEditView: UIView {
             $0.top.equalTo(14.adjustedW)
             $0.leading.equalTo(131.adjustedW)
         }
+    }
+    
+    private func setupDismissKeyboardGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func dismissKeyboard() {
+        endEditing(true)
     }
 }
 
