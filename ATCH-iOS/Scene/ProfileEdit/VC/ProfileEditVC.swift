@@ -14,10 +14,18 @@ import Then
 final class ProfileEditVC: UIViewController {
     
     private let coordinator: ProfileEditCoordinator?
+    var viewModel: ProfileEditViewModel?
+    
     private let disposeBag: DisposeBag = DisposeBag()
         
     private let profileEditNavigationView = NavigationView(title: "프로필 수정", backButtonHidden: false)
     private let profileEditView: ProfileEditView = ProfileEditView()
+    
+    private let previousNickname: String = UserData.shared.nickname
+    private let previousHashTag: [HashTag] = UserData.shared.hashTag
+    
+    private var newNickname: String = ""
+    private var newHashTag: [HashTag] = []
     
     init(coordinator: ProfileEditCoordinator) {
         self.coordinator = coordinator
@@ -32,9 +40,24 @@ final class ProfileEditVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bindViewModel()
         setupStyle()
         setupLayout()
         setupAction()
+    }
+    
+    private func bindViewModel() {
+        viewModel?.nicknameSuccessRelay
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                UserData.shared.nickname = vc.newNickname
+            }).disposed(by: disposeBag)
+        
+        viewModel?.hashTagSuccessRelay
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                UserData.shared.hashTag = vc.newHashTag
+            }).disposed(by: disposeBag)
     }
     
     private func setupStyle() {
@@ -68,9 +91,20 @@ final class ProfileEditVC: UIViewController {
             .when(.recognized)
             .withUnretained(self)
             .subscribe(onNext: { (vc, _) in
-                // 수정사항 post
-                vc.coordinator?.back()
-                UserData.shared.hashTag = UserData.shared.hashTagRelay.value
+                if let text = vc.profileEditView.nicknameTextFiled.text {
+                    vc.newNickname = text
+                }
+                vc.newHashTag = UserData.shared.hashTagRelay.value
+                
+                // 닉네임, 해시태그가 각각 달라졌으면 서버에 post
+                if vc.previousNickname != vc.newNickname {
+                    vc.viewModel?.updateNickname(nickname: vc.newNickname)
+                }
+                
+                if vc.previousHashTag != vc.newHashTag {
+                    vc.viewModel?.updateHashTag(hashTag: vc.newHashTag.map { $0.hashTagTitle })
+                }
+                
             }).disposed(by: disposeBag)
     }
 }
