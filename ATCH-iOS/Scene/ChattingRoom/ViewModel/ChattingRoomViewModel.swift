@@ -23,6 +23,7 @@ final class ChattingRoomViewModel: NSObject {
     var previousMessagesRelay: PublishRelay<[ChattingData]> = PublishRelay<[ChattingData]>()
     var messageRelay: PublishRelay<ChattingData> = PublishRelay<ChattingData>()
     
+    var myUserID: Int = 0
     
     init(opponent: Sender, roomID: Int) {
         super.init()
@@ -39,7 +40,10 @@ final class ChattingRoomViewModel: NSObject {
         Task {
             do {
                 let result = try await chatRepository.getChattingList(roomId: roomID)
-                previousMessagesRelay.accept(result)
+                if let result {
+                    myUserID = result.myId
+                    previousMessagesRelay.accept(result.mapToChattingRoomView())
+                }
             }
         }
     }
@@ -48,7 +52,10 @@ final class ChattingRoomViewModel: NSObject {
         Task {
             do {
                 let result = try await chatRepository.getChattingList(roomId: roomID)
-                previousMessagesRelay.accept(result)
+                if let result {
+                    myUserID = result.myId
+                    previousMessagesRelay.accept(result.mapToChattingRoomView())
+                }
             }
         }
     }
