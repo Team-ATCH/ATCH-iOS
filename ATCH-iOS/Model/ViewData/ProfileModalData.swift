@@ -19,6 +19,7 @@ struct ProfileModalData {
     let profileUrl: String?
     let buttonType: ProfileModalButtonType
     let senderData: Sender?
+    let items: [UserItem]?
     
     var buttonString: String {
         switch buttonType {

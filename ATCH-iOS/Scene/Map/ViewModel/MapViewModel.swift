@@ -41,6 +41,9 @@ final class MapViewModel: NSObject {
     }
     
     func getUserList() {
+        mapChatList.removeAll()
+        locationList.removeAll()
+        
         Task {
             do {
                 let result = try await homeRepository.getUserList()
@@ -49,7 +52,8 @@ final class MapViewModel: NSObject {
                                                          characterUrl: data.characterImageURL,
                                                          itemUrl: data.items.map { $0.itemImageURL },
                                                          nickName: data.nickname,
-                                                         tag: "#" + data.hashTag.joined(separator: " #"))
+                                                         tag: "#" + data.hashTag.joined(separator: " #"),
+                                                         items: data.items)
                     return mapChatData
                 }
                 

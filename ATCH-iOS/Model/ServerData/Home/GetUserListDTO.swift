@@ -44,14 +44,20 @@ struct Slot: Decodable {
 extension GetUserListDTO {
     func mapToMapView() -> [UserInfoData] {
         let userInfoDataList: [UserInfoData] = self.data.map { data in
+            let itemsWithSlots = zip(data.items, data.slots).map { (item, slot) in
+                return UserItem(itemID: item.itemID ?? 0,
+                                itemImageURL: item.itemImageURL ?? "",
+                                slotX: slot.x,
+                                slotY: slot.y)
+            }
+            
             let userInfoData: UserInfoData = .init(userID: data.userID,
                                                    nickname: data.nickname,
                                                    hashTag: data.hashTag,
                                                    latitude: data.latitude,
                                                    longitude: data.longitude,
                                                    characterImageURL: data.characterImageURL,
-                                                   items: data.items.map { item in UserItem(itemID: item.itemID ?? 0, itemImageURL: item.itemImageURL ?? "") },
-                                                   slots: data.slots.map { slot in ItemSlot(slotX: slot.x, slotY: slot.y)})
+                                                   items: itemsWithSlots)
             return userInfoData
         }
         return userInfoDataList

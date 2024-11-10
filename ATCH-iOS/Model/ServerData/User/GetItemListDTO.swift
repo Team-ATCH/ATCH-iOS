@@ -24,9 +24,15 @@ struct ItemList: Decodable {
 extension GetItemListDTO {
     func mapToItemSelectView() -> [ItemData] {
         let itemDataList: [ItemData] = self.data.map { data in
-            let itemData: ItemData = .init(characterImageURL: data.characterImageURL, 
-                                           items: data.items.map { item in UserItem(itemID: item.itemID ?? 0, itemImageURL: item.itemImageURL ?? "") },
-                                           slots: data.slots.map { slot in ItemSlot(slotX: slot.x, slotY: slot.y)})
+            let itemsWithSlots = zip(data.items, data.slots).map { (item, slot) in
+                return UserItem(itemID: item.itemID ?? 0,
+                                itemImageURL: item.itemImageURL ?? "",
+                                slotX: slot.x,
+                                slotY: slot.y)
+            }
+            
+            let itemData: ItemData = .init(characterImageURL: data.characterImageURL,
+                                           items: itemsWithSlots)
             return itemData
         }
         return itemDataList

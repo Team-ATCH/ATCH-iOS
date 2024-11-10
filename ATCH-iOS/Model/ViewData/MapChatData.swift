@@ -13,4 +13,5 @@ struct MapChatData { // 다른 유저들에 대한 정보
     let itemUrl: [String]
     let nickName: String
     let tag: String
+    let items: [UserItem]
 }

@@ -171,7 +171,8 @@ final class MapVC: BaseMapVC {
                                                                                   hashTag: "#" + UserData.shared.hashTagRelay.value.map { $0.hashTagTitle }.joined(separator: " #"),
                                                                                   profileUrl: UserData.shared.characterImageUrl,
                                                                                   buttonType: .profileEdit,
-                                                                                  senderData: nil))
+                                                                                  senderData: nil, 
+                                                                                  items: nil))
         }
         
         alarmImageView.rx.tapGesture().asObservable()
@@ -268,7 +269,8 @@ extension MapVC: CLLocationManagerDelegate {
                                                     hashTag: mapChatData.tag,
                                                     profileUrl: mapChatData.characterUrl,
                                                     buttonType: .chatting, 
-                                                    senderData: opponent)
+                                                    senderData: opponent,
+                                                    items: mapChatData.items)
             
             self.coordinator?.presentProfileModal(userData: profileModalData)
         }
