@@ -22,6 +22,8 @@ final class MapChatCollectionViewCell: UICollectionViewCell {
         $0.isUserInteractionEnabled = true
     }
     
+    private let characterBackgroundImageView = UIImageView()
+    
     private let characterImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
@@ -85,10 +87,17 @@ final class MapChatCollectionViewCell: UICollectionViewCell {
         
         labelStackView.addArrangedSubviews(titleLabel, contentLabel)
 
-        backgoundImageView.addSubviews(characterImageView,
+        backgoundImageView.addSubviews(characterBackgroundImageView,
+                                       characterImageView,
                                        itemImageView,
                                        labelStackView,
                                        chatButtonImageView)
+        
+        characterBackgroundImageView.snp.makeConstraints {
+            $0.top.leading.equalToSuperview().inset(13)
+            $0.width.equalTo(characterWidth)
+            $0.height.equalTo(characterHeight)
+        }
         
         characterImageView.snp.makeConstraints {
             $0.top.leading.equalToSuperview().inset(13)
@@ -118,6 +127,10 @@ final class MapChatCollectionViewCell: UICollectionViewCell {
     func bindCell(model: MapChatData) {
         if let url = URL(string: model.characterUrl) {
             characterImageView.kf.setImage(with: url)
+        }
+        
+        if let url = URL(string: model.backgroundUrl) {
+            characterBackgroundImageView.kf.setImage(with: url)
         }
         
         titleLabel.text = model.nickName
