@@ -13,6 +13,15 @@ enum StandardSize: Double {
 }
 
 struct ItemData {
+    let characterID: Int
     let characterImageURL: String
-    let items: [UserItem]
+    let items: [MyPageUserItem]
+}
+
+struct MyPageUserItem {
+    let itemID: Int
+    let itemImageURL: String
+    let itemProfileImageURL: String
+    let slotX: Double
+    let slotY: Double
 }

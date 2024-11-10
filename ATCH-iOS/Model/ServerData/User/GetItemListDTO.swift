@@ -8,33 +8,43 @@
 import Foundation
 
 struct GetItemListDTO: Decodable {
-    let data: [ItemList]
-}
-struct ItemList: Decodable {
+    let characterID: Int
     let characterImageURL: String
     let slots: [Slot]
-    let items: [Item]
+    let inUseIDs: [Int?]
+    let items: [MyPageItem]
     
     enum CodingKeys: String, CodingKey {
+        case characterID = "characterId"
         case characterImageURL = "characterImage"
         case slots, items
+        case inUseIDs = "inUseIds"
+    }
+}
+
+struct MyPageItem: Decodable {
+    let itemID: Int?
+    let itemImageURL: String?
+    let itmeProfileImageURL: String?
+
+    enum CodingKeys: String, CodingKey {
+        case itemID = "itemId"
+        case itemImageURL = "itemImage"
+        case itmeProfileImageURL = "itemProfileImage"
     }
 }
 
 extension GetItemListDTO {
-    func mapToItemSelectView() -> [ItemData] {
-        let itemDataList: [ItemData] = self.data.map { data in
-            let itemsWithSlots = zip(data.items, data.slots).map { (item, slot) in
-                return UserItem(itemID: item.itemID ?? 0,
-                                itemImageURL: item.itemImageURL ?? "",
-                                slotX: slot.x,
-                                slotY: slot.y)
-            }
-            
-            let itemData: ItemData = .init(characterImageURL: data.characterImageURL,
-                                           items: itemsWithSlots)
-            return itemData
+    func mapToItemSelectView() -> ItemData {
+        let itemsWithSlots = zip(self.items, self.slots).map { (item, slot) in
+            return MyPageUserItem(itemID: item.itemID ?? 0,
+                                  itemImageURL: item.itemImageURL ?? "",
+                                  itemProfileImageURL: item.itmeProfileImageURL ?? "",
+                                  slotX: slot.x,
+                                  slotY: slot.y)
         }
-        return itemDataList
+        return .init(characterID: self.characterID,
+                     characterImageURL: self.characterImageURL,
+                     items: itemsWithSlots)
     }
 }

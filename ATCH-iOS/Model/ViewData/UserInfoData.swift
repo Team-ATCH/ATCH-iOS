@@ -14,6 +14,7 @@ struct UserInfoData {
     let latitude: Double
     let longitude: Double
     let characterImageURL: String
+    let backgroundImageURL: String
     let items: [UserItem]
 }
 

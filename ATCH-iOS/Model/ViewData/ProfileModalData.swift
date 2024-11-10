@@ -16,7 +16,8 @@ struct ProfileModalData {
     let userID: Int?
     let nickname: String
     let hashTag: String
-    let profileUrl: String?
+    let profileURL: String?
+    let backgroundURL: String?
     let buttonType: ProfileModalButtonType
     let senderData: Sender?
     let items: [UserItem]?

@@ -78,7 +78,7 @@ final class ChatRepository {
         }
     }
     
-    func getChattingList(roomId: Int) async throws -> [ChattingData] {
+    func getChattingList(roomId: Int) async throws -> GetChatListDTO? {
         do {
             let response: NetworkResult<GetChatListDTO?> = try await networkProvider.request(
                 type: .get,
@@ -90,13 +90,13 @@ final class ChatRepository {
             
             switch response {
             case .success(let data):
-                return data?.mapToChattingRoomView() ?? []
+                return data
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
-                return []
+                return nil
             }
         } catch {
-            return []
+            return nil
         }
     }
 }

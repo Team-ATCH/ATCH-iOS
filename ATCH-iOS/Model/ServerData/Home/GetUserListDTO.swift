@@ -17,12 +17,14 @@ struct UserList: Decodable {
     let hashTag: [String]
     let latitude, longitude: Double
     let characterImageURL: String
+    let backgroundImageURL: String?
     let slots: [Slot]
     let items: [Item]
 
     enum CodingKeys: String, CodingKey {
         case userID = "userId"
         case characterImageURL = "characterImage"
+        case backgroundImageURL = "backgroundImage"
         case nickname, hashTag, latitude, longitude, slots, items
     }
 }
@@ -57,6 +59,7 @@ extension GetUserListDTO {
                                                    latitude: data.latitude,
                                                    longitude: data.longitude,
                                                    characterImageURL: data.characterImageURL,
+                                                   backgroundImageURL: data.backgroundImageURL ?? "",
                                                    items: itemsWithSlots)
             return userInfoData
         }
