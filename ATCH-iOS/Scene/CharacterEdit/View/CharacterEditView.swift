@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Kingfisher
 import RxSwift
 import SnapKit
 import Then
@@ -15,18 +16,40 @@ final class CharacterEditView: UIView {
     
     private let disposeBag: DisposeBag = DisposeBag()
     
-    private let characterImageView = UIImageView()
+    private let characterWidth: Double = 233.adjustedW
+    private let characterHeight: Double = 365.adjustedH
     
-    private let itemButton = UIButton().then {
+    private var userItems: [MyPageUserItem] = [] // 전체 아이템
+    private var userCharacters: [CharacterData] = [] // 전체 캐릭터
+    private var userBackgrounds: [BackgroundData] = [] // 전체 배경
+    
+    private var characterItemSlots: [CharacterSlot] = []
+
+    var currentItemIDs: [Int] = [] // 지금 착용하고 있는 아이템
+    var currentCharacterID: Int = 0 // 지금 착용하고 있는 캐릭터
+    var currentBackgroundID: Int = 0 // 지금 착용하고 있는 배경
+    
+    var selectedItem: Bool = false // 아이템 고르는 중
+    var selectedCharacter: Bool = false // 캐릭터 고르는 중
+    var selectedBackground: Bool = false // 배경 고르는 중
+
+    private var selectingItem: Bool = false // 아이템 고르는 중
+    private var selectingCharacter: Bool = false // 캐릭터 고르는 중
+    private var selectingBackground: Bool = false // 배경 고르는 중
+        
+    private let characterImageView = UIImageView()
+    private let characterBackgroundImageView = UIImageView()
+
+    let itemButton = UIButton().then {
         $0.setTitle("아이템", for: .normal)
         $0.isSelected = true
     }
     
-    private let characterButton = UIButton().then {
+    let characterButton = UIButton().then {
         $0.setTitle("캐릭터", for: .normal)
     }
     
-    private let backgroundButton = UIButton().then {
+    let backgroundButton = UIButton().then {
         $0.setTitle("배경", for: .normal)
     }
     
@@ -67,6 +90,7 @@ final class CharacterEditView: UIView {
         self.setupStyle()
         self.setupLayout()
         self.setupButton()
+        self.setupAction()
     }
     
     required init?(coder: NSCoder) {
@@ -81,6 +105,166 @@ final class CharacterEditView: UIView {
         
         allItemBackground.addLeftBorder(borderColor: .atchShadowGrey, borderWidth: 1)
         allItemBackground.addRightBorder(borderColor: .atchShadowGrey, borderWidth: 1)
+    }
+    
+    func bindItemData(data: ItemData, inUseIDs: [Int?]) {
+        userItems = data.items
+        
+        currentCharacterID = data.characterID
+        inUseIDs.forEach { id in
+            if let id {
+                currentItemIDs.append(id)
+            }
+        }
+        
+        if let url = URL(string: data.characterImageURL) {
+            characterImageView.kf.setImage(with: url)
+        }
+            
+        setCurrentItemsToCharacter()
+        setImageToItem()
+    }
+    
+    func bindCharacterData(data: [CharacterData]) {
+        userCharacters = data
+    }
+    
+    func bindBackgroundData(data: [BackgroundData], inUseID: Int) {
+        userBackgrounds = data
+        currentBackgroundID = inUseID
+        
+        if let index = userBackgrounds.firstIndex(where: { $0.itemID == currentBackgroundID }),
+           let url = URL(string: userBackgrounds[index].itemImageURL) {
+            characterBackgroundImageView.kf.setImage(with: url)
+        }
+    }
+    
+    func bindCharacterSlotData(data: [CharacterSlot]) {
+        characterItemSlots = data
+    }
+    
+    func setImageToItem() {
+        selectingItem = true
+        selectingCharacter = false
+        selectingBackground = false
+        
+        let itemBackgrounds = [itemBackgroundOne, itemBackgroundTwo, itemBackgroundThree, itemBackgroundFour, itemBackgroundFive]
+        itemBackgrounds.forEach {
+            $0.removeAllSubViews()
+        }
+        
+        for (index, item) in userItems.enumerated() {
+            guard index < itemBackgrounds.count else { break }
+
+            let itemImageView = UIImageView()
+            itemImageView.contentMode = .scaleAspectFit
+
+            if let url = URL(string: item.itemProfileImageURL) {
+                itemImageView.kf.setImage(with: url, options: [.processor(RoundCornerImageProcessor(cornerRadius: 20)), .transition(.fade(0.2))]) {
+                    [weak self] result in
+                    guard let self else { return }
+                    switch result {
+                    case .success(let value):
+                        itemImageView.image = value.image.withRenderingMode(.alwaysOriginal)
+                        if !currentItemIDs.contains(item.itemID) {
+                            itemImageView.alpha = 0.4
+                        }
+                    case .failure(let error):
+                        print("Error loading image: \(error)")
+                    }
+                }
+            }
+
+            itemBackgrounds[index].addSubview(itemImageView)
+            
+            itemImageView.snp.makeConstraints {
+                $0.top.leading.equalToSuperview().inset(9)
+                $0.size.equalTo(40)
+            }
+        }
+    }
+    
+    func setImageToCharacter() {
+        selectingItem = false
+        selectingCharacter = true
+        selectingBackground = false
+
+        let itemBackgrounds = [itemBackgroundOne, itemBackgroundTwo, itemBackgroundThree, itemBackgroundFour, itemBackgroundFive]
+        itemBackgrounds.forEach {
+            $0.removeAllSubViews()
+        }
+        
+        for (index, data) in userCharacters.enumerated() {
+            guard index < itemBackgrounds.count else { break }
+
+            let itemImageView = UIImageView()
+            itemImageView.contentMode = .scaleAspectFit
+
+            if let url = URL(string: data.profileImageURL) {
+                itemImageView.kf.setImage(with: url, options: [.processor(RoundCornerImageProcessor(cornerRadius: 20)), .transition(.fade(0.2))])
+                { [weak self] result in
+                    guard let self else { return }
+                    switch result {
+                    case .success(let value):
+                        itemImageView.image = value.image.withRenderingMode(.alwaysOriginal)
+                        if data.characterID != currentCharacterID {
+                            itemImageView.alpha = 0.4
+                        }
+                    case .failure(let error):
+                        print("Error loading image: \(error)")
+                    }
+                }
+            }
+
+            itemBackgrounds[index].addSubview(itemImageView)
+            
+            itemImageView.snp.makeConstraints {
+                $0.top.leading.equalToSuperview()
+                $0.bottom.equalToSuperview().inset(4)
+                $0.trailing.equalToSuperview().inset(3)
+            }
+        }
+    }
+    
+    func setImageToBackground() {
+        selectingItem = false
+        selectingCharacter = false
+        selectingBackground = true
+        
+        let itemBackgrounds = [itemBackgroundOne, itemBackgroundTwo, itemBackgroundThree, itemBackgroundFour, itemBackgroundFive]
+        itemBackgrounds.forEach {
+            $0.removeAllSubViews()
+        }
+        
+        for (index, data) in userBackgrounds.enumerated() {
+            guard index < itemBackgrounds.count else { break }
+
+            let itemImageView = UIImageView()
+            itemImageView.contentMode = .scaleAspectFit
+
+            if let url = URL(string: data.itemProfileImageURL) {
+                itemImageView.kf.setImage(with: url, options: [.processor(RoundCornerImageProcessor(cornerRadius: 20)), .transition(.fade(0.2))])
+                { [weak self] result in
+                    guard let self else { return }
+                    switch result {
+                    case .success(let value):
+                        itemImageView.image = value.image.withRenderingMode(.alwaysOriginal)
+                        if data.itemID != currentBackgroundID {
+                            itemImageView.alpha = 0.4
+                        }
+                    case .failure(let error):
+                        print("Error loading image: \(error)")
+                    }
+                }
+            }
+
+            itemBackgrounds[index].addSubview(itemImageView)
+            
+            itemImageView.snp.makeConstraints {
+                $0.top.leading.equalToSuperview().inset(4)
+                $0.size.equalTo(51)
+            }
+        }
     }
     
     private func setupStyle() {
@@ -105,6 +289,7 @@ final class CharacterEditView: UIView {
         [itemBackgroundOne, itemBackgroundTwo, itemBackgroundThree, itemBackgroundFour, itemBackgroundFive].forEach {
             $0.image = .imgItemButtonBackground
             $0.contentMode = .scaleAspectFill
+            $0.isUserInteractionEnabled = true
         }
     }
     
@@ -115,18 +300,26 @@ final class CharacterEditView: UIView {
     }
 
     private func setupLayout() {
-        self.addSubviews(characterImageView,
+        self.addSubviews(characterBackgroundImageView,
+                         characterImageView,
                          allItemBackground,
                          itemButton, characterButton, backgroundButton,
                          itemButtonBottomLine, characterButtonBottomLine, backgroundButtonBottomLine,
                          itemBackgroundStackView,
                          saveButton)
         
+        characterBackgroundImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(31)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(characterWidth)
+            $0.height.equalTo(characterHeight)
+        }
+        
         characterImageView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(31)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(233.adjustedW)
-            $0.height.equalTo(365.adjustedH)
+            $0.width.equalTo(characterWidth)
+            $0.height.equalTo(characterHeight)
         }
         
         allItemBackground.snp.makeConstraints {
@@ -224,9 +417,7 @@ final class CharacterEditView: UIView {
 
     private func setupButton(_ button: UIButton, selectedBackground: UIColor, otherButtons: [UIButton], bottomLine: UIView, otherBottomLines: [UIView]) {
         button.rx.tap
-            .subscribe(onNext: { [weak self] _ in
-                guard let self else { return }
-                
+            .subscribe(onNext: { _ in
                 // 현재 버튼 설정
                 button.backgroundColor = selectedBackground
                 button.isSelected = true
@@ -243,5 +434,147 @@ final class CharacterEditView: UIView {
             })
             .disposed(by: disposeBag)
     }
+    
+    private func setupAction() {
+        let itemBackgrounds = [itemBackgroundOne, itemBackgroundTwo, itemBackgroundThree, itemBackgroundFour, itemBackgroundFive]
+        
+        for (index, itemBackground) in itemBackgrounds.enumerated() {
+            itemBackground.rx.tapGesture()
+                .when(.recognized)
+                .subscribe(onNext: { [weak self] _ in
+                    guard let self else { return }
+                    // 선택된 항목이 아이템인 경우
+                    if selectingItem && index < userItems.count {
+                        let selectedItemID = userItems[index].itemID
+                        
+                        if currentItemIDs.contains(selectedItemID) { // 선택 취소
+                            if let removeIndex = currentItemIDs.firstIndex(of: selectedItemID) {
+                                currentItemIDs.remove(at: removeIndex)
+                            }
+                            if let itemImageView = itemBackground.subviews.compactMap({ $0 as? UIImageView }).first {
+                                itemImageView.alpha = 0.4
+                            }
+                        } else { // 선택
+                            currentItemIDs.append(selectedItemID)
+                            if let itemImageView = itemBackground.subviews.compactMap({ $0 as? UIImageView }).first {
+                                itemImageView.alpha = 1.0
+                            }
+                        }
+                        selectedItem = true
+                        setCurrentItemsToCharacter()
+                    } else if selectingCharacter && index < userCharacters.count {
+                        let selectedCharacterID = userCharacters[index].characterID
+                        if currentCharacterID != selectedCharacterID { // 선택
+                            currentCharacterID = selectedCharacterID
+                            if let itemImageView = itemBackground.subviews.compactMap({ $0 as? UIImageView }).first {
+                                itemImageView.alpha = 1.0
+                            }
+                            // 나머지 itemBackground의 UIImageView alpha 값을 낮추기
+                            for otherBackground in itemBackgrounds where otherBackground != itemBackground {
+                                if let otherImageView = otherBackground.subviews.compactMap({ $0 as? UIImageView }).first {
+                                    otherImageView.alpha = 0.4
+                                }
+                            }
+                        }
+                        selectedCharacter = true
+                        setCurrentCharacter()
+                    } else if selectingBackground && index < userItems.count {
+                        let selectedBackgroundID = userBackgrounds[index].itemID
+                        
+                        if currentBackgroundID != selectedBackgroundID { // 선택
+                            currentBackgroundID = selectedBackgroundID
+                            if let itemImageView = itemBackground.subviews.compactMap({ $0 as? UIImageView }).first {
+                                itemImageView.alpha = 1.0
+                            }
+                            // 나머지 itemBackground의 UIImageView alpha 값을 낮추기
+                            for otherBackground in itemBackgrounds where otherBackground != itemBackground {
+                                if let otherImageView = otherBackground.subviews.compactMap({ $0 as? UIImageView }).first {
+                                    otherImageView.alpha = 0.4
+                                }
+                            }
+                        }
+                        selectedBackground = true
+                        setCurrentBackgroundToCharacter()
+                    }
+                }).disposed(by: disposeBag)
+        }
+    }
+    
+    func setCurrentItemsToCharacter(characterSlot: CharacterSlot? = nil) {        
+        characterImageView.removeAllSubViews()
 
+        if let characterSlot {
+            for (index, item) in userItems.enumerated() {
+                guard index < characterSlot.slots.count else { break }
+                let slot = characterSlot.slots[index]
+                userItems[index].slotX = slot.x
+                userItems[index].slotY = slot.y
+                
+                let itemImageView = UIImageView()
+                itemImageView.contentMode = .scaleAspectFit
+
+                if let url = URL(string: item.itemImageURL) {
+                    itemImageView.kf.setImage(with: url)
+                }
+                
+                let leadingInset = slot.x * characterWidth / StandardSize.width.rawValue
+                let topInset = slot.y * characterHeight / StandardSize.height.rawValue
+                
+                if currentItemIDs.contains(item.itemID) {
+                    characterImageView.addSubview(itemImageView)
+                
+                    itemImageView.snp.makeConstraints {
+                        $0.width.equalTo(58)
+                        $0.height.equalTo(52)
+                        $0.leading.equalToSuperview().inset(leadingInset)
+                        $0.top.equalToSuperview().inset(topInset)
+                    }
+                }
+            }
+        } else {
+            userItems.forEach { [weak self] item in
+                guard let self else { return }
+                
+                let imageView = UIImageView()
+                imageView.contentMode = .scaleAspectFit
+                if let url = URL(string: item.itemImageURL) {
+                    imageView.kf.setImage(with: url)
+                }
+                
+                let leadingInset = item.slotX * characterWidth / StandardSize.width.rawValue
+                let topInset = item.slotY * characterHeight / StandardSize.height.rawValue
+                
+                if currentItemIDs.contains(item.itemID) {
+                    characterImageView.addSubview(imageView)
+                    
+                    imageView.snp.makeConstraints {
+                        $0.width.equalTo(58)
+                        $0.height.equalTo(52)
+                        $0.leading.equalToSuperview().inset(leadingInset)
+                        $0.top.equalToSuperview().inset(topInset)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func setCurrentCharacter() {
+        if let characterSlot = characterItemSlots.first(where: { $0.charID == currentCharacterID }),
+           let index = userCharacters.firstIndex(where: { $0.characterID == currentCharacterID }),
+           let url = URL(string: userCharacters[index].imageURL) {
+            
+            // 캐릭터 이미지 업데이트
+            characterImageView.kf.setImage(with: url)
+            
+            // 슬롯 위치에 맞춰 currentItems를 배치
+            setCurrentItemsToCharacter(characterSlot: characterSlot)
+        }
+    }
+    
+    private func setCurrentBackgroundToCharacter() {
+        if let index = userBackgrounds.firstIndex(where: { $0.itemID == currentBackgroundID }),
+           let url = URL(string: userBackgrounds[index].itemImageURL) {
+            characterBackgroundImageView.kf.setImage(with: url)
+        }
+    }
 }

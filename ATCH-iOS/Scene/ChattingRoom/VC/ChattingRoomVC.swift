@@ -41,13 +41,13 @@ final class ChattingRoomVC: BaseChattingRoomVC {
     }
         
     override func bindViewModel() {
-        // 여기서 senderID에 myID 넣어야함
-        inputSender = Sender(senderId: "17", displayName: "heejoo")
-
         viewModel?.previousMessagesRelay
             .observe(on: MainScheduler.instance)
             .withUnretained(self)
             .subscribe(onNext: { vc, messages in
+                if let userID = vc.viewModel?.myUserID {
+                    vc.inputSender = Sender(senderId: String(userID), displayName: "")
+                }
                 vc.messages = messages
                 vc.messages.sort()
                 vc.messagesCollectionView.reloadData()

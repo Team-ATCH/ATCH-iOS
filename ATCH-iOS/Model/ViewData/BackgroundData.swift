@@ -10,4 +10,5 @@ import Foundation
 struct BackgroundData {
     let itemID: Int
     let itemImageURL: String
+    let itemProfileImageURL: String
 }

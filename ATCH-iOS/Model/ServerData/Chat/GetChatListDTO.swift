@@ -8,19 +8,23 @@
 import Foundation
 
 struct GetChatListDTO: Decodable {
+    let myId: Int
     let data: [ChatList]
 }
 
 struct ChatList: Decodable {
     let content: String
     let fromID: Int
-    let fromNickname, createdAt: String
-    let read: Bool
+    let fromNickname: String
+    let fromProfileImageURL: String?
+    let createdAt: String
 
     enum CodingKeys: String, CodingKey {
         case content
         case fromID = "fromId"
-        case fromNickname, createdAt, read
+        case fromNickname
+        case fromProfileImageURL = "fromProfileImage"
+        case createdAt
     }
 }
 
@@ -28,7 +32,9 @@ extension GetChatListDTO {
     func mapToChattingRoomView() -> [ChattingData] {
         // 여기에 profileURL 추가해서 받아야함
         let chattingDataList: [ChattingData] = self.data.map { data in
-            let chattingData: ChattingData = .init(sender: Sender(senderId: String(data.fromID), displayName: data.fromNickname),
+            let chattingData: ChattingData = .init(sender: Sender(senderId: String(data.fromID),
+                                                                  displayName: data.fromNickname,
+                                                                  profileImageUrl: data.fromProfileImageURL ?? ""),
                                                    content: data.content,
                                                    sendDate: data.createdAt.convertToDate() ?? Date())
             return chattingData

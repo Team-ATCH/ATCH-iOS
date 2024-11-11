@@ -13,6 +13,9 @@ import Then
 
 final class ProfileModalView: UIView {
 
+    private let characterWidth: Double = 178.adjustedW
+    private let characterHeight: Double = 278.adjustedW
+    
     private let dimView = UIView().then {
         $0.backgroundColor = .atchBlack
         $0.alpha = 0.4
@@ -40,6 +43,10 @@ final class ProfileModalView: UIView {
         $0.textAlignment = .center
     }
     
+    private let profileBackgroundImageView = UIImageView().then {
+        $0.contentMode = .scaleAspectFit
+    }
+
     private let profileImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
     }
@@ -68,14 +75,40 @@ final class ProfileModalView: UIView {
         profileNicknameLabel.text = data.nickname
         profileHashTagLabel.text = data.hashTag
         setupHashTag()
-        if let profileUrl = data.profileUrl,
-           let url = URL(string: profileUrl) {
+        if let profileURL = data.profileURL,
+           let url = URL(string: profileURL) {
             profileImageView.kf.setImage(with: url)
         } else {
             profileImageView.image = UserData.shared.characterImage()
         }
         
+        if let backgroundURL = data.backgroundURL,
+           let url = URL(string: backgroundURL) {
+            profileBackgroundImageView.kf.setImage(with: url)
+        }
+        
         profileEditLabel.text = data.buttonString
+        
+        data.items?.forEach { [weak self] item in
+            guard let self else { return }
+            
+            let imageView = UIImageView()
+            imageView.contentMode = .scaleAspectFit
+            if let url = URL(string: item.itemImageURL) {
+                imageView.kf.setImage(with: url)
+            }
+            
+            profileImageView.addSubview(imageView)
+            
+            let leadingInset = item.slotX * characterWidth / StandardSize.width.rawValue
+            let topInset = item.slotY * characterHeight / StandardSize.height.rawValue
+            
+            imageView.snp.makeConstraints {
+                $0.size.equalTo(40)
+                $0.leading.equalToSuperview().inset(leadingInset)
+                $0.top.equalToSuperview().inset(topInset)
+            }
+        }
     }
     
     private func setupHashTag() {
@@ -108,6 +141,7 @@ final class ProfileModalView: UIView {
         modalBackground.addSubviews(closeButton,
                                     profileNicknameLabel,
                                     profileHashTagLabel,
+                                    profileBackgroundImageView,
                                     profileImageView,
                                     bottomButton)
         
@@ -151,10 +185,17 @@ final class ProfileModalView: UIView {
             $0.centerX.equalToSuperview()
         }
         
+        profileBackgroundImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(115)
+            $0.width.equalTo(characterWidth)
+            $0.height.equalTo(characterHeight)
+            $0.centerX.equalToSuperview()
+        }
+        
         profileImageView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(115)
-            $0.bottom.equalTo(bottomButton.snp.top).offset(-13)
-            $0.width.equalTo(178)
+            $0.width.equalTo(characterWidth)
+            $0.height.equalTo(characterHeight)
             $0.centerX.equalToSuperview()
         }
     }

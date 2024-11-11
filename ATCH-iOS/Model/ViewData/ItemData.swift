@@ -7,8 +7,21 @@
 
 import Foundation
 
+enum StandardSize: Double {
+    case width = 178.0
+    case height = 278.0
+}
+
 struct ItemData {
+    let characterID: Int
     let characterImageURL: String
-    let items: [UserItem]
-    let slots: [ItemSlot]
+    let items: [MyPageUserItem]
+}
+
+struct MyPageUserItem {
+    let itemID: Int
+    let itemImageURL: String
+    let itemProfileImageURL: String
+    var slotX: Double
+    var slotY: Double
 }

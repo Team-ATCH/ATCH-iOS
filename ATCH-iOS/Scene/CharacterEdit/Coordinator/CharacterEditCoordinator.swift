@@ -21,6 +21,7 @@ final class CharacterEditCoordinator: Coordinator {
     
     func start() {
         self.characterEditVC = CharacterEditVC(coordinator: self)
+        self.characterEditVC?.viewModel = CharacterEditViewModel()
         
         if let vc = self.characterEditVC {
             vc.hidesBottomBarWhenPushed = false

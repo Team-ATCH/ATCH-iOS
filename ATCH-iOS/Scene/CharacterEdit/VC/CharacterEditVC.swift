@@ -14,6 +14,8 @@ import Then
 final class CharacterEditVC: UIViewController {
     
     private let coordinator: CharacterEditCoordinator?
+    var viewModel: CharacterEditViewModel?
+    
     private let disposeBag: DisposeBag = DisposeBag()
         
     private let characterEditNavigationView = NavigationView(title: "캐릭터 꾸미기", backButtonHidden: false)
@@ -32,9 +34,61 @@ final class CharacterEditVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
+        bindViewModel()
         setupStyle()
         setupLayout()
         setupAction()
+    }
+    
+    private func bindViewModel() {
+        viewModel?.itemSuccessRelay
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, data in
+                vc.characterEditView.bindItemData(data: data.1, inUseIDs: data.0)
+            }).disposed(by: disposeBag)
+        
+        viewModel?.characterSuccessRelay
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, data in
+                vc.characterEditView.bindCharacterData(data: data)
+            }).disposed(by: disposeBag)
+        
+        viewModel?.backgroundSuccessRelay
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, data in
+                vc.characterEditView.bindBackgroundData(data: data.1, inUseID: data.0)
+            }).disposed(by: disposeBag)
+        
+        viewModel?.characterSlotSuccessRelay
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, data in
+                vc.characterEditView.bindCharacterSlotData(data: data)
+            }).disposed(by: disposeBag)
+        
+        viewModel?.itemPatchSuccessRelay
+            .withUnretained(self)
+            .subscribe(onNext: { vc, data in
+                if vc.characterEditView.selectedCharacter {
+                    vc.viewModel?.updateCharacter(characterID: vc.characterEditView.currentCharacterID)
+                }
+            }).disposed(by: disposeBag)
+        
+        viewModel?.characterPatchSuccessRelay
+            .withUnretained(self)
+            .subscribe(onNext: { vc, data in
+                if vc.characterEditView.selectedBackground {
+                    vc.viewModel?.updateBackground(backgroundID: vc.characterEditView.currentBackgroundID)
+                }
+            }).disposed(by: disposeBag)
+        
+        viewModel?.getCharacterItems()
+        viewModel?.getCharacters()
+        viewModel?.getBackgrounds()
+        viewModel?.getCharacterSlots()
     }
     
     private func setupStyle() {
@@ -63,5 +117,38 @@ final class CharacterEditVC: UIViewController {
             .subscribe(onNext: { (vc, _) in
                 vc.coordinator?.back()
             }).disposed(by: disposeBag)
+        
+        characterEditView.itemButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                guard let self else { return }
+                characterEditView.setImageToItem()
+            })
+            .disposed(by: disposeBag)
+        
+        characterEditView.characterButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                guard let self else { return }
+                characterEditView.setImageToCharacter()
+            })
+            .disposed(by: disposeBag)
+        
+        characterEditView.backgroundButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                guard let self else { return }
+                characterEditView.setImageToBackground()
+            })
+            .disposed(by: disposeBag)
+        
+        characterEditView.saveButton.rx.tapGesture()
+            .asObservable().when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self else { return }
+                if characterEditView.selectedItem {
+                    viewModel?.updateItems(items: characterEditView.currentItemIDs)
+                }
+                
+            })
+            .disposed(by: disposeBag)
+        
     }
 }

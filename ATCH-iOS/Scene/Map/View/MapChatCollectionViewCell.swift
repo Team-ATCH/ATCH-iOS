@@ -13,11 +13,16 @@ import Then
 
 final class MapChatCollectionViewCell: UICollectionViewCell {
 
+    private let characterWidth: Double = 89.0
+    private let characterHeight: Double = 139.0
+    
     private let backgoundImageView = UIImageView().then {
         $0.image = .imgMapCellBackground
         $0.contentMode = .scaleAspectFit
         $0.isUserInteractionEnabled = true
     }
+    
+    private let characterBackgroundImageView = UIImageView()
     
     private let characterImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFill
@@ -57,7 +62,7 @@ final class MapChatCollectionViewCell: UICollectionViewCell {
         $0.textColor = .atchBlack
         $0.font = .font(.smallButton)
     }
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -82,15 +87,22 @@ final class MapChatCollectionViewCell: UICollectionViewCell {
         
         labelStackView.addArrangedSubviews(titleLabel, contentLabel)
 
-        backgoundImageView.addSubviews(characterImageView,
+        backgoundImageView.addSubviews(characterBackgroundImageView,
+                                       characterImageView,
                                        itemImageView,
                                        labelStackView,
                                        chatButtonImageView)
         
+        characterBackgroundImageView.snp.makeConstraints {
+            $0.top.leading.equalToSuperview().inset(13)
+            $0.width.equalTo(characterWidth)
+            $0.height.equalTo(characterHeight)
+        }
+        
         characterImageView.snp.makeConstraints {
             $0.top.leading.equalToSuperview().inset(13)
-            $0.width.equalTo(89)
-            $0.height.equalTo(139)
+            $0.width.equalTo(characterWidth)
+            $0.height.equalTo(characterHeight)
         }
         
         labelStackView.snp.makeConstraints {
@@ -117,6 +129,10 @@ final class MapChatCollectionViewCell: UICollectionViewCell {
             characterImageView.kf.setImage(with: url)
         }
         
+        if let url = URL(string: model.backgroundUrl) {
+            characterBackgroundImageView.kf.setImage(with: url)
+        }
+        
         titleLabel.text = model.nickName
         
         let hashtags = model.tag
@@ -138,5 +154,27 @@ final class MapChatCollectionViewCell: UICollectionViewCell {
         resultText += currentLine
         
         contentLabel.text = resultText
+        
+        model.items.forEach { [weak self] item in
+            guard let self else { return }
+            
+            let imageView = UIImageView()
+            imageView.contentMode = .scaleAspectFit
+            if let url = URL(string: item.itemImageURL) {
+                imageView.kf.setImage(with: url)
+            }
+            
+            characterImageView.addSubview(imageView)
+            
+            let leadingInset = item.slotX * characterWidth / StandardSize.width.rawValue
+            let topInset = item.slotY * characterHeight / StandardSize.height.rawValue
+            
+            imageView.snp.makeConstraints {
+                $0.width.equalTo(22)
+                $0.height.equalTo(20)
+                $0.leading.equalToSuperview().inset(leadingInset)
+                $0.top.equalToSuperview().inset(topInset)
+            }
+        }
     }
 }

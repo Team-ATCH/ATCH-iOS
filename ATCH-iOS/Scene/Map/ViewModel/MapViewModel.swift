@@ -31,25 +31,29 @@ final class MapViewModel: NSObject {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateMyLoaction(latitude: Double, longitude: Double) {
+    func updateMyLoaction(longitude: Double, latitude: Double) {
         Task {
             do {
-                _ = try await homeRepository.patchLocation(latitude: latitude, longitude: longitude)
+                _ = try await homeRepository.patchLocation(longitude: longitude, latitude: latitude)
                 getUserList()
             }
         }
     }
     
     func getUserList() {
+        mapChatList.removeAll()
+        locationList.removeAll()
+        
         Task {
             do {
                 let result = try await homeRepository.getUserList()
                 let mapChatDataList: [MapChatData] = result.map { data in
                     let mapChatData: MapChatData = .init(userID: String(data.userID),
                                                          characterUrl: data.characterImageURL,
-                                                         itemUrl: data.items.map { $0.itemImageURL },
+                                                         backgroundUrl: data.backgroundImageURL,
                                                          nickName: data.nickname,
-                                                         tag: "#" + data.hashTag.joined(separator: " #"))
+                                                         tag: "#" + data.hashTag.joined(separator: " #"),
+                                                         items: data.items)
                     return mapChatData
                 }
                 
@@ -57,8 +61,8 @@ final class MapViewModel: NSObject {
                 mapChatListRelay.accept(!mapChatList.isEmpty)
                 
                 let locationDataList: [UserLocationData] = result.map { data in
-                    let locationData: UserLocationData = .init(latitude: data.latitude,
-                                                               longitude: data.longitude)
+                    let locationData: UserLocationData = .init(longitude: data.longitude,
+                                                               latitude: data.latitude)
                     return locationData
                 }
                 

@@ -39,6 +39,31 @@ final class MyPageVC: UIViewController {
         setupAction()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(pushToCharacterEditView(_:)),
+            name: Notification.Name(rawValue: "pushToCharacterEditView"),
+            object: nil
+        )
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(
+            self,
+            name: Notification.Name(rawValue: "pushToCharacterEditView"),
+            object: nil)
+    }
+
+    @objc
+    private func pushToCharacterEditView(_ notification: Notification) {
+        coordinator?.pushToCharacterEditView()
+    }
+    
+    
     private func bindViewModel() {
         viewModel?.successRelay
             .observe(on: MainScheduler.instance)

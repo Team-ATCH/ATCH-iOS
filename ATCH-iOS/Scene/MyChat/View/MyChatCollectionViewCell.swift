@@ -104,7 +104,9 @@ final class MyChatCollectionViewCell: UICollectionViewCell {
         }
         
         characterImageView.snp.makeConstraints {
-            $0.verticalEdges.leading.equalToSuperview().inset(4)
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview().inset(1)
+            $0.bottom.equalToSuperview().inset(3)
             $0.trailing.equalTo(dividingLine.snp.leading)
         }
         
@@ -129,8 +131,8 @@ final class MyChatCollectionViewCell: UICollectionViewCell {
         
         chatButtonImageView.addSubview(chatButtonLabel)
         chatButtonLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(7)
-            $0.leading.equalToSuperview().inset(14)
+            $0.top.equalToSuperview().inset(7.adjustedH)
+            $0.leading.equalToSuperview().inset(14.adjustedW)
         }
     }
     

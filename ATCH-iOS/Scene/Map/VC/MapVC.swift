@@ -106,7 +106,7 @@ final class MapVC: BaseMapVC {
         viewModel?.locationList.forEach { [weak self] location in
             guard let self else { return }
             
-            let mapPoint = MapPoint(longitude: location.latitude, latitude: location.longitude)
+            let mapPoint = MapPoint(longitude: location.longitude, latitude: location.latitude)
             if let poi = layer?.addPoi(option: poiOption, at: mapPoint) {
                 let _ = poi.addPoiTappedEventHandler(target: self, handler: MapVC.poiTappedHandler)
                 otherPois.append(poi)
@@ -169,9 +169,11 @@ final class MapVC: BaseMapVC {
             self.coordinator?.presentProfileModal(userData: ProfileModalData.init(userID: nil,
                                                                                   nickname: UserData.shared.nickname,
                                                                                   hashTag: "#" + UserData.shared.hashTagRelay.value.map { $0.hashTagTitle }.joined(separator: " #"),
-                                                                                  profileUrl: UserData.shared.characterImageUrl,
+                                                                                  profileURL: UserData.shared.characterImageUrl,
+                                                                                  backgroundURL: nil,
                                                                                   buttonType: .profileEdit,
-                                                                                  senderData: nil))
+                                                                                  senderData: nil, 
+                                                                                  items: nil))
         }
         
         alarmImageView.rx.tapGesture().asObservable()
@@ -224,6 +226,8 @@ final class MapVC: BaseMapVC {
 extension MapVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let currentLocation = locations.last else { return }
+//        let currentLongitude = currentLocation.coordinate.longitude
+//        let currentLatitude = currentLocation.coordinate.latitude
         
         let mapPoint = MapPoint(longitude: 126.92390068909582, latitude: 37.55697173535178)
         guard let mapView = mapController?.getView("mapview") as? KakaoMap else { return }
@@ -243,7 +247,7 @@ extension MapVC: CLLocationManagerDelegate {
             // POI 추가 및 서버에 현재 위치 전달
             currentPoi = layer?.addPoi(option: poiOption, at: mapPoint, callback: { [weak self] poi in
                 guard let self else { return }
-                self.viewModel?.updateMyLoaction(latitude: 126.92390068909582, longitude: 37.55697173535178)
+                self.viewModel?.updateMyLoaction(longitude: 126.92390068909582, latitude: 37.55697173535178)
                 print("Current POI added")
             })
         } else {
@@ -266,9 +270,11 @@ extension MapVC: CLLocationManagerDelegate {
             let profileModalData = ProfileModalData(userID: Int(mapChatData.userID),
                                                     nickname: mapChatData.nickName,
                                                     hashTag: mapChatData.tag,
-                                                    profileUrl: mapChatData.characterUrl,
-                                                    buttonType: .chatting, 
-                                                    senderData: opponent)
+                                                    profileURL: mapChatData.characterUrl,
+                                                    backgroundURL: mapChatData.backgroundUrl,
+                                                    buttonType: .chatting,
+                                                    senderData: opponent,
+                                                    items: mapChatData.items)
             
             self.coordinator?.presentProfileModal(userData: profileModalData)
         }

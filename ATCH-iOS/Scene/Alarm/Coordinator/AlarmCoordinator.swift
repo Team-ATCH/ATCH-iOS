@@ -29,6 +29,10 @@ final class AlarmCoordinator: Coordinator {
         }
     }
     
+    func pushToMyPage() {
+        navigationController.tabBarController?.selectedIndex = 3
+    }
+    
     func back() {
         finish()
         self.navigationController.popViewController(animated: true)

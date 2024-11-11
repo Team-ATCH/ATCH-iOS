@@ -10,4 +10,5 @@ import Foundation
 struct CharacterData {
     let characterID: Int
     let imageURL: String
+    let profileImageURL: String
 }

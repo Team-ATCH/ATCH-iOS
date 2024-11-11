@@ -8,6 +8,6 @@
 import Foundation
 
 struct UserLocationData {
-    let latitude: Double
     let longitude: Double
+    let latitude: Double
 }

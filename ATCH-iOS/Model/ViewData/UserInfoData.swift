@@ -14,16 +14,13 @@ struct UserInfoData {
     let latitude: Double
     let longitude: Double
     let characterImageURL: String
+    let backgroundImageURL: String
     let items: [UserItem]
-    let slots: [ItemSlot]
 }
 
 struct UserItem {
     let itemID: Int
     let itemImageURL: String
-}
-
-struct ItemSlot {
     let slotX: Double
     let slotY: Double
 }

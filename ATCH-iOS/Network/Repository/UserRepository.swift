@@ -57,7 +57,7 @@ final class UserRepository {
         }
     }
     
-    func getUserItem() async throws -> [ItemData] {
+    func getUserCharacterItems() async throws -> GetItemListDTO? {
         do {
             let response: NetworkResult<GetItemListDTO?> = try await networkProvider.request(
                 type: .get,
@@ -69,13 +69,13 @@ final class UserRepository {
             
             switch response {
             case .success(let data):
-                return data?.mapToItemSelectView() ?? []
+                return data
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
-                return []
+                return nil
             }
         } catch {
-            return []
+            return nil
         }
     }
     
@@ -170,7 +170,7 @@ final class UserRepository {
         }
     }
     
-    func getUserBackgroundList() async throws -> [BackgroundData] {
+    func getUserBackgroundList() async throws -> GetBackgroundListDTO? {
         do {
             let response: NetworkResult<GetBackgroundListDTO?> = try await networkProvider.request(
                 type: .get,
@@ -182,13 +182,35 @@ final class UserRepository {
             
             switch response {
             case .success(let data):
-                return data?.mapToBackgroundSelectView() ?? []
+                return data
             case .failure(let error):
                 print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
-                return []
+                return nil
             }
         } catch {
-            return []
+            return nil
+        }
+    }
+    
+    func getUserCharacterSlotList() async throws -> [CharacterSlot]? {
+        do {
+            let response: NetworkResult<GetCharacterSlotDTO?> = try await networkProvider.request(
+                type: .get,
+                baseURL: Config.appBaseURL + "/users/slots",
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
+                body: nil,
+                pathVariables: nil
+            )
+            
+            switch response {
+            case .success(let data):
+                return data?.data
+            case .failure(let error):
+                print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
+                return nil
+            }
+        } catch {
+            return nil
         }
     }
     

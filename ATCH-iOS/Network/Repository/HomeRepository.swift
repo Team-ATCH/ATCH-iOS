@@ -11,7 +11,7 @@ final class HomeRepository {
     
     private let networkProvider: NetworkServiceType = NetworkService()
 
-    func patchLocation(latitude: Double, longitude: Double) async throws -> Bool {
+    func patchLocation(longitude: Double, latitude: Double) async throws -> Bool {
         let requestDTO = LocationRequestBody(latitude: latitude,
                                              longitude: longitude)
         do {
