@@ -9,9 +9,12 @@ import Foundation
 
 struct AllChattingData {
     let roomID: Int
+    let firstProfileURL: String
+    let secondProfileURL: String
     let content: String
-    let fromID: Int
-    let fromNickname: String
+    let firstFromID: Int
+    let firstFromNickname: String
+    let secondFromID: Int
+    let secondFromNickname: String
     let createdAt: String
-    let read: Bool
 }

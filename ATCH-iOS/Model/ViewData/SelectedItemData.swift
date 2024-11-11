@@ -8,7 +8,7 @@
 import Foundation
 
 struct SelectedItemData {
-    let itemIDs: [Int]
+    let itemIDs: [Int?]
     let characterID: Int
     let backgroundID: Int
 }

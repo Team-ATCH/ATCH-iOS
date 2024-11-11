@@ -22,6 +22,6 @@ struct MyPageUserItem {
     let itemID: Int
     let itemImageURL: String
     let itemProfileImageURL: String
-    let slotX: Double
-    let slotY: Double
+    var slotX: Double
+    var slotY: Double
 }
