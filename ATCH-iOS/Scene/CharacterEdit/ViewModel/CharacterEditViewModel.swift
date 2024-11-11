@@ -17,6 +17,10 @@ final class CharacterEditViewModel: NSObject {
     let itemSuccessRelay: PublishRelay<([Int?], ItemData)> = PublishRelay<([Int?], ItemData)>()
     let characterSuccessRelay: PublishRelay<[CharacterData]> = PublishRelay<[CharacterData]>()
     let backgroundSuccessRelay: PublishRelay<(Int, [BackgroundData])> = PublishRelay<(Int, [BackgroundData])>()
+    let characterSlotSuccessRelay: PublishRelay<[CharacterSlot]> = PublishRelay<[CharacterSlot]>()
+    
+    let itemPatchSuccessRelay: PublishRelay<Bool> = PublishRelay<Bool>()
+    let characterPatchSuccessRelay: PublishRelay<Bool> = PublishRelay<Bool>()
 
     var characterID: Int = 0
     
@@ -59,6 +63,17 @@ final class CharacterEditViewModel: NSObject {
         }
     }
     
+    func getCharacterSlots() {
+        Task {
+            do {
+                let result = try await userRepository.getUserCharacterSlotList()
+                if let result {
+                    characterSlotSuccessRelay.accept(result)
+                }
+            }
+        }
+    }
+    
     func updateItems(items: [Int]) {
         Task {
             do {
@@ -71,7 +86,7 @@ final class CharacterEditViewModel: NSObject {
                                               itemId3: itemId3)
                 
                 let result = try await userRepository.patchUserItem(item: request)
-                print(result)
+                itemPatchSuccessRelay.accept(result)
             }
         }
     }
@@ -80,7 +95,7 @@ final class CharacterEditViewModel: NSObject {
         Task {
             do {
                 let result = try await userRepository.patchUserCharacter(characterID: characterID)
-                print(result)
+                characterPatchSuccessRelay.accept(result)
             }
         }
     }
@@ -88,8 +103,7 @@ final class CharacterEditViewModel: NSObject {
     func updateBackground(backgroundID: Int) {
         Task {
             do {
-                let result = try await userRepository.patchUserBackground(backgroundID: backgroundID)
-                print(result)
+                let _ = try await userRepository.patchUserBackground(backgroundID: backgroundID)
             }
         }
     }

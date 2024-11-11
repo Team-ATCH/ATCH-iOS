@@ -62,10 +62,33 @@ final class CharacterEditVC: UIViewController {
                 vc.characterEditView.bindBackgroundData(data: data.1, inUseID: data.0)
             }).disposed(by: disposeBag)
         
+        viewModel?.characterSlotSuccessRelay
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, data in
+                vc.characterEditView.bindCharacterSlotData(data: data)
+            }).disposed(by: disposeBag)
+        
+        viewModel?.itemPatchSuccessRelay
+            .withUnretained(self)
+            .subscribe(onNext: { vc, data in
+                if vc.characterEditView.selectedCharacter {
+                    vc.viewModel?.updateCharacter(characterID: vc.characterEditView.currentCharacterID)
+                }
+            }).disposed(by: disposeBag)
+        
+        viewModel?.characterPatchSuccessRelay
+            .withUnretained(self)
+            .subscribe(onNext: { vc, data in
+                if vc.characterEditView.selectedBackground {
+                    vc.viewModel?.updateBackground(backgroundID: vc.characterEditView.currentBackgroundID)
+                }
+            }).disposed(by: disposeBag)
+        
         viewModel?.getCharacterItems()
         viewModel?.getCharacters()
         viewModel?.getBackgrounds()
-
+        viewModel?.getCharacterSlots()
     }
     
     private func setupStyle() {
@@ -115,5 +138,17 @@ final class CharacterEditVC: UIViewController {
                 characterEditView.setImageToBackground()
             })
             .disposed(by: disposeBag)
+        
+        characterEditView.saveButton.rx.tapGesture()
+            .asObservable().when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self else { return }
+                if characterEditView.selectedItem {
+                    viewModel?.updateItems(items: characterEditView.currentItemIDs)
+                }
+                
+            })
+            .disposed(by: disposeBag)
+        
     }
 }
