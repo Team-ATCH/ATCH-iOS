@@ -19,40 +19,59 @@ final class AllChatCollectionViewCell: UICollectionViewCell {
         $0.isUserInteractionEnabled = true
     }
     
-    private let topLabelStackView = UIStackView().then {
-        $0.axis = .vertical
-        $0.spacing = 5
-        $0.alignment = .leading
-        $0.distribution = .fill
+    private let firstCharacterImageView = UIImageView().then {
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
+        $0.layer.cornerRadius = 18
+        $0.layer.masksToBounds = true
+        $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+    }
+
+    private let secondCharacterImageView = UIImageView().then {
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
+        $0.layer.cornerRadius = 18
+        $0.layer.masksToBounds = true
+        $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
     }
     
-    private let titleLabel = UILabel().then {
+    private let profileDividingLine = UIView().then {
+        $0.backgroundColor = .atchShadowGrey
+    }
+    
+    private let dividingLine = UIView().then {
+        $0.backgroundColor = .atchShadowGrey
+    }
+    
+    private let contentLabel = UILabel().then {
         $0.textColor = .atchBlack
         $0.font = .font(.headline)
         $0.numberOfLines = 0
     }
     
-    private let contentLabel = UILabel().then {
-        $0.textColor = .atchShadowGrey
-        $0.font = .font(.subtitle)
-        $0.numberOfLines = 1
-    }
-    
-    private let bottomLabelStackView = UIStackView().then {
+    private let labelStackView = UIStackView().then {
         $0.axis = .vertical
+        $0.spacing = 1
         $0.alignment = .leading
         $0.distribution = .fill
     }
     
-    private let lastTimeLabel = UILabel().then {
-        $0.text = "마지막 채팅시간"
-        $0.textColor = .atchBlack
-        $0.font = .font(.body)
+    private let participantLabel = UILabel().then {
+        $0.textColor = .atchGrey3
+        $0.font = .font(.caption)
+        $0.text = "채팅 참여자"
     }
     
-    private let timeLabel = UILabel().then {
+    private let firstParticipantLabel = UILabel().then {
         $0.textColor = .atchShadowGrey
         $0.font = .font(.body)
+        $0.numberOfLines = 1
+    }
+    
+    private let secondParticipantLabel = UILabel().then {
+        $0.textColor = .atchShadowGrey
+        $0.font = .font(.body)
+        $0.numberOfLines = 1
     }
     
     private let chatButtonImageView = UIImageView().then {
@@ -61,7 +80,7 @@ final class AllChatCollectionViewCell: UICollectionViewCell {
     }
     
     private let chatButtonLabel = UILabel().then {
-        $0.text = "보러가기"
+        $0.text = "채팅 보기"
         $0.textColor = .atchBlack
         $0.font = .font(.smallButton)
     }
@@ -75,30 +94,67 @@ final class AllChatCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        firstCharacterImageView.image = nil
+        secondCharacterImageView.image = nil
+    }
+   
     private func setupLayout() {
         self.contentView.addSubview(backgoundImageView)
         backgoundImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
-        topLabelStackView.addArrangedSubviews(titleLabel, contentLabel)
-        bottomLabelStackView.addArrangedSubviews(lastTimeLabel, timeLabel)
-        
-        backgoundImageView.addSubviews(topLabelStackView,
-                                       bottomLabelStackView,
+        labelStackView.addArrangedSubviews(participantLabel, firstParticipantLabel, secondParticipantLabel)
+
+        backgoundImageView.addSubviews(dividingLine,
+                                       profileDividingLine,
+                                       firstCharacterImageView,
+                                       secondCharacterImageView,
+                                       contentLabel,
+                                       labelStackView,
                                        chatButtonImageView)
     
-     
-        topLabelStackView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(13)
-            $0.leading.equalToSuperview().inset(30)
-            $0.width.equalTo(198)
+        dividingLine.snp.makeConstraints {
+            $0.verticalEdges.equalToSuperview()
+            $0.leading.equalToSuperview().inset(108 * (UIScreen.main.bounds.width - 21 - 19) / 335)
+            $0.width.equalTo(1)
         }
         
-        bottomLabelStackView.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(18)
-            $0.leading.equalToSuperview().inset(30)
+        profileDividingLine.snp.makeConstraints {
+            $0.verticalEdges.equalToSuperview()
+            $0.leading.equalToSuperview().inset(54 * (UIScreen.main.bounds.width - 21 - 19) / 335)
+            $0.width.equalTo(1)
+        }
+        
+        firstCharacterImageView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(3)
+            $0.leading.equalToSuperview().inset(1)
+            $0.trailing.equalTo(profileDividingLine.snp.leading)
+        }
+        
+        secondCharacterImageView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(3)
+            $0.leading.equalTo(profileDividingLine.snp.trailing)
+            $0.trailing.equalTo(dividingLine.snp.leading)
+        }
+        
+        contentLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(13)
+            $0.leading.equalTo(dividingLine.snp.trailing).offset(13)
+            $0.width.equalTo(198)
+            $0.height.equalTo(42)
+        }
+        
+        labelStackView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(13)
+            $0.leading.equalTo(dividingLine.snp.trailing).offset(13)
+            $0.width.equalTo(198)
         }
         
         chatButtonImageView.snp.makeConstraints {
@@ -110,15 +166,23 @@ final class AllChatCollectionViewCell: UICollectionViewCell {
         
         chatButtonImageView.addSubview(chatButtonLabel)
         chatButtonLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(7)
-            $0.leading.equalToSuperview().inset(14)
+            $0.top.equalToSuperview().inset(7.adjustedH)
+            $0.leading.equalToSuperview().inset(12.adjustedW)
         }
     }
     
     func bindCell(model: AllChattingData) {
-        titleLabel.text = model.fromNickname
+        if let url = URL(string: model.firstProfileURL) {
+            firstCharacterImageView.kf.setImage(with: url)
+        }
+        
+        if let url = URL(string: model.secondProfileURL) {
+            secondCharacterImageView.kf.setImage(with: url)
+        }
+        
         contentLabel.text = model.content
-
-        timeLabel.text = model.createdAt.toSeoulDateString() ?? ""
+                
+        firstParticipantLabel.text = model.firstFromNickname
+        secondParticipantLabel.text = model.secondFromNickname
     }
 }
