@@ -111,5 +111,13 @@ extension AlarmVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             return CGSize(width: 0, height: 0)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        coordinator?.pushToMyPage()
+        NotificationCenter.default.post(
+            name: Notification.Name(rawValue: "pushToCharacterEditView"),
+            object: nil
+        )
+    }
 }
 
