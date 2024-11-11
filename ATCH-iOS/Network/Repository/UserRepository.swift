@@ -192,6 +192,28 @@ final class UserRepository {
         }
     }
     
+    func getUserCharacterSlotList() async throws -> [CharacterSlot]? {
+        do {
+            let response: NetworkResult<GetCharacterSlotDTO?> = try await networkProvider.request(
+                type: .get,
+                baseURL: Config.appBaseURL + "/users/slots",
+                accessToken: KeychainWrapper.loadToken(forKey: UserData.shared.getAccessTokenType()),
+                body: nil,
+                pathVariables: nil
+            )
+            
+            switch response {
+            case .success(let data):
+                return data?.data
+            case .failure(let error):
+                print("Error Code: \(error.code ?? "No code"), Message: \(error.message ?? "No message")")
+                return nil
+            }
+        } catch {
+            return nil
+        }
+    }
+    
     func patchUserBackground(backgroundID: Int) async throws -> Bool {
         let requestDTO = BackgroundRequestBody(backgroundId: backgroundID)
         do {
