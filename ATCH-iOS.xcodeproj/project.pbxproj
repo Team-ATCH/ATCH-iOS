@@ -94,6 +94,7 @@
 		2AC344192CCE198200BEEA5A /* KakaoSDKCert in Frameworks */ = {isa = PBXBuildFile; productRef = 2AC344182CCE198200BEEA5A /* KakaoSDKCert */; };
 		2AC3441B2CCE198200BEEA5A /* KakaoSDKCertCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2AC3441A2CCE198200BEEA5A /* KakaoSDKCertCore */; };
 		2AC3441D2CCE198200BEEA5A /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 2AC3441C2CCE198200BEEA5A /* KakaoSDKCommon */; };
+		2AC791D92CE248C8004B1033 /* GetCharacterSlotDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC791D82CE248C8004B1033 /* GetCharacterSlotDTO.swift */; };
 		2AE7C9E22C8C4D1000A177EF /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7C9E12C8C4D1000A177EF /* UITextView+.swift */; };
 		2AE7C9E42C8D328300A177EF /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7C9E32C8D328300A177EF /* Date+.swift */; };
 		2AFD06422C8059A700F34C35 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD06412C8059A700F34C35 /* Config.swift */; };
@@ -242,6 +243,7 @@
 		2AC3440B2CCE0AC800BEEA5A /* NetworkServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceType.swift; sourceTree = "<group>"; };
 		2AC3440E2CCE0FF100BEEA5A /* SigninRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRequestBody.swift; sourceTree = "<group>"; };
 		2AC344102CCE0FFB00BEEA5A /* SigninResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninResponseDTO.swift; sourceTree = "<group>"; };
+		2AC791D82CE248C8004B1033 /* GetCharacterSlotDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharacterSlotDTO.swift; sourceTree = "<group>"; };
 		2AE7C9E12C8C4D1000A177EF /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		2AE7C9E32C8D328300A177EF /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		2AFD06402C80588500F34C35 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
@@ -1198,6 +1200,7 @@
 				2AFE09C92CD31312001CF26B /* GetCharacterListDTO.swift */,
 				2AFE09D22CD315F6001CF26B /* GetBackgroundListDTO.swift */,
 				2AFE09D42CD3163F001CF26B /* BackgroundRequestBody.swift */,
+				2AC791D82CE248C8004B1033 /* GetCharacterSlotDTO.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1433,6 +1436,7 @@
 				2AC3440F2CCE0FF100BEEA5A /* SigninRequestBody.swift in Sources */,
 				2A2A5D6B2CD8EF8000918288 /* CharacterEditView.swift in Sources */,
 				2AFE09C82CD312E4001CF26B /* CharacterRequestBody.swift in Sources */,
+				2AC791D92CE248C8004B1033 /* GetCharacterSlotDTO.swift in Sources */,
 				2A2591B32CBBEAFB00B6181E /* ProfileModalView.swift in Sources */,
 				2A2591C82CBFF78100B6181E /* SettingCell.swift in Sources */,
 				2ABCDC7B2C71EC6300AD649C /* MyPageVC.swift in Sources */,

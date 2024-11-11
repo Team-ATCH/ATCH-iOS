@@ -13,10 +13,12 @@ struct GetCharacterListDTO: Decodable {
 struct CharacterList: Decodable {
     let characterID: Int
     let imageURL: String
+    let profileImageURL: String
 
     enum CodingKeys: String, CodingKey {
         case characterID = "characterId"
         case imageURL = "image"
+        case profileImageURL = "profileImage"
     }
 }
 
@@ -24,7 +26,8 @@ extension GetCharacterListDTO {
     func mapToCharacterSelectView() -> [CharacterData] {
         let characterDataList: [CharacterData] = self.data.map { data in
             let characterData: CharacterData = .init(characterID: data.characterID,
-                                                     imageURL: data.imageURL)
+                                                     imageURL: data.imageURL,
+                                                     profileImageURL: data.profileImageURL)
             return characterData
         }
         return characterDataList

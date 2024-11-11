@@ -14,15 +14,23 @@ struct GetRoomListDTO: Decodable {
 struct RoomList: Decodable {
     let roomID: Int
     let content: String
-    let fromID: Int
-    let fromNickname, createdAt: String
-    let read: Bool
-
+    let firstFromID: Int
+    let firstFromNickname: String
+    let firstProfileURL: String
+    let secondFromID: Int
+    let secondFromNickname: String
+    let secondProfileURL: String
+    let createdAt: String
+    
     enum CodingKeys: String, CodingKey {
         case roomID = "roomId"
         case content
-        case fromID = "fromId"
-        case fromNickname, createdAt, read
+        case firstFromID = "firstFromId"
+        case firstProfileURL = "firstFromImage"
+        case secondFromID = "secondFromId"
+        case secondProfileURL = "secondFromImage"
+        case firstFromNickname, secondFromNickname
+        case createdAt
     }
 }
 
@@ -30,11 +38,14 @@ extension GetRoomListDTO {
     func mapToAllChatView() -> [AllChattingData] {
         let allChatDataList: [AllChattingData] = self.data.map { data in
             let allChatData: AllChattingData = .init(roomID: data.roomID,
+                                                     firstProfileURL: data.firstProfileURL,
+                                                     secondProfileURL: data.secondProfileURL,
                                                      content: data.content,
-                                                     fromID: data.fromID,
-                                                     fromNickname: data.fromNickname,
-                                                     createdAt: data.createdAt,
-                                                     read: data.read)
+                                                     firstFromID: data.firstFromID,
+                                                     firstFromNickname: data.firstFromNickname,
+                                                     secondFromID: data.secondFromID,
+                                                     secondFromNickname: data.secondFromNickname,
+                                                     createdAt: data.createdAt)
             return allChatData
         }
         return allChatDataList
