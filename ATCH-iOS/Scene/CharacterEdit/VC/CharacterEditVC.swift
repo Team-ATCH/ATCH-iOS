@@ -70,19 +70,32 @@ final class CharacterEditVC: UIViewController {
             }).disposed(by: disposeBag)
         
         viewModel?.itemPatchSuccessRelay
+            .observe(on: MainScheduler.instance)
             .withUnretained(self)
-            .subscribe(onNext: { vc, data in
+            .subscribe(onNext: { vc, _ in
                 if vc.characterEditView.selectedCharacter {
                     vc.viewModel?.updateCharacter(characterID: vc.characterEditView.currentCharacterID)
+                } else {
+                    vc.coordinator?.back()
                 }
             }).disposed(by: disposeBag)
         
         viewModel?.characterPatchSuccessRelay
+            .observe(on: MainScheduler.instance)
             .withUnretained(self)
-            .subscribe(onNext: { vc, data in
+            .subscribe(onNext: { vc, _ in
                 if vc.characterEditView.selectedBackground {
                     vc.viewModel?.updateBackground(backgroundID: vc.characterEditView.currentBackgroundID)
+                } else {
+                    vc.coordinator?.back()
                 }
+            }).disposed(by: disposeBag)
+        
+        viewModel?.backgroundPatchSuccessRelay
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.coordinator?.back()
             }).disposed(by: disposeBag)
         
         viewModel?.getCharacterItems()
