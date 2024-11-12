@@ -23,7 +23,7 @@ final class NavigationView: UIView {
         $0.contentMode = .scaleAspectFill
     }
     
-    private let navigationBackButtonTitle = UILabel().then {
+    let navigationBackButtonTitle = UILabel().then {
         $0.textColor = .atchShadowGrey
         $0.font = .font(.caption)
     }

@@ -92,8 +92,8 @@ extension AllChatVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let chatList = viewModel?.chatList {
             let opponent = Sender(senderId: String(chatList[indexPath.row].firstFromID),
-                                  displayName: String(chatList[indexPath.row].firstProfileURL),
-                                  profileImageUrl: "")
+                                  displayName: String(chatList[indexPath.row].firstFromNickname),
+                                  profileImageUrl: String(chatList[indexPath.row].firstProfileURL))
             coordinator?.pushToChattingRoomView(opponent: opponent, roomID: chatList[indexPath.row].roomID, allChatMode: true)
         }
     }

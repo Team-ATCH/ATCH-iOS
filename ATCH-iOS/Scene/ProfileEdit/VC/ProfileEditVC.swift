@@ -51,6 +51,7 @@ final class ProfileEditVC: UIViewController {
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
                 UserData.shared.nickname = vc.newNickname
+                vc.viewModel?.updateHashTag(hashTag: vc.newHashTag.map { $0.hashTagTitle })
             }).disposed(by: disposeBag)
         
         viewModel?.hashTagSuccessRelay
@@ -99,10 +100,10 @@ final class ProfileEditVC: UIViewController {
                 // 닉네임, 해시태그가 각각 달라졌으면 서버에 post
                 if vc.previousNickname != vc.newNickname {
                     vc.viewModel?.updateNickname(nickname: vc.newNickname)
-                }
-                
-                if vc.previousHashTag != vc.newHashTag {
-                    vc.viewModel?.updateHashTag(hashTag: vc.newHashTag.map { $0.hashTagTitle })
+                } else {
+                    if vc.previousHashTag != vc.newHashTag {
+                        vc.viewModel?.updateHashTag(hashTag: vc.newHashTag.map { $0.hashTagTitle })
+                    }
                 }
                 
             }).disposed(by: disposeBag)

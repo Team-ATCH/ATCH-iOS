@@ -311,10 +311,13 @@ extension BaseChattingRoomVC: MessagesDisplayDelegate {
     }
     
     func configureAvatarView(_ avatarView: AvatarView, for message: any MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-        if let url = URL(string: sender.profileImageUrl) {
-            avatarView.kf.setImage(with: url)
+        if let chattingSender = message.sender as? Sender {
+            if let url = URL(string: chattingSender.profileImageUrl) {
+                avatarView.kf.setImage(with: url)
+            }
         }
         
+        avatarView.backgroundColor = .atchWhite
         avatarView.layer.borderColor = UIColor.atchShadowGrey.cgColor
         avatarView.layer.borderWidth = 1
     }

@@ -145,8 +145,15 @@ final class CharacterEditVC: UIViewController {
                 guard let self else { return }
                 if characterEditView.selectedItem {
                     viewModel?.updateItems(items: characterEditView.currentItemIDs)
+                } else {
+                    if characterEditView.selectedCharacter {
+                        viewModel?.updateCharacter(characterID: characterEditView.currentCharacterID)
+                    } else {
+                        if characterEditView.selectedBackground {
+                            viewModel?.updateBackground(backgroundID: characterEditView.currentBackgroundID)
+                        }
+                    }
                 }
-                
             })
             .disposed(by: disposeBag)
         
