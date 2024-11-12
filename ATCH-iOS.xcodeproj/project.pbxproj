@@ -1003,13 +1003,6 @@
 			path = Signin;
 			sourceTree = "<group>";
 		};
-		2AE7C9E52C8D3DFB00A177EF /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		2AFD06B62C84A04A00F34C35 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1078,7 +1071,6 @@
 			children = (
 				2AFD06C12C84A06700F34C35 /* Coordinator */,
 				2AFD06C52C84A06700F34C35 /* ViewModel */,
-				2AE7C9E52C8D3DFB00A177EF /* View */,
 				2AFD06C32C84A06700F34C35 /* VC */,
 			);
 			path = ChattingRoom;
