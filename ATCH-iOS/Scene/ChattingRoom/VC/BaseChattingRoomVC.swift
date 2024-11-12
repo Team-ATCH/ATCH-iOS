@@ -272,10 +272,14 @@ extension BaseChattingRoomVC: MessagesDataSource {
     }
     
     func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-        let name = message.sender.displayName
-        return NSAttributedString(string: name, attributes: [.font: UIFont.font(.body),
-                                                             .foregroundColor: UIColor.atchGrey3])
-    }    
+        if let chattingSender = message.sender as? Sender {
+            let name = chattingSender.displayName
+            return NSAttributedString(string: name, attributes: [.font: UIFont.font(.body),
+                                                                 .foregroundColor: UIColor.atchGrey3])
+        } else {
+            return nil
+        }
+    }
 }
 
 extension BaseChattingRoomVC: MessagesLayoutDelegate {
