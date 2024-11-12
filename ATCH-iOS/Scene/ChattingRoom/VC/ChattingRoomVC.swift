@@ -56,6 +56,7 @@ final class ChattingRoomVC: BaseChattingRoomVC {
         
         if allChatMode == true {
             viewModel?.getAllChattingMessages()
+            chattingRoomNavigationView.navigationBackButtonTitle.text = "전체 채팅"
         } else {
             viewModel?.getPreviousChattingMessages()
         }
