@@ -48,16 +48,23 @@ final class ProfileEditVC: UIViewController {
     
     private func bindViewModel() {
         viewModel?.nicknameSuccessRelay
+            .observe(on: MainScheduler.instance)
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
                 UserData.shared.nickname = vc.newNickname
-                vc.viewModel?.updateHashTag(hashTag: vc.newHashTag.map { $0.hashTagTitle })
+                if vc.previousHashTag != vc.newHashTag {
+                    vc.viewModel?.updateHashTag(hashTag: vc.newHashTag.map { $0.hashTagTitle })
+                } else {
+                    vc.coordinator?.back()
+                }
             }).disposed(by: disposeBag)
         
         viewModel?.hashTagSuccessRelay
+            .observe(on: MainScheduler.instance)
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
                 UserData.shared.hashTag = vc.newHashTag
+                vc.coordinator?.back()
             }).disposed(by: disposeBag)
     }
     

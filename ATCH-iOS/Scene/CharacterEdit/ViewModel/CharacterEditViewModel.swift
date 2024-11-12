@@ -21,7 +21,8 @@ final class CharacterEditViewModel: NSObject {
     
     let itemPatchSuccessRelay: PublishRelay<Bool> = PublishRelay<Bool>()
     let characterPatchSuccessRelay: PublishRelay<Bool> = PublishRelay<Bool>()
-
+    let backgroundPatchSuccessRelay: PublishRelay<Bool> = PublishRelay<Bool>()
+    
     var characterID: Int = 0
     
     override init() {
@@ -103,7 +104,8 @@ final class CharacterEditViewModel: NSObject {
     func updateBackground(backgroundID: Int) {
         Task {
             do {
-                let _ = try await userRepository.patchUserBackground(backgroundID: backgroundID)
+                let result = try await userRepository.patchUserBackground(backgroundID: backgroundID)
+                backgroundPatchSuccessRelay.accept(result)
             }
         }
     }
