@@ -226,10 +226,10 @@ final class MapVC: BaseMapVC {
 extension MapVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let currentLocation = locations.last else { return }
-//        let currentLongitude = currentLocation.coordinate.longitude
-//        let currentLatitude = currentLocation.coordinate.latitude
+        let currentLongitude = currentLocation.coordinate.longitude
+        let currentLatitude = currentLocation.coordinate.latitude
         
-        let mapPoint = MapPoint(longitude: 126.92390068909582, latitude: 37.55697173535178)
+        let mapPoint = MapPoint(longitude: currentLongitude, latitude: currentLatitude)
         guard let mapView = mapController?.getView("mapview") as? KakaoMap else { return }
         let manager = mapView.getLabelManager()
         
@@ -247,7 +247,7 @@ extension MapVC: CLLocationManagerDelegate {
             // POI 추가 및 서버에 현재 위치 전달
             currentPoi = layer?.addPoi(option: poiOption, at: mapPoint, callback: { [weak self] poi in
                 guard let self else { return }
-                self.viewModel?.updateMyLoaction(longitude: 126.92390068909582, latitude: 37.55697173535178)
+                self.viewModel?.updateMyLoaction(longitude: currentLongitude, latitude: currentLatitude)
                 print("Current POI added")
             })
         } else {
