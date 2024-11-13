@@ -76,16 +76,17 @@ final class ChattingRoomVC: BaseChattingRoomVC {
         super.setupStyle()
         
         overrideUserInterfaceStyle = .light
+        self.view.backgroundColor = .atchGrey1
     }
     
     override func setupLayout() {
         messagesCollectionView.removeFromSuperview()
         inputContainerView.removeFromSuperview()
-        
+
         self.view.addSubviews(chattingRoomNavigationView,
                               messagesCollectionView,
                               inputContainerView)
-        
+
         chattingRoomNavigationView.snp.makeConstraints {
             $0.top.horizontalEdges.equalToSuperview()
             $0.height.equalTo((UIWindow.key?.safeAreaInsets.top ?? 0) + 51)
@@ -101,7 +102,7 @@ final class ChattingRoomVC: BaseChattingRoomVC {
             messagesCollectionView.snp.makeConstraints {
                 $0.top.equalTo(chattingRoomNavigationView.snp.bottom)
                 $0.horizontalEdges.equalToSuperview()
-                $0.bottom.equalToSuperview().inset((UIWindow.key?.safeAreaInsets.bottom ?? 0) + 62 + 60)
+                $0.bottom.equalTo(inputContainerView.snp.top).offset(-2)
             }
             
             inputContainerView.snp.makeConstraints {
@@ -162,6 +163,18 @@ final class ChattingRoomVC: BaseChattingRoomVC {
                 vc.viewModel?.disconnect()
                 vc.coordinator?.back()
             }).disposed(by: disposeBag)
+    }
+    
+    // 화면의 빈 공간 터치 시 키보드를 내리기 위한 제스처 설정
+    override func setupDismissKeyboardGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+        messagesCollectionView.addGestureRecognizer(tapGesture)
+    }
+    
+    // 키보드 내리기 액션
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
