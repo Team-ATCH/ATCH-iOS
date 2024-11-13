@@ -36,8 +36,10 @@ class BaseChattingRoomVC: MessagesViewController {
         set { state.disposeBag = newValue }
     }
     
+    private var heightUpdate: Bool = false
     lazy var numberOfLines: Int = 0 {
         didSet {
+            heightUpdate = true
             updateHeight(line: numberOfLines)
         }
     }
@@ -85,7 +87,8 @@ class BaseChattingRoomVC: MessagesViewController {
     func setupStyle() {         
         messagesCollectionView.backgroundColor = .atchGrey1
         messagesCollectionView.contentInset = .init(top: 10, left: 0, bottom: 10, right: 0)
-
+        messagesCollectionView.showsVerticalScrollIndicator = false
+        
         messageInputBar.backgroundView.backgroundColor = .atchGrey2
         
         messageInputBar.separatorLine.backgroundColor = .atchShadowGrey
@@ -140,7 +143,6 @@ class BaseChattingRoomVC: MessagesViewController {
     
     func addKeyboardObservers() {
         keyboardManager.bind(inputAccessoryView: inputContainerView)
-        keyboardManager.bind(to: messagesCollectionView)
         
         /// 키보드가 나타날 때 마지막 메시지로 스크롤
         NotificationCenter.default
@@ -177,7 +179,7 @@ class BaseChattingRoomVC: MessagesViewController {
 
                 self.updateMessageCollectionViewBottomInset()
                 
-                if !(self.maintainPositionOnInputBarHeightChanged) {
+                if self.heightUpdate {
                     self.messagesCollectionView.scrollToLastItem()
                 }
                 
@@ -198,16 +200,7 @@ class BaseChattingRoomVC: MessagesViewController {
         disposeBag.removeAll()
     }
     
-    // 화면의 빈 공간 터치 시 키보드를 내리기 위한 제스처 설정
-    private func setupDismissKeyboardGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tapGesture)
-    }
-    
-    // 키보드 내리기 액션
-    @objc private func dismissKeyboard() {
-        view.endEditing(true)
-    }
+    func setupDismissKeyboardGesture() { }
     
     func updateMessageCollectionViewBottomInset() {
         let collectionViewHeight = messagesCollectionView.frame.maxY
@@ -235,9 +228,10 @@ class BaseChattingRoomVC: MessagesViewController {
     }
     
     private func updateHeight(line: Int) {
+        heightUpdate = false
         inputContainerView.snp.remakeConstraints {
             $0.horizontalEdges.equalToSuperview()
-            $0.bottom.equalToSuperview().inset((UIWindow.key?.safeAreaInsets.bottom ?? 0) + 62)
+            $0.bottom.equalToSuperview().inset((UIWindow.key?.safeAreaInsets.bottom ?? 0) + 62 + 2)
             $0.height.equalTo(60 + 20 * (line - 1))
         }
         
