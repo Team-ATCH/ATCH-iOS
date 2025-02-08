@@ -8,11 +8,21 @@
 import UIKit
 
 import Kingfisher
+import RxSwift
 import SnapKit
 import Then
 
+protocol CellButtonActionDelegate: AnyObject {
+    func profileImageTapped(userID: String)
+    func chattingButtonTapped(userID: String)
+}
+
 final class MyChatCollectionViewCell: UICollectionViewCell {
 
+    weak var delegate: CellButtonActionDelegate?
+    private let disposeBag: DisposeBag = DisposeBag()
+    private var userID: String = ""
+    
     private let backgoundImageView = UIImageView().then {
         $0.image = .imgChatCellBackground
         $0.contentMode = .scaleAspectFill
@@ -71,6 +81,7 @@ final class MyChatCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         setupLayout()
+        setupAction()
     }
     
     required init?(coder: NSCoder) {
@@ -136,7 +147,25 @@ final class MyChatCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    private func setupAction() {
+        characterImageView.rx.tapGesture().asObservable()
+            .when(.recognized)
+            .withUnretained(self)
+            .subscribe(onNext: { cell, _ in
+                cell.delegate?.profileImageTapped(userID: cell.userID)
+            }).disposed(by: disposeBag)
+        
+        chatButtonImageView.rx.tapGesture().asObservable()
+            .when(.recognized)
+            .withUnretained(self)
+            .subscribe(onNext: { cell, _ in
+                cell.delegate?.chattingButtonTapped(userID: cell.userID)
+            }).disposed(by: disposeBag)
+    }
+    
     func bindCell(model: MyChatData) {
+        userID = model.id
+        
         if let url = URL(string: model.characterUrl) {
             characterImageView.kf.setImage(with: url)
         }

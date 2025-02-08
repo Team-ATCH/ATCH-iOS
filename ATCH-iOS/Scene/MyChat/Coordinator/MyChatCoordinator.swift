@@ -35,6 +35,13 @@ final class MyChatCoordinator: Coordinator {
         self.childCoordinators.append(chattingRoomCoordinator)
         chattingRoomCoordinator.start(opponent: opponent, roomID: roomID)
     }
+    
+    func presentProfileModal(userData: ProfileModalData, delegate: MyChatVC) {
+        let profileModalCoordinator = ProfileModalCoordinator(navigationController)
+        profileModalCoordinator.finishDelegate = self
+        self.childCoordinators.append(profileModalCoordinator)
+        profileModalCoordinator.start(userData: userData, delegate: delegate)
+    }
 }
 
 extension MyChatCoordinator: CoordinatorFinishDelegate {

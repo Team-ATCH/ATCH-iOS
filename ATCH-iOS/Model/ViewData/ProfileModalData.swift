@@ -10,6 +10,7 @@ import Foundation
 enum ProfileModalButtonType {
     case profileEdit
     case chatting
+    case otherProfile
 }
 
 struct ProfileModalData {
@@ -28,6 +29,8 @@ struct ProfileModalData {
             return "프로필 수정"
         case .chatting:
             return "채팅하기"
+        case .otherProfile:
+            return "차단하기"
         }
     }
     

@@ -13,8 +13,10 @@ import RxSwift
 final class ProfileModalViewModel: NSObject {
     
     private let chatRepository: ChatRepository = ChatRepository()
+    private let userRepository: UserRepository = UserRepository()
 
     let chatRelay: PublishRelay<RoomResponseDTO> = PublishRelay<RoomResponseDTO>()
+    let blockRelay: PublishRelay<Void> = PublishRelay<Void>()
     
     override init() {
         super.init()
@@ -30,6 +32,17 @@ final class ProfileModalViewModel: NSObject {
                 let result = try await chatRepository.postChattingRoom(userId: userID)
                 if let result = result {
                     chatRelay.accept(result)
+                }
+            }
+        }
+    }
+    
+    func postBlockUser(userID: Int) {
+        Task {
+            do {
+                let success = try await userRepository.postUserBlock(userID: userID)
+                if success {
+                    blockRelay.accept(())
                 }
             }
         }

@@ -85,15 +85,44 @@ extension MyChatVC: UICollectionViewDelegate, UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyChatCollectionViewCell.reuseIdentifier, for: indexPath) as? MyChatCollectionViewCell else {return UICollectionViewCell()}
         if let chatList = viewModel?.chatList {
             cell.bindCell(model: chatList[indexPath.item])
+            cell.delegate = self
         }
         return cell
     }
+}
+
+extension MyChatVC: CellButtonActionDelegate {
+    func profileImageTapped(userID: String) {
+        if let chatList = viewModel?.chatList,
+           let index = chatList.firstIndex(where: { ($0.id == userID) }) {
+            coordinator?.presentProfileModal(userData: ProfileModalData.init(userID: Int(chatList[index].id),
+                                                                             nickname: chatList[index].nickName,
+                                                                             hashTag: chatList[index].tag,
+                                                                             profileURL: chatList[index].characterUrl,
+                                                                             backgroundURL: nil,
+                                                                             buttonType: .otherProfile,
+                                                                             senderData: nil,
+                                                                             items: nil),
+                                             delegate: self)
+        }
+    }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let chatList = viewModel?.chatList {
-            let opponent = Sender(senderId: chatList[indexPath.row].id, displayName: chatList[indexPath.row].nickName, profileImageUrl: chatList[indexPath.row].characterUrl)
-            coordinator?.pushToChattingRoomView(opponent: opponent, roomID: chatList[indexPath.row].roomID)
+    func chattingButtonTapped(userID: String) {
+        if let chatList = viewModel?.chatList,
+           let index = chatList.firstIndex(where: { ($0.id == userID) }) {
+            let opponent = Sender(senderId: chatList[index].id,
+                                  displayName: chatList[index].nickName,
+                                  profileImageUrl: chatList[index].characterUrl)
+            coordinator?.pushToChattingRoomView(opponent: opponent, roomID: chatList[index].roomID)
         }
     }
 }
 
+
+extension MyChatVC: BlockUserDelegate {
+    func blockUser() {
+        self.presentedViewController?.dismiss(animated: false)
+        myChatView.chatCollectionView.reloadData()
+        UIWindow.key?.showToastMessage(message: "해당 유저를 차단했습니다.")
+    }
+}
