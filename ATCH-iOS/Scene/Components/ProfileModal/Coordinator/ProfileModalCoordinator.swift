@@ -21,8 +21,9 @@ final class ProfileModalCoordinator: Coordinator {
     
     func start() { }
     
-    func start(userData: ProfileModalData) {
+    func start(userData: ProfileModalData, delegate: MyChatVC? = nil) {
         self.profileModalVC = ProfileModalVC(coordinator: self)
+        self.profileModalVC?.delegate = delegate
         self.profileModalVC?.viewModel = ProfileModalViewModel()
         self.profileModalVC?.bindUserInfo(data: userData)
         
