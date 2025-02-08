@@ -12,8 +12,13 @@ import RxSwift
 import SnapKit
 import Then
 
+protocol BlockUserDelegate: AnyObject {
+    func blockUser()
+}
+
 final class ProfileModalVC: UIViewController {
     
+    weak var delegate: BlockUserDelegate?
     let coordinator: ProfileModalCoordinator?
     var viewModel: ProfileModalViewModel?
     
@@ -68,6 +73,13 @@ final class ProfileModalVC: UIViewController {
                     self.coordinator?.pushToChattingRoomView(opponent: sender, roomID: data.roomID)
                 }
             }).disposed(by: disposeBag)
+        
+        viewModel?.blockRelay
+            .withUnretained(self)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { vc, _ in
+                vc.delegate?.blockUser()
+            }).disposed(by: disposeBag)
     }
     
     private func setupAction() {
@@ -87,6 +99,8 @@ final class ProfileModalVC: UIViewController {
                     vc.coordinator?.pushToMyPage()
                 case .chatting:
                     vc.viewModel?.postChattingRoom(userID: vc.opponentUserID)
+                case.otherProfile:
+                    vc.viewModel?.postBlockUser(userID: vc.opponentUserID)
                 }
             }).disposed(by: disposeBag)
     }
